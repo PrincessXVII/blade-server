@@ -25,7 +25,7 @@ fi
 cat > "$PACK_DIR/pack.mcmeta" <<'EOF'
 {
   "pack": {
-    "pack_format": 46,
+    "pack_format": 75,
     "description": "Blade Server Resource Pack"
   }
 }
