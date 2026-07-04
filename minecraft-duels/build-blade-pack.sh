@@ -51,7 +51,7 @@ for rank in "${RANKS[@]}"; do
   CHAR_CODE=$((CHAR_CODE + 1))
 done
 
-# Crop padding; tab header only shows glyphs up to ~48px tall reliably.
+# Crop padding, downscale with 2x supersampling for max sharpness at tab size.
 export TITLE="$TITLE" PACK_DIR="$PACK_DIR"
 python3 <<PY
 from PIL import Image
@@ -68,9 +68,11 @@ im = im.crop(bbox)
 scale = min(max_width / im.width, tab_height / im.height, 1.0)
 size = (max(1, round(im.width * scale)), max(1, round(im.height * scale)))
 if size != im.size:
-    im = im.resize(size, Image.Resampling.LANCZOS)
-im.save(out, optimize=False)
-print(f"title texture: {size[0]}x{size[1]}", flush=True)
+    w, h = size
+    im = im.resize((w * 2, h * 2), Image.Resampling.LANCZOS)
+    im = im.resize((w, h), Image.Resampling.LANCZOS)
+im.save(out, optimize=False, compress_level=1)
+print(f"title texture: {size[0]}x{size[1]} (from {bbox[2]-bbox[0]}x{bbox[3]-bbox[1]})", flush=True)
 PY
 TITLE_HEIGHT=$(sips -g pixelHeight "$PACK_DIR/assets/blade/textures/font/blade_title.png" | awk '/pixelHeight/ {print $2}')
 # Tab logos typically use ~52/33 height/ascent ratio.
