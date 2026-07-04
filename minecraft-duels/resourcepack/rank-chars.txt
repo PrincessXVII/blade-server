@@ -15,3 +15,4 @@ kurator=\uE00D
 zamestitel=\uE00E
 owner=\uE00F
 blade_title=\uE010
+meetups_title=\uE011

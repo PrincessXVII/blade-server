@@ -6,6 +6,7 @@ PACK_DIR="$ROOT/resourcepack-src"
 OUT_ZIP="$ROOT/resourcepack/BladePack.zip"
 DONATES="${DONATES_DIR:-$ROOT/resourcepack/assets/donates}"
 TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
+MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 
 rm -rf "$PACK_DIR"
 mkdir -p "$PACK_DIR/assets/blade/textures/font/ranks"
@@ -19,6 +20,10 @@ if [[ ! -d "$DONATES" ]]; then
 fi
 if [[ ! -f "$TITLE" ]]; then
   echo "Blade title image not found: $TITLE" >&2
+  exit 1
+fi
+if [[ ! -f "$MEETUPS_TITLE" ]]; then
+  echo "Meetups title image not found: $MEETUPS_TITLE" >&2
   exit 1
 fi
 
@@ -52,18 +57,22 @@ for rank in "${RANKS[@]}"; do
 done
 
 # Crop padding, downscale with 2x supersampling for max sharpness at tab size.
-export TITLE="$TITLE" PACK_DIR="$PACK_DIR"
-python3 <<PY
+process_title_texture() {
+  local src="$1"
+  local out_name="$2"
+  local tab_height="${3:-48}"
+  export TITLE_SRC="$src" TITLE_OUT_NAME="$out_name" PACK_DIR="$PACK_DIR" TITLE_TAB_HEIGHT="$tab_height"
+  python3 <<'PY'
 from PIL import Image
 import os
-src = os.environ["TITLE"]
-out = os.path.join(os.environ["PACK_DIR"], "assets/blade/textures/font/blade_title.png")
+src = os.environ["TITLE_SRC"]
+out = os.path.join(os.environ["PACK_DIR"], "assets/blade/textures/font", os.environ["TITLE_OUT_NAME"])
 tab_height = int(os.environ.get("TITLE_TAB_HEIGHT", "48"))
 max_width = 512
 im = Image.open(src).convert("RGBA")
 bbox = im.getbbox()
 if not bbox:
-    raise SystemExit("Title image is fully transparent")
+    raise SystemExit(f"Title image is fully transparent: {src}")
 im = im.crop(bbox)
 scale = min(max_width / im.width, tab_height / im.height, 1.0)
 size = (max(1, round(im.width * scale)), max(1, round(im.height * scale)))
@@ -72,15 +81,26 @@ if size != im.size:
     im = im.resize((w * 2, h * 2), Image.Resampling.LANCZOS)
     im = im.resize((w, h), Image.Resampling.LANCZOS)
 im.save(out, optimize=False, compress_level=1)
-print(f"title texture: {size[0]}x{size[1]} (from {bbox[2]-bbox[0]}x{bbox[3]-bbox[1]})", flush=True)
+print(f"{os.path.basename(out)}: {size[0]}x{size[1]} (from {bbox[2]-bbox[0]}x{bbox[3]-bbox[1]})", flush=True)
 PY
+}
+
+process_title_texture "$TITLE" "blade_title.png" 48
 TITLE_HEIGHT=$(sips -g pixelHeight "$PACK_DIR/assets/blade/textures/font/blade_title.png" | awk '/pixelHeight/ {print $2}')
-# Tab logos typically use ~52/33 height/ascent ratio.
 TITLE_ASCENT=$(( TITLE_HEIGHT * 33 / 52 ))
 (( TITLE_ASCENT < 1 )) && TITLE_ASCENT=1
 (( TITLE_ASCENT >= TITLE_HEIGHT )) && TITLE_ASCENT=$(( TITLE_HEIGHT - 1 ))
 TITLE_CHAR=$(printf '\\u%04X' "$CHAR_CODE")
 PROVIDERS+=',{"type":"bitmap","file":"blade:font/blade_title.png","ascent":'"$TITLE_ASCENT"',"height":'"$TITLE_HEIGHT"',"chars":["'"$TITLE_CHAR"'"]}'
+CHAR_CODE=$((CHAR_CODE + 1))
+
+process_title_texture "$MEETUPS_TITLE" "meetups_title.png" 32
+MEETUPS_HEIGHT=$(sips -g pixelHeight "$PACK_DIR/assets/blade/textures/font/meetups_title.png" | awk '/pixelHeight/ {print $2}')
+MEETUPS_ASCENT=$(( MEETUPS_HEIGHT * 33 / 52 ))
+(( MEETUPS_ASCENT < 1 )) && MEETUPS_ASCENT=1
+(( MEETUPS_ASCENT >= MEETUPS_HEIGHT )) && MEETUPS_ASCENT=$(( MEETUPS_HEIGHT - 1 ))
+MEETUPS_CHAR=$(printf '\\u%04X' "$CHAR_CODE")
+PROVIDERS+=',{"type":"bitmap","file":"blade:font/meetups_title.png","ascent":'"$MEETUPS_ASCENT"',"height":'"$MEETUPS_HEIGHT"',"chars":["'"$MEETUPS_CHAR"'"]}'
 
 PROVIDERS+=']'
 
@@ -99,6 +119,8 @@ for rank in "${RANKS[@]}"; do
   CHAR_CODE=$((CHAR_CODE + 1))
 done
 printf 'blade_title=%s\n' "$(printf '\u%04X' "$CHAR_CODE")" >> "$MAP_FILE"
+CHAR_CODE=$((CHAR_CODE + 1))
+printf 'meetups_title=%s\n' "$(printf '\u%04X' "$CHAR_CODE")" >> "$MAP_FILE"
 
 rm -f "$OUT_ZIP"
 (cd "$PACK_DIR" && zip -qr "$OUT_ZIP" .)
