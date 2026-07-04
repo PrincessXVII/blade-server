@@ -1,0 +1,39 @@
+# Minecraft server runtime
+minecraft-duels/logs/
+minecraft-duels/crash-reports/
+minecraft-duels/*.jar
+minecraft-duels/lobby/
+minecraft-duels/lobby_nether/
+minecraft-duels/lobby_the_end/
+minecraft-duels/lobby.backup/
+minecraft-duels/resourcepack-src/
+minecraft-duels/plugins/.paper-remapped/
+minecraft-duels/plugins/**/cache/
+minecraft-duels/plugins/**/skins/
+minecraft-duels/plugins/**/logs/
+minecraft-duels/plugins/LuckPerms/*.mv.db
+minecraft-duels/plugins/LuckPerms/*.trace.db
+minecraft-duels/plugins/LuckPerms/*.lock.db
+minecraft-duels/session.lock
+minecraft-duels/**/session.lock
+minecraft-duels/usercache.json
+minecraft-duels/ops.json
+minecraft-duels/banned-*.json
+minecraft-duels/world*/
+minecraft-duels/cache/
+minecraft-duels/libraries/
+minecraft-duels/versions/
+
+# Build output
+custom-plugins/**/target/
+
+# OS / IDE
+.DS_Store
+.idea/
+*.iml
+
+# Disabled plugins
+minecraft-duels/plugins-disabled/
+
+# Local-only
+*.log

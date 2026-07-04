@@ -1,0 +1,17 @@
+trial=\uE000
+booster=\uE001
+chamber=\uE002
+razor=\uE003
+winner=\uE004
+sponsor=\uE005
+stazher=\uE006
+helper=\uE007
+moder=\uE008
+stmoder=\uE009
+glmoder=\uE00A
+dizainer=\uE00B
+tehadmin=\uE00C
+kurator=\uE00D
+zamestitel=\uE00E
+owner=\uE00F
+blade_title=\uE010

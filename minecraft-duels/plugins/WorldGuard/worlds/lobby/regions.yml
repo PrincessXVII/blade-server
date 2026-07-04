@@ -1,0 +1,29 @@
+regions:
+  spawnprotect:
+    type: cuboid
+    priority: 100
+    min:
+      x: -150
+      y: -64
+      z: -96
+    max:
+      x: 150
+      y: 320
+      z: 203
+    flags:
+      passthrough: deny
+      mob-spawning: deny
+      pvp: deny
+      invincible: allow
+      build: deny
+      block-break: deny
+      block-place: deny
+      interact: deny
+      use: deny
+      chest-access: deny
+      vehicle-place: deny
+      vehicle-destroy: deny
+      item-drop: deny
+      item-pickup: deny
+    owners: {}
+    members: {}

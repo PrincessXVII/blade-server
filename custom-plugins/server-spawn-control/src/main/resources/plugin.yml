@@ -1,0 +1,9 @@
+name: ServerSpawnControl
+version: 1.0.3
+main: dev.systemcrash.spawn.ServerSpawnControlPlugin
+api-version: "1.21"
+
+commands:
+  spawn:
+    description: Teleport to fixed spawn location
+    usage: /spawn

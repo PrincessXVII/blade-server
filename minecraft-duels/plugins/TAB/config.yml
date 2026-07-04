@@ -1,0 +1,92 @@
+header-footer:
+  enabled: true
+  designs:
+    default:
+      header:
+      - ''
+      - §f
+      - ''
+      - '&7Добро пожаловать, &f%player%'
+      - '&7Онлайн: &f%online%'
+      footer:
+      - ''
+      - '&7Blade Network'
+      - '&8blade.mc'
+tablist-name-formatting:
+  enabled: true
+scoreboard-teams:
+  enabled: true
+  enable-collision: true
+  sorting-types:
+  - GROUPS:owner,zamestitel,kurator,tehadmin,dizainer,glmoder,stmoder,moder,helper,stazher,sponsor,winner,razor,chamber,booster,trial,default
+  - PLACEHOLDER_A_TO_Z:%player%
+playerlist-objective:
+  enabled: false
+  title: TAB
+  value: ''
+  render-type: INTEGER
+scoreboard:
+  enabled: true
+  toggle-command: /sb
+  remember-toggle-choice: false
+  hidden-by-default: false
+  scoreboards:
+    blade:
+      title: §f
+      lines:
+      - '&8&m---------------------'
+      - '&fНик: &b%player%'
+      - '&fРанг: %luckperms-prefix%'
+      - ''
+      - '&fОнлайн: &a%online%'
+      - '&fПинг: &a%ping%ms'
+      - '&8&m---------------------'
+placeholders:
+  date-format: dd.MM.yyyy
+  time-format: HH:mm
+  register-tab-expansion: false
+primary-group-finding-list:
+- owner
+- zamestitel
+- kurator
+- tehadmin
+- dizainer
+- glmoder
+- stmoder
+- moder
+- helper
+- stazher
+- sponsor
+- winner
+- razor
+- chamber
+- booster
+- trial
+- default
+config-version: 6
+prevent-spectator-effect:
+  enabled: false
+debug: false
+use-online-uuid-in-tablist: true
+permission-refresh-interval: 1000
+compensate-for-packetevents-bug: false
+assign-groups-by-permissions: false
+belowname-objective:
+  fancy-value-default: NPC
+  fancy-value: '&c%health%'
+  enabled: false
+global-playerlist:
+  update-latency: false
+  enabled: false
+bossbar:
+  enabled: false
+layout:
+  enabled: false
+mysql:
+  enabled: false
+per-world-playerlist:
+  enabled: false
+ping-spoof:
+  enabled: false
+proxy-support:
+  enabled: true

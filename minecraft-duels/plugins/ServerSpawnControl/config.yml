@@ -1,0 +1,9 @@
+jungle-biome-applied: true
+
+biome-region:
+  min-x: -150
+  min-y: -64
+  min-z: -96
+  max-x: 150
+  max-y: 320
+  max-z: 203

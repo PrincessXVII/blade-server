@@ -1,0 +1,17 @@
+storage-file: punishments.yml
+
+groups-initialized: false
+
+curator-groups:
+  - chamber
+  - razor
+  - winner
+  - sponsor
+  - stazher
+  - helper
+  - moder
+  - stmoder
+  - glmoder
+
+op-groups:
+  - kurator

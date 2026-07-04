@@ -1,0 +1,66 @@
+name: BladeCore
+version: 1.0.0
+main: dev.systemcrash.blade.BladeCorePlugin
+api-version: "1.21"
+depend: [LuckPerms]
+softdepend: [TAB]
+
+commands:
+  tempmute:
+    description: Temporarily mute a player
+    usage: /tempmute <player> <duration> [reason]
+    permission: blade.mute
+  tempban:
+    description: Temporarily ban a player
+    usage: /tempban <player> <duration> [reason]
+    permission: blade.ban
+  mute:
+    description: Permanently mute a player
+    usage: /mute <player> [reason]
+    permission: blade.mute.unlimited
+  ban:
+    description: Permanently ban a player
+    usage: /ban <player> [reason]
+    permission: blade.ban.permanent
+  unmute:
+    description: Unmute a player
+    usage: /unmute <player>
+    permission: blade.unmute
+  unban:
+    description: Unban a player
+    usage: /unban <player>
+    permission: blade.unban
+  ipban:
+    description: Ban a player by IP
+    usage: /ipban <player> [reason]
+    permission: blade.ban.ip
+  rank:
+    description: Set a player's rank
+    usage: /rank <player> <group>
+    permission: blade.rank.grant
+  bladeop:
+    description: Grant server operator
+    usage: /bladeop <player>
+    permission: blade.op.grant
+
+permissions:
+  blade.mute:
+    default: false
+  blade.ban:
+    default: false
+  blade.mute.unlimited:
+    default: false
+  blade.ban.permanent:
+    default: false
+  blade.ban.ip:
+    default: false
+  blade.unmute:
+    default: false
+  blade.unban:
+    default: false
+  blade.rank.grant:
+    default: false
+  blade.op.grant:
+    default: false
+  blade.admin:
+    default: op
