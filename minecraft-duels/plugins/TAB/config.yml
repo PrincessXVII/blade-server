@@ -4,10 +4,16 @@ header-footer:
     default:
       header:
       - ''
-      - "\uE010"
+      - ''
+      - ''
+      - "\uE110"
+      - ''
+      - ''
       - ''
       - '&7Добро пожаловать, &f%player%'
+      - ''
       - '&7Онлайн: &f%online%'
+      - ''
       footer:
       - ''
       - '&7Blade Network'
@@ -32,7 +38,7 @@ scoreboard:
   hidden-by-default: false
   scoreboards:
     blade:
-      title: "\uE010"
+      title: "\uE110"
       lines:
       - '&8&m---------------------'
       - '&fНик: &b%player%'

@@ -1,0 +1,31 @@
+version: 2 # DO NOT CHANGE
+holograms:
+  meetups_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -3.5
+      y: 164.04400634765625
+      z: 53.5
+      yaw: -89.98524
+      pitch: -2.0562975
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: true
+    linkedNpc: meetups
+    persistent: true
+    visible_by_default: true
+    visibility_distance: -1
+    visibility: ALL
+    scale_x: 1.2
+    scale_y: 1.2
+    scale_z: 1.2
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
