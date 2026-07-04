@@ -13,8 +13,12 @@ fi
 # shellcheck disable=SC1090
 source "$ENV_FILE"
 
-if [[ -z "${RESOURCE_PACK_URL:-}" ]]; then
-  echo "RESOURCE_PACK_URL is not set in blade.env" >&2
+REPO_ROOT="$(git -C "$ROOT/.." rev-parse --show-toplevel 2>/dev/null || git -C "$ROOT" rev-parse --show-toplevel 2>/dev/null || true)"
+if [[ -n "${RESOURCE_PACK_GITHUB_REPO:-}" && -n "${RESOURCE_PACK_GITHUB_PATH:-}" && -n "$REPO_ROOT" ]]; then
+  COMMIT="$(git -C "$REPO_ROOT" rev-parse HEAD)"
+  RESOURCE_PACK_URL="https://raw.githubusercontent.com/${RESOURCE_PACK_GITHUB_REPO}/${COMMIT}/${RESOURCE_PACK_GITHUB_PATH}"
+elif [[ -z "${RESOURCE_PACK_URL:-}" ]]; then
+  echo "Set RESOURCE_PACK_GITHUB_REPO/PATH or RESOURCE_PACK_URL in blade.env" >&2
   exit 1
 fi
 
