@@ -9,6 +9,7 @@ TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 
 rm -rf "$PACK_DIR"
 mkdir -p "$PACK_DIR/assets/blade/textures/font/ranks"
+mkdir -p "$PACK_DIR/assets/blade/textures/font"
 mkdir -p "$PACK_DIR/assets/minecraft/font"
 mkdir -p "$(dirname "$OUT_ZIP")"
 
@@ -36,7 +37,7 @@ RANKS=(
 )
 
 CHAR_CODE=0xE000
-PROVIDERS='[{"type":"reference","id":"minecraft:include/default"}'
+PROVIDERS='[{"type":"reference","id":"minecraft:include/space"},{"type":"reference","id":"minecraft:include/default","filter":{"uniform":false}},{"type":"reference","id":"minecraft:include/unifont"}'
 
 for rank in "${RANKS[@]}"; do
   src="$DONATES/${rank}.png"
@@ -50,9 +51,11 @@ for rank in "${RANKS[@]}"; do
   CHAR_CODE=$((CHAR_CODE + 1))
 done
 
-sips -z 9 36 "$TITLE" --out "$PACK_DIR/assets/blade/textures/font/blade_title.png" >/dev/null
+TITLE_HEIGHT=32
+TITLE_WIDTH=128
+sips -z "$TITLE_HEIGHT" "$TITLE_WIDTH" "$TITLE" --out "$PACK_DIR/assets/blade/textures/font/blade_title.png" >/dev/null
 TITLE_CHAR=$(printf '\\u%04X' "$CHAR_CODE")
-PROVIDERS+=',{"type":"bitmap","file":"blade:font/blade_title.png","ascent":8,"height":9,"chars":["'"$TITLE_CHAR"'"]}'
+PROVIDERS+=',{"type":"bitmap","file":"blade:font/blade_title.png","ascent":28,"height":'"$TITLE_HEIGHT"',"chars":["'"$TITLE_CHAR"'"]}'
 
 PROVIDERS+=']'
 
