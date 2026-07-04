@@ -94,7 +94,7 @@ TITLE_CHAR=$(printf '\\u%04X' "$CHAR_CODE")
 PROVIDERS+=',{"type":"bitmap","file":"blade:font/blade_title.png","ascent":'"$TITLE_ASCENT"',"height":'"$TITLE_HEIGHT"',"chars":["'"$TITLE_CHAR"'"]}'
 CHAR_CODE=$((CHAR_CODE + 1))
 
-process_title_texture "$MEETUPS_TITLE" "meetups_title.png" 32
+process_title_texture "$MEETUPS_TITLE" "meetups_title.png" 22
 MEETUPS_HEIGHT=$(sips -g pixelHeight "$PACK_DIR/assets/blade/textures/font/meetups_title.png" | awk '/pixelHeight/ {print $2}')
 MEETUPS_ASCENT=$(( MEETUPS_HEIGHT * 33 / 52 ))
 (( MEETUPS_ASCENT < 1 )) && MEETUPS_ASCENT=1
