@@ -24,16 +24,23 @@ if command -v shasum >/dev/null 2>&1 && [[ -f "$ROOT/resourcepack/BladePack.zip"
 fi
 
 python3 - <<PY
+import uuid
 from pathlib import Path
 
 props_path = Path("$PROPS")
 lines = props_path.read_text().splitlines()
+prompt = '{"text":"Blade Resource Pack","color":"gold"}'
+prompt_escaped = prompt.replace(":", "\\:")
+sha1 = "$SHA1"
+pack_id = str(uuid.uuid5(uuid.NAMESPACE_URL, sha1)) if sha1 else ""
 updates = {
     "resource-pack": "$RESOURCE_PACK_URL",
-    "resource-pack-prompt": "Blade Resource Pack",
+    "resource-pack-prompt": prompt_escaped,
+    "require-resource-pack": "false",
 }
-if "$SHA1":
-    updates["resource-pack-sha1"] = "$SHA1"
+if sha1:
+    updates["resource-pack-sha1"] = sha1
+    updates["resource-pack-id"] = pack_id
 
 out = []
 seen = set()
@@ -51,6 +58,7 @@ for key, value in updates.items():
 
 props_path.write_text("\n".join(out) + "\n")
 print(f"Updated resource-pack URL in {props_path}")
-if "$SHA1":
-    print(f"SHA1: $SHA1")
+if sha1:
+    print(f"SHA1: {sha1}")
+    print(f"Pack ID: {pack_id}")
 PY

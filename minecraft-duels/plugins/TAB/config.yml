@@ -4,7 +4,7 @@ header-footer:
     default:
       header:
       - ''
-      - §f
+      - "\uE010"
       - ''
       - '&7Добро пожаловать, &f%player%'
       - '&7Онлайн: &f%online%'
@@ -26,13 +26,13 @@ playerlist-objective:
   value: ''
   render-type: INTEGER
 scoreboard:
-  enabled: true
+  enabled: false
   toggle-command: /sb
   remember-toggle-choice: false
   hidden-by-default: false
   scoreboards:
     blade:
-      title: §f
+      title: "\uE010"
       lines:
       - '&8&m---------------------'
       - '&fНик: &b%player%'
