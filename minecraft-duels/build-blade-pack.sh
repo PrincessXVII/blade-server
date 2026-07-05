@@ -34,8 +34,8 @@ unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
-export BLADE_TITLE_HEIGHT="${BLADE_TITLE_HEIGHT:-160}"
-export BLADE_TITLE_MAX_WIDTH="${BLADE_TITLE_MAX_WIDTH:-512}"
+export BLADE_TITLE_HEIGHT="${BLADE_TITLE_HEIGHT:-96}"
+export BLADE_TITLE_MAX_WIDTH="${BLADE_TITLE_MAX_WIDTH:-256}"
 export MEETUPS_TITLE_HEIGHT="${MEETUPS_TITLE_HEIGHT:-22}"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
@@ -69,7 +69,7 @@ def process_title(
     src: Path,
     out_name: str,
     max_height: int,
-    max_width: int = 512,
+    max_width: int = 256,
 ) -> tuple[int, int]:
     out = font_dir / out_name
     im = Image.open(src).convert("RGBA")
@@ -77,6 +77,7 @@ def process_title(
     if not bbox:
         raise SystemExit(f"Title image is fully transparent: {src}")
     im = im.crop(bbox)
+    # Minecraft bitmap glyphs must stay within ~256px or the client skips them.
     scale = min(max_width / im.width, max_height / im.height, 1.0)
     size = (max(1, round(im.width * scale)), max(1, round(im.height * scale)))
     if size != im.size:
