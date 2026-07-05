@@ -34,6 +34,9 @@ unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
+export BLADE_TITLE_HEIGHT="${BLADE_TITLE_HEIGHT:-160}"
+export BLADE_TITLE_MAX_WIDTH="${BLADE_TITLE_MAX_WIDTH:-512}"
+export MEETUPS_TITLE_HEIGHT="${MEETUPS_TITLE_HEIGHT:-22}"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
 python3 - <<'PY'
@@ -62,22 +65,25 @@ rank_dir.mkdir(parents=True, exist_ok=True)
 font_dir.mkdir(parents=True, exist_ok=True)
 
 
-def process_title(src: Path, out_name: str, tab_height: int) -> tuple[int, int]:
+def process_title(
+    src: Path,
+    out_name: str,
+    max_height: int,
+    max_width: int = 512,
+) -> tuple[int, int]:
     out = font_dir / out_name
     im = Image.open(src).convert("RGBA")
     bbox = im.getbbox()
     if not bbox:
         raise SystemExit(f"Title image is fully transparent: {src}")
     im = im.crop(bbox)
-    scale = min(512 / im.width, tab_height / im.height, 1.0)
+    scale = min(max_width / im.width, max_height / im.height, 1.0)
     size = (max(1, round(im.width * scale)), max(1, round(im.height * scale)))
     if size != im.size:
-        w, h = size
-        im = im.resize((w * 2, h * 2), Image.Resampling.LANCZOS)
-        im = im.resize((w, h), Image.Resampling.LANCZOS)
+        im = im.resize(size, Image.Resampling.LANCZOS)
     im.save(out, optimize=False, compress_level=1)
     ascent = max(1, min(size[1] - 1, size[1] * 33 // 52))
-    print(f"{out_name}: {size[0]}x{size[1]}", flush=True)
+    print(f"{out_name}: {size[0]}x{size[1]} (source {src.name})", flush=True)
     return size[1], ascent
 
 
@@ -100,7 +106,16 @@ for rank in ranks:
     })
     char_code += 1
 
-title_height, title_ascent = process_title(title_src, "blade_title.png", 48)
+blade_title_height = int(os.environ["BLADE_TITLE_HEIGHT"])
+blade_title_max_width = int(os.environ["BLADE_TITLE_MAX_WIDTH"])
+meetups_title_height = int(os.environ["MEETUPS_TITLE_HEIGHT"])
+
+title_height, title_ascent = process_title(
+    title_src,
+    "blade_title.png",
+    blade_title_height,
+    blade_title_max_width,
+)
 ch = chr(char_code)
 char_map["blade_title"] = ch
 providers.append({
@@ -112,7 +127,11 @@ providers.append({
 })
 char_code += 1
 
-meetups_height, meetups_ascent = process_title(meetups_src, "meetups_title.png", 22)
+meetups_height, meetups_ascent = process_title(
+    meetups_src,
+    "meetups_title.png",
+    meetups_title_height,
+)
 ch = chr(char_code)
 char_map["meetups_title"] = ch
 providers.append({
