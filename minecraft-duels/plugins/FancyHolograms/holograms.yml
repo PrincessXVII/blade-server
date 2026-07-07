@@ -4,24 +4,82 @@ holograms:
     type: TEXT
     location:
       world: lobby
-      x: -3.5
-      y: 164.04400634765625
-      z: 53.5
-      yaw: -89.98524
-      pitch: -2.0562975
+      x: -26.5
+      y: 136.60400021076202
+      z: -79.5
+      yaw: -90.953224
+      pitch: -4.2261024
     text:
-    - 
+    - 
     background: transparent
     text_shadow: false
-    see_through: true
+    see_through: false
     linkedNpc: meetups
     persistent: true
     visible_by_default: true
     visibility_distance: -1
     visibility: ALL
-    scale_x: 1.2
-    scale_y: 1.2
-    scale_z: 1.2
+    scale_x: 1.7
+    scale_y: 1.7
+    scale_z: 1.7
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  battleroyale_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -24.5
+      y: 136.60400021076202
+      z: -84.5
+      yaw: -68.84457
+      pitch: -2.7342913
+    text:
+    - "\uE112"
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: battleroyale
+    persistent: true
+    visible_by_default: true
+    visibility_distance: -1
+    visibility: ALL
+    scale_x: 1.7
+    scale_y: 1.7
+    scale_z: 1.7
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  smp_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -24.5
+      y: 136.60400021076202
+      z: -74.5
+      yaw: -115.765564
+      pitch: 0.57193166
+    text:
+    - "\uE113"
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: smp
+    persistent: true
+    visible_by_default: true
+    visibility_distance: -1
+    visibility: ALL
+    scale_x: 1.7
+    scale_y: 1.7
+    scale_z: 1.7
     translation_x: 0.0
     translation_y: 0.0
     translation_z: 0.0

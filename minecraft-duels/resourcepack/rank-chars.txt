@@ -16,3 +16,5 @@ zamestitel=\uE10E
 owner=\uE10F
 blade_title=\uE110
 meetups_title=\uE111
+battleroyale_title=\uE112
+smp_title=\uE113

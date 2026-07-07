@@ -7,6 +7,8 @@ OUT_ZIP="$ROOT/resourcepack/BladePack.zip"
 DONATES="${DONATES_DIR:-$ROOT/resourcepack/assets/donates}"
 TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
+BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
+SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
 DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
 RANK_CHAR_BASE=0xE100
 
@@ -29,10 +31,19 @@ if [[ ! -f "$MEETUPS_TITLE" ]]; then
   echo "Meetups title image not found: $MEETUPS_TITLE" >&2
   exit 1
 fi
+if [[ ! -f "$BATTLEROYALE_TITLE" ]]; then
+  echo "Battleroyale title image not found: $BATTLEROYALE_TITLE" >&2
+  exit 1
+fi
+if [[ ! -f "$SMP_TITLE" ]]; then
+  echo "SMP title image not found: $SMP_TITLE" >&2
+  exit 1
+fi
 
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
+export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
@@ -48,6 +59,8 @@ root = Path(os.environ["ROOT"])
 donates = Path(os.environ["DONATES"])
 title_src = Path(os.environ["TITLE"])
 meetups_src = Path(os.environ["MEETUPS_TITLE"])
+battleroyale_src = Path(os.environ["BATTLEROYALE_TITLE"])
+smp_src = Path(os.environ["SMP_TITLE"])
 ranks = os.environ["RANKS"].split()
 char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
@@ -122,6 +135,30 @@ providers.append({
     "height": meetups_height,
     "chars": [ch],
 })
+char_code += 1
+
+battleroyale_height, battleroyale_ascent = process_title(battleroyale_src, "battleroyale_title.png", 22)
+ch = chr(char_code)
+char_map["battleroyale_title"] = ch
+providers.append({
+    "type": "bitmap",
+    "file": "blade:font/battleroyale_title.png",
+    "ascent": battleroyale_ascent,
+    "height": battleroyale_height,
+    "chars": [ch],
+})
+char_code += 1
+
+smp_height, smp_ascent = process_title(smp_src, "smp_title.png", 22)
+ch = chr(char_code)
+char_map["smp_title"] = ch
+providers.append({
+    "type": "bitmap",
+    "file": "blade:font/smp_title.png",
+    "ascent": smp_ascent,
+    "height": smp_height,
+    "chars": [ch],
+})
 
 font_path = pack_dir / "assets/minecraft/font/default.json"
 demora = json.loads(font_path.read_text())
@@ -132,6 +169,8 @@ map_path = root / "resourcepack/rank-chars.txt"
 lines = [f"{rank}=\\u{ord(char_map[rank]):04X}" for rank in ranks]
 lines.append(f"blade_title=\\u{ord(char_map['blade_title']):04X}")
 lines.append(f"meetups_title=\\u{ord(char_map['meetups_title']):04X}")
+lines.append(f"battleroyale_title=\\u{ord(char_map['battleroyale_title']):04X}")
+lines.append(f"smp_title=\\u{ord(char_map['smp_title']):04X}")
 map_path.write_text("\n".join(lines) + "\n")
 PY
 

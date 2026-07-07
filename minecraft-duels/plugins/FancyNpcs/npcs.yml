@@ -1,0 +1,108 @@
+npcs:
+  c5e4d37c-6788-4530-8f09-bcf20a30edc0:
+    name: meetups
+    creator: f4fd1aad-8468-30f4-9135-c239716efa28
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: lobby
+      x: -26.5
+      y: 133.0
+      z: -79.5
+      yaw: -90.953224
+      pitch: -4.2261024
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: true
+    turnToPlayerDistance: 30
+    interactionCooldown: 0.0
+    scale: 1.7
+    visibility_distance: 2147483647
+    visibility: ALL
+    skin:
+      mirrorSkin: false
+      identifier: 9mice
+      variant: AUTO
+    equipment:
+      MAINHAND:
+        ==: org.bukkit.inventory.ItemStack
+        id: minecraft:air
+        schema_version: 1
+        DataVersion: 4671
+      OFFHAND:
+        ==: org.bukkit.inventory.ItemStack
+        DataVersion: 4671
+        id: minecraft:netherite_sword
+        count: 1
+        components:
+          minecraft:attribute_modifiers: '[{amount:11.0d,id:"minecraft:772b27f8-8ded-40ce-8aba-e3df92612bf5",operation:"add_value",slot:"mainhand",type:"minecraft:attack_damage"},{amount:-2.4d,id:"minecraft:15d7ea40-7969-42a3-a7f0-dd8f96dcdd03",operation:"add_value",slot:"mainhand",type:"minecraft:attack_speed"}]'
+          minecraft:unbreakable: '{}'
+          minecraft:custom_name: '{color:"dark_gray",extra:[{bold:1b,text:"К"},{color:"#576D49",extra:[{bold:1b,text:"а"},{color:"#58863D",extra:[{bold:1b,text:"т"},{color:"#5A9E31",extra:[{bold:1b,text:"а"},{color:"#5BB624",extra:[{bold:1b,text:"н"},{color:"#5DCE18",extra:[{bold:1b,text:"а"},{color:"#5EE70C",extra:[{bold:1b,text:"
+            "},{color:"#60FF00",extra:[{bold:1b,text:"Д"},{color:"#64D918",extra:[{bold:1b,text:"р"},{color:"#68B331",extra:[{bold:1b,text:"а"},{color:"#6C8D49",extra:[{bold:1b,text:"к"},{color:"#706661",extra:[{bold:1b,text:"о"},{color:"#74407A",extra:[{bold:1b,text:"н"},{bold:1b,color:"#781A92",text:"а"}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],text:""}],italic:0b,text:""}'
+          minecraft:enchantments: '{"minecraft:sharpness":5}'
+          minecraft:tooltip_display: '{hidden_components:["minecraft:attribute_modifiers","minecraft:unbreakable","minecraft:enchantments"]}'
+          minecraft:custom_model_data: '{floats:[1.0f]}'
+          minecraft:custom_data: '{PublicBukkitValues:{"bladeweapons:dragon_katana":1b}}'
+        schema_version: 1
+    actions:
+      ANY_CLICK:
+        '1':
+          action: player_command
+          value: meetup join
+  d766336e-a35d-4b81-86fe-5d5b04f885e4:
+    name: battleroyale
+    creator: f4fd1aad-8468-30f4-9135-c239716efa28
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: lobby
+      x: -24.5
+      y: 133.0
+      z: -84.5
+      yaw: -68.84457
+      pitch: -2.7342913
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.7
+    visibility_distance: -1
+    visibility: ALL
+    skin:
+      identifier: paranoid
+      variant: AUTO
+      mirrorSkin: false
+  1e9b5b18-56e1-4ca2-802b-9ae9c320de0d:
+    name: smp
+    creator: f4fd1aad-8468-30f4-9135-c239716efa28
+    displayName: <empty>
+    type: PLAYER
+    location:
+      world: lobby
+      x: -24.5
+      y: 133.0
+      z: -74.5
+      yaw: -115.765564
+      pitch: 0.57193166
+    showInTab: false
+    spawnEntity: true
+    collidable: true
+    glowing: false
+    glowingColor: white
+    turnToPlayer: false
+    turnToPlayerDistance: -1
+    interactionCooldown: 0.0
+    scale: 1.7
+    visibility_distance: -1
+    visibility: ALL
+    skin:
+      identifier: wemmbu
+      variant: AUTO
+      mirrorSkin: false
