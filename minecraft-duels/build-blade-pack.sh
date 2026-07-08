@@ -227,10 +227,34 @@ def add_hub_tiles(filename: str, prefix: str, cols: int, rows: int) -> list[int]
             hub_cmd += 1
     return cmds
 
+
+def add_hub_tiles_padded(filename: str, prefix: str, cols_in: int, cols_out: int, rows: int) -> list[int]:
+    global hub_cmd
+    src = hub_assets / filename
+    if not src.is_file():
+        raise SystemExit(f"Missing hub asset: {src}")
+    image = Image.open(src).convert("RGBA")
+    tile_w = image.width // cols_in
+    tile_h = image.height // rows
+    cmds = []
+    for row in range(rows):
+        for col in range(cols_out):
+            if col < cols_in:
+                tile = image.crop((col * tile_w, row * tile_h, (col + 1) * tile_w, (row + 1) * tile_h))
+            else:
+                tile = Image.new("RGBA", (tile_w, tile_h), (0, 0, 0, 0))
+            key = f"{prefix}_{row}_{col}"
+            tile.save(hub_tex_dir / f"{key}.png", optimize=False, compress_level=1)
+            write_hub_model(key)
+            hub_map_lines.append(f"{key}={hub_cmd}")
+            cmds.append(hub_cmd)
+            hub_cmd += 1
+    return cmds
+
 add_hub_icon("ВыбратьСервер.png", "choose_server")
 meetups_cmds = add_hub_tiles("КнопкаМитапы.png", "meetups_button", 3, 3)
 bkb_cmds = add_hub_tiles("КнопкаБКБ.png", "bkb_button", 4, 3)
-smp_cmds = add_hub_tiles("КнопкаСМП.png", "smp_button", 3, 3)
+smp_cmds = add_hub_tiles_padded("КнопкаСМП.png", "smp_button", 2, 3, 3)
 add_hub_icon("ДоступнаяАрена.png", "arena_available")
 add_hub_icon("НедоступнаяАрена.png", "arena_unavailable")
 
@@ -262,6 +286,12 @@ paper_items_path.write_text(json.dumps(paper_items, indent=4) + "\n")
 hub_map_path = root / "resourcepack/hub-items.txt"
 hub_map_path.write_text("\n".join(hub_map_lines) + "\n")
 print(f"hub items: {len(hub_map_lines)}", flush=True)
+
+# Remove slot frames in container UIs (global). Minecraft 1.20+ uses GUI sprites.
+gui_slot_dir = pack_dir / "assets/minecraft/textures/gui/sprites/container"
+gui_slot_dir.mkdir(parents=True, exist_ok=True)
+transparent_slot = Image.new("RGBA", (18, 18), (0, 0, 0, 0))
+transparent_slot.save(gui_slot_dir / "slot.png", optimize=False, compress_level=1)
 PY
 
 rm -f "$OUT_ZIP"
