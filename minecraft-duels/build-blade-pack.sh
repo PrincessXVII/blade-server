@@ -58,7 +58,7 @@ import json
 import os
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 pack_dir = Path(os.environ["PACK_DIR"])
 root = Path(os.environ["ROOT"])
@@ -85,6 +85,9 @@ ttf_dir.mkdir(parents=True, exist_ok=True)
 
 custom_ttf_name = "minecraft-five-bold.otf"
 (ttf_dir / custom_ttf_name).write_bytes(custom_ttf_src.read_bytes())
+
+bitmap_name = "minecraft_five_bold_bitmap.png"
+bitmap_path = font_dir / bitmap_name
 
 
 def process_title(src: Path, out_name: str, tab_height: int) -> tuple[int, int]:
@@ -179,14 +182,30 @@ default_providers.extend(providers)
 font_path.write_text(json.dumps(demora, indent=4) + "\n")
 
 custom_font_path = ttf_dir / "minecraft_five_bold.json"
+charset = "".join(chr(i) for i in range(32, 127))
+cols = 16
+rows = [charset[i:i + cols].ljust(cols, " ") for i in range(0, len(charset), cols)]
+cell_w, cell_h = 16, 16
+atlas = Image.new("RGBA", (cols * cell_w, len(rows) * cell_h), (0, 0, 0, 0))
+draw = ImageDraw.Draw(atlas)
+font = ImageFont.truetype(str(custom_ttf_src), size=13)
+for row_idx, row in enumerate(rows):
+    for col_idx, ch in enumerate(row):
+        if ch == " ":
+            continue
+        x = col_idx * cell_w + 1
+        y = row_idx * cell_h - 1
+        draw.text((x, y), ch, fill=(255, 255, 255, 255), font=font)
+atlas.save(bitmap_path, optimize=False, compress_level=1)
+
 custom_font_path.write_text(json.dumps({
     "providers": [
         {
-            "type": "ttf",
-            "file": f"blade:font/{custom_ttf_name}",
-            "shift": [0.0, 1.0],
-            "size": 11.0,
-            "oversample": 2.0,
+            "type": "bitmap",
+            "file": f"blade:font/{bitmap_name}",
+            "ascent": 11,
+            "height": 12,
+            "chars": rows,
         }
     ]
 }, indent=4) + "\n")
