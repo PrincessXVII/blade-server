@@ -258,6 +258,13 @@ smp_cmds = add_hub_tiles_padded("КнопкаСМП.png", "smp_button", 2, 3, 3)
 add_hub_icon("ДоступнаяАрена.png", "arena_available")
 add_hub_icon("НедоступнаяАрена.png", "arena_unavailable")
 
+# Make button tile item textures fully transparent.
+# The buttons will be drawn on the GUI background so there is no visible seam between slots.
+transparent_tile = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+for prefix in ("meetups_button_", "bkb_button_", "smp_button_"):
+    for tile_path in hub_tex_dir.glob(prefix + "*.png"):
+        transparent_tile.save(tile_path, optimize=False, compress_level=1)
+
 paper_items_path = pack_dir / "assets/minecraft/items/paper.json"
 paper_entries = []
 for line in hub_map_lines:
@@ -287,17 +294,32 @@ hub_map_path = root / "resourcepack/hub-items.txt"
 hub_map_path.write_text("\n".join(hub_map_lines) + "\n")
 print(f"hub items: {len(hub_map_lines)}", flush=True)
 
+# Build a custom GUI background for the 3-row selector so buttons render as one image.
+gui_container_dir = pack_dir / "assets/minecraft/textures/gui/container"
+gui_container_dir.mkdir(parents=True, exist_ok=True)
+gui_main = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
+
+def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int) -> None:
+    src = hub_assets / src_name
+    im = Image.open(src).convert("RGBA").resize((dst_w, dst_h), Image.Resampling.NEAREST)
+    gui_main.alpha_composite(im, (dst_x, dst_y))
+
+# Slot grid origin for chest containers.
+slot_x0, slot_y0, slot_step = 7, 17, 18
+paste_button("КнопкаМитапы.png", slot_x0 + slot_step * 0, slot_y0 + slot_step * 0, slot_step * 3, slot_step * 3)
+paste_button("КнопкаБКБ.png",    slot_x0 + slot_step * 3, slot_y0 + slot_step * 0, slot_step * 4, slot_step * 3)
+paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7, slot_y0 + slot_step * 0, slot_step * 2, slot_step * 3)
+
+gui_main.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
+
 # Remove slot frames in container UIs (global). Minecraft 1.20+ uses GUI sprites.
 gui_slot_dir = pack_dir / "assets/minecraft/textures/gui/sprites/container"
 gui_slot_dir.mkdir(parents=True, exist_ok=True)
 transparent_slot = Image.new("RGBA", (18, 18), (0, 0, 0, 0))
 transparent_slot.save(gui_slot_dir / "slot.png", optimize=False, compress_level=1)
 
-# Some menus still bake slot frames into legacy container textures.
-gui_container_dir = pack_dir / "assets/minecraft/textures/gui/container"
-gui_container_dir.mkdir(parents=True, exist_ok=True)
+# Arena menu (1 row) legacy background: keep fully transparent.
 transparent_container = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
-transparent_container.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
 transparent_container.save(gui_container_dir / "generic_9.png", optimize=False, compress_level=1)
 PY
 
