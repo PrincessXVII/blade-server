@@ -175,15 +175,21 @@ providers.append({
 font_path = pack_dir / "assets/minecraft/font/default.json"
 demora = json.loads(font_path.read_text())
 default_providers = demora.setdefault("providers", [])
-default_providers.insert(0, {
-    "type": "ttf",
-    "file": f"blade:font/{custom_ttf_name}",
-    "shift": [0.0, 1.0],
-    "size": 11.0,
-    "oversample": 2.0,
-})
 default_providers.extend(providers)
 font_path.write_text(json.dumps(demora, indent=4) + "\n")
+
+custom_font_path = ttf_dir / "minecraft_five_bold.json"
+custom_font_path.write_text(json.dumps({
+    "providers": [
+        {
+            "type": "ttf",
+            "file": f"blade:font/{custom_ttf_name}",
+            "shift": [0.0, 1.0],
+            "size": 11.0,
+            "oversample": 2.0,
+        }
+    ]
+}, indent=4) + "\n")
 
 map_path = root / "resourcepack/rank-chars.txt"
 lines = [f"{rank}=\\u{ord(char_map[rank]):04X}" for rank in ranks]
