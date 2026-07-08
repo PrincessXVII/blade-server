@@ -319,8 +319,8 @@ def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int, 
 slot_x0, slot_y0, slot_step = 7, 17, 18
 # Align images so there is no horizontal gap between buttons.
 paste_button("КнопкаМитапы.png", slot_x0 + slot_step * 0, slot_y0 + slot_step * 0, slot_step * 3, slot_step * 3, "right")
-paste_button("КнопкаБКБ.png",    slot_x0 + slot_step * 3, slot_y0 + slot_step * 0, slot_step * 4, slot_step * 3, "right")
-paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7, slot_y0 + slot_step * 0, slot_step * 2, slot_step * 3, "left")
+paste_button("КнопкаБКБ.png",    slot_x0 + slot_step * 3 - 20, slot_y0 + slot_step * 0, slot_step * 4, slot_step * 3, "right")
+paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7 - 20, slot_y0 + slot_step * 0, slot_step * 2, slot_step * 3, "left")
 
 gui_main.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
 
