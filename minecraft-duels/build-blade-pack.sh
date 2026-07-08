@@ -299,11 +299,16 @@ gui_container_dir = pack_dir / "assets/minecraft/textures/gui/container"
 gui_container_dir.mkdir(parents=True, exist_ok=True)
 gui_main = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
 
-def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int) -> None:
+def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int, align_x: str = "center") -> None:
     src = hub_assets / src_name
     im = Image.open(src).convert("RGBA")
-    # Do not scale: keep artist-provided pixel size, just center it in the target area.
-    x = dst_x + max(0, (dst_w - im.width) // 2)
+    # Do not scale: keep artist-provided pixel size, just position it in the target area.
+    if align_x == "left":
+        x = dst_x
+    elif align_x == "right":
+        x = dst_x + max(0, dst_w - im.width)
+    else:
+        x = dst_x + max(0, (dst_w - im.width) // 2)
     y = dst_y + max(0, (dst_h - im.height) // 2)
     # If the image is larger than the target, crop it to fit.
     if im.width > dst_w or im.height > dst_h:
@@ -312,9 +317,10 @@ def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int) 
 
 # Slot grid origin for chest containers.
 slot_x0, slot_y0, slot_step = 7, 17, 18
-paste_button("КнопкаМитапы.png", slot_x0 + slot_step * 0, slot_y0 + slot_step * 0, slot_step * 3, slot_step * 3)
-paste_button("КнопкаБКБ.png",    slot_x0 + slot_step * 3, slot_y0 + slot_step * 0, slot_step * 4, slot_step * 3)
-paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7, slot_y0 + slot_step * 0, slot_step * 2, slot_step * 3)
+# Align images so there is no horizontal gap between buttons.
+paste_button("КнопкаМитапы.png", slot_x0 + slot_step * 0, slot_y0 + slot_step * 0, slot_step * 3, slot_step * 3, "right")
+paste_button("КнопкаБКБ.png",    slot_x0 + slot_step * 3, slot_y0 + slot_step * 0, slot_step * 4, slot_step * 3, "right")
+paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7, slot_y0 + slot_step * 0, slot_step * 2, slot_step * 3, "left")
 
 gui_main.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
 
