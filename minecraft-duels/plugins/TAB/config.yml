@@ -10,6 +10,7 @@ header-footer:
       - ''
       - ''
       - ''
+      - '<#ff78bc>LAST PURCHASE</#ff78bc>'
       - '&7Добро пожаловать, &f%player%'
       - ''
       - '&7Онлайн: &f%online%'
@@ -51,6 +52,8 @@ placeholders:
   date-format: dd.MM.yyyy
   time-format: HH:mm
   register-tab-expansion: false
+components:
+  minimessage-support: true
 primary-group-finding-list:
 - owner
 - zamestitel

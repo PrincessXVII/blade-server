@@ -9,7 +9,7 @@ TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
 SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
-CUSTOM_TTF="${CUSTOM_TTF_FILE:-$ROOT/resourcepack/assets/minecraft-five-bold.otf}"
+MINECRAFT_FIVE_PACK="${MINECRAFT_FIVE_PACK:-$ROOT/resourcepack/assets/minecraftfontfive.zip}"
 DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
 RANK_CHAR_BASE=0xE100
 
@@ -40,16 +40,16 @@ if [[ ! -f "$SMP_TITLE" ]]; then
   echo "SMP title image not found: $SMP_TITLE" >&2
   exit 1
 fi
-if [[ ! -f "$CUSTOM_TTF" ]]; then
-  echo "Custom TTF font not found: $CUSTOM_TTF" >&2
+if [[ ! -f "$MINECRAFT_FIVE_PACK" ]]; then
+  echo "Minecraft Five font pack not found: $MINECRAFT_FIVE_PACK" >&2
   exit 1
 fi
 
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
+unzip -q -o "$MINECRAFT_FIVE_PACK" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
-export CUSTOM_TTF="$CUSTOM_TTF"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
@@ -67,7 +67,6 @@ title_src = Path(os.environ["TITLE"])
 meetups_src = Path(os.environ["MEETUPS_TITLE"])
 battleroyale_src = Path(os.environ["BATTLEROYALE_TITLE"])
 smp_src = Path(os.environ["SMP_TITLE"])
-custom_ttf_src = Path(os.environ["CUSTOM_TTF"])
 ranks = os.environ["RANKS"].split()
 char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
@@ -78,13 +77,8 @@ meta_path.write_text(json.dumps(meta, indent=2) + "\n")
 
 rank_dir = pack_dir / "assets/blade/textures/font/ranks"
 font_dir = pack_dir / "assets/blade/textures/font"
-ttf_dir = pack_dir / "assets/blade/font"
 rank_dir.mkdir(parents=True, exist_ok=True)
 font_dir.mkdir(parents=True, exist_ok=True)
-ttf_dir.mkdir(parents=True, exist_ok=True)
-
-custom_ttf_name = "minecraft-five-bold.otf"
-(ttf_dir / custom_ttf_name).write_bytes(custom_ttf_src.read_bytes())
 
 
 def process_title(src: Path, out_name: str, tab_height: int) -> tuple[int, int]:
@@ -177,19 +171,6 @@ demora = json.loads(font_path.read_text())
 default_providers = demora.setdefault("providers", [])
 default_providers.extend(providers)
 font_path.write_text(json.dumps(demora, indent=4) + "\n")
-
-custom_font_path = ttf_dir / "minecraft_five_bold.json"
-custom_font_path.write_text(json.dumps({
-    "providers": [
-        {
-            "type": "ttf",
-            "file": f"blade:font/{custom_ttf_name}",
-            "shift": [0.0, 1.0],
-            "size": 11.0,
-            "oversample": 2.0,
-        }
-    ]
-}, indent=4) + "\n")
 
 map_path = root / "resourcepack/rank-chars.txt"
 lines = [f"{rank}=\\u{ord(char_map[rank]):04X}" for rank in ranks]

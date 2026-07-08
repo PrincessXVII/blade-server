@@ -4,11 +4,11 @@ holograms:
     type: TEXT
     location:
       world: lobby
-      x: -26.5
-      y: 136.60400021076202
+      x: -28.5
+      y: 136.17999267578125
       z: -79.5
-      yaw: -90.953224
-      pitch: -4.2261024
+      yaw: -92.812744
+      pitch: -3.5003693
     text:
     - 
     background: transparent
@@ -17,11 +17,11 @@ holograms:
     linkedNpc: meetups
     persistent: true
     visible_by_default: true
-    visibility_distance: -1
+    visibility_distance: 100
     visibility: ALL
-    scale_x: 1.7
-    scale_y: 1.7
-    scale_z: 1.7
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
     translation_x: 0.0
     translation_y: 0.0
     translation_z: 0.0
@@ -33,24 +33,24 @@ holograms:
     type: TEXT
     location:
       world: lobby
-      x: -24.5
-      y: 136.60400021076202
-      z: -84.5
-      yaw: -68.84457
-      pitch: -2.7342913
+      x: -27.5
+      y: 136.17999267578125
+      z: -83.5
+      yaw: -79.09729
+      pitch: -4.2261333
     text:
-    - "\uE112"
+    - 
     background: transparent
     text_shadow: false
     see_through: false
     linkedNpc: battleroyale
     persistent: true
     visible_by_default: true
-    visibility_distance: -1
+    visibility_distance: 100
     visibility: ALL
-    scale_x: 1.7
-    scale_y: 1.7
-    scale_z: 1.7
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
     translation_x: 0.0
     translation_y: 0.0
     translation_z: 0.0
@@ -62,28 +62,56 @@ holograms:
     type: TEXT
     location:
       world: lobby
-      x: -24.5
-      y: 136.60400021076202
-      z: -74.5
-      yaw: -115.765564
-      pitch: 0.57193166
+      x: -27.5
+      y: 136.17999267578125
+      z: -75.5
+      yaw: -100.91943
+      pitch: -3.1374998
     text:
-    - "\uE113"
+    - 
     background: transparent
     text_shadow: false
     see_through: false
     linkedNpc: smp
     persistent: true
     visible_by_default: true
-    visibility_distance: -1
+    visibility_distance: 100
     visibility: ALL
-    scale_x: 1.7
-    scale_y: 1.7
-    scale_z: 1.7
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
     translation_x: 0.0
     translation_y: 0.0
     translation_z: 0.0
     shadow_radius: 0.0
     shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  fafjajfajfj:
+    type: TEXT
+    location:
+      world: lobby
+      x: -19.295400619506836
+      y: 132.0
+      z: -75.44879150390625
+      yaw: -126.658325
+      pitch: 23.16215
+    visibility_distance: -1
+    visibility: ALL
+    persistent: true
+    scale_x: 1.0
+    scale_y: 1.0
+    scale_z: 1.0
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text:
+    - Edit this line with /hologram edit fafjajfajfj
+    - <#ff78bc>LAST PURCHASE</#ff78bc>
+    - <#ff78bc>TEST LINE</#ff78bc>
+    text_shadow: false
+    see_through: false
     text_alignment: center
     update_text_interval: -1
