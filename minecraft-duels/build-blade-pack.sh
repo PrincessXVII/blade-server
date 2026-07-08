@@ -310,9 +310,10 @@ def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int, 
     else:
         x = dst_x + max(0, (dst_w - im.width) // 2)
     y = dst_y + max(0, (dst_h - im.height) // 2)
-    # If the image is larger than the target, crop it to fit.
-    if im.width > dst_w or im.height > dst_h:
-        im = im.crop((0, 0, min(dst_w, im.width), min(dst_h, im.height)))
+    # If the image is larger than the target area, allow it to overflow into nearby pixels.
+    # Clamp only to the GUI texture bounds so it stays fully visible.
+    x = min(x, 256 - im.width)
+    y = min(y, 256 - im.height)
     gui_main.alpha_composite(im, (x, y))
 
 # Slot grid origin for chest containers.
@@ -324,15 +325,7 @@ paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7 - 20 - 3, slot
 
 gui_main.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
 
-# Remove slot frames in container UIs (global). Minecraft 1.20+ uses GUI sprites.
-gui_slot_dir = pack_dir / "assets/minecraft/textures/gui/sprites/container"
-gui_slot_dir.mkdir(parents=True, exist_ok=True)
-transparent_slot = Image.new("RGBA", (18, 18), (0, 0, 0, 0))
-transparent_slot.save(gui_slot_dir / "slot.png", optimize=False, compress_level=1)
-
-# Arena menu (1 row) legacy background: keep fully transparent.
-transparent_container = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
-transparent_container.save(gui_container_dir / "generic_9.png", optimize=False, compress_level=1)
+# Meetups arena menu should stay vanilla: do not override slot sprite or generic_9.
 PY
 
 rm -f "$OUT_ZIP"
