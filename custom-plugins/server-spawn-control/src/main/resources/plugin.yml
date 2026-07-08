@@ -1,7 +1,9 @@
 name: ServerSpawnControl
-version: 1.0.3
+version: 1.0.16
 main: dev.systemcrash.spawn.ServerSpawnControlPlugin
 api-version: "1.21"
+softdepend:
+  - BladeMeetups
 
 commands:
   spawn:

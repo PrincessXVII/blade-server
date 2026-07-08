@@ -9,6 +9,7 @@ TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
 SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
+HUB_ASSETS="${HUB_ASSETS_DIR:-$ROOT/resourcepack/assets/hub}"
 DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
 RANK_CHAR_BASE=0xE100
 
@@ -43,6 +44,7 @@ unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
+export HUB_ASSETS="$HUB_ASSETS"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
@@ -172,6 +174,94 @@ lines.append(f"meetups_title=\\u{ord(char_map['meetups_title']):04X}")
 lines.append(f"battleroyale_title=\\u{ord(char_map['battleroyale_title']):04X}")
 lines.append(f"smp_title=\\u{ord(char_map['smp_title']):04X}")
 map_path.write_text("\n".join(lines) + "\n")
+
+hub_assets = Path(os.environ["HUB_ASSETS"])
+hub_tex_dir = pack_dir / "assets/blade/textures/item/hub"
+hub_model_dir = pack_dir / "assets/blade/models/item/hub"
+hub_tex_dir.mkdir(parents=True, exist_ok=True)
+hub_model_dir.mkdir(parents=True, exist_ok=True)
+
+hub_cmd_base = 7000
+hub_cmd = hub_cmd_base
+hub_map_lines = []
+
+
+def write_hub_model(key: str) -> None:
+    model = {
+        "parent": "minecraft:item/generated",
+        "textures": {"layer0": f"blade:item/hub/{key}"},
+    }
+    (hub_model_dir / f"{key}.json").write_text(json.dumps(model, indent=4) + "\n")
+
+
+def add_hub_icon(filename: str, key: str) -> int:
+    global hub_cmd
+    src = hub_assets / filename
+    if not src.is_file():
+        raise SystemExit(f"Missing hub asset: {src}")
+    (hub_tex_dir / f"{key}.png").write_bytes(src.read_bytes())
+    write_hub_model(key)
+    hub_map_lines.append(f"{key}={hub_cmd}")
+    current = hub_cmd
+    hub_cmd += 1
+    return current
+
+
+def add_hub_tiles(filename: str, prefix: str, cols: int, rows: int) -> list[int]:
+    global hub_cmd
+    src = hub_assets / filename
+    if not src.is_file():
+        raise SystemExit(f"Missing hub asset: {src}")
+    image = Image.open(src).convert("RGBA")
+    tile_w = image.width // cols
+    tile_h = image.height // rows
+    cmds = []
+    for row in range(rows):
+        for col in range(cols):
+            tile = image.crop((col * tile_w, row * tile_h, (col + 1) * tile_w, (row + 1) * tile_h))
+            key = f"{prefix}_{row}_{col}"
+            tile.save(hub_tex_dir / f"{key}.png", optimize=False, compress_level=1)
+            write_hub_model(key)
+            hub_map_lines.append(f"{key}={hub_cmd}")
+            cmds.append(hub_cmd)
+            hub_cmd += 1
+    return cmds
+
+add_hub_icon("ВыбратьСервер.png", "choose_server")
+meetups_cmds = add_hub_tiles("КнопкаМитапы.png", "meetups_button", 3, 3)
+bkb_cmds = add_hub_tiles("КнопкаБКБ.png", "bkb_button", 4, 3)
+smp_cmds = add_hub_tiles("КнопкаСМП.png", "smp_button", 3, 3)
+add_hub_icon("ДоступнаяАрена.png", "arena_available")
+add_hub_icon("НедоступнаяАрена.png", "arena_unavailable")
+
+paper_items_path = pack_dir / "assets/minecraft/items/paper.json"
+paper_entries = []
+for line in hub_map_lines:
+    key, cmd = line.split("=", 1)
+    paper_entries.append({
+        "threshold": int(cmd),
+        "model": {
+            "type": "model",
+            "model": f"blade:item/hub/{key}",
+        },
+    })
+paper_items = {
+    "model": {
+        "type": "range_dispatch",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "model",
+            "model": "minecraft:item/paper",
+        },
+        "entries": paper_entries,
+    },
+}
+paper_items_path.parent.mkdir(parents=True, exist_ok=True)
+paper_items_path.write_text(json.dumps(paper_items, indent=4) + "\n")
+
+hub_map_path = root / "resourcepack/hub-items.txt"
+hub_map_path.write_text("\n".join(hub_map_lines) + "\n")
+print(f"hub items: {len(hub_map_lines)}", flush=True)
 PY
 
 rm -f "$OUT_ZIP"
