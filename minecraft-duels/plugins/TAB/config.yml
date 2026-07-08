@@ -10,7 +10,7 @@ header-footer:
       - ''
       - ''
       - ''
-      - '<#ff78bc>LAST PURCHASE</#ff78bc>'
+      - '<font:blade:minecraft_five><#ff78bc>LAST PURCHASE</#ff78bc></font>'
       - '&7Добро пожаловать, &f%player%'
       - ''
       - '&7Онлайн: &f%online%'

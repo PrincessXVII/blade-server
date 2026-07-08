@@ -109,8 +109,8 @@ holograms:
     shadow_strength: 1.0
     text:
     - Edit this line with /hologram edit fafjajfajfj
-    - <#ff78bc>LAST PURCHASE</#ff78bc>
-    - <#ff78bc>TEST LINE</#ff78bc>
+    - '<font:blade:minecraft_five><#ff78bc>LAST PURCHASE</#ff78bc></font>'
+    - '<font:blade:minecraft_five><#ff78bc>TEST LINE</#ff78bc></font>'
     text_shadow: false
     see_through: false
     text_alignment: center
