@@ -325,10 +325,7 @@ paste_button("КнопкаСМП.png",    slot_x0 + slot_step * 7 - 20 - 3, slot
 
 gui_main.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
 
-# Meetups arena menu should stay vanilla: do not override slot sprite or generic_9.
-# But keep the menu background non-transparent so it looks like a normal vanilla GUI.
-generic9 = Image.new("RGBA", (256, 256), (44, 44, 44, 220))
-generic9.save(gui_container_dir / "generic_9.png", optimize=False, compress_level=1)
+# Meetups arena menu should stay fully vanilla: do not override slot sprite or generic_9 at all.
 PY
 
 rm -f "$OUT_ZIP"
