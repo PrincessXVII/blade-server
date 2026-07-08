@@ -9,7 +9,6 @@ TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
 SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
-MINECRAFT_FIVE_PACK="${MINECRAFT_FIVE_PACK:-$ROOT/resourcepack/assets/minecraftfontfive.zip}"
 DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
 RANK_CHAR_BASE=0xE100
 
@@ -40,23 +39,16 @@ if [[ ! -f "$SMP_TITLE" ]]; then
   echo "SMP title image not found: $SMP_TITLE" >&2
   exit 1
 fi
-if [[ ! -f "$MINECRAFT_FIVE_PACK" ]]; then
-  echo "Minecraft Five font pack not found: $MINECRAFT_FIVE_PACK" >&2
-  exit 1
-fi
-
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
-export MINECRAFT_FIVE_PACK="$MINECRAFT_FIVE_PACK"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
 
 python3 - <<'PY'
 import json
 import os
-import zipfile
 from pathlib import Path
 
 from PIL import Image
@@ -68,7 +60,6 @@ title_src = Path(os.environ["TITLE"])
 meetups_src = Path(os.environ["MEETUPS_TITLE"])
 battleroyale_src = Path(os.environ["BATTLEROYALE_TITLE"])
 smp_src = Path(os.environ["SMP_TITLE"])
-minecraft_five_pack = Path(os.environ["MINECRAFT_FIVE_PACK"])
 ranks = os.environ["RANKS"].split()
 char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
@@ -79,52 +70,8 @@ meta_path.write_text(json.dumps(meta, indent=2) + "\n")
 
 rank_dir = pack_dir / "assets/blade/textures/font/ranks"
 font_dir = pack_dir / "assets/blade/textures/font"
-font_cfg_dir = pack_dir / "assets/blade/font"
 rank_dir.mkdir(parents=True, exist_ok=True)
 font_dir.mkdir(parents=True, exist_ok=True)
-font_cfg_dir.mkdir(parents=True, exist_ok=True)
-
-with zipfile.ZipFile(minecraft_five_pack) as source_pack:
-    five_files = {
-        "ascii.png": "assets/minecraft/textures/font/ascii.png",
-        "accented.png": "assets/minecraft/textures/font/accented.png",
-        "nonlatin_european.png": "assets/minecraft/textures/font/nonlatin_european.png",
-    }
-    for out_name, src_name in five_files.items():
-        font_dir.joinpath(out_name).write_bytes(source_pack.read(src_name))
-
-def rows_from_range(start: int) -> list[str]:
-    rows = []
-    for row in range(16):
-        rows.append("".join(chr(start + row * 16 + col) for col in range(16)))
-    return rows
-
-custom_font = {
-    "providers": [
-        {
-            "type": "bitmap",
-            "file": "blade:font/ascii.png",
-            "ascent": 7,
-            "height": 8,
-            "chars": rows_from_range(0x0000),
-        },
-        {
-            "type": "bitmap",
-            "file": "blade:font/accented.png",
-            "ascent": 7,
-            "height": 8,
-            "chars": rows_from_range(0x0100),
-        },
-        {
-            "type": "bitmap",
-            "file": "blade:font/nonlatin_european.png",
-            "ascent": 7,
-            "height": 8,
-            "chars": rows_from_range(0x0200),
-        },
-    ]
-}
-(font_cfg_dir / "minecraft_five.json").write_text(json.dumps(custom_font, indent=4) + "\n")
 
 
 def process_title(src: Path, out_name: str, tab_height: int) -> tuple[int, int]:
