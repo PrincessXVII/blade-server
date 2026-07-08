@@ -292,6 +292,13 @@ gui_slot_dir = pack_dir / "assets/minecraft/textures/gui/sprites/container"
 gui_slot_dir.mkdir(parents=True, exist_ok=True)
 transparent_slot = Image.new("RGBA", (18, 18), (0, 0, 0, 0))
 transparent_slot.save(gui_slot_dir / "slot.png", optimize=False, compress_level=1)
+
+# Some menus still bake slot frames into legacy container textures.
+gui_container_dir = pack_dir / "assets/minecraft/textures/gui/container"
+gui_container_dir.mkdir(parents=True, exist_ok=True)
+transparent_container = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
+transparent_container.save(gui_container_dir / "generic_54.png", optimize=False, compress_level=1)
+transparent_container.save(gui_container_dir / "generic_9.png", optimize=False, compress_level=1)
 PY
 
 rm -f "$OUT_ZIP"
