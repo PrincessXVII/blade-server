@@ -301,8 +301,14 @@ gui_main = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
 
 def paste_button(src_name: str, dst_x: int, dst_y: int, dst_w: int, dst_h: int) -> None:
     src = hub_assets / src_name
-    im = Image.open(src).convert("RGBA").resize((dst_w, dst_h), Image.Resampling.NEAREST)
-    gui_main.alpha_composite(im, (dst_x, dst_y))
+    im = Image.open(src).convert("RGBA")
+    # Do not scale: keep artist-provided pixel size, just center it in the target area.
+    x = dst_x + max(0, (dst_w - im.width) // 2)
+    y = dst_y + max(0, (dst_h - im.height) // 2)
+    # If the image is larger than the target, crop it to fit.
+    if im.width > dst_w or im.height > dst_h:
+        im = im.crop((0, 0, min(dst_w, im.width), min(dst_h, im.height)))
+    gui_main.alpha_composite(im, (x, y))
 
 # Slot grid origin for chest containers.
 slot_x0, slot_y0, slot_step = 7, 17, 18
