@@ -1,0 +1,4 @@
+char=\uE200
+shift=\uF807 (-7)
+literal=
+menu_title=&f
