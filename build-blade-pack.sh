@@ -328,6 +328,27 @@ print(f"hub items: {len(hub_map_lines)}", flush=True)
 # then provide the finished texture for Oraxen/DeluxeMenus integration.
 PY
 
+MEETUPS_SOUNDS="${MEETUPS_SOUNDS_DIR:-$ROOT/resourcepack/assets/meetups-sounds}"
+if [[ -d "$MEETUPS_SOUNDS" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/meetups"
+  cp -f "$MEETUPS_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/meetups/" 2>/dev/null || true
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+pack_dir = Path(os.environ["PACK_DIR"])
+sounds_path = pack_dir / "assets/minecraft/sounds.json"
+data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+data["custom.meetups.countdown"] = {"sounds": ["custom/meetups/countdown"]}
+data["custom.meetups.go"] = {"sounds": ["custom/meetups/go"]}
+data["custom.meetups.victory"] = {"sounds": ["custom/meetups/victory"]}
+sounds_path.parent.mkdir(parents=True, exist_ok=True)
+sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+print("meetups sounds: countdown/go/victory", flush=True)
+PY
+fi
+
 rm -f "$OUT_ZIP"
 (cd "$PACK_DIR" && zip -qr "$OUT_ZIP" .)
 
