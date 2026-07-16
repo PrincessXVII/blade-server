@@ -349,6 +349,141 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
+# Blood Mace legendary texture (CMD 1 on mace)
+BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"
+if [[ -f "$BLOOD_MACE_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
+           "$PACK_DIR/assets/minecraft/models/item" \
+           "$PACK_DIR/assets/minecraft/items"
+  cp -f "$BLOOD_MACE_TEX" "$PACK_DIR/assets/minecraft/textures/item/blood_mace.png"
+  cat > "$PACK_DIR/assets/minecraft/models/item/blood_mace.json" <<'EOF'
+{
+  "parent": "minecraft:item/handheld_mace",
+  "textures": {
+    "layer0": "minecraft:item/blood_mace"
+  }
+}
+EOF
+  cat > "$PACK_DIR/assets/minecraft/items/mace.json" <<'EOF'
+{
+  "model": {
+    "type": "range_dispatch",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "minecraft:item/mace"
+    },
+    "entries": [
+      {
+        "threshold": 1,
+        "model": {
+          "type": "model",
+          "model": "minecraft:item/blood_mace"
+        }
+      }
+    ]
+  }
+}
+EOF
+  echo "blood mace: texture + CMD 1"
+fi
+
+# Meetups custom totems (CMD 1/2/3 on totem_of_undying)
+TOTEM_DIR="${TOTEM_TEXTURE_DIR:-$ROOT/resourcepack/assets/meetups-totems}"
+if [[ -f "$TOTEM_DIR/totem_agility.png" && -f "$TOTEM_DIR/totem_fortitude.png" && -f "$TOTEM_DIR/totem_tyrant.png" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
+           "$PACK_DIR/assets/minecraft/models/item" \
+           "$PACK_DIR/assets/minecraft/items"
+  cp -f "$TOTEM_DIR/totem_agility.png" "$PACK_DIR/assets/minecraft/textures/item/totem_agility.png"
+  cp -f "$TOTEM_DIR/totem_fortitude.png" "$PACK_DIR/assets/minecraft/textures/item/totem_fortitude.png"
+  cp -f "$TOTEM_DIR/totem_tyrant.png" "$PACK_DIR/assets/minecraft/textures/item/totem_tyrant.png"
+  for id in totem_agility totem_fortitude totem_tyrant; do
+    cat > "$PACK_DIR/assets/minecraft/models/item/${id}.json" <<EOF
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/${id}"
+  }
+}
+EOF
+  done
+  cat > "$PACK_DIR/assets/minecraft/items/totem_of_undying.json" <<'EOF'
+{
+  "model": {
+    "type": "range_dispatch",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "minecraft:item/totem_of_undying"
+    },
+    "entries": [
+      {
+        "threshold": 1,
+        "model": {
+          "type": "model",
+          "model": "minecraft:item/totem_agility"
+        }
+      },
+      {
+        "threshold": 2,
+        "model": {
+          "type": "model",
+          "model": "minecraft:item/totem_fortitude"
+        }
+      },
+      {
+        "threshold": 3,
+        "model": {
+          "type": "model",
+          "model": "minecraft:item/totem_tyrant"
+        }
+      }
+    ]
+  }
+}
+EOF
+  echo "meetups totems: agility/fortitude/tyrant CMD 1-3"
+fi
+
+# Meetups leave-queue item icon (CMD 9101 on nether_star)
+LEAVE_GAME_TEX="${LEAVE_GAME_TEXTURE:-$ROOT/resourcepack/assets/meetups-items/leave_game.png}"
+if [[ -f "$LEAVE_GAME_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
+           "$PACK_DIR/assets/minecraft/models/item" \
+           "$PACK_DIR/assets/minecraft/items"
+  cp -f "$LEAVE_GAME_TEX" "$PACK_DIR/assets/minecraft/textures/item/leave_game.png"
+  cat > "$PACK_DIR/assets/minecraft/models/item/leave_game.json" <<'EOF'
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/leave_game"
+  }
+}
+EOF
+  cat > "$PACK_DIR/assets/minecraft/items/nether_star.json" <<'EOF'
+{
+  "model": {
+    "type": "range_dispatch",
+    "property": "custom_model_data",
+    "fallback": {
+      "type": "model",
+      "model": "minecraft:item/nether_star"
+    },
+    "entries": [
+      {
+        "threshold": 9101,
+        "model": {
+          "type": "model",
+          "model": "minecraft:item/leave_game"
+        }
+      }
+    ]
+  }
+}
+EOF
+  echo "meetups leave item: CMD 9101"
+fi
+
 rm -f "$OUT_ZIP"
 (cd "$PACK_DIR" && zip -qr "$OUT_ZIP" .)
 
