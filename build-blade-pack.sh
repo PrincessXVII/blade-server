@@ -362,10 +362,15 @@ from pathlib import Path
 pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+# Remap vanilla guardian hurt so staff explosion (ENTITY_GUARDIAN_HURT) uses hit4 and plays in sync.
+data["entity.guardian.hurt"] = {
+    "replace": True,
+    "sounds": ["custom/weapons/guardian_hit4"],
+}
 data["custom.weapons.villager_staff_explode"] = {"sounds": ["custom/weapons/guardian_hit4"]}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: villager_staff_explode", flush=True)
+print("weapons sounds: guardian hurt -> hit4", flush=True)
 PY
 fi
 
