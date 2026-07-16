@@ -445,7 +445,7 @@ EOF
   echo "meetups totems: agility/fortitude/tyrant CMD 1-3"
 fi
 
-# Meetups leave-queue item icon (CMD 9101 on nether_star)
+# Meetups leave-queue item icon (CMD 9101 on paper)
 LEAVE_GAME_TEX="${LEAVE_GAME_TEXTURE:-$ROOT/resourcepack/assets/meetups-items/leave_game.png}"
 if [[ -f "$LEAVE_GAME_TEX" ]]; then
   mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
@@ -460,28 +460,31 @@ if [[ -f "$LEAVE_GAME_TEX" ]]; then
   }
 }
 EOF
-  cat > "$PACK_DIR/assets/minecraft/items/nether_star.json" <<'EOF'
-{
-  "model": {
-    "type": "range_dispatch",
-    "property": "custom_model_data",
-    "fallback": {
-      "type": "model",
-      "model": "minecraft:item/nether_star"
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+from pathlib import Path
+
+pack_dir = Path(__import__("os").environ["PACK_DIR"])
+paper_path = pack_dir / "assets/minecraft/items/paper.json"
+if not paper_path.is_file():
+    raise SystemExit(f"Missing paper item model: {paper_path}")
+
+data = json.loads(paper_path.read_text())
+entries = data.setdefault("model", {}).setdefault("entries", [])
+entries = [entry for entry in entries if entry.get("threshold") != 9101]
+entries.append({
+    "threshold": 9101,
+    "model": {
+        "type": "model",
+        "model": "minecraft:item/leave_game",
     },
-    "entries": [
-      {
-        "threshold": 9101,
-        "model": {
-          "type": "model",
-          "model": "minecraft:item/leave_game"
-        }
-      }
-    ]
-  }
-}
-EOF
-  echo "meetups leave item: CMD 9101"
+})
+entries.sort(key=lambda entry: entry["threshold"])
+data["model"]["entries"] = entries
+paper_path.write_text(json.dumps(data, indent=4) + "\n")
+PY
+  echo "meetups leave item: paper CMD 9101"
 fi
 
 rm -f "$OUT_ZIP"
