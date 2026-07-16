@@ -276,9 +276,12 @@ public class VillagerStaff {
       }
    }
 
-   /** No-op: do not stopAllSounds — that muted every legendary weapon SFX. */
+   /** Stop only guardian hurt — never stopAllSounds (that muted legendary weapons). */
    public static void stopDeferredExplosionSounds(Player player) {
-      // intentionally empty
+      if (player == null || !player.isOnline()) {
+         return;
+      }
+      player.stopSound(Sound.ENTITY_GUARDIAN_HURT);
    }
 
    public boolean shouldCancelExplosionDamage(Location damageLocation, DamageCause cause) {

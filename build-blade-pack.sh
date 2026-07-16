@@ -349,7 +349,8 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
-# Keep vanilla/custom weapon sounds. Only strip the removed villager-staff guardian hit.
+# Remove guardian_hit4 completely. Silence ONLY entity.guardian.hurt so old
+# client remaps / deferred packets cannot play that sample. Do not touch other sounds.
 export PACK_DIR
 python3 - <<'PY'
 import json
@@ -359,13 +360,26 @@ pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
 data.pop("custom.weapons.villager_staff_explode", None)
-data.pop("entity.guardian.hurt", None)  # only if we had remapped it to guardian_hit4
+# Empty replace = inaudible. Leaves every other legendary/custom sound intact.
+data["entity.guardian.hurt"] = {"replace": True, "sounds": []}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: guardian_hit4 / staff explode entry removed only", flush=True)
+print("weapons sounds: guardian_hit4 gone; entity.guardian.hurt silenced only", flush=True)
 PY
-rm -f "$PACK_DIR/assets/minecraft/sounds/custom/weapons/guardian_hit4.ogg" 2>/dev/null || true
+rm -rf "$PACK_DIR/assets/minecraft/sounds/custom/weapons"
 rm -f "$ROOT/resourcepack/assets/weapons-sounds/guardian_hit4.ogg" 2>/dev/null || true
+rmdir "$ROOT/resourcepack/assets/weapons-sounds" 2>/dev/null || true
+
+# Force new pack hash so clients must re-download (bust stale guardian_hit4 cache).
+python3 - <<'PY'
+import json, os, time
+from pathlib import Path
+meta = Path(os.environ["PACK_DIR"]) / "pack.mcmeta"
+data = json.loads(meta.read_text())
+data.setdefault("pack", {})["description"] = f"Blade Server Resource Pack (no-guardian-hit4-{int(time.time())})"
+meta.write_text(json.dumps(data, indent=2) + "\n")
+print("pack.mcmeta bust:", data["pack"]["description"], flush=True)
+PY
 
 # Blood Mace legendary texture (CMD 1 on mace)
 BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"

@@ -1,6 +1,7 @@
 package dev.systemcrash.blade.weapons.legacy;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -74,6 +75,15 @@ public final class LegendaryCooldownReset {
         }
 
         clearInventorySlotCooldowns(player);
+        // Clearing item cooldowns can dump a deferred guardian hurt packet — kill only that.
+        player.stopSound(Sound.ENTITY_GUARDIAN_HURT);
+        for (long tick = 0L; tick <= 5L; tick++) {
+            bridge.getHost().getServer().getScheduler().runTaskLater(bridge.getHost(), () -> {
+                if (player.isOnline()) {
+                    player.stopSound(Sound.ENTITY_GUARDIAN_HURT);
+                }
+            }, tick);
+        }
     }
 
     private void clearInventorySlotCooldowns(Player player) {
