@@ -349,7 +349,7 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
-# Silence guardian entity SFX so deferred client dumps / old remaps cannot play.
+# Keep vanilla/custom weapon sounds. Only strip the removed villager-staff guardian hit.
 export PACK_DIR
 python3 - <<'PY'
 import json
@@ -359,18 +359,10 @@ pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
 data.pop("custom.weapons.villager_staff_explode", None)
-silent = {"replace": True, "sounds": []}
-for key in (
-    "entity.guardian.hurt",
-    "entity.guardian.ambient",
-    "entity.guardian.attack",
-    "entity.guardian.death",
-    "entity.guardian.flop",
-):
-    data[key] = silent
+data.pop("entity.guardian.hurt", None)  # only if we had remapped it to guardian_hit4
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: guardian events silenced", flush=True)
+print("weapons sounds: guardian_hit4 / staff explode entry removed only", flush=True)
 PY
 rm -f "$PACK_DIR/assets/minecraft/sounds/custom/weapons/guardian_hit4.ogg" 2>/dev/null || true
 rm -f "$ROOT/resourcepack/assets/weapons-sounds/guardian_hit4.ogg" 2>/dev/null || true

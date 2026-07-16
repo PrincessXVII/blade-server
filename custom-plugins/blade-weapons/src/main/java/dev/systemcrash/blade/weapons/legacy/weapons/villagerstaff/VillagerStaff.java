@@ -255,8 +255,8 @@ public class VillagerStaff {
          this.setCooldown(attacker);
       }
 
-      // createExplosion already plays vanilla explode SFX — do not add extra/custom sounds
-      // (client can defer player.playSound until item cooldowns clear).
+      // Vanilla explode only — no guardian_hit4 / custom staff SFX.
+      world.playSound(landing, Sound.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 2.0F, 0.85F);
       world.createExplosion(landing, power, setFire, breakBlocks, attacker);
       world.spawnParticle(Particle.EXPLOSION_EMITTER, landing, 1);
       world.spawnParticle(Particle.EXPLOSION, landing, 40, blastRadius / 2.0, blastRadius / 2.0, blastRadius / 2.0, 0.1);
@@ -276,12 +276,9 @@ public class VillagerStaff {
       }
    }
 
-   /** Kill any client-deferred SFX that dump when item cooldowns clear. */
+   /** No-op: do not stopAllSounds — that muted every legendary weapon SFX. */
    public static void stopDeferredExplosionSounds(Player player) {
-      if (player == null || !player.isOnline()) {
-         return;
-      }
-      player.stopAllSounds();
+      // intentionally empty
    }
 
    public boolean shouldCancelExplosionDamage(Location damageLocation, DamageCause cause) {

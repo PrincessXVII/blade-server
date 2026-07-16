@@ -1,5 +1,5 @@
 name: BladeWeapons
-version: '1.0.16'
+version: '1.0.17'
 main: dev.systemcrash.blade.weapons.BladeWeaponsPlugin
 api-version: '1.21'
 description: Blade legendary weapons with Demora resource pack models
