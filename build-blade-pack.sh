@@ -349,9 +349,13 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
-# Strip any villager-staff guardian sound overrides from the pack.
-export PACK_DIR
-python3 - <<'PY'
+# Villager staff: custom guardian hit ONLY (do not remap vanilla entity.guardian.*).
+WEAPONS_SOUNDS="${WEAPONS_SOUNDS_DIR:-$ROOT/resourcepack/assets/weapons-sounds}"
+if [[ -d "$WEAPONS_SOUNDS" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/weapons"
+  cp -f "$WEAPONS_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/weapons/" 2>/dev/null || true
+  export PACK_DIR
+  python3 - <<'PY'
 import json
 import os
 from pathlib import Path
@@ -359,13 +363,12 @@ pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
 data.pop("entity.guardian.hurt", None)
-data.pop("custom.weapons.villager_staff_explode", None)
-# Also strip ogg if present from previous builds so clients cannot keep playing it via old keys
+data["custom.weapons.villager_staff_explode"] = {"sounds": ["custom/weapons/guardian_hit4"]}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: guardian/staff explode removed", flush=True)
+print("weapons sounds: custom.weapons.villager_staff_explode only", flush=True)
 PY
-rm -f "$PACK_DIR/assets/minecraft/sounds/custom/weapons/guardian_hit4.ogg" 2>/dev/null || true
+fi
 
 # Blood Mace legendary texture (CMD 1 on mace)
 BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"
