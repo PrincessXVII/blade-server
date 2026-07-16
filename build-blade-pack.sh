@@ -349,7 +349,7 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
-# No villager-staff guardian sound in the pack — removed (deferred playback on clearcd).
+# Silence guardian entity SFX so deferred client dumps / old remaps cannot play.
 export PACK_DIR
 python3 - <<'PY'
 import json
@@ -358,13 +358,22 @@ from pathlib import Path
 pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
-data.pop("entity.guardian.hurt", None)
 data.pop("custom.weapons.villager_staff_explode", None)
+silent = {"replace": True, "sounds": []}
+for key in (
+    "entity.guardian.hurt",
+    "entity.guardian.ambient",
+    "entity.guardian.attack",
+    "entity.guardian.death",
+    "entity.guardian.flop",
+):
+    data[key] = silent
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: guardian/staff explode stripped", flush=True)
+print("weapons sounds: guardian events silenced", flush=True)
 PY
 rm -f "$PACK_DIR/assets/minecraft/sounds/custom/weapons/guardian_hit4.ogg" 2>/dev/null || true
+rm -f "$ROOT/resourcepack/assets/weapons-sounds/guardian_hit4.ogg" 2>/dev/null || true
 
 # Blood Mace legendary texture (CMD 1 on mace)
 BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"
