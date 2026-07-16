@@ -362,12 +362,15 @@ from pathlib import Path
 pack_dir = Path(os.environ["PACK_DIR"])
 sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+# Staff explosion uses vanilla ENTITY_GUARDIAN_HURT; remap it to the requested hit4 sample.
+data["entity.guardian.hurt"] = {
+    "replace": True,
+    "sounds": ["custom/weapons/guardian_hit4"],
+}
 data["custom.weapons.villager_staff_explode"] = {"sounds": ["custom/weapons/guardian_hit4"]}
-# Do NOT remap entity.guardian.hurt — that made deferred playback harder to reason about.
-data.pop("entity.guardian.hurt", None)
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("weapons sounds: villager_staff_explode only", flush=True)
+print("weapons sounds: entity.guardian.hurt -> guardian_hit4", flush=True)
 PY
 fi
 
