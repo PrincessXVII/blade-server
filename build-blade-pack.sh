@@ -42,6 +42,14 @@ if [[ ! -f "$SMP_TITLE" ]]; then
 fi
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
+# Blade pack icon (MOTD logo)
+PACK_ICON="${PACK_ICON:-$ROOT/plugins/BetterMOTD/icons/logoblademinecarft.png}"
+if [[ -f "$PACK_ICON" ]]; then
+  cp -f "$PACK_ICON" "$PACK_DIR/pack.png"
+else
+  echo "Warning: pack icon not found: $PACK_ICON" >&2
+fi
+
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
 export HUB_ASSETS="$HUB_ASSETS"
