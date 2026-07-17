@@ -42,10 +42,24 @@ if [[ ! -f "$SMP_TITLE" ]]; then
 fi
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
-# Blade pack icon (MOTD logo)
+# Blade pack icon (MOTD logo). Strip ICC/Display P3 — Minecraft can hang on exotic PNG profiles.
 PACK_ICON="${PACK_ICON:-$ROOT/plugins/BetterMOTD/icons/logoblademinecarft.png}"
 if [[ -f "$PACK_ICON" ]]; then
-  cp -f "$PACK_ICON" "$PACK_DIR/pack.png"
+  PACK_ICON="$PACK_ICON" PACK_DIR="$PACK_DIR" python3 - <<'PY'
+import os
+from pathlib import Path
+from PIL import Image
+
+src = Path(os.environ["PACK_ICON"])
+out = Path(os.environ["PACK_DIR"]) / "pack.png"
+im = Image.open(src).convert("RGBA")
+# Minecraft pack icons are typically 64x64 or 128x128.
+if im.size != (64, 64) and im.size != (128, 128):
+    im = im.resize((64, 64), Image.Resampling.LANCZOS)
+# Save without ICC profile / exotic metadata.
+im.save(out, format="PNG", optimize=True, icc_profile=None)
+print(f"pack.png: {im.size[0]}x{im.size[1]} sRGB (no ICC)", flush=True)
+PY
 else
   echo "Warning: pack icon not found: $PACK_ICON" >&2
 fi
@@ -75,7 +89,13 @@ char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
 meta_path = pack_dir / "pack.mcmeta"
 meta = json.loads(meta_path.read_text())
-meta.setdefault("pack", {})["description"] = "Blade Server Resource Pack"
+pack = meta.setdefault("pack", {})
+pack["description"] = "Blade Server Resource Pack"
+# Paper/client 1.21.11 requires resource pack format 75.
+pack["pack_format"] = 75
+pack["min_format"] = 34
+pack["max_format"] = 99
+pack.pop("supported_formats", None)
 meta_path.write_text(json.dumps(meta, indent=2) + "\n")
 
 rank_dir = pack_dir / "assets/blade/textures/font/ranks"
@@ -384,9 +404,14 @@ import json, os, time
 from pathlib import Path
 meta = Path(os.environ["PACK_DIR"]) / "pack.mcmeta"
 data = json.loads(meta.read_text())
-data.setdefault("pack", {})["description"] = f"Blade Server Resource Pack (no-guardian-hit4-{int(time.time())})"
+pack = data.setdefault("pack", {})
+pack["description"] = f"Blade Server Resource Pack (no-guardian-hit4-{int(time.time())})"
+pack["pack_format"] = 75
+pack["min_format"] = 34
+pack["max_format"] = 99
+pack.pop("supported_formats", None)
 meta.write_text(json.dumps(data, indent=2) + "\n")
-print("pack.mcmeta bust:", data["pack"]["description"], flush=True)
+print("pack.mcmeta bust:", pack["description"], "format=", pack["pack_format"], flush=True)
 PY
 
 # Blood Mace legendary texture (CMD 1 on mace)
