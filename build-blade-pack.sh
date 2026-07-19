@@ -190,6 +190,22 @@ providers.append({
 })
 char_code += 1
 
+# Media rank icon after titles so existing rank/title codepoints stay stable.
+media_src = donates / "media.png"
+if media_src.is_file():
+    (rank_dir / "media.png").write_bytes(media_src.read_bytes())
+    ch = chr(char_code)
+    char_map["media"] = ch
+    providers.append({
+        "type": "bitmap",
+        "file": "blade:font/ranks/media.png",
+        "ascent": 8,
+        "height": 9,
+        "chars": [ch],
+    })
+    print(f"media rank glyph: U+{ord(ch):04X}", flush=True)
+    char_code += 1
+
 # Hub menu custom GUI shown as inventory title glyph (DeluxeMenus menu_title).
 hub_gui_src = root / "resourcepack/assets/hub/menu-templates/hub_menu_gui.png"
 if not hub_gui_src.is_file():
@@ -230,7 +246,11 @@ default_providers.extend(providers)
 font_path.write_text(json.dumps(demora, indent=4) + "\n")
 
 map_path = root / "resourcepack/rank-chars.txt"
-lines = [f"{rank}=\\u{ord(char_map[rank]):04X}" for rank in ranks]
+lines = []
+for rank in ranks:
+    lines.append(f"{rank}=\\u{ord(char_map[rank]):04X}")
+    if rank == "sponsor" and "media" in char_map:
+        lines.append(f"media=\\u{ord(char_map['media']):04X}")
 lines.append(f"blade_title=\\u{ord(char_map['blade_title']):04X}")
 lines.append(f"meetups_title=\\u{ord(char_map['meetups_title']):04X}")
 lines.append(f"battleroyale_title=\\u{ord(char_map['battleroyale_title']):04X}")
@@ -374,6 +394,29 @@ data["custom.meetups.victory"] = {"sounds": ["custom/meetups/victory"]}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
 print("meetups sounds: countdown/go/victory", flush=True)
+PY
+fi
+
+BR_SOUNDS="${BR_SOUNDS_DIR:-$ROOT/resourcepack/assets/br-sounds}"
+if [[ -d "$BR_SOUNDS" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/br"
+  cp -f "$BR_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/br/" 2>/dev/null || true
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+pack_dir = Path(os.environ["PACK_DIR"])
+sounds_path = pack_dir / "assets/minecraft/sounds.json"
+data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+data["custom.br.countdown"] = {"sounds": ["custom/br/countdown"]}
+data["custom.br.go"] = {"sounds": ["custom/br/go"]}
+data["custom.br.phase"] = {"sounds": ["custom/br/phase"]}
+data["custom.br.craft"] = {"sounds": ["custom/br/craft"]}
+data["custom.br.craft_available"] = {"sounds": ["custom/br/craft_available"]}
+sounds_path.parent.mkdir(parents=True, exist_ok=True)
+sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+print("br sounds: countdown/go/phase/craft/craft_available", flush=True)
 PY
 fi
 
@@ -550,6 +593,55 @@ data["model"]["entries"] = entries
 paper_path.write_text(json.dumps(data, indent=4) + "\n")
 PY
   echo "meetups leave item: paper CMD 9101"
+fi
+
+# BR class-select item (CMD 9201 on paper) — must be AFTER leave (9101) so range_dispatch picks correctly
+BR_CLASS_TEX="${BR_CLASS_TEXTURE:-$ROOT/resourcepack/assets/br-items/choose_class.png}"
+if [[ -f "$BR_CLASS_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
+           "$PACK_DIR/assets/minecraft/models/item" \
+           "$PACK_DIR/assets/minecraft/items"
+  cp -f "$BR_CLASS_TEX" "$PACK_DIR/assets/minecraft/textures/item/br_choose_class.png"
+  cat > "$PACK_DIR/assets/minecraft/models/item/br_choose_class.json" <<'EOF'
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/br_choose_class"
+  }
+}
+EOF
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+from pathlib import Path
+
+pack_dir = Path(__import__("os").environ["PACK_DIR"])
+paper_path = pack_dir / "assets/minecraft/items/paper.json"
+if not paper_path.is_file():
+    raise SystemExit(f"Missing paper item model: {paper_path}")
+
+data = json.loads(paper_path.read_text())
+entries = data.setdefault("model", {}).setdefault("entries", [])
+entries = [entry for entry in entries if entry.get("threshold") not in (9101, 9201)]
+entries.append({
+    "threshold": 9101,
+    "model": {
+        "type": "model",
+        "model": "minecraft:item/leave_game",
+    },
+})
+entries.append({
+    "threshold": 9201,
+    "model": {
+        "type": "model",
+        "model": "minecraft:item/br_choose_class",
+    },
+})
+entries.sort(key=lambda entry: entry["threshold"])
+data["model"]["entries"] = entries
+paper_path.write_text(json.dumps(data, indent=4) + "\n")
+PY
+  echo "BR class select: paper CMD 9201"
 fi
 
 rm -f "$OUT_ZIP"
