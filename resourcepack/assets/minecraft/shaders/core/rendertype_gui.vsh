@@ -12,7 +12,9 @@ void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     vertexColor = Color;
-	if(vertexColor.r == 0.0627451 && vertexColor.a >= 0.7 && vertexColor.a < 0.9) {
-		vertexColor.a = 0; // this removes the background. You can set the transparency to whatever you want (0 is fully transparent, 1 is the opposite)
-	}
+    bool dark = vertexColor.r < 0.15 && vertexColor.g < 0.15 && vertexColor.b < 0.15;
+    bool translucent = vertexColor.a > 0.05 && vertexColor.a < 0.95;
+    if (dark && translucent) {
+        vertexColor.a = 0.0;
+    }
 }

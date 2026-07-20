@@ -793,8 +793,8 @@ def add_gui_glyph(path: Path, name: str, codepoint: int, height: int = 256, asce
     })
     print(f"{name} glyph U+{codepoint:04X}", flush=True)
 
-add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201, height=256, ascent=29)
-add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=29)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201, height=256, ascent=25)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=13)
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
 # Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006)

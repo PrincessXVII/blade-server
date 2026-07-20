@@ -1,7 +1,6 @@
 #version 330
 
-// Can't moj_import in things used during startup, when resource packs don't exist.
-// This is a copy of dynamicimports.glsl and projection.glsl
+// Removes the dark fullscreen dimming behind inventories / menus (1.21.11).
 layout(std140) uniform DynamicTransforms {
     mat4 ModelViewMat;
     vec4 ColorModulator;
@@ -21,7 +20,11 @@ void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     vertexColor = Color;
-    if(vertexColor.r == 0.0627451 && vertexColor.a >= 0.7 && vertexColor.a < 0.9) {
-		  vertexColor.a = 0; // this removes the background. You can set the transparency to whatever you want (0 is fully transparent, 1 is the opposite)
-	}
+    // Vanilla dim overlay is a near-black translucent quad.
+    // Match several observed shades, not only the exact 16/255 red channel.
+    bool dark = vertexColor.r < 0.15 && vertexColor.g < 0.15 && vertexColor.b < 0.15;
+    bool translucent = vertexColor.a > 0.05 && vertexColor.a < 0.95;
+    if (dark && translucent) {
+        vertexColor.a = 0.0;
+    }
 }
