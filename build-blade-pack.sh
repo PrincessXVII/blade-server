@@ -223,12 +223,12 @@ if hub_gui_src.is_file():
         "height": 256,
         "chars": [hub_gui_ch],
     })
-    # ResourcePackSpaces: U+F807 = -7px
-    hub_shift = "\uF807"
-    menu_title = f"&f{hub_shift}{hub_gui_ch}"
+    # No horizontal shift (was U+F807 = -7px; removed to move GUI 7px right).
+    hub_shift = ""
+    menu_title = f"&f{hub_gui_ch}"
     (root / "resourcepack/hub-menu-title.txt").write_text(
         f"char=\\u{hub_gui_cp:04X}\n"
-        f"shift=\\uF807 (-7)\n"
+        f"shift=none\n"
         f"literal={hub_gui_ch}\n"
         f"menu_title={menu_title}\n"
     )
