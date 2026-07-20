@@ -695,13 +695,18 @@ COSMETICS_GUI_MAIN="${COSMETICS_GUI_MAIN:-/Users/boris/Downloads/cosmetics2 2.pn
 COSMETICS_GUI_HATS="${COSMETICS_GUI_HATS:-/Users/boris/Downloads/skins.png}"
 export PACK_DIR COSMETICS_SRC COSMETICS_GUI_MAIN COSMETICS_GUI_HATS ROOT
 
-# Remove inventory darkening overlay (gui.vsh from No Dark Inventory Overlay, 1.21.11)
-SHADER_SRC="$ROOT/resourcepack/assets/minecraft/shaders/core"
-if [[ -f "$SHADER_SRC/gui.vsh" ]]; then
-  mkdir -p "$PACK_DIR/assets/minecraft/shaders/core"
-  cp -f "$SHADER_SRC/gui.vsh" "$PACK_DIR/assets/minecraft/shaders/core/gui.vsh"
-  [[ -f "$SHADER_SRC/rendertype_gui.vsh" ]] && cp -f "$SHADER_SRC/rendertype_gui.vsh" "$PACK_DIR/assets/minecraft/shaders/core/rendertype_gui.vsh"
-  echo "packed no-dark inventory shader (gui.vsh)"
+# Keep vanilla screen dimming. Transparent inworld_menu_background fixes "black UI"
+# overlay on custom glyph menus (1.21+ tiles a dark texture over GUIs).
+GUI_TEX_SRC="$ROOT/resourcepack/assets/minecraft/textures/gui"
+if [[ -f "$GUI_TEX_SRC/inworld_menu_background.png" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/gui"
+  cp -f "$GUI_TEX_SRC/inworld_menu_background.png" "$PACK_DIR/assets/minecraft/textures/gui/inworld_menu_background.png"
+  echo "packed transparent inworld_menu_background"
+fi
+if [[ -f "$GUI_TEX_SRC/container/generic_54.png" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/gui/container"
+  cp -f "$GUI_TEX_SRC/container/generic_54.png" "$PACK_DIR/assets/minecraft/textures/gui/container/generic_54.png"
+  echo "packed cosmetics-friendly generic_54"
 fi
 
 python3 - <<'PY'
@@ -794,7 +799,7 @@ def add_gui_glyph(path: Path, name: str, codepoint: int, height: int = 256, asce
     print(f"{name} glyph U+{codepoint:04X}", flush=True)
 
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201, height=256, ascent=25)
-add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=13)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=16)
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
 # Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006)
