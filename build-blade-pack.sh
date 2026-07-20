@@ -694,6 +694,16 @@ COSMETICS_SRC="${COSMETICS_SRC:-/Users/boris/Downloads/372428ec865d2f8d6f5fce662
 COSMETICS_GUI_MAIN="${COSMETICS_GUI_MAIN:-/Users/boris/Downloads/cosmetics2 2.png}"
 COSMETICS_GUI_HATS="${COSMETICS_GUI_HATS:-/Users/boris/Downloads/skins.png}"
 export PACK_DIR COSMETICS_SRC COSMETICS_GUI_MAIN COSMETICS_GUI_HATS ROOT
+
+# Remove inventory darkening overlay (gui.vsh from No Dark Inventory Overlay, 1.21.11)
+SHADER_SRC="$ROOT/resourcepack/assets/minecraft/shaders/core"
+if [[ -f "$SHADER_SRC/gui.vsh" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/shaders/core"
+  cp -f "$SHADER_SRC/gui.vsh" "$PACK_DIR/assets/minecraft/shaders/core/gui.vsh"
+  [[ -f "$SHADER_SRC/rendertype_gui.vsh" ]] && cp -f "$SHADER_SRC/rendertype_gui.vsh" "$PACK_DIR/assets/minecraft/shaders/core/rendertype_gui.vsh"
+  echo "packed no-dark inventory shader (gui.vsh)"
+fi
+
 python3 - <<'PY'
 import json, os, shutil
 from pathlib import Path
@@ -783,8 +793,8 @@ def add_gui_glyph(path: Path, name: str, codepoint: int, height: int = 256, asce
     })
     print(f"{name} glyph U+{codepoint:04X}", flush=True)
 
-add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201)
-add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201, height=256, ascent=29)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=29)
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
 # Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006)
