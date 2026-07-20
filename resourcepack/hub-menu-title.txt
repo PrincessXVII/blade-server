@@ -1,4 +1,4 @@
 char=\uE200
-shift=none
+shift=\uF808\uF806 (-14)
 literal=
-menu_title=&f
+menu_title=&f
