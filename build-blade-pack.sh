@@ -689,6 +689,155 @@ PY
   echo "BR class select: paper CMD 9201"
 fi
 
+# --- Atlantis cosmetics (hats) + GUI glyphs / icons ---
+COSMETICS_SRC="${COSMETICS_SRC:-/Users/boris/Downloads/372428ec865d2f8d6f5fce662fbd1ec3035b2ced.zip_Decompiler.com}"
+COSMETICS_GUI_MAIN="${COSMETICS_GUI_MAIN:-/Users/boris/Downloads/cosmetics2 2.png}"
+COSMETICS_GUI_HATS="${COSMETICS_GUI_HATS:-/Users/boris/Downloads/skins.png}"
+export PACK_DIR COSMETICS_SRC COSMETICS_GUI_MAIN COSMETICS_GUI_HATS ROOT
+python3 - <<'PY'
+import json, os, shutil
+from pathlib import Path
+from PIL import Image
+
+pack = Path(os.environ["PACK_DIR"])
+src = Path(os.environ["COSMETICS_SRC"])
+root = Path(os.environ["ROOT"])
+
+if not src.is_dir():
+    print("cosmetics src missing, skip", src, flush=True)
+    raise SystemExit(0)
+
+# Copy namespaces needed for hats
+for ns in ("atlantis_cosmetics", "atlantis_ui"):
+    s = src / "assets" / ns
+    d = pack / "assets" / ns
+    if s.is_dir():
+        if d.exists():
+            shutil.rmtree(d)
+        shutil.copytree(s, d, ignore=shutil.ignore_patterns(".DS_Store"))
+        print(f"copied assets/{ns}", flush=True)
+
+# Transparent pumpkin blur (avoid overlay when wearing hats)
+blur_src = src / "assets/minecraft/textures/misc/pumpkinblur.png"
+blur_dst = pack / "assets/minecraft/textures/misc/pumpkinblur.png"
+blur_dst.parent.mkdir(parents=True, exist_ok=True)
+if blur_src.is_file():
+    shutil.copy2(blur_src, blur_dst)
+
+# Merge IA atlas sprite map so ia:N textures resolve
+atlas_src = src / "ia_overlay_modern_atlas/assets/minecraft/atlases/items.json"
+atlas_dst = pack / "assets/minecraft/atlases/items.json"
+atlas_dst.parent.mkdir(parents=True, exist_ok=True)
+if atlas_src.is_file():
+    incoming = json.loads(atlas_src.read_text())
+    if atlas_dst.is_file():
+        existing = json.loads(atlas_dst.read_text())
+        sources = existing.setdefault("sources", [])
+        sources.extend(incoming.get("sources", []))
+        atlas_dst.write_text(json.dumps(existing, indent=2) + "\n")
+    else:
+        shutil.copy2(atlas_src, atlas_dst)
+    print("merged ia items atlas", flush=True)
+
+# carved_pumpkin item model (1.21.4+ format preferred)
+for rel in (
+    "ia_overlay_1_21_6_plus/assets/minecraft/items/carved_pumpkin.json",
+    "ia_overlay_1_21_4_to_5/assets/minecraft/items/carved_pumpkin.json",
+):
+    p = src / rel
+    if p.is_file():
+        dst = pack / "assets/minecraft/items/carved_pumpkin.json"
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(p, dst)
+        print("carved_pumpkin items model", rel, flush=True)
+        break
+# legacy overrides fallback
+legacy = src / "assets/minecraft/models/item/carved_pumpkin.json"
+if legacy.is_file():
+    dst = pack / "assets/minecraft/models/item/carved_pumpkin.json"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(legacy, dst)
+
+# GUI font glyphs
+font_dir = pack / "assets/blade/textures/font"
+font_dir.mkdir(parents=True, exist_ok=True)
+font_path = pack / "assets/minecraft/font/default.json"
+font = json.loads(font_path.read_text()) if font_path.is_file() else {"providers": []}
+providers = font.setdefault("providers", [])
+
+def add_gui_glyph(path: Path, name: str, codepoint: int, height: int = 256, ascent: int = 34):
+    if not path.is_file():
+        print("missing gui", path, flush=True)
+        return
+    # normalize to RGBA without exotic profiles
+    im = Image.open(path).convert("RGBA")
+    out = font_dir / f"{name}.png"
+    im.save(out, format="PNG", optimize=True, icc_profile=None)
+    ch = chr(codepoint)
+    providers.append({
+        "type": "bitmap",
+        "file": f"blade:font/{name}.png",
+        "ascent": ascent,
+        "height": height,
+        "chars": [ch],
+    })
+    print(f"{name} glyph U+{codepoint:04X}", flush=True)
+
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202)
+font_path.write_text(json.dumps(font, indent=4) + "\n")
+
+# Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006)
+hub_tex = pack / "assets/blade/textures/item/hub"
+hub_model = pack / "assets/blade/models/item/hub"
+hub_tex.mkdir(parents=True, exist_ok=True)
+hub_model.mkdir(parents=True, exist_ok=True)
+
+def write_icon(key: str, img: Image.Image, cmd: int, paper_entries: list):
+    img.save(hub_tex / f"{key}.png", format="PNG", optimize=True, icc_profile=None)
+    (hub_model / f"{key}.json").write_text(json.dumps({
+        "parent": "minecraft:item/generated",
+        "textures": {"layer0": f"blade:item/hub/{key}"},
+    }, indent=4) + "\n")
+    paper_entries.append({
+        "threshold": cmd,
+        "model": {"type": "model", "model": f"blade:item/hub/{key}"},
+    })
+
+paper_path = pack / "assets/minecraft/items/paper.json"
+paper = json.loads(paper_path.read_text())
+entries = paper["model"].get("entries", [])
+
+hats_icon = src / "assets/atlantis_ui/textures/items/hats.png"
+prev_icon = src / "assets/atlantis_ui/textures/buttons/select_rounds/prev-page.png"
+next_icon = src / "assets/atlantis_ui/textures/buttons/select_rounds/next-page.png"
+prev_meta = src / "assets/atlantis_ui/textures/buttons/select_rounds/prev-page.png.mcmeta"
+next_meta = src / "assets/atlantis_ui/textures/buttons/select_rounds/next-page.png.mcmeta"
+
+new_entries = []
+if hats_icon.is_file():
+    write_icon("cosmetics_hats", Image.open(hats_icon).convert("RGBA"), 7003, new_entries)
+if prev_icon.is_file():
+    write_icon("cosmetics_prev", Image.open(prev_icon).convert("RGBA"), 7004, new_entries)
+    if prev_meta.is_file():
+        shutil.copy2(prev_meta, hub_tex / "cosmetics_prev.png.mcmeta")
+if next_icon.is_file():
+    write_icon("cosmetics_next", Image.open(next_icon).convert("RGBA"), 7005, new_entries)
+    if next_meta.is_file():
+        shutil.copy2(next_meta, hub_tex / "cosmetics_next.png.mcmeta")
+# transparent 16x16 blank
+blank = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+write_icon("cosmetics_blank", blank, 7006, new_entries)
+
+# replace/add thresholds
+by_thr = {e["threshold"]: e for e in entries}
+for e in new_entries:
+    by_thr[e["threshold"]] = e
+paper["model"]["entries"] = sorted(by_thr.values(), key=lambda e: e["threshold"])
+paper_path.write_text(json.dumps(paper, indent=4) + "\n")
+print("cosmetics paper CMDs 7003-7006", flush=True)
+PY
+
 rm -f "$OUT_ZIP"
 (cd "$PACK_DIR" && zip -qr "$OUT_ZIP" .)
 
