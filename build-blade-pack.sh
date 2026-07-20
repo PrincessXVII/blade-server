@@ -9,6 +9,8 @@ TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
 SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
+FFA_TITLE="${FFA_TITLE_IMAGE:-$ROOT/resourcepack/assets/ffa_title.png}"
+EVENTS_TITLE="${EVENTS_TITLE_IMAGE:-$ROOT/resourcepack/assets/events_title.png}"
 HUB_ASSETS="${HUB_ASSETS_DIR:-$ROOT/resourcepack/assets/hub}"
 DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
 RANK_CHAR_BASE=0xE100
@@ -40,6 +42,14 @@ if [[ ! -f "$SMP_TITLE" ]]; then
   echo "SMP title image not found: $SMP_TITLE" >&2
   exit 1
 fi
+if [[ ! -f "$FFA_TITLE" ]]; then
+  echo "FFA title image not found: $FFA_TITLE" >&2
+  exit 1
+fi
+if [[ ! -f "$EVENTS_TITLE" ]]; then
+  echo "Events title image not found: $EVENTS_TITLE" >&2
+  exit 1
+fi
 unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
 
 # Blade pack icon (MOTD logo). Strip ICC/Display P3 — Minecraft can hang on exotic PNG profiles.
@@ -66,6 +76,7 @@ fi
 
 export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
+export FFA_TITLE="$FFA_TITLE" EVENTS_TITLE="$EVENTS_TITLE"
 export HUB_ASSETS="$HUB_ASSETS"
 export RANK_CHAR_BASE="$RANK_CHAR_BASE"
 export RANKS="trial booster chamber razor winner sponsor stazher helper moder stmoder glmoder dizainer tehadmin kurator zamestitel owner"
@@ -84,6 +95,8 @@ title_src = Path(os.environ["TITLE"])
 meetups_src = Path(os.environ["MEETUPS_TITLE"])
 battleroyale_src = Path(os.environ["BATTLEROYALE_TITLE"])
 smp_src = Path(os.environ["SMP_TITLE"])
+ffa_src = Path(os.environ["FFA_TITLE"])
+events_src = Path(os.environ["EVENTS_TITLE"])
 ranks = os.environ["RANKS"].split()
 char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
@@ -206,6 +219,33 @@ if media_src.is_file():
     print(f"media rank glyph: U+{ord(ch):04X}", flush=True)
     char_code += 1
 
+# NPC hologram titles (same display height 22 as meetups/BR/SMP).
+ffa_height, ffa_ascent = process_title(ffa_src, "ffa_title.png", 22)
+ch = chr(char_code)
+char_map["ffa_title"] = ch
+providers.append({
+    "type": "bitmap",
+    "file": "blade:font/ffa_title.png",
+    "ascent": ffa_ascent,
+    "height": ffa_height,
+    "chars": [ch],
+})
+print(f"ffa title glyph: U+{ord(ch):04X}", flush=True)
+char_code += 1
+
+events_height, events_ascent = process_title(events_src, "events_title.png", 22)
+ch = chr(char_code)
+char_map["events_title"] = ch
+providers.append({
+    "type": "bitmap",
+    "file": "blade:font/events_title.png",
+    "ascent": events_ascent,
+    "height": events_height,
+    "chars": [ch],
+})
+print(f"events title glyph: U+{ord(ch):04X}", flush=True)
+char_code += 1
+
 # Hub menu custom GUI shown as inventory title glyph (DeluxeMenus menu_title).
 hub_gui_src = root / "resourcepack/assets/hub/menu-templates/hub_menu_gui.png"
 if not hub_gui_src.is_file():
@@ -256,6 +296,10 @@ lines.append(f"blade_title=\\u{ord(char_map['blade_title']):04X}")
 lines.append(f"meetups_title=\\u{ord(char_map['meetups_title']):04X}")
 lines.append(f"battleroyale_title=\\u{ord(char_map['battleroyale_title']):04X}")
 lines.append(f"smp_title=\\u{ord(char_map['smp_title']):04X}")
+if "ffa_title" in char_map:
+    lines.append(f"ffa_title=\\u{ord(char_map['ffa_title']):04X}")
+if "events_title" in char_map:
+    lines.append(f"events_title=\\u{ord(char_map['events_title']):04X}")
 if "hub_menu_gui" in char_map:
     lines.append(f"hub_menu_gui=\\u{ord(char_map['hub_menu_gui']):04X}")
 map_path.write_text("\n".join(lines) + "\n")

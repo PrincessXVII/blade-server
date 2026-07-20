@@ -1,0 +1,147 @@
+version: 2 # DO NOT CHANGE
+holograms:
+  meetups_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -28.5
+      y: 136.17999267578125
+      z: -79.5
+      yaw: -92.812744
+      pitch: -3.5003693
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: meetups
+    persistent: true
+    visible_by_default: true
+    visibility_distance: 100
+    visibility: ALL
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  battleroyale_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -27.5
+      y: 136.17999267578125
+      z: -83.5
+      yaw: -79.09729
+      pitch: -4.2261333
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: battleroyale
+    persistent: true
+    visible_by_default: true
+    visibility_distance: 100
+    visibility: ALL
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  smp_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -27.5
+      y: 136.17999267578125
+      z: -75.5
+      yaw: -100.91943
+      pitch: -3.1374998
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: smp
+    persistent: true
+    visible_by_default: true
+    visibility_distance: 100
+    visibility: ALL
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  ffa_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -26.5
+      y: 136.17999267578125
+      z: -71.5
+      yaw: -111.77515
+      pitch: -6.6452894
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: ffa
+    persistent: true
+    visible_by_default: true
+    visibility_distance: 100
+    visibility: ALL
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1
+  events_title:
+    type: TEXT
+    location:
+      world: lobby
+      x: -26.5
+      y: 136.17999267578125
+      z: -87.5
+      yaw: -84.528145
+      pitch: -4.2610765
+    text:
+    - 
+    background: transparent
+    text_shadow: false
+    see_through: false
+    linkedNpc: iventy
+    persistent: true
+    visible_by_default: true
+    visibility_distance: 100
+    visibility: ALL
+    scale_x: 1.5
+    scale_y: 1.5
+    scale_z: 1.5
+    translation_x: 0.0
+    translation_y: 0.0
+    translation_z: 0.0
+    shadow_radius: 0.0
+    shadow_strength: 1.0
+    text_alignment: center
+    update_text_interval: -1

@@ -19,4 +19,6 @@ blade_title=\uE110
 meetups_title=\uE111
 battleroyale_title=\uE112
 smp_title=\uE113
+ffa_title=\uE115
+events_title=\uE116
 hub_menu_gui=\uE200
