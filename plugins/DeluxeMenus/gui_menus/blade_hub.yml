@@ -1,8 +1,9 @@
 # Blade hub: double chest (54). Buttons drawn on custom GUI glyph in the title.
-# Art: resourcepack/assets/hub/menu-templates/hub_menu_gui.png
-# Layout 3x2 (each button 3x3 slots):
-#   SMP | КБ | МИТАПЫ
-#   FFA | ИВЕНТ | СЪЕМКИ
+# Art: resourcepack/assets/hub/menu-templates/hub_menu_gui.png (menu_minigames)
+# Layout (by labels on texture):
+#   СМП | КОРОЛЕВСКИЕ БИТВЫ | СЪЁМКИ
+#   ФФА | ИВЕНТЫ!!          | МИТАПЫ
+#   НАЗАД (full width)
 menu_title: '&f'
 open_command: []
 register_command: false
@@ -13,7 +14,6 @@ items:
     slots:
       - 0-2
       - 9-11
-      - 18-20
     display_name: '&r'
     hide_tooltip: true
     left_click_commands:
@@ -33,69 +33,86 @@ items:
     hide_tooltip: true
     left_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Battleroyale скоро будет доступен.'
+      - '[close]'
+      - '[player] br arenas'
     right_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Battleroyale скоро будет доступен.'
+      - '[close]'
+      - '[player] br arenas'
 
-  meetups:
+  filming:
     material: AIR
     slots:
       - 6-8
       - 15-17
-      - 24-26
     display_name: '&r'
     hide_tooltip: true
     left_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[console] bladehub arenas %player_name%'
-      - '[close]'
+      - '[message] &7Съёмки скоро будут доступны.'
     right_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[console] bladehub arenas %player_name%'
-      - '[close]'
+      - '[message] &7Съёмки скоро будут доступны.'
 
   ffa:
     material: AIR
     slots:
+      - 18-20
       - 27-29
       - 36-38
-      - 45-47
     display_name: '&r'
     hide_tooltip: true
     left_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7FFA скоро будет доступен.'
+      - '[close]'
+      - '[player] bladehub ffa'
     right_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7FFA скоро будет доступен.'
+      - '[close]'
+      - '[player] bladehub ffa'
 
   event:
     material: AIR
     slots:
       - 30-32
       - 39-41
-      - 48-50
     display_name: '&r'
     hide_tooltip: true
     left_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Ивенты скоро будут доступны.'
+      - '[close]'
+      - '[player] bladehub events'
     right_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Ивенты скоро будут доступны.'
+      - '[close]'
+      - '[player] bladehub events'
 
-  filming:
+  meetups:
     material: AIR
     slots:
+      - 24-26
       - 33-35
       - 42-44
-      - 51-53
     display_name: '&r'
     hide_tooltip: true
     left_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Съёмки скоро будут доступны.'
+      - '[close]'
+      - '[player] bladehub arenas'
     right_click_commands:
       - '[sound] UI_BUTTON_CLICK'
-      - '[message] &7Съёмки скоро будут доступны.'
+      - '[close]'
+      - '[player] bladehub arenas'
+
+  back:
+    material: AIR
+    slots:
+      - 45-53
+    display_name: '&r'
+    hide_tooltip: true
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'

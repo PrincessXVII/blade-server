@@ -218,7 +218,8 @@ if hub_gui_src.is_file():
     providers.append({
         "type": "bitmap",
         "file": "blade:font/hub_menu_gui.png",
-        "ascent": 13,
+        # Matches ItemsAdder menu_minigames.png alignment (height 256 / ascent 34).
+        "ascent": 34,
         "height": 256,
         "chars": [hub_gui_ch],
     })
