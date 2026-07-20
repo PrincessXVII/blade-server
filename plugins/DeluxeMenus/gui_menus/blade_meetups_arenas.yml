@@ -1,0 +1,92 @@
+# Backup — native Java menu (bladehub arenas) is primary.
+# Single chest (9); arenas in slots 2–6.
+menu_title: '&fМитапы'
+
+open_command: []
+register_command: false
+size: 9
+items:
+  arena_1:
+    material: PAPER
+    slot: 2
+    model_data: 7001
+    display_name: '&dМитапы-1'
+    lore:
+      - '&7Jungle'
+      - '&eЛКМ &7— войти в очередь'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 1'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 1'
+
+  arena_2:
+    material: PAPER
+    slot: 3
+    model_data: 7001
+    display_name: '&dМитапы-2'
+    lore:
+      - '&7Winter'
+      - '&eЛКМ &7— войти в очередь'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 2'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 2'
+
+  arena_3:
+    material: PAPER
+    slot: 4
+    model_data: 7001
+    display_name: '&dМитапы-3'
+    lore:
+      - '&7Cherry'
+      - '&eЛКМ &7— войти в очередь'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 3'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 3'
+
+  arena_4:
+    material: PAPER
+    slot: 5
+    model_data: 7001
+    display_name: '&dМитапы-4'
+    lore:
+      - '&7Meadow'
+      - '&eЛКМ &7— войти в очередь'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 4'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 4'
+
+  arena_5:
+    material: PAPER
+    slot: 6
+    model_data: 7001
+    display_name: '&dМитапы-5'
+    lore:
+      - '&7Pale Forest'
+      - '&eЛКМ &7— войти в очередь'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 5'
+    right_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[close]'
+      - '[player] meetup join 5'

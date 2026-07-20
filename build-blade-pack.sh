@@ -853,6 +853,29 @@ paper_path.write_text(json.dumps(paper, indent=4) + "\n")
 print("cosmetics paper CMDs 7003-7006", flush=True)
 PY
 
+# Hide "Inventory" / "Инвентарь" above player slots in chest-style GUIs (DeluxeMenus + cosmetics).
+PACK_DIR="$PACK_DIR" python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+
+pack = Path(os.environ["PACK_DIR"])
+lang_dir = pack / "assets/minecraft/lang"
+lang_dir.mkdir(parents=True, exist_ok=True)
+
+def patch_lang(path: Path, defaults: dict) -> None:
+    data = {}
+    if path.is_file():
+        data = json.loads(path.read_text(encoding="utf-8"))
+    data.update(defaults)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+hide = {"container.inventory": ""}
+patch_lang(lang_dir / "en_us.json", hide)
+patch_lang(lang_dir / "ru_ru.json", hide)
+print("lang: container.inventory hidden (en_us + ru_ru)", flush=True)
+PY
+
 rm -f "$OUT_ZIP"
 (cd "$PACK_DIR" && zip -qr "$OUT_ZIP" .)
 
