@@ -695,19 +695,8 @@ COSMETICS_GUI_MAIN="${COSMETICS_GUI_MAIN:-/Users/boris/Downloads/cosmetics2 2.pn
 COSMETICS_GUI_HATS="${COSMETICS_GUI_HATS:-/Users/boris/Downloads/skins.png}"
 export PACK_DIR COSMETICS_SRC COSMETICS_GUI_MAIN COSMETICS_GUI_HATS ROOT
 
-# Keep vanilla screen dimming. Transparent inworld_menu_background fixes "black UI"
-# overlay on custom glyph menus (1.21+ tiles a dark texture over GUIs).
-GUI_TEX_SRC="$ROOT/resourcepack/assets/minecraft/textures/gui"
-if [[ -f "$GUI_TEX_SRC/inworld_menu_background.png" ]]; then
-  mkdir -p "$PACK_DIR/assets/minecraft/textures/gui"
-  cp -f "$GUI_TEX_SRC/inworld_menu_background.png" "$PACK_DIR/assets/minecraft/textures/gui/inworld_menu_background.png"
-  echo "packed transparent inworld_menu_background"
-fi
-if [[ -f "$GUI_TEX_SRC/container/generic_54.png" ]]; then
-  mkdir -p "$PACK_DIR/assets/minecraft/textures/gui/container"
-  cp -f "$GUI_TEX_SRC/container/generic_54.png" "$PACK_DIR/assets/minecraft/textures/gui/container/generic_54.png"
-  echo "packed cosmetics-friendly generic_54"
-fi
+# Keep vanilla Minecraft GUI textures for standard arena menus.
+# Custom glyph menus are tinted correctly by white titles now.
 
 python3 - <<'PY'
 import json, os, shutil
@@ -800,9 +789,34 @@ def add_gui_glyph(path: Path, name: str, codepoint: int, height: int = 256, asce
 
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_MAIN"]), "cosmetics_menu_gui", 0xE201, height=256, ascent=25)
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_hats_gui", 0xE202, height=256, ascent=16)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_swords_gui", 0xE203, height=256, ascent=16)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_titles_gui", 0xE204, height=256, ascent=16)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_title_colors_gui", 0xE205, height=256, ascent=16)
+add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_kill_effects_gui", 0xE206, height=256, ascent=16)
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
-# Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006)
+# Opt-in TTF fonts (NOT merged into default.json — use <font:mine|ten|miniten> explicitly)
+ttf_src = root / "resourcepack/assets/fonts"
+mc_font = pack / "assets/minecraft/font"
+mc_font.mkdir(parents=True, exist_ok=True)
+for ttf_name, size in (("mine", 10.0), ("ten", 11.5), ("miniten", 8.2)):
+    src_ttf = ttf_src / f"{ttf_name}.ttf"
+    if not src_ttf.is_file():
+        print(f"missing ttf font: {src_ttf}", flush=True)
+        continue
+    shutil.copy2(src_ttf, mc_font / f"{ttf_name}.ttf")
+    (mc_font / f"{ttf_name}.json").write_text(json.dumps({
+        "providers": [{
+            "type": "ttf",
+            "file": f"minecraft:{ttf_name}",
+            "shift": [0, 0],
+            "size": size,
+            "oversample": 4.0,
+        }]
+    }, indent=2) + "\n")
+    print(f"opt-in font minecraft:{ttf_name} (size={size})", flush=True)
+
+# Paper icons: hats hub (7003), prev(7004), next(7005), blank(7006), swords (7007), kill effects (7008)
 hub_tex = pack / "assets/blade/textures/item/hub"
 hub_model = pack / "assets/blade/models/item/hub"
 hub_tex.mkdir(parents=True, exist_ok=True)
@@ -828,6 +842,14 @@ prev_icon = src / "assets/atlantis_ui/textures/buttons/select_rounds/prev-page.p
 next_icon = src / "assets/atlantis_ui/textures/buttons/select_rounds/next-page.png"
 prev_meta = src / "assets/atlantis_ui/textures/buttons/select_rounds/prev-page.png.mcmeta"
 next_meta = src / "assets/atlantis_ui/textures/buttons/select_rounds/next-page.png.mcmeta"
+swords_icon = Path(os.environ.get(
+    "COSMETICS_SWORDS_ICON",
+    "/Users/boris/Downloads/weapons_icons/sword_r06_c03.png",
+))
+kill_effects_icon = Path(os.environ.get(
+    "COSMETICS_KILL_EFFECTS_ICON",
+    "/Users/boris/Downloads/Для пака/Донат.png",
+))
 
 new_entries = []
 if hats_icon.is_file():
@@ -843,6 +865,10 @@ if next_icon.is_file():
 # transparent 16x16 blank
 blank = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
 write_icon("cosmetics_blank", blank, 7006, new_entries)
+if swords_icon.is_file():
+    write_icon("cosmetics_swords", Image.open(swords_icon).convert("RGBA"), 7007, new_entries)
+if kill_effects_icon.is_file():
+    write_icon("cosmetics_kill_effects", Image.open(kill_effects_icon).convert("RGBA"), 7008, new_entries)
 
 # replace/add thresholds
 by_thr = {e["threshold"]: e for e in entries}
@@ -850,7 +876,191 @@ for e in new_entries:
     by_thr[e["threshold"]] = e
 paper["model"]["entries"] = sorted(by_thr.values(), key=lambda e: e["threshold"])
 paper_path.write_text(json.dumps(paper, indent=4) + "\n")
-print("cosmetics paper CMDs 7003-7006", flush=True)
+print("cosmetics paper CMDs 7003-7008", flush=True)
+
+# --- Villager staff models from legendary tools pack ---
+IA_WAND = {
+    "69": "civilization:item/tools/villager_wand/normal/default",
+    "68": "civilization:item/tools/villager_wand/bifrost/default",
+    "67": "civilization:item/tools/villager_wand/bifrost/anim_0",
+    "66": "civilization:item/tools/villager_wand/bifrost/anim_1",
+}
+wand_tex_src = src / "assets/legendary/textures/item/tools/villager_wand"
+wand_tex_dst = pack / "assets/civilization/textures/item/tools/villager_wand"
+wand_model_src = src / "assets/legendary/models/item/tools/villager_wand"
+wand_model_dst = pack / "assets/civilization/models/item/tools/villager_wand"
+if wand_tex_src.is_dir() and wand_model_src.is_dir():
+    if wand_tex_dst.exists():
+        shutil.rmtree(wand_tex_dst)
+    shutil.copytree(wand_tex_src, wand_tex_dst, ignore=shutil.ignore_patterns(".DS_Store"))
+    if wand_model_dst.exists():
+        shutil.rmtree(wand_model_dst)
+    wand_model_dst.mkdir(parents=True, exist_ok=True)
+    for path in wand_model_src.glob("*.json"):
+        data = json.loads(path.read_text())
+        textures = data.get("textures")
+        if isinstance(textures, dict):
+            for k, v in list(textures.items()):
+                if isinstance(v, str) and v.startswith("ia:"):
+                    num = v.split(":", 1)[1]
+                    if num in IA_WAND:
+                        textures[k] = IA_WAND[num]
+        (wand_model_dst / path.name).write_text(json.dumps(data, indent=2) + "\n")
+    # Main iron_axe CMD 3 model points here:
+    flat = pack / "assets/civilization/models/item/tools/villager_wand.json"
+    normal = wand_model_dst / "normal.json"
+    if normal.is_file():
+        flat.write_text(normal.read_text())
+    print("updated villager staff models from legendary pack", flush=True)
+
+# --- Kill effects (owlsstudio models + sounds on leather_horse_armor) ---
+IA_TO_OWL = {
+    "482": "owlsstudio:entity/eaten_by_pac_man",
+    "483": "owlsstudio:entity/body_grey",
+    "484": "owlsstudio:entity/sand_suck",
+    "485": "owlsstudio:entity/tentacle_grasp",
+    "486": "owlsstudio:entity/tertis_smash",
+    "487": "owlsstudio:entity/hellfire_burn",
+    "488": "owlsstudio:entity/among_us_stab",
+    "489": "owlsstudio:entity/knockout_k_o",
+    "490": "owlsstudio:entity/eaten_by_carnivore_plant",
+    "491": "owlsstudio:entity/eaten_by_shark",
+    "492": "owlsstudio:entity/angel_wings_to_heaven",
+    "493": "owlsstudio:entity/angelic_yellowaura",
+    "494": "owlsstudio:entity/archangel_kfx",
+}
+KILL_EFFECTS = {
+    "angelic_bless", "arcade_gameover", "hellfire_burn", "imposter_instinct",
+    "kfx_divine_execution", "knockout_ko", "plantfood_feasting", "quicksand",
+    "shark_attack", "tentacle_grasp", "tertis_smash",
+}
+
+owl_src = src / "assets/owlsstudio"
+owl_dst = pack / "assets/owlsstudio"
+if owl_src.is_dir():
+    # textures
+    tex_src = owl_src / "textures"
+    tex_dst = owl_dst / "textures"
+    if tex_src.is_dir():
+        if tex_dst.exists():
+            shutil.rmtree(tex_dst)
+        shutil.copytree(tex_src, tex_dst, ignore=shutil.ignore_patterns(".DS_Store"))
+    # models with ia:N remapped
+    models_src = owl_src / "models"
+    models_dst = owl_dst / "models"
+    if models_src.is_dir():
+        if models_dst.exists():
+            shutil.rmtree(models_dst)
+        for path in models_src.rglob("*.json"):
+            rel = path.relative_to(models_src)
+            out = models_dst / rel
+            out.parent.mkdir(parents=True, exist_ok=True)
+            data = json.loads(path.read_text())
+            textures = data.get("textures")
+            if isinstance(textures, dict):
+                for k, v in list(textures.items()):
+                    if isinstance(v, str) and v.startswith("ia:"):
+                        num = v.split(":", 1)[1]
+                        if num in IA_TO_OWL:
+                            textures[k] = IA_TO_OWL[num]
+            out.write_text(json.dumps(data, indent=2) + "\n")
+    print("copied owlsstudio kill-effect assets", flush=True)
+
+# Merge kill-effect entries into leather_horse_armor items model
+armor_src = src / "ia_overlay_1_21_6_plus/assets/minecraft/items/leather_horse_armor.json"
+armor_dst = pack / "assets/minecraft/items/leather_horse_armor.json"
+if armor_src.is_file():
+    incoming = json.loads(armor_src.read_text())
+
+    def collect_kill_entries(obj, acc):
+        if isinstance(obj, dict):
+            if "threshold" in obj and "model" in obj:
+                model = obj["model"]
+                mid = model.get("model") if isinstance(model, dict) else model
+                if isinstance(mid, str) and mid.startswith("owlsstudio:"):
+                    effect = mid.split(":", 1)[1].split("/", 1)[0]
+                    if effect in KILL_EFFECTS:
+                        acc.append(obj)
+            for v in obj.values():
+                collect_kill_entries(v, acc)
+        elif isinstance(obj, list):
+            for v in obj:
+                collect_kill_entries(v, acc)
+
+    kill_entries = []
+    collect_kill_entries(incoming, kill_entries)
+    if armor_dst.is_file():
+        current = json.loads(armor_dst.read_text())
+    else:
+        current = {
+            "model": {
+                "type": "range_dispatch",
+                "property": "custom_model_data",
+                "entries": [],
+                "fallback": {"type": "model", "model": "minecraft:item/leather_horse_armor"},
+            },
+            "oversized_in_gui": True,
+        }
+    cur_model = current.setdefault("model", {})
+    if cur_model.get("type") != "range_dispatch":
+        cur_model = {
+            "type": "range_dispatch",
+            "property": "custom_model_data",
+            "entries": [],
+            "fallback": cur_model if cur_model else {"type": "model", "model": "minecraft:item/leather_horse_armor"},
+        }
+        current["model"] = cur_model
+    by_thr = {e["threshold"]: e for e in cur_model.get("entries", []) if "threshold" in e}
+    for e in kill_entries:
+        by_thr[e["threshold"]] = e
+    cur_model["entries"] = sorted(by_thr.values(), key=lambda e: e["threshold"])
+    current["oversized_in_gui"] = True
+    armor_dst.parent.mkdir(parents=True, exist_ok=True)
+    armor_dst.write_text(json.dumps(current, indent=2) + "\n")
+    print(f"leather_horse_armor kill FX entries: {len(kill_entries)}", flush=True)
+
+# Kill effect sounds
+sounds_src_dir = src / "assets/minecraft/sounds/kill_fx"
+sounds_dst_dir = pack / "assets/minecraft/sounds/kill_fx"
+if sounds_src_dir.is_dir():
+    if sounds_dst_dir.exists():
+        shutil.rmtree(sounds_dst_dir)
+    shutil.copytree(sounds_src_dir, sounds_dst_dir, ignore=shutil.ignore_patterns(".DS_Store"))
+    sounds_json_src = src / "assets/minecraft/sounds.json"
+    sounds_json_dst = pack / "assets/minecraft/sounds.json"
+    incoming_sounds = {}
+    if sounds_json_src.is_file():
+        incoming_sounds = json.loads(sounds_json_src.read_text())
+    existing_sounds = {}
+    if sounds_json_dst.is_file():
+        existing_sounds = json.loads(sounds_json_dst.read_text())
+    for key, value in incoming_sounds.items():
+        if key.startswith("kill_fx."):
+            existing_sounds[key] = value
+    sounds_json_dst.parent.mkdir(parents=True, exist_ok=True)
+    sounds_json_dst.write_text(json.dumps(existing_sounds, indent=2) + "\n")
+    print(f"merged kill_fx sounds: {sum(1 for k in existing_sounds if k.startswith('kill_fx.'))}", flush=True)
+
+# Merge Atlantis sword skins (CMD 7001-7254) into diamond/netherite swords.
+# Keep existing BladeWeapons legendary entries (low CMDs).
+ia_diamond = src / "ia_overlay_1_21_6_plus/assets/minecraft/items/diamond_sword.json"
+for sword_name in ("diamond_sword", "netherite_sword"):
+    sword_path = pack / f"assets/minecraft/items/{sword_name}.json"
+    if not sword_path.is_file() or not ia_diamond.is_file():
+        continue
+    current = json.loads(sword_path.read_text())
+    ia = json.loads(ia_diamond.read_text())
+    cur_entries = current.setdefault("model", {}).setdefault("entries", [])
+    atl = [
+        e for e in ia.get("model", {}).get("entries", [])
+        if "atlantis_cosmetics:item/" in e.get("model", {}).get("model", "")
+    ]
+    by_thr = {e["threshold"]: e for e in cur_entries}
+    for e in atl:
+        by_thr[e["threshold"]] = e
+    current["model"]["entries"] = sorted(by_thr.values(), key=lambda e: e["threshold"])
+    sword_path.write_text(json.dumps(current, indent=4) + "\n")
+    print(f"{sword_name}: merged {len(atl)} atlantis sword skins", flush=True)
 PY
 
 # Hide "Inventory" / "Инвентарь" above player slots in chest-style GUIs (DeluxeMenus + cosmetics).
