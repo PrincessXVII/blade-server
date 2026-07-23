@@ -442,6 +442,47 @@ print("meetups sounds: countdown/go/victory", flush=True)
 PY
 fi
 
+FFA_SOUNDS="${FFA_SOUNDS_DIR:-$ROOT/resourcepack/assets/ffa-sounds}"
+if [[ -d "$FFA_SOUNDS" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/ffa"
+  cp -f "$FFA_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/ffa/" 2>/dev/null || true
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+pack_dir = Path(os.environ["PACK_DIR"])
+sounds_path = pack_dir / "assets/minecraft/sounds.json"
+data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+data["custom.ffa.countdown"] = {"sounds": ["custom/ffa/countdown"]}
+data["custom.ffa.orb"] = {"sounds": ["custom/ffa/orb"]}
+data["custom.ffa.legendary"] = {"sounds": ["custom/ffa/legendary"]}
+data["custom.ffa.fail"] = {"sounds": ["custom/ffa/fail"]}
+sounds_path.parent.mkdir(parents=True, exist_ok=True)
+sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+print("ffa sounds: countdown/orb/legendary/fail", flush=True)
+PY
+fi
+
+UI_SOUNDS="${UI_SOUNDS_DIR:-$ROOT/resourcepack/assets/ui-sounds}"
+if [[ -d "$UI_SOUNDS" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/ui"
+  cp -f "$UI_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/ui/" 2>/dev/null || true
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+pack_dir = Path(os.environ["PACK_DIR"])
+sounds_path = pack_dir / "assets/minecraft/sounds.json"
+data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+data["custom.ui.click"] = {"sounds": ["custom/ui/click"]}
+sounds_path.parent.mkdir(parents=True, exist_ok=True)
+sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+print("ui sounds: click", flush=True)
+PY
+fi
+
 BR_SOUNDS="${BR_SOUNDS_DIR:-$ROOT/resourcepack/assets/br-sounds}"
 if [[ -d "$BR_SOUNDS" ]]; then
   mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/br"
@@ -808,7 +849,7 @@ for ttf_name, size in (("mine", 10.0), ("ten", 11.5), ("miniten", 8.2)):
     (mc_font / f"{ttf_name}.json").write_text(json.dumps({
         "providers": [{
             "type": "ttf",
-            "file": f"minecraft:{ttf_name}",
+            "file": f"minecraft:{ttf_name}.ttf",
             "shift": [0, 0],
             "size": size,
             "oversample": 4.0,
