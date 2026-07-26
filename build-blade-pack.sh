@@ -730,6 +730,49 @@ PY
   echo "BR class select: paper CMD 9201"
 fi
 
+# BR / Hoplite smelter's pickaxe (iron_pickaxe CMD 1 → civilization model)
+SMELTERS_TEX="${SMELTERS_PICKAXE_TEXTURE:-$ROOT/resourcepack/assets/br-items/smelters_pickaxe.png}"
+SMELTERS_META="${SMELTERS_TEX}.mcmeta"
+if [[ -f "$SMELTERS_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/civilization/textures/item/tools" \
+           "$PACK_DIR/assets/civilization/models/item/tools" \
+           "$PACK_DIR/assets/minecraft/items"
+  cp -f "$SMELTERS_TEX" "$PACK_DIR/assets/civilization/textures/item/tools/smelters_pickaxe.png"
+  if [[ -f "$SMELTERS_META" ]]; then
+    cp -f "$SMELTERS_META" "$PACK_DIR/assets/civilization/textures/item/tools/smelters_pickaxe.png.mcmeta"
+  fi
+  cat > "$PACK_DIR/assets/civilization/models/item/tools/smelters_pickaxe.json" <<'EOF'
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "civilization:item/tools/smelters_pickaxe"
+  }
+}
+EOF
+  cat > "$PACK_DIR/assets/minecraft/items/iron_pickaxe.json" <<'EOF'
+{
+    "model": {
+        "type": "range_dispatch",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "model",
+            "model": "minecraft:item/iron_pickaxe"
+        },
+        "entries": [
+            {
+                "threshold": 1,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/smelters_pickaxe"
+                }
+            }
+        ]
+    }
+}
+EOF
+  echo "smelters pickaxe: iron_pickaxe CMD 1"
+fi
+
 # --- Atlantis cosmetics (hats) + GUI glyphs / icons ---
 COSMETICS_SRC="${COSMETICS_SRC:-/Users/boris/Downloads/372428ec865d2f8d6f5fce662fbd1ec3035b2ced.zip_Decompiler.com}"
 COSMETICS_GUI_MAIN="${COSMETICS_GUI_MAIN:-/Users/boris/Downloads/cosmetics2 2.png}"
@@ -834,6 +877,14 @@ add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_swords_gui", 0x
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_titles_gui", 0xE204, height=256, ascent=16)
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_title_colors_gui", 0xE205, height=256, ascent=16)
 add_gui_glyph(Path(os.environ["COSMETICS_GUI_HATS"]), "cosmetics_kill_effects_gui", 0xE206, height=256, ascent=16)
+
+# BR crafts / kit GUIs (ascent 21 aligns parchment slots; kits use 16 like cosmetics)
+br_ui = root / "resourcepack/assets/br-ui"
+# ascent 18 = previous 21 shifted 3px down
+add_gui_glyph(br_ui / "crafts_legendary.png", "br_crafts_legendary_gui", 0xE207, height=256, ascent=18)
+add_gui_glyph(br_ui / "crafts_basic.png", "br_crafts_basic_gui", 0xE208, height=256, ascent=18)
+add_gui_glyph(br_ui / "crafts_recipe.png", "br_crafts_recipe_gui", 0xE209, height=256, ascent=36)
+add_gui_glyph(br_ui / "kits_menu.png", "br_kits_menu_gui", 0xE20A, height=256, ascent=16)
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
 # Opt-in TTF fonts (NOT merged into default.json — use <font:mine|ten|miniten> explicitly)
