@@ -592,11 +592,8 @@ def extract_cmd_overrides(model_json: dict) -> list[tuple[int, str]]:
     return uniq
 
 def fallback_model(item_id: str, model_json: dict) -> str:
-    parent = model_json.get("parent")
-    if isinstance(parent, str) and parent.startswith("minecraft:item/"):
-        return parent
-    if isinstance(parent, str) and parent.startswith("item/"):
-        return "minecraft:" + parent
+    # ALWAYS the vanilla item model — parent is often item/generated or item/handheld
+    # without textures, which renders as invisible/air for CMD=0 items.
     return f"minecraft:item/{item_id}"
 
 converted = 0
@@ -621,8 +618,8 @@ for model_path in sorted(models.glob("*.json")):
             model = cur.get("model") or {}
             if model.get("type") == "range_dispatch" and model.get("property") == "custom_model_data":
                 existing_entries = list(model.get("entries") or [])
-                if isinstance(model.get("fallback"), dict):
-                    existing_fallback = model["fallback"]
+                # Prefer vanilla item fallback even if an older broken parent was saved.
+                existing_fallback = {"type": "model", "model": f"minecraft:item/{item_id}"}
         except Exception:
             pass
     by_threshold = {}
@@ -653,7 +650,49 @@ for model_path in sorted(models.glob("*.json")):
     converted += 1
 
 print(f"items range_dispatch generated/merged for {converted} item(s)", flush=True)
+
+# Force vanilla item fallbacks everywhere (main + overlays) — parent models render as air.
+fixed = 0
+for items_json in pack.rglob("items/*.json"):
+    if "minecraft/items" not in str(items_json).replace("\\", "/"):
+        continue
+    try:
+        data = json.loads(items_json.read_text(encoding="utf-8"))
+    except Exception:
+        continue
+    model = data.get("model")
+    if not isinstance(model, dict) or model.get("type") != "range_dispatch":
+        continue
+    item_id = items_json.stem
+    want = f"minecraft:item/{item_id}"
+    fb = model.get("fallback") or {}
+    cur = fb.get("model") if isinstance(fb, dict) else None
+    if cur in (None, "minecraft:item/generated", "minecraft:item/handheld", "item/generated", "item/handheld", f"item/{item_id}"):
+        model["fallback"] = {"type": "model", "model": want}
+        items_json.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        fixed += 1
+print(f"forced vanilla item fallbacks: {fixed}", flush=True)
 PY
+
+# Lobby welcome sound (levelup.mp3 → vorbis ogg)
+LOBBY_WELCOME_OGG="$ROOT/resourcepack/assets/blade/sounds/lobby_welcome.ogg"
+if [[ -f "$LOBBY_WELCOME_OGG" ]]; then
+  mkdir -p "$PACK_DIR/assets/blade/sounds"
+  cp -f "$LOBBY_WELCOME_OGG" "$PACK_DIR/assets/blade/sounds/lobby_welcome.ogg"
+  export PACK_DIR
+  python3 - <<'PY'
+import json, os
+from pathlib import Path
+pack = Path(os.environ["PACK_DIR"])
+blade_sounds = pack / "assets/blade/sounds.json"
+blade = json.loads(blade_sounds.read_text()) if blade_sounds.is_file() else {}
+# Event blade:lobby_welcome → assets/blade/sounds.json key "lobby_welcome"
+blade["lobby_welcome"] = {"sounds": ["lobby_welcome"]}
+blade_sounds.parent.mkdir(parents=True, exist_ok=True)
+blade_sounds.write_text(json.dumps(blade, ensure_ascii=False, indent=2) + "\n")
+print("blade:lobby_welcome sound registered", flush=True)
+PY
+fi
 
 # Blood Mace legendary texture (CMD 1 on mace)
 BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"
@@ -1266,6 +1305,16 @@ for sword_name in ("diamond_sword", "netherite_sword"):
     sword_path.write_text(json.dumps(current, indent=4) + "\n")
     print(f"{sword_name}: merged {len(atl)} atlantis sword skins", flush=True)
 PY
+
+# Merge BetterModel-generated beam assets (villager wand FX).
+BM_BUILD="${BETTERMODEL_BUILD_DIR:-$ROOT/resourcepack/bettermodel-build}"
+if [[ -d "$BM_BUILD/assets/bettermodel" ]]; then
+  mkdir -p "$PACK_DIR/assets"
+  cp -a "$BM_BUILD/assets/bettermodel" "$PACK_DIR/assets/"
+  echo "Merged BetterModel assets from $BM_BUILD"
+else
+  echo "Warning: BetterModel build assets missing: $BM_BUILD" >&2
+fi
 
 # Hide "Inventory" / "Инвентарь" above player slots in chest-style GUIs (DeluxeMenus + cosmetics).
 PACK_DIR="$PACK_DIR" python3 - <<'PY'

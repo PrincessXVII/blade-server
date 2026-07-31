@@ -1,0 +1,1 @@
+{"model":{"type":"range_dispatch","property":"custom_model_data","fallback":{"type":"empty"},"entries":[{"threshold":1,"model":{"type":"model","model":"bettermodel:modern_item/villager_wand_beam_beam_1","tints":[{"type":"custom_model_data","default":16777215}]}}]}}
