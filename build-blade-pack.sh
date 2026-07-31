@@ -1316,6 +1316,83 @@ else
   echo "Warning: BetterModel build assets missing: $BM_BUILD" >&2
 fi
 
+# Merge Oraxen-generated pack (items use oraxen: namespace / item_model).
+# Skip Oraxen lang overrides (they blank vanilla join strings). Merge fonts/atlases/sounds.
+ORAXEN_BUILD="${ORAXEN_BUILD_DIR:-$ROOT/resourcepack/oraxen-build}"
+if [[ -d "$ORAXEN_BUILD/assets" ]]; then
+  PACK_DIR="$PACK_DIR" ORAXEN_BUILD="$ORAXEN_BUILD" python3 - <<'PY'
+import json
+import os
+import shutil
+from pathlib import Path
+
+pack = Path(os.environ["PACK_DIR"])
+ox = Path(os.environ["ORAXEN_BUILD"]) / "assets"
+copied = 0
+skipped_lang = 0
+
+def merge_json_list(dst: Path, src: Path, key: str) -> None:
+    incoming = json.loads(src.read_text(encoding="utf-8"))
+    if not dst.is_file():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        dst.write_text(json.dumps(incoming, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        return
+    current = json.loads(dst.read_text(encoding="utf-8"))
+    cur_list = current.setdefault(key, [])
+    # Dedupe by JSON dump of each entry
+    seen = {json.dumps(e, sort_keys=True) for e in cur_list}
+    added = 0
+    for e in incoming.get(key, []):
+        sig = json.dumps(e, sort_keys=True)
+        if sig in seen:
+            continue
+        cur_list.append(e)
+        seen.add(sig)
+        added += 1
+    dst.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"merged {dst.relative_to(pack)} +{added} {key}", flush=True)
+
+def merge_sounds(dst: Path, src: Path) -> None:
+    incoming = json.loads(src.read_text(encoding="utf-8"))
+    if not dst.is_file():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        dst.write_text(json.dumps(incoming, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        return
+    current = json.loads(dst.read_text(encoding="utf-8"))
+    for k, v in incoming.items():
+        current[k] = v
+    dst.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"merged sounds.json keys={len(incoming)}", flush=True)
+
+for src in ox.rglob("*"):
+    if not src.is_file():
+        continue
+    rel = src.relative_to(ox)
+    # Never take Oraxen lang — blanks connect.joining / menu strings.
+    if rel.parts[:2] == ("minecraft", "lang"):
+        skipped_lang += 1
+        continue
+    dst = pack / "assets" / rel
+    # Smart merges
+    if rel.as_posix() == "minecraft/font/default.json":
+        merge_json_list(dst, src, "providers")
+        continue
+    if rel.as_posix() == "minecraft/atlases/blocks.json":
+        merge_json_list(dst, src, "sources")
+        continue
+    if rel.as_posix() == "minecraft/sounds.json":
+        merge_sounds(dst, src)
+        continue
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+    copied += 1
+
+print(f"Merged Oraxen assets: copied={copied} skipped_lang={skipped_lang}", flush=True)
+PY
+else
+  echo "Warning: Oraxen build assets missing: $ORAXEN_BUILD" >&2
+fi
+
 # Hide "Inventory" / "Инвентарь" above player slots in chest-style GUIs (DeluxeMenus + cosmetics).
 PACK_DIR="$PACK_DIR" python3 - <<'PY'
 import json
