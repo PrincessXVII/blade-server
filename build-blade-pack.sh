@@ -1364,6 +1364,8 @@ def merge_sounds(dst: Path, src: Path) -> None:
     dst.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"merged sounds.json keys={len(incoming)}", flush=True)
 
+skipped_blocks = 0
+skipped_font = 0
 for src in ox.rglob("*"):
     if not src.is_file():
         continue
@@ -1372,11 +1374,16 @@ for src in ox.rglob("*"):
     if rel.parts[:2] == ("minecraft", "lang"):
         skipped_lang += 1
         continue
+    # Never take Oraxen noteblock/stringblock blockstates (copper slabs/trapdoors → white mush).
+    if len(rel.parts) >= 2 and rel.parts[0] == "minecraft" and rel.parts[1] == "blockstates":
+        skipped_blocks += 1
+        continue
+    # Never merge Oraxen into minecraft/font/default.json (breaks shadows / gradient glyphs).
+    if rel.as_posix() == "minecraft/font/default.json":
+        skipped_font += 1
+        continue
     dst = pack / "assets" / rel
     # Smart merges
-    if rel.as_posix() == "minecraft/font/default.json":
-        merge_json_list(dst, src, "providers")
-        continue
     if rel.as_posix() == "minecraft/atlases/blocks.json":
         merge_json_list(dst, src, "sources")
         continue
@@ -1387,7 +1394,24 @@ for src in ox.rglob("*"):
     shutil.copy2(src, dst)
     copied += 1
 
-print(f"Merged Oraxen assets: copied={copied} skipped_lang={skipped_lang}", flush=True)
+# Strip any previously merged Oraxen copper/crystalmush blockstate overrides.
+bs = pack / "assets/minecraft/blockstates"
+removed_bs = 0
+if bs.is_dir():
+    for path in list(bs.glob("*.json")):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if "crystalmush" in text or "oraxen:" in text or "default/caveblock" in text:
+            path.unlink(missing_ok=True)
+            removed_bs += 1
+
+print(
+    f"Merged Oraxen assets: copied={copied} skipped_lang={skipped_lang} "
+    f"skipped_blockstates={skipped_blocks} skipped_font={skipped_font} removed_bs={removed_bs}",
+    flush=True,
+)
 PY
 else
   echo "Warning: Oraxen build assets missing: $ORAXEN_BUILD" >&2
