@@ -1382,6 +1382,10 @@ for src in ox.rglob("*"):
     if rel.as_posix() == "minecraft/font/default.json":
         skipped_font += 1
         continue
+    # Never take custom core text shaders (break shadows / gradient letters).
+    if len(rel.parts) >= 2 and rel.parts[0] == "minecraft" and rel.parts[1] == "shaders":
+        skipped_blocks += 1
+        continue
     dst = pack / "assets" / rel
     # Smart merges
     if rel.as_posix() == "minecraft/atlases/blocks.json":
@@ -1406,6 +1410,11 @@ if bs.is_dir():
         if "crystalmush" in text or "oraxen:" in text or "default/caveblock" in text:
             path.unlink(missing_ok=True)
             removed_bs += 1
+
+shaders_dir = pack / "assets/minecraft/shaders"
+if shaders_dir.exists():
+    shutil.rmtree(shaders_dir)
+    print("removed assets/minecraft/shaders", flush=True)
 
 print(
     f"Merged Oraxen assets: copied={copied} skipped_lang={skipped_lang} "
