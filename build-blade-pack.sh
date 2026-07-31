@@ -12,14 +12,18 @@ SMP_TITLE="${SMP_TITLE_IMAGE:-$ROOT/resourcepack/assets/smp.png}"
 FFA_TITLE="${FFA_TITLE_IMAGE:-$ROOT/resourcepack/assets/ffa_title.png}"
 EVENTS_TITLE="${EVENTS_TITLE_IMAGE:-$ROOT/resourcepack/assets/events_title.png}"
 HUB_ASSETS="${HUB_ASSETS_DIR:-$ROOT/resourcepack/assets/hub}"
-DEMORA_ZIP="${DEMORA_RP_ZIP:-$ROOT/resourcepack/demora/demoraRP-6.2.zip}"
+HOPLITE_ZIP="${HOPLITE_RP_ZIP:-$ROOT/resourcepack/hoplite/hopliteRP-8.3.2.zip}"
+# Legacy alias: DEMORA_RP_ZIP still accepted if HOPLITE_RP_ZIP unset and pointing at Hoplite zip.
+if [[ -n "${DEMORA_RP_ZIP:-}" && ! -f "$HOPLITE_ZIP" ]]; then
+  HOPLITE_ZIP="$DEMORA_RP_ZIP"
+fi
 RANK_CHAR_BASE=0xE100
 
 rm -rf "$PACK_DIR"
 mkdir -p "$(dirname "$OUT_ZIP")"
 
-if [[ ! -f "$DEMORA_ZIP" ]]; then
-  echo "Demora resource pack not found: $DEMORA_ZIP" >&2
+if [[ ! -f "$HOPLITE_ZIP" ]]; then
+  echo "Hoplite resource pack not found: $HOPLITE_ZIP" >&2
   exit 1
 fi
 if [[ ! -d "$DONATES" ]]; then
@@ -50,7 +54,8 @@ if [[ ! -f "$EVENTS_TITLE" ]]; then
   echo "Events title image not found: $EVENTS_TITLE" >&2
   exit 1
 fi
-unzip -q -o "$DEMORA_ZIP" -d "$PACK_DIR"
+echo "Unpacking Hoplite RP base: $HOPLITE_ZIP"
+unzip -q -o "$HOPLITE_ZIP" -d "$PACK_DIR"
 
 # Blade pack icon (MOTD logo). Strip ICC/Display P3 — Minecraft can hang on exotic PNG profiles.
 PACK_ICON="${PACK_ICON:-$ROOT/plugins/BetterMOTD/icons/logoblademinecarft.png}"
@@ -539,8 +544,115 @@ pack["pack_format"] = 75
 pack["min_format"] = 34
 pack["max_format"] = 99
 pack.pop("supported_formats", None)
+# Ensure 1.21.4+ item model overlay is actually applied (Hoplite ships CMD overrides
+# in models/item; 1.21.4+ needs assets/minecraft/items or a declared overlay).
+overlays = data.setdefault("overlays", {})
+entries = overlays.setdefault("entries", [])
+if not any(e.get("directory") == "overlay_1_21_4" for e in entries if isinstance(e, dict)):
+    entries.append({
+        "formats": {"min_inclusive": 46, "max_inclusive": 99},
+        "directory": "overlay_1_21_4",
+    })
 meta.write_text(json.dumps(data, indent=2) + "\n")
-print("pack.mcmeta bust:", pack["description"], "format=", pack["pack_format"], flush=True)
+print("pack.mcmeta bust:", pack["description"], "format=", pack["pack_format"], "overlays=", len(entries), flush=True)
+PY
+
+# Promote legacy custom_model_data overrides → 1.21.4+ items/*.json range_dispatch
+# (without this, legendary weapons render as vanilla tools on 1.21.4+).
+PACK_DIR="$PACK_DIR" python3 - <<'PY'
+import json, os, re
+from pathlib import Path
+
+pack = Path(os.environ["PACK_DIR"])
+models = pack / "assets/minecraft/models/item"
+items_dir = pack / "assets/minecraft/items"
+items_dir.mkdir(parents=True, exist_ok=True)
+
+def extract_cmd_overrides(model_json: dict) -> list[tuple[int, str]]:
+    out = []
+    for entry in model_json.get("overrides") or []:
+        pred = entry.get("predicate") or {}
+        if "custom_model_data" not in pred:
+            continue
+        try:
+            cmd = int(pred["custom_model_data"])
+        except (TypeError, ValueError):
+            continue
+        model = entry.get("model")
+        if isinstance(model, str) and model:
+            out.append((cmd, model))
+    # stable unique by cmd (first wins)
+    seen = set()
+    uniq = []
+    for cmd, model in sorted(out, key=lambda t: t[0]):
+        if cmd in seen:
+            continue
+        seen.add(cmd)
+        uniq.append((cmd, model))
+    return uniq
+
+def fallback_model(item_id: str, model_json: dict) -> str:
+    parent = model_json.get("parent")
+    if isinstance(parent, str) and parent.startswith("minecraft:item/"):
+        return parent
+    if isinstance(parent, str) and parent.startswith("item/"):
+        return "minecraft:" + parent
+    return f"minecraft:item/{item_id}"
+
+converted = 0
+for model_path in sorted(models.glob("*.json")):
+    item_id = model_path.stem
+    try:
+        data = json.loads(model_path.read_text(encoding="utf-8"))
+    except Exception as ex:
+        print(f"skip bad model {model_path.name}: {ex}", flush=True)
+        continue
+    overrides = extract_cmd_overrides(data)
+    if not overrides:
+        continue
+    out_path = items_dir / f"{item_id}.json"
+    # Keep hand-authored item defs that already have non-empty range_dispatch entries
+    # (blood mace / hub paper / totems) — merge CMD thresholds from overrides.
+    existing_entries = []
+    existing_fallback = {"type": "model", "model": fallback_model(item_id, data)}
+    if out_path.is_file():
+        try:
+            cur = json.loads(out_path.read_text(encoding="utf-8"))
+            model = cur.get("model") or {}
+            if model.get("type") == "range_dispatch" and model.get("property") == "custom_model_data":
+                existing_entries = list(model.get("entries") or [])
+                if isinstance(model.get("fallback"), dict):
+                    existing_fallback = model["fallback"]
+        except Exception:
+            pass
+    by_threshold = {}
+    for e in existing_entries:
+        th = e.get("threshold")
+        if th is not None:
+            by_threshold[int(th)] = e
+    for cmd, model_name in overrides:
+        # normalize minecraft-relative paths
+        if model_name.startswith("item/") or model_name.startswith("vred/") or model_name.startswith("civilization:"):
+            model_ref = model_name if ":" in model_name else f"minecraft:{model_name}"
+        else:
+            model_ref = model_name if ":" in model_name else f"minecraft:item/{model_name}"
+        by_threshold[cmd] = {
+            "threshold": cmd,
+            "model": {"type": "model", "model": model_ref},
+        }
+    entries = [by_threshold[k] for k in sorted(by_threshold)]
+    payload = {
+        "model": {
+            "type": "range_dispatch",
+            "property": "custom_model_data",
+            "fallback": existing_fallback,
+            "entries": entries,
+        }
+    }
+    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    converted += 1
+
+print(f"items range_dispatch generated/merged for {converted} item(s)", flush=True)
 PY
 
 # Blood Mace legendary texture (CMD 1 on mace)
