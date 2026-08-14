@@ -80,23 +80,11 @@ public final class BladeCosmeticsPlugin extends JavaPlugin {
         cageCatalog = CageCatalog.load(this);
         repository = new CosmeticsRepository(this);
         repository.open();
-        List<Integer> pricePool = getConfig().getIntegerList("orb-price-pool");
-        List<Integer> titlePricePool = getConfig().getIntegerList("title-orb-price-pool");
-        if (titlePricePool == null || titlePricePool.isEmpty()) {
-            titlePricePool = pricePool;
-        }
-        List<Integer> titleColorPricePool = getConfig().getIntegerList("title-color-orb-price-pool");
-        if (titleColorPricePool == null || titleColorPricePool.isEmpty()) {
-            titleColorPricePool = pricePool;
-        }
-        List<Integer> killEffectPricePool = getConfig().getIntegerList("kill-effect-orb-price-pool");
-        if (killEffectPricePool == null || killEffectPricePool.isEmpty()) {
-            killEffectPricePool = pricePool;
-        }
-        List<Integer> tagPricePool = getConfig().getIntegerList("tag-orb-price-pool");
-        if (tagPricePool == null || tagPricePool.isEmpty()) {
-            tagPricePool = pricePool;
-        }
+        List<Integer> pricePool = List.of(100, 125, 150, 200, 250, 350, 450, 500, 650, 750, 850);
+        List<Integer> titlePricePool = pricePool;
+        List<Integer> titleColorPricePool = pricePool;
+        List<Integer> killEffectPricePool = pricePool;
+        List<Integer> tagPricePool = pricePool;
         repository.seedHatPrices(hatCatalog, pricePool);
         repository.seedSwordPrices(swordCatalog, pricePool);
         repository.seedMacePrices(maceCatalog, pricePool);
