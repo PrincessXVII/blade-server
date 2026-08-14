@@ -1,0 +1,97 @@
+hub-slot: 1
+hub-world: lobby
+
+# Worlds where equipped hats are hidden completely.
+disabled-worlds:
+  - events
+  - film
+
+# World-name prefixes for hat armor rules.
+battle-royale-prefixes:
+  - br_
+meetup-prefixes:
+  - meetups_
+  - void
+ffa-worlds:
+  - ffa_kb
+  - ffa_smp
+
+orb-price-pool:
+  - 100
+  - 125
+  - 150
+  - 200
+  - 250
+  - 350
+  - 450
+  - 500
+  - 650
+  - 750
+  - 850
+
+title-orb-price-pool:
+  - 100
+  - 125
+  - 150
+  - 200
+  - 250
+  - 350
+  - 450
+  - 500
+  - 650
+  - 750
+  - 850
+
+title-color-orb-price-pool:
+  - 100
+  - 125
+  - 150
+  - 200
+  - 250
+  - 350
+  - 450
+  - 500
+  - 650
+  - 750
+  - 850
+
+kill-effect-orb-price-pool:
+  - 100
+  - 125
+  - 150
+  - 200
+  - 250
+  - 350
+  - 450
+  - 500
+  - 650
+  - 750
+  - 850
+
+tag-orb-price-pool:
+  - 100
+  - 125
+  - 150
+  - 200
+  - 250
+  - 350
+  - 450
+  - 500
+  - 650
+  - 750
+  - 850
+
+# Resource-pack custom model data (paper).
+items:
+  hub-cosmetics: 7003
+  prev-page: 7004
+  next-page: 7005
+  category-hats: 7003
+  blank: 7006
+  category-swords: 7007
+  category-kill-effects: 7008
+
+messages:
+  not-enough-orbs-1: "<gradient:#FF00C8:#DB00FF:#ff00c8>ᴋᴏᴄмᴇтиᴋᴀ</gradient> <color:#AAAAAA>»</color> <color:#F34545>Hᴇдᴏᴄтᴀтᴏчʜᴏ <color:#5FE2C5>ᴏᴘбᴏʙ</color> для пᴏᴋупᴋи.</color>"
+  not-enough-orbs-2: "<color:#AAAAAA>Пᴘиᴏбᴘᴇᴄти:</color> <u><color:#5FE2C5>скоро</color></u>"
+  site-url: "https://example.com"

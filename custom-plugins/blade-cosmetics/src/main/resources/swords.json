@@ -1,0 +1,2034 @@
+[
+  {
+    "id": "adventurers_staff/default",
+    "cmd": 7001,
+    "model": "atlantis_cosmetics:item/adventurers_staff/default",
+    "name": "Пламенный Молот",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "anemone/default",
+    "cmd": 7002,
+    "model": "atlantis_cosmetics:item/anemone/default",
+    "name": "Белый Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "arm_cannon/buccaneer",
+    "cmd": 7003,
+    "model": "atlantis_cosmetics:item/arm_cannon/buccaneer",
+    "name": "Небесный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "arm_cannon/bwb",
+    "cmd": 7004,
+    "model": "atlantis_cosmetics:item/arm_cannon/bwb",
+    "name": "Кобальтовый Молот",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "arm_cannon/chicken_ballistics",
+    "cmd": 7005,
+    "model": "atlantis_cosmetics:item/arm_cannon/chicken_ballistics",
+    "name": "Медный Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "arm_cast/default",
+    "cmd": 7006,
+    "model": "atlantis_cosmetics:item/arm_cast/default",
+    "name": "Золотой Скипетр",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "atomic_armor/default",
+    "cmd": 7007,
+    "model": "atlantis_cosmetics:item/atomic_armor/default",
+    "name": "Надир",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "banana/default",
+    "cmd": 7008,
+    "model": "atlantis_cosmetics:item/banana/default",
+    "name": "Дикий Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "baseball_bat/default",
+    "cmd": 7009,
+    "model": "atlantis_cosmetics:item/baseball_bat/default",
+    "name": "Пустынный Цеп",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "baseball_bat/spiked",
+    "cmd": 7010,
+    "model": "atlantis_cosmetics:item/baseball_bat/spiked",
+    "name": "Пепельный Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "battle_axe/default",
+    "cmd": 7011,
+    "model": "atlantis_cosmetics:item/battle_axe/default",
+    "name": "Яркий Игла",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "beam_sword/default",
+    "cmd": 7012,
+    "model": "atlantis_cosmetics:item/beam_sword/default",
+    "name": "Быстрый Булава",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "beam_sword/dual",
+    "cmd": 7013,
+    "model": "atlantis_cosmetics:item/beam_sword/dual",
+    "name": "Огненный Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "blockle_tea/default",
+    "cmd": 7014,
+    "model": "atlantis_cosmetics:item/blockle_tea/default",
+    "name": "Кобальтовый Трезубец",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "blowtorch/default",
+    "cmd": 7015,
+    "model": "atlantis_cosmetics:item/blowtorch/default",
+    "name": "Скрытый Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "bone/default",
+    "cmd": 7016,
+    "model": "atlantis_cosmetics:item/bone/default",
+    "name": "Морозный Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "book/default",
+    "cmd": 7017,
+    "model": "atlantis_cosmetics:item/book/default",
+    "name": "Сапфировый Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "book/spellbook",
+    "cmd": 7018,
+    "model": "atlantis_cosmetics:item/book/spellbook",
+    "name": "Радужный Резец",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "boombox/default",
+    "cmd": 7019,
+    "model": "atlantis_cosmetics:item/boombox/default",
+    "name": "Зелёный Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "bouquet/default",
+    "cmd": 7020,
+    "model": "atlantis_cosmetics:item/bouquet/default",
+    "name": "Обсидиановый Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "box_o_explosives/default",
+    "cmd": 7021,
+    "model": "atlantis_cosmetics:item/box_o_explosives/default",
+    "name": "Песчаный Клык",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "box_o_explosives/nuclear_meltdown",
+    "cmd": 7022,
+    "model": "atlantis_cosmetics:item/box_o_explosives/nuclear_meltdown",
+    "name": "Руна",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "boxing_glove/default",
+    "cmd": 7023,
+    "model": "atlantis_cosmetics:item/boxing_glove/default",
+    "name": "Новый Игла",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "briefcase/default",
+    "cmd": 7024,
+    "model": "atlantis_cosmetics:item/briefcase/default",
+    "name": "Небесный Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "briefcase/looter",
+    "cmd": 7025,
+    "model": "atlantis_cosmetics:item/briefcase/looter",
+    "name": "Пустынный Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "bubble_fist/default",
+    "cmd": 7026,
+    "model": "atlantis_cosmetics:item/bubble_fist/default",
+    "name": "Орион",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "burger/default",
+    "cmd": 7027,
+    "model": "atlantis_cosmetics:item/burger/default",
+    "name": "Колючий Скипетр",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "burger_staff/default",
+    "cmd": 7028,
+    "model": "atlantis_cosmetics:item/burger_staff/default",
+    "name": "Медный Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "cacti_cane/default",
+    "cmd": 7029,
+    "model": "atlantis_cosmetics:item/cacti_cane/default",
+    "name": "Песчаный Скипетр",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "camera/default",
+    "cmd": 7030,
+    "model": "atlantis_cosmetics:item/camera/default",
+    "name": "Шёлковый Клык",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "candy_cane/default",
+    "cmd": 7031,
+    "model": "atlantis_cosmetics:item/candy_cane/default",
+    "name": "Чёрный Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "candy_flow/default",
+    "cmd": 7032,
+    "model": "atlantis_cosmetics:item/candy_flow/default",
+    "name": "Обсидиановый Молот",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "chainsaw_hand/default",
+    "cmd": 7033,
+    "model": "atlantis_cosmetics:item/chainsaw_hand/default",
+    "name": "Колючий Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "chamberstick/default",
+    "cmd": 7034,
+    "model": "atlantis_cosmetics:item/chamberstick/default",
+    "name": "Оберег",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "cheese_skewer/default",
+    "cmd": 7035,
+    "model": "atlantis_cosmetics:item/cheese_skewer/default",
+    "name": "Радужный Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "chicken_wing/default",
+    "cmd": 7036,
+    "model": "atlantis_cosmetics:item/chicken_wing/default",
+    "name": "Новый Грань",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "chicken_wing/hot",
+    "cmd": 7037,
+    "model": "atlantis_cosmetics:item/chicken_wing/hot",
+    "name": "Тихий Молот",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "choco_shield/default",
+    "cmd": 7038,
+    "model": "atlantis_cosmetics:item/choco_shield/default",
+    "name": "Яркий Клеймор",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "claim_flag/default",
+    "cmd": 7039,
+    "model": "atlantis_cosmetics:item/claim_flag/default",
+    "name": "Сапфировый Клык",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "claim_flag/feathers",
+    "cmd": 7040,
+    "model": "atlantis_cosmetics:item/claim_flag/feathers",
+    "name": "Солнечный Шпага",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "climbers_pick/default",
+    "cmd": 7041,
+    "model": "atlantis_cosmetics:item/climbers_pick/default",
+    "name": "Ледяной Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "cloud_fist/default",
+    "cmd": 7042,
+    "model": "atlantis_cosmetics:item/cloud_fist/default",
+    "name": "Ночной Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "cloud_fist/heavens",
+    "cmd": 7043,
+    "model": "atlantis_cosmetics:item/cloud_fist/heavens",
+    "name": "Сигил",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "cloud_fist/lightning",
+    "cmd": 7044,
+    "model": "atlantis_cosmetics:item/cloud_fist/lightning",
+    "name": "Тихий Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "cloud_fist/stormy",
+    "cmd": 7045,
+    "model": "atlantis_cosmetics:item/cloud_fist/stormy",
+    "name": "Огненный Меч",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "clown_mallet/default",
+    "cmd": 7046,
+    "model": "atlantis_cosmetics:item/clown_mallet/default",
+    "name": "Алый Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "clown_mallet/spiral",
+    "cmd": 7047,
+    "model": "atlantis_cosmetics:item/clown_mallet/spiral",
+    "name": "Изумрудный Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "coffee_mug/default",
+    "cmd": 7048,
+    "model": "atlantis_cosmetics:item/coffee_mug/default",
+    "name": "Грозный Клеймор",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "comet_fist/default",
+    "cmd": 7049,
+    "model": "atlantis_cosmetics:item/comet_fist/default",
+    "name": "Острый Резак",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "comically_large_spoon/default",
+    "cmd": 7050,
+    "model": "atlantis_cosmetics:item/comically_large_spoon/default",
+    "name": "Яркий Катана",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "comically_large_spoon/wooden",
+    "cmd": 7051,
+    "model": "atlantis_cosmetics:item/comically_large_spoon/wooden",
+    "name": "Песчаный Посох",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "competitors_safety_pad/default",
+    "cmd": 7052,
+    "model": "atlantis_cosmetics:item/competitors_safety_pad/default",
+    "name": "Ночной Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "competitors_safety_pad/slimed",
+    "cmd": 7053,
+    "model": "atlantis_cosmetics:item/competitors_safety_pad/slimed",
+    "name": "Ледяной Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "constellation_cartographer/default",
+    "cmd": 7054,
+    "model": "atlantis_cosmetics:item/constellation_cartographer/default",
+    "name": "Дикий Клык",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "coral_fist/default",
+    "cmd": 7055,
+    "model": "atlantis_cosmetics:item/coral_fist/default",
+    "name": "Морской Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "cosmic_sword/default",
+    "cmd": 7056,
+    "model": "atlantis_cosmetics:item/cosmic_sword/default",
+    "name": "Лунный Резак",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "cotton_candy/default",
+    "cmd": 7057,
+    "model": "atlantis_cosmetics:item/cotton_candy/default",
+    "name": "Скрытый Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "crab_claw/default",
+    "cmd": 7058,
+    "model": "atlantis_cosmetics:item/crab_claw/default",
+    "name": "Стальной Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "crowbar/default",
+    "cmd": 7059,
+    "model": "atlantis_cosmetics:item/crowbar/default",
+    "name": "Рассветный Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "crows_perch/default",
+    "cmd": 7060,
+    "model": "atlantis_cosmetics:item/crows_perch/default",
+    "name": "Багровый Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "cupcake_staff/default",
+    "cmd": 7061,
+    "model": "atlantis_cosmetics:item/cupcake_staff/default",
+    "name": "Гладкий Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "cupcake_staff/spearhead",
+    "cmd": 7062,
+    "model": "atlantis_cosmetics:item/cupcake_staff/spearhead",
+    "name": "Колючий Щит",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "cutlass/default",
+    "cmd": 7063,
+    "model": "atlantis_cosmetics:item/cutlass/default",
+    "name": "Радужный Коготь",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "donut/default",
+    "cmd": 7064,
+    "model": "atlantis_cosmetics:item/donut/default",
+    "name": "Морской Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "donut/sprinkled",
+    "cmd": 7065,
+    "model": "atlantis_cosmetics:item/donut/sprinkled",
+    "name": "Белый Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "drill_arm/default",
+    "cmd": 7066,
+    "model": "atlantis_cosmetics:item/drill_arm/default",
+    "name": "Звёздный Щит",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "dynamite_stick/default",
+    "cmd": 7067,
+    "model": "atlantis_cosmetics:item/dynamite_stick/default",
+    "name": "Дикий Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "dynamite_stick/bundle",
+    "cmd": 7068,
+    "model": "atlantis_cosmetics:item/dynamite_stick/bundle",
+    "name": "Огненный Грань",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "dynamite_stick/isotope",
+    "cmd": 7069,
+    "model": "atlantis_cosmetics:item/dynamite_stick/isotope",
+    "name": "Зелёный Катана",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "dynamite_stick/nuclear",
+    "cmd": 7070,
+    "model": "atlantis_cosmetics:item/dynamite_stick/nuclear",
+    "name": "Фантом",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "exo_arm/default",
+    "cmd": 7071,
+    "model": "atlantis_cosmetics:item/exo_arm/default",
+    "name": "Медный Клык",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "fire_axe/default",
+    "cmd": 7072,
+    "model": "atlantis_cosmetics:item/fire_axe/default",
+    "name": "Лунный Булава",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "fire_extinguisher/default",
+    "cmd": 7073,
+    "model": "atlantis_cosmetics:item/fire_extinguisher/default",
+    "name": "Туманный Трезубец",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "fire_fist/default",
+    "cmd": 7074,
+    "model": "atlantis_cosmetics:item/fire_fist/default",
+    "name": "Новый Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "fire_fist/energy",
+    "cmd": 7075,
+    "model": "atlantis_cosmetics:item/fire_fist/energy",
+    "name": "Рубиновый Посох",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "fire_fist/soul",
+    "cmd": 7076,
+    "model": "atlantis_cosmetics:item/fire_fist/soul",
+    "name": "Туманный Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "fire_fist/violet",
+    "cmd": 7077,
+    "model": "atlantis_cosmetics:item/fire_fist/violet",
+    "name": "Солнечный Грань",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "first_aid_kit/default",
+    "cmd": 7078,
+    "model": "atlantis_cosmetics:item/first_aid_kit/default",
+    "name": "Пурпурный Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "flower_umbrella/default",
+    "cmd": 7079,
+    "model": "atlantis_cosmetics:item/flower_umbrella/default",
+    "name": "Древний Щит",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "foam_finger/default",
+    "cmd": 7080,
+    "model": "atlantis_cosmetics:item/foam_finger/default",
+    "name": "Песчаный Дубина",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "frankenfist/default",
+    "cmd": 7081,
+    "model": "atlantis_cosmetics:item/frankenfist/default",
+    "name": "Небесный Шпага",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "frying_pan/default",
+    "cmd": 7082,
+    "model": "atlantis_cosmetics:item/frying_pan/default",
+    "name": "Колючий Резак",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "frying_pan/fried_egg",
+    "cmd": 7083,
+    "model": "atlantis_cosmetics:item/frying_pan/fried_egg",
+    "name": "Багровый Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "gauntlet/default",
+    "cmd": 7084,
+    "model": "atlantis_cosmetics:item/gauntlet/default",
+    "name": "Чёрный Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "gauntlet/elemental",
+    "cmd": 7085,
+    "model": "atlantis_cosmetics:item/gauntlet/elemental",
+    "name": "Небесный Резак",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "gauntlet/gamer",
+    "cmd": 7086,
+    "model": "atlantis_cosmetics:item/gauntlet/gamer",
+    "name": "Скрытый Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "gauntlet/starforged",
+    "cmd": 7087,
+    "model": "atlantis_cosmetics:item/gauntlet/starforged",
+    "name": "Яркий Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "guild_banner/knight",
+    "cmd": 7088,
+    "model": "atlantis_cosmetics:item/guild_banner/knight",
+    "name": "Грозовой Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "guild_banner/viking",
+    "cmd": 7089,
+    "model": "atlantis_cosmetics:item/guild_banner/viking",
+    "name": "Туманный Молот",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "gummi_paw/default",
+    "cmd": 7090,
+    "model": "atlantis_cosmetics:item/gummi_paw/default",
+    "name": "Рваный Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "hair_dryer/default",
+    "cmd": 7091,
+    "model": "atlantis_cosmetics:item/hair_dryer/default",
+    "name": "Вихревой Резец",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "hammer/welding",
+    "cmd": 7092,
+    "model": "atlantis_cosmetics:item/hammer/welding",
+    "name": "Тихий Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "handbag/default",
+    "cmd": 7093,
+    "model": "atlantis_cosmetics:item/handbag/default",
+    "name": "Грозовой Жезл",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "handbag/shoulder",
+    "cmd": 7094,
+    "model": "atlantis_cosmetics:item/handbag/shoulder",
+    "name": "Дикий Меч",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "harpoon/default",
+    "cmd": 7095,
+    "model": "atlantis_cosmetics:item/harpoon/default",
+    "name": "Скрытый Коса",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "harpoon/sharkbait",
+    "cmd": 7096,
+    "model": "atlantis_cosmetics:item/harpoon/sharkbait",
+    "name": "Грозный Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "harpoon/sunken",
+    "cmd": 7097,
+    "model": "atlantis_cosmetics:item/harpoon/sunken",
+    "name": "Серебряный Трезубец",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "holosword/default",
+    "cmd": 7098,
+    "model": "atlantis_cosmetics:item/holosword/default",
+    "name": "Южный Скипетр",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "holosword/evolved",
+    "cmd": 7099,
+    "model": "atlantis_cosmetics:item/holosword/evolved",
+    "name": "Лунный Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "holosword/serrated",
+    "cmd": 7100,
+    "model": "atlantis_cosmetics:item/holosword/serrated",
+    "name": "Тихий Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "holosword/slayer",
+    "cmd": 7101,
+    "model": "atlantis_cosmetics:item/holosword/slayer",
+    "name": "Костяной Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "hot_chocolate/default",
+    "cmd": 7102,
+    "model": "atlantis_cosmetics:item/hot_chocolate/default",
+    "name": "Песчаный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "hot_dog/default",
+    "cmd": 7103,
+    "model": "atlantis_cosmetics:item/hot_dog/default",
+    "name": "Пламенный Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "hydroblaster/default",
+    "cmd": 7104,
+    "model": "atlantis_cosmetics:item/hydroblaster/default",
+    "name": "Шипастый Коготь",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "hydroblaster/squidtek",
+    "cmd": 7105,
+    "model": "atlantis_cosmetics:item/hydroblaster/squidtek",
+    "name": "Древний Игла",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "ice_cream/default",
+    "cmd": 7106,
+    "model": "atlantis_cosmetics:item/ice_cream/default",
+    "name": "Штормовой Коса",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "ice_cream/cherry_chocolate_whip",
+    "cmd": 7107,
+    "model": "atlantis_cosmetics:item/ice_cream/cherry_chocolate_whip",
+    "name": "Белый Катана",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "ice_cream/triple_scoop",
+    "cmd": 7108,
+    "model": "atlantis_cosmetics:item/ice_cream/triple_scoop",
+    "name": "Шёлковый Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "infernal_pitchfork/default",
+    "cmd": 7109,
+    "model": "atlantis_cosmetics:item/infernal_pitchfork/default",
+    "name": "Песчаный Щит",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "jackhammer/default",
+    "cmd": 7110,
+    "model": "atlantis_cosmetics:item/jackhammer/default",
+    "name": "Древний Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "jellyfist/default",
+    "cmd": 7111,
+    "model": "atlantis_cosmetics:item/jellyfist/default",
+    "name": "Валькирия",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "jester_cane/default",
+    "cmd": 7112,
+    "model": "atlantis_cosmetics:item/jester_cane/default",
+    "name": "Закатный Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "kanabo/default",
+    "cmd": 7113,
+    "model": "atlantis_cosmetics:item/kanabo/default",
+    "name": "Колючий Дубина",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "kanabo/cursed",
+    "cmd": 7114,
+    "model": "atlantis_cosmetics:item/kanabo/cursed",
+    "name": "Штормовой Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "kanabo/gilded",
+    "cmd": 7115,
+    "model": "atlantis_cosmetics:item/kanabo/gilded",
+    "name": "Северный Резак",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "katana/default",
+    "cmd": 7116,
+    "model": "atlantis_cosmetics:item/katana/default",
+    "name": "Скрытый Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "katana/cherry_blossom",
+    "cmd": 7117,
+    "model": "atlantis_cosmetics:item/katana/cherry_blossom",
+    "name": "Пустынный Резец",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "knight_shield/emblem",
+    "cmd": 7118,
+    "model": "atlantis_cosmetics:item/knight_shield/emblem",
+    "name": "Сапфировый Секач",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "knight_shield/goldshire",
+    "cmd": 7119,
+    "model": "atlantis_cosmetics:item/knight_shield/goldshire",
+    "name": "Небесный Секач",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "knight_shield/ornamental",
+    "cmd": 7120,
+    "model": "atlantis_cosmetics:item/knight_shield/ornamental",
+    "name": "Обсидиановый Топор",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "knight_shield/wooden",
+    "cmd": 7121,
+    "model": "atlantis_cosmetics:item/knight_shield/wooden",
+    "name": "Тихий Игла",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "lantern/default",
+    "cmd": 7122,
+    "model": "atlantis_cosmetics:item/lantern/default",
+    "name": "Костяной Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "lasso/default",
+    "cmd": 7123,
+    "model": "atlantis_cosmetics:item/lasso/default",
+    "name": "Древний Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "lollipop_staff/default",
+    "cmd": 7124,
+    "model": "atlantis_cosmetics:item/lollipop_staff/default",
+    "name": "Пустынный Шип",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "lollipop_staff/chancellor",
+    "cmd": 7125,
+    "model": "atlantis_cosmetics:item/lollipop_staff/chancellor",
+    "name": "Северный Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "lollipop_staff/minty",
+    "cmd": 7126,
+    "model": "atlantis_cosmetics:item/lollipop_staff/minty",
+    "name": "Костяной Катана",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "lollipop_staff/sticky",
+    "cmd": 7127,
+    "model": "atlantis_cosmetics:item/lollipop_staff/sticky",
+    "name": "Зелёный Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "lunar_claw/default",
+    "cmd": 7128,
+    "model": "atlantis_cosmetics:item/lunar_claw/default",
+    "name": "Пламенный Булава",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "mace/default",
+    "cmd": 7129,
+    "model": "atlantis_cosmetics:item/mace/default",
+    "name": "Острый Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "magicians_wand/default",
+    "cmd": 7130,
+    "model": "atlantis_cosmetics:item/magicians_wand/default",
+    "name": "Амулет",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "magnifying_glass/default",
+    "cmd": 7131,
+    "model": "atlantis_cosmetics:item/magnifying_glass/default",
+    "name": "Лунный Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "microphone/default",
+    "cmd": 7132,
+    "model": "atlantis_cosmetics:item/microphone/default",
+    "name": "Ночной Дубина",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "milkshake/summer_lemon",
+    "cmd": 7133,
+    "model": "atlantis_cosmetics:item/milkshake/summer_lemon",
+    "name": "Стальной Дубина",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "mixing_claw/default",
+    "cmd": 7134,
+    "model": "atlantis_cosmetics:item/mixing_claw/default",
+    "name": "Кобальтовый Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "mjolnir/default",
+    "cmd": 7135,
+    "model": "atlantis_cosmetics:item/mjolnir/default",
+    "name": "Тёмный Коса",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "mjolnir/charged",
+    "cmd": 7136,
+    "model": "atlantis_cosmetics:item/mjolnir/charged",
+    "name": "Теневой Шпага",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "mjolnir/nordic",
+    "cmd": 7137,
+    "model": "atlantis_cosmetics:item/mjolnir/nordic",
+    "name": "Тихий Коса",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "mjolnir/thunder",
+    "cmd": 7138,
+    "model": "atlantis_cosmetics:item/mjolnir/thunder",
+    "name": "Обсидиановый Скипетр",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "money_bag/default",
+    "cmd": 7139,
+    "model": "atlantis_cosmetics:item/money_bag/default",
+    "name": "Огненный Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "money_bag/overflowing",
+    "cmd": 7140,
+    "model": "atlantis_cosmetics:item/money_bag/overflowing",
+    "name": "Шёлковый Дубина",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "oar/default",
+    "cmd": 7141,
+    "model": "atlantis_cosmetics:item/oar/default",
+    "name": "Рваный Булава",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "oar/shipwrecked",
+    "cmd": 7142,
+    "model": "atlantis_cosmetics:item/oar/shipwrecked",
+    "name": "Пламенный Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "paint_palette/default",
+    "cmd": 7143,
+    "model": "atlantis_cosmetics:item/paint_palette/default",
+    "name": "Быстрый Игла",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "paintbrush/default",
+    "cmd": 7144,
+    "model": "atlantis_cosmetics:item/paintbrush/default",
+    "name": "Чёрный Меч",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "paintbrush/mega",
+    "cmd": 7145,
+    "model": "atlantis_cosmetics:item/paintbrush/mega",
+    "name": "Ледяной Коготь",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "paper_umbrella/default",
+    "cmd": 7146,
+    "model": "atlantis_cosmetics:item/paper_umbrella/default",
+    "name": "Ночной Грань",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "paper_umbrella/blossoms",
+    "cmd": 7147,
+    "model": "atlantis_cosmetics:item/paper_umbrella/blossoms",
+    "name": "Багровый Жезл",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "paper_umbrella/cherry_tree",
+    "cmd": 7148,
+    "model": "atlantis_cosmetics:item/paper_umbrella/cherry_tree",
+    "name": "Закатный Цеп",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "paper_umbrella/sakura",
+    "cmd": 7149,
+    "model": "atlantis_cosmetics:item/paper_umbrella/sakura",
+    "name": "Закатный Коса",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "parkour_staff/default",
+    "cmd": 7150,
+    "model": "atlantis_cosmetics:item/parkour_staff/default",
+    "name": "Ночной Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "parkour_staff/bamboo",
+    "cmd": 7151,
+    "model": "atlantis_cosmetics:item/parkour_staff/bamboo",
+    "name": "Острый Бита",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "pirate_hook/default",
+    "cmd": 7152,
+    "model": "atlantis_cosmetics:item/pirate_hook/default",
+    "name": "Морозный Клык",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "pirate_hook/gold_trim",
+    "cmd": 7153,
+    "model": "atlantis_cosmetics:item/pirate_hook/gold_trim",
+    "name": "Грозовой Посох",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "pirate_hook/phantom",
+    "cmd": 7154,
+    "model": "atlantis_cosmetics:item/pirate_hook/phantom",
+    "name": "Грозовой Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "pixel_pusher/default",
+    "cmd": 7155,
+    "model": "atlantis_cosmetics:item/pixel_pusher/default",
+    "name": "Грозовой Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "pizza_slice/default",
+    "cmd": 7156,
+    "model": "atlantis_cosmetics:item/pizza_slice/default",
+    "name": "Северный Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "plague_doctor_staff/default",
+    "cmd": 7157,
+    "model": "atlantis_cosmetics:item/plague_doctor_staff/default",
+    "name": "Огненный Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "plague_doctor_staff/steampunk",
+    "cmd": 7158,
+    "model": "atlantis_cosmetics:item/plague_doctor_staff/steampunk",
+    "name": "Вихревой Цеп",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "planetary_projector/default",
+    "cmd": 7159,
+    "model": "atlantis_cosmetics:item/planetary_projector/default",
+    "name": "Колючий Скимитар",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "playing_cards/default",
+    "cmd": 7160,
+    "model": "atlantis_cosmetics:item/playing_cards/default",
+    "name": "Обсидиановый Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "popcorn/default",
+    "cmd": 7161,
+    "model": "atlantis_cosmetics:item/popcorn/default",
+    "name": "Морской Резак",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "popsicle/default",
+    "cmd": 7162,
+    "model": "atlantis_cosmetics:item/popsicle/default",
+    "name": "Грозный Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "popsicle/friend_shaped",
+    "cmd": 7163,
+    "model": "atlantis_cosmetics:item/popsicle/friend_shaped",
+    "name": "Серебряный Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "popsicle/frozen",
+    "cmd": 7164,
+    "model": "atlantis_cosmetics:item/popsicle/frozen",
+    "name": "Радужный Грань",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "popsicle/giga",
+    "cmd": 7165,
+    "model": "atlantis_cosmetics:item/popsicle/giga",
+    "name": "Кристальный Игла",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "popsicle/mascot",
+    "cmd": 7166,
+    "model": "atlantis_cosmetics:item/popsicle/mascot",
+    "name": "Алый Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "popsicle/triple_blast",
+    "cmd": 7167,
+    "model": "atlantis_cosmetics:item/popsicle/triple_blast",
+    "name": "Лунный Клык",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "poseidons_trident/default",
+    "cmd": 7168,
+    "model": "atlantis_cosmetics:item/poseidons_trident/default",
+    "name": "Гладкий Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "prismatic_blade/default",
+    "cmd": 7169,
+    "model": "atlantis_cosmetics:item/prismatic_blade/default",
+    "name": "Огненный Цеп",
+    "description": "Косметический скин меча.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "pumpkin_bucket/default",
+    "cmd": 7170,
+    "model": "atlantis_cosmetics:item/pumpkin_bucket/default",
+    "name": "Зелёный Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "quackshot/default",
+    "cmd": 7171,
+    "model": "atlantis_cosmetics:item/quackshot/default",
+    "name": "Обсидиановый Шип",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "rat_claw/disguise",
+    "cmd": 7172,
+    "model": "atlantis_cosmetics:item/rat_claw/disguise",
+    "name": "Солнечный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "rat_claw/mecha",
+    "cmd": 7173,
+    "model": "atlantis_cosmetics:item/rat_claw/mecha",
+    "name": "Закатный Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "rat_claw/zombie",
+    "cmd": 7174,
+    "model": "atlantis_cosmetics:item/rat_claw/zombie",
+    "name": "Серебряный Шип",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "ray_blaster/alien",
+    "cmd": 7175,
+    "model": "atlantis_cosmetics:item/ray_blaster/alien",
+    "name": "Шёлковый Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "rescue_paddle/default",
+    "cmd": 7176,
+    "model": "atlantis_cosmetics:item/rescue_paddle/default",
+    "name": "Огненный Секач",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "road_sign/default",
+    "cmd": 7177,
+    "model": "atlantis_cosmetics:item/road_sign/default",
+    "name": "Ночной Щит",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "road_sign/autobahn",
+    "cmd": 7178,
+    "model": "atlantis_cosmetics:item/road_sign/autobahn",
+    "name": "Солнечный Резак",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "road_sign/go",
+    "cmd": 7179,
+    "model": "atlantis_cosmetics:item/road_sign/go",
+    "name": "Рубиновый Клеймор",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "road_sign/route_66",
+    "cmd": 7180,
+    "model": "atlantis_cosmetics:item/road_sign/route_66",
+    "name": "Зелёный Коготь",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "road_sign/turn",
+    "cmd": 7181,
+    "model": "atlantis_cosmetics:item/road_sign/turn",
+    "name": "Пламенный Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "road_sign/warning",
+    "cmd": 7182,
+    "model": "atlantis_cosmetics:item/road_sign/warning",
+    "name": "Серебряный Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "rose/default",
+    "cmd": 7183,
+    "model": "atlantis_cosmetics:item/rose/default",
+    "name": "Морской Клеймор",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "sai/default",
+    "cmd": 7184,
+    "model": "atlantis_cosmetics:item/sai/default",
+    "name": "Рубиновый Резец",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "sai/ignited",
+    "cmd": 7185,
+    "model": "atlantis_cosmetics:item/sai/ignited",
+    "name": "Багровый Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "scavenger_kings_staff/default",
+    "cmd": 7186,
+    "model": "atlantis_cosmetics:item/scavenger_kings_staff/default",
+    "name": "Белый Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "scavengers_fork/default",
+    "cmd": 7187,
+    "model": "atlantis_cosmetics:item/scavengers_fork/default",
+    "name": "Изумрудный Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "scepter_of_singularity/default",
+    "cmd": 7188,
+    "model": "atlantis_cosmetics:item/scepter_of_singularity/default",
+    "name": "Изумрудный Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "scuba_watch/default",
+    "cmd": 7189,
+    "model": "atlantis_cosmetics:item/scuba_watch/default",
+    "name": "Лунный Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "scythe/default",
+    "cmd": 7190,
+    "model": "atlantis_cosmetics:item/scythe/default",
+    "name": "Вихревой Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "selfie_stick/default",
+    "cmd": 7191,
+    "model": "atlantis_cosmetics:item/selfie_stick/default",
+    "name": "Белый Молот",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "shuriken/default",
+    "cmd": 7192,
+    "model": "atlantis_cosmetics:item/shuriken/default",
+    "name": "Лунный Грань",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "shuriken/throw",
+    "cmd": 7193,
+    "model": "atlantis_cosmetics:item/shuriken/throw",
+    "name": "Рубиновый Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "sign/believer",
+    "cmd": 7194,
+    "model": "atlantis_cosmetics:item/sign/believer",
+    "name": "Костяной Игла",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "skateboard/default",
+    "cmd": 7195,
+    "model": "atlantis_cosmetics:item/skateboard/default",
+    "name": "Пустынный Резак",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "slime_fist/default",
+    "cmd": 7196,
+    "model": "atlantis_cosmetics:item/slime_fist/default",
+    "name": "Обсидиановый Грань",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "slime_fist/toxic",
+    "cmd": 7197,
+    "model": "atlantis_cosmetics:item/slime_fist/toxic",
+    "name": "Северный Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "slushy/default",
+    "cmd": 7198,
+    "model": "atlantis_cosmetics:item/slushy/default",
+    "name": "Кристальный Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "smore/default",
+    "cmd": 7199,
+    "model": "atlantis_cosmetics:item/smore/default",
+    "name": "Шёлковый Шип",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "smore_staff/default",
+    "cmd": 7200,
+    "model": "atlantis_cosmetics:item/smore_staff/default",
+    "name": "Быстрый Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "smore_staff/charred",
+    "cmd": 7201,
+    "model": "atlantis_cosmetics:item/smore_staff/charred",
+    "name": "Шёлковый Лезвие",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "smore_staff/royalty",
+    "cmd": 7202,
+    "model": "atlantis_cosmetics:item/smore_staff/royalty",
+    "name": "Острый Булава",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "solar_staff/default",
+    "cmd": 7203,
+    "model": "atlantis_cosmetics:item/solar_staff/default",
+    "name": "Радужный Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "space_slime/default",
+    "cmd": 7204,
+    "model": "atlantis_cosmetics:item/space_slime/default",
+    "name": "Гладкий Молот",
+    "description": "Косметический скин меча.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "sparkler/default",
+    "cmd": 7205,
+    "model": "atlantis_cosmetics:item/sparkler/default",
+    "name": "Стальной Коса",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "spatula/default",
+    "cmd": 7206,
+    "model": "atlantis_cosmetics:item/spatula/default",
+    "name": "Рассветный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "spatula/giga",
+    "cmd": 7207,
+    "model": "atlantis_cosmetics:item/spatula/giga",
+    "name": "Золотой Посох",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "spell_shield/default",
+    "cmd": 7208,
+    "model": "atlantis_cosmetics:item/spell_shield/default",
+    "name": "Пламенный Бита",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "spell_shield/solar",
+    "cmd": 7209,
+    "model": "atlantis_cosmetics:item/spell_shield/solar",
+    "name": "Штормовой Щит",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "spyglass/default",
+    "cmd": 7210,
+    "model": "atlantis_cosmetics:item/spyglass/default",
+    "name": "Изумрудный Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#A7FFEB"
+  },
+  {
+    "id": "star_sailors_staff/default",
+    "cmd": 7211,
+    "model": "atlantis_cosmetics:item/star_sailors_staff/default",
+    "name": "Ледяной Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "star_sailors_staff/crescent",
+    "cmd": 7212,
+    "model": "atlantis_cosmetics:item/star_sailors_staff/crescent",
+    "name": "Рваный Шип",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "star_shield/default",
+    "cmd": 7213,
+    "model": "atlantis_cosmetics:item/star_shield/default",
+    "name": "Радужный Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "starbeam_laser/default",
+    "cmd": 7214,
+    "model": "atlantis_cosmetics:item/starbeam_laser/default",
+    "name": "Рубиновый Трезубец",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "starfish_staff/default",
+    "cmd": 7215,
+    "model": "atlantis_cosmetics:item/starfish_staff/default",
+    "name": "Скрытый Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "surfboard/default",
+    "cmd": 7216,
+    "model": "atlantis_cosmetics:item/surfboard/default",
+    "name": "Костяной Гладий",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "surfboard/crown",
+    "cmd": 7217,
+    "model": "atlantis_cosmetics:item/surfboard/crown",
+    "name": "Сапфировый Скимитар",
+    "description": "Косметический скин меча.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "surfboard/floral",
+    "cmd": 7218,
+    "model": "atlantis_cosmetics:item/surfboard/floral",
+    "name": "Туманный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "surfboard/palm",
+    "cmd": 7219,
+    "model": "atlantis_cosmetics:item/surfboard/palm",
+    "name": "Пламенный Кортик",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "surfboard/squidtek",
+    "cmd": 7220,
+    "model": "atlantis_cosmetics:item/surfboard/squidtek",
+    "name": "Алый Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "surfboard/suns_out",
+    "cmd": 7221,
+    "model": "atlantis_cosmetics:item/surfboard/suns_out",
+    "name": "Костяной Кинжал",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "toolbox/default",
+    "cmd": 7222,
+    "model": "atlantis_cosmetics:item/toolbox/default",
+    "name": "Стальной Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "toy_horse/default",
+    "cmd": 7223,
+    "model": "atlantis_cosmetics:item/toy_horse/default",
+    "name": "Шёлковый Бита",
+    "description": "Косметический скин меча.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "toy_horse/rainbowcorn",
+    "cmd": 7224,
+    "model": "atlantis_cosmetics:item/toy_horse/rainbowcorn",
+    "name": "Новый Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "toybot_claw/retro",
+    "cmd": 7225,
+    "model": "atlantis_cosmetics:item/toybot_claw/retro",
+    "name": "Новый Клинок",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "traffic_light/default",
+    "cmd": 7226,
+    "model": "atlantis_cosmetics:item/traffic_light/default",
+    "name": "Небесный Бивень",
+    "description": "Косметический скин меча.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "traffic_light/junction",
+    "cmd": 7227,
+    "model": "atlantis_cosmetics:item/traffic_light/junction",
+    "name": "Грозовой Меч",
+    "description": "Косметический скин меча.",
+    "color": "#FF80AB"
+  },
+  {
+    "id": "treat_tracker/default",
+    "cmd": 7228,
+    "model": "atlantis_cosmetics:item/treat_tracker/default",
+    "name": "Огненный Щит",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "tribal_staff/default",
+    "cmd": 7229,
+    "model": "atlantis_cosmetics:item/tribal_staff/default",
+    "name": "Белый Коса",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "trowel/default",
+    "cmd": 7230,
+    "model": "atlantis_cosmetics:item/trowel/default",
+    "name": "Небесный Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "umbrella/default",
+    "cmd": 7231,
+    "model": "atlantis_cosmetics:item/umbrella/default",
+    "name": "Медный Шпага",
+    "description": "Косметический скин меча.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "umbrella/beach",
+    "cmd": 7232,
+    "model": "atlantis_cosmetics:item/umbrella/beach",
+    "name": "Золотой Цеп",
+    "description": "Косметический скин меча.",
+    "color": "#FFFF8D"
+  },
+  {
+    "id": "umbrella/gothic",
+    "cmd": 7233,
+    "model": "atlantis_cosmetics:item/umbrella/gothic",
+    "name": "Рваный Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "umbrella/two_tone",
+    "cmd": 7234,
+    "model": "atlantis_cosmetics:item/umbrella/two_tone",
+    "name": "Быстрый Коготь",
+    "description": "Косметический скин меча.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "uranium_slicer/default",
+    "cmd": 7235,
+    "model": "atlantis_cosmetics:item/uranium_slicer/default",
+    "name": "Огненный Ятаган",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "viking_shield/default",
+    "cmd": 7236,
+    "model": "atlantis_cosmetics:item/viking_shield/default",
+    "name": "Солнечный Игла",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "viking_shield/battleworn",
+    "cmd": 7237,
+    "model": "atlantis_cosmetics:item/viking_shield/battleworn",
+    "name": "Изумрудный Топор",
+    "description": "Косметический скин меча.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "viking_shield/black",
+    "cmd": 7238,
+    "model": "atlantis_cosmetics:item/viking_shield/black",
+    "name": "Зелёный Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#84FFFF"
+  },
+  {
+    "id": "viking_shield/dragon",
+    "cmd": 7239,
+    "model": "atlantis_cosmetics:item/viking_shield/dragon",
+    "name": "Южный Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#FFD180"
+  },
+  {
+    "id": "viking_shield/knotwork",
+    "cmd": 7240,
+    "model": "atlantis_cosmetics:item/viking_shield/knotwork",
+    "name": "Дикий Тесак",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "viking_shield/white",
+    "cmd": 7241,
+    "model": "atlantis_cosmetics:item/viking_shield/white",
+    "name": "Песчаный Бита",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "void_fist/default",
+    "cmd": 7242,
+    "model": "atlantis_cosmetics:item/void_fist/default",
+    "name": "Быстрый Кулак",
+    "description": "Косметический скин меча.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "waffle_shield/default",
+    "cmd": 7243,
+    "model": "atlantis_cosmetics:item/waffle_shield/default",
+    "name": "Пламенный Шпага",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "watering_can/default",
+    "cmd": 7244,
+    "model": "atlantis_cosmetics:item/watering_can/default",
+    "name": "Зелёный Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#F4FF81"
+  },
+  {
+    "id": "witch_broom/default",
+    "cmd": 7245,
+    "model": "atlantis_cosmetics:item/witch_broom/default",
+    "name": "Древний Остриё",
+    "description": "Косметический скин меча.",
+    "color": "#FF9E80"
+  },
+  {
+    "id": "witch_broom/wicked",
+    "cmd": 7246,
+    "model": "atlantis_cosmetics:item/witch_broom/wicked",
+    "name": "Острый Кастет",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "wizard_staff/default",
+    "cmd": 7247,
+    "model": "atlantis_cosmetics:item/wizard_staff/default",
+    "name": "Серебряный Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "wrench/default",
+    "cmd": 7248,
+    "model": "atlantis_cosmetics:item/wrench/default",
+    "name": "Грозовой Рапира",
+    "description": "Косметический скин меча.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "wrench/giga",
+    "cmd": 7249,
+    "model": "atlantis_cosmetics:item/wrench/giga",
+    "name": "Медный Фальшион",
+    "description": "Косметический скин меча.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "wrench/pipe",
+    "cmd": 7250,
+    "model": "atlantis_cosmetics:item/wrench/pipe",
+    "name": "Туманный Секач",
+    "description": "Косметический скин меча.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "zeus_bolt/default",
+    "cmd": 7251,
+    "model": "atlantis_cosmetics:item/zeus_bolt/default",
+    "name": "Алый Палаш",
+    "description": "Косметический скин меча.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "zeus_bolt/blue_bolt",
+    "cmd": 7252,
+    "model": "atlantis_cosmetics:item/zeus_bolt/blue_bolt",
+    "name": "Медный Коса",
+    "description": "Косметический скин меча.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "zeus_bolt/catch",
+    "cmd": 7253,
+    "model": "atlantis_cosmetics:item/zeus_bolt/catch",
+    "name": "Белый Сабля",
+    "description": "Косметический скин меча.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "zeus_bolt/lightning",
+    "cmd": 7254,
+    "model": "atlantis_cosmetics:item/zeus_bolt/lightning",
+    "name": "Стальной Трезубец",
+    "description": "Косметический скин меча.",
+    "color": "#F48FB1"
+  }
+]

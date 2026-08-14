@@ -1,0 +1,108 @@
+[
+  {
+    "id": "vladyka",
+    "display": "ʙлᴀдыᴋᴀ",
+    "material": "NETHERITE_HELMET",
+    "description": "Владыка арены. Твоё слово — закон.",
+    "color": "#FFFFFF",
+    "price": 150
+  },
+  {
+    "id": "bandit",
+    "display": "бᴀʜдит",
+    "material": "CROSSBOW",
+    "description": "Живёт вне правил и любит шум боя.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "vechnyy",
+    "display": "вечный",
+    "material": "CLOCK",
+    "description": "Не сдаётся и не исчезает с карты.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "sladost",
+    "display": "ᴄлᴀдᴏᴄть",
+    "material": "GOLDEN_APPLE",
+    "description": "Сладкая победа после горькой борьбы.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "mest",
+    "display": "мᴇᴄть",
+    "material": "NETHERITE_SWORD",
+    "description": "Долг возвращён. Кровь за кровь.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "otpor",
+    "display": "ᴏтпᴏᴘ",
+    "material": "SHIELD",
+    "description": "Ответ всегда жёсткий и точный.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "vorishka",
+    "display": "ʙᴏᴘишᴋᴀ",
+    "material": "BUNDLE",
+    "description": "Тихий шаг и очень лёгкие пальцы.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "khitrets",
+    "display": "xитᴘᴇц",
+    "material": "SPYGLASS",
+    "description": "Видит ход на три шага вперёд.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "loli",
+    "display": "лᴏли",
+    "material": "PINK_PETALS",
+    "description": "Милый вид — опасный характер.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "pank",
+    "display": "пᴀʜᴋ",
+    "material": "LEATHER_BOOTS",
+    "description": "Хаос в движении. Стиль важнее правил.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "gladiator",
+    "display": "глᴀдиᴀтᴏᴘ",
+    "material": "IRON_SWORD",
+    "description": "Рождён для боя на арене.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "dzheday",
+    "display": "джедай",
+    "material": "END_ROD",
+    "description": "Светлый путь и точный удар.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "glupets",
+    "display": "глупᴇц",
+    "material": "POISONOUS_POTATO",
+    "description": "Смеётся последним — или первым.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "killer",
+    "display": "ᴋиллᴇᴘ",
+    "material": "DIAMOND_SWORD",
+    "description": "Один удар — и вокруг тишина.",
+    "color": "#FFFFFF"
+  },
+  {
+    "id": "monstr",
+    "display": "мᴏʜᴄтᴘ",
+    "material": "CREEPER_HEAD",
+    "description": "Страх, который ищут сами.",
+    "color": "#FFFFFF"
+  }
+]

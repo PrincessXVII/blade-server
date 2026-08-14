@@ -1,0 +1,2506 @@
+[
+  {
+    "id": "3d_glasses/default",
+    "cmd": 1,
+    "model": "atlantis_cosmetics:hat/3d_glasses/default",
+    "name": "3D очки",
+    "description": "Косметическая шляпа: 3D очки.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "8_ball/default",
+    "cmd": 2,
+    "model": "atlantis_cosmetics:hat/8_ball/default",
+    "name": "Шляпа «8 ball»",
+    "description": "Косметическая шляпа: Шляпа «8 ball».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "8_ball/golden",
+    "cmd": 3,
+    "model": "atlantis_cosmetics:hat/8_ball/golden",
+    "name": "Шляпа «8 ball (золотой)»",
+    "description": "Косметическая шляпа: Шляпа «8 ball (золотой)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "8_ball/holographic",
+    "cmd": 4,
+    "model": "atlantis_cosmetics:hat/8_ball/holographic",
+    "name": "Шляпа «8 ball (голографический)»",
+    "description": "Косметическая шляпа: Шляпа «8 ball (голографический)».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "alien_visor/default",
+    "cmd": 5,
+    "model": "atlantis_cosmetics:hat/alien_visor/default",
+    "name": "Alien визор",
+    "description": "Косметическая шляпа: Alien визор.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "anemonelly/default",
+    "cmd": 6,
+    "model": "atlantis_cosmetics:hat/anemonelly/default",
+    "name": "Шляпа «Anemonelly»",
+    "description": "Косметическая шляпа: Шляпа «Anemonelly».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "antlers/default",
+    "cmd": 7,
+    "model": "atlantis_cosmetics:hat/antlers/default",
+    "name": "Шляпа «Antlers»",
+    "description": "Косметическая шляпа: Шляпа «Antlers».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "arcade_cadet/default",
+    "cmd": 8,
+    "model": "atlantis_cosmetics:hat/arcade_cadet/default",
+    "name": "Шляпа «Arcade cadet»",
+    "description": "Косметическая шляпа: Шляпа «Arcade cadet».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "army_helmet/default",
+    "cmd": 9,
+    "model": "atlantis_cosmetics:hat/army_helmet/default",
+    "name": "Армейский шлем",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "army_helmet/colonel_cluck",
+    "cmd": 10,
+    "model": "atlantis_cosmetics:hat/army_helmet/colonel_cluck",
+    "name": "Армейский шлем (colonel cluck)",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "astronaut_helmet/default",
+    "cmd": 11,
+    "model": "atlantis_cosmetics:hat/astronaut_helmet/default",
+    "name": "Астронавта шлем",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "astronaut_helmet/solar_system",
+    "cmd": 12,
+    "model": "atlantis_cosmetics:hat/astronaut_helmet/solar_system",
+    "name": "Астронавта шлем (solar system)",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "astronaut_helmet/star_ranger",
+    "cmd": 13,
+    "model": "atlantis_cosmetics:hat/astronaut_helmet/star_ranger",
+    "name": "Астронавта шлем (star ranger)",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "atomic_adventurer/default",
+    "cmd": 14,
+    "model": "atlantis_cosmetics:hat/atomic_adventurer/default",
+    "name": "Шляпа «Atomic adventurer»",
+    "description": "Косметическая шляпа: Шляпа «Atomic adventurer».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "banana_hat/default",
+    "cmd": 15,
+    "model": "atlantis_cosmetics:hat/banana_hat/default",
+    "name": "Банановая шляпа",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "banana_hat/crazy_nana",
+    "cmd": 16,
+    "model": "atlantis_cosmetics:hat/banana_hat/crazy_nana",
+    "name": "Банановая шляпа (crazy nana)",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "banana_hat/peeled",
+    "cmd": 17,
+    "model": "atlantis_cosmetics:hat/banana_hat/peeled",
+    "name": "Банановая шляпа (peeled)",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "bandana/default",
+    "cmd": 18,
+    "model": "atlantis_cosmetics:hat/bandana/default",
+    "name": "Шляпа «Bandana»",
+    "description": "Косметическая шляпа: Шляпа «Bandana».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "bandana/blindfold",
+    "cmd": 19,
+    "model": "atlantis_cosmetics:hat/bandana/blindfold",
+    "name": "Шляпа «Bandana (blindfold)»",
+    "description": "Косметическая шляпа: Шляпа «Bandana (blindfold)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "bandana/crown",
+    "cmd": 20,
+    "model": "atlantis_cosmetics:hat/bandana/crown",
+    "name": "Bandana (корона)",
+    "description": "Косметическая шляпа: Bandana (корона).",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "bandana/mask",
+    "cmd": 21,
+    "model": "atlantis_cosmetics:hat/bandana/mask",
+    "name": "Bandana (маска)",
+    "description": "Косметическая шляпа: Bandana (маска).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "baseball_cap/default",
+    "cmd": 22,
+    "model": "atlantis_cosmetics:hat/baseball_cap/default",
+    "name": "Baseball кепка",
+    "description": "Косметическая шляпа: Baseball кепка.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "baseball_cap/backward",
+    "cmd": 23,
+    "model": "atlantis_cosmetics:hat/baseball_cap/backward",
+    "name": "Baseball кепка (backward)",
+    "description": "Косметическая шляпа: Baseball кепка (backward).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "baseball_cap/logo",
+    "cmd": 24,
+    "model": "atlantis_cosmetics:hat/baseball_cap/logo",
+    "name": "Baseball кепка (logo)",
+    "description": "Косметическая шляпа: Baseball кепка (logo).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "baseball_cap/logo_black",
+    "cmd": 25,
+    "model": "atlantis_cosmetics:hat/baseball_cap/logo_black",
+    "name": "Baseball кепка (logo black)",
+    "description": "Косметическая шляпа: Baseball кепка (logo black).",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "beanie/default",
+    "cmd": 26,
+    "model": "atlantis_cosmetics:hat/beanie/default",
+    "name": "Шляпа «Beanie»",
+    "description": "Косметическая шляпа: Шляпа «Beanie».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "beanie/double_stripe",
+    "cmd": 27,
+    "model": "atlantis_cosmetics:hat/beanie/double_stripe",
+    "name": "Шляпа «Beanie (double stripe)»",
+    "description": "Косметическая шляпа: Шляпа «Beanie (double stripe)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "beanie/rana",
+    "cmd": 28,
+    "model": "atlantis_cosmetics:hat/beanie/rana",
+    "name": "Шляпа «Beanie (rana)»",
+    "description": "Косметическая шляпа: Шляпа «Beanie (rana)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "beanie/stripe",
+    "cmd": 29,
+    "model": "atlantis_cosmetics:hat/beanie/stripe",
+    "name": "Шляпа «Beanie (stripe)»",
+    "description": "Косметическая шляпа: Шляпа «Beanie (stripe)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "beret/default",
+    "cmd": 30,
+    "model": "atlantis_cosmetics:hat/beret/default",
+    "name": "Шляпа «Beret»",
+    "description": "Косметическая шляпа: Шляпа «Beret».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "beta_crown/default",
+    "cmd": 31,
+    "model": "atlantis_cosmetics:hat/beta_crown/default",
+    "name": "Бета корона",
+    "description": "Косметическая шляпа: Бета корона.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "blubberfish/default",
+    "cmd": 32,
+    "model": "atlantis_cosmetics:hat/blubberfish/default",
+    "name": "Шляпа «Blubberfish»",
+    "description": "Косметическая шляпа: Шляпа «Blubberfish».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "boater/default",
+    "cmd": 33,
+    "model": "atlantis_cosmetics:hat/boater/default",
+    "name": "Шляпа «Boater»",
+    "description": "Косметическая шляпа: Шляпа «Boater».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "boom_cap/default",
+    "cmd": 34,
+    "model": "atlantis_cosmetics:hat/boom_cap/default",
+    "name": "Boom кепка",
+    "description": "Косметическая шляпа: Boom кепка.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "bucket_hat/default",
+    "cmd": 35,
+    "model": "atlantis_cosmetics:hat/bucket_hat/default",
+    "name": "Панама шляпа",
+    "description": "Косметическая шляпа: Панама шляпа.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "bucket_hat/cat_ears",
+    "cmd": 36,
+    "model": "atlantis_cosmetics:hat/bucket_hat/cat_ears",
+    "name": "Панама шляпа (cat уши)",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "bucket_hat/cheetah",
+    "cmd": 37,
+    "model": "atlantis_cosmetics:hat/bucket_hat/cheetah",
+    "name": "Панама шляпа (cheetah)",
+    "description": "Косметическая шляпа: Панама шляпа (cheetah).",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "bucket_hat/floral",
+    "cmd": 38,
+    "model": "atlantis_cosmetics:hat/bucket_hat/floral",
+    "name": "Панама шляпа (floral)",
+    "description": "Косметическая шляпа: Панама шляпа (floral).",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "bucket_hat/frog",
+    "cmd": 39,
+    "model": "atlantis_cosmetics:hat/bucket_hat/frog",
+    "name": "Панама шляпа (frog)",
+    "description": "Косметическая шляпа: Панама шляпа (frog).",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "bucket_hat/logo",
+    "cmd": 40,
+    "model": "atlantis_cosmetics:hat/bucket_hat/logo",
+    "name": "Панама шляпа (logo)",
+    "description": "Косметическая шляпа: Панама шляпа (logo).",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "bucket_hat/strawberry",
+    "cmd": 41,
+    "model": "atlantis_cosmetics:hat/bucket_hat/strawberry",
+    "name": "Панама шляпа (клубничная)",
+    "description": "Косметическая шляпа: Панама шляпа (клубничная).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "bucket_hat/striped",
+    "cmd": 42,
+    "model": "atlantis_cosmetics:hat/bucket_hat/striped",
+    "name": "Панама шляпа (striped)",
+    "description": "Косметическая шляпа: Панама шляпа (striped).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "burger_cap/default",
+    "cmd": 43,
+    "model": "atlantis_cosmetics:hat/burger_cap/default",
+    "name": "Burger кепка",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "burger_head/default",
+    "cmd": 44,
+    "model": "atlantis_cosmetics:hat/burger_head/default",
+    "name": "Шляпа «Burger голова»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "burger_head/monarch",
+    "cmd": 45,
+    "model": "atlantis_cosmetics:hat/burger_head/monarch",
+    "name": "Шляпа «Burger голова (monarch)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "candlehead/default",
+    "cmd": 46,
+    "model": "atlantis_cosmetics:hat/candlehead/default",
+    "name": "Шляпа «Candlehead»",
+    "description": "Косметическая шляпа: Шляпа «Candlehead».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "candy_bot/default",
+    "cmd": 47,
+    "model": "atlantis_cosmetics:hat/candy_bot/default",
+    "name": "Шляпа «Candy bot»",
+    "description": "Косметическая шляпа: Шляпа «Candy bot».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "candy_cat/default",
+    "cmd": 48,
+    "model": "atlantis_cosmetics:hat/candy_cat/default",
+    "name": "Шляпа «Candy cat»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "candy_hood/default",
+    "cmd": 49,
+    "model": "atlantis_cosmetics:hat/candy_hood/default",
+    "name": "Candy капюшон",
+    "description": "Косметическая шляпа: Candy капюшон.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "cardboard_box/default",
+    "cmd": 50,
+    "model": "atlantis_cosmetics:hat/cardboard_box/default",
+    "name": "Шляпа «Cardboard box»",
+    "description": "Косметическая шляпа: Шляпа «Cardboard box».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "cardboard_box/robot",
+    "cmd": 51,
+    "model": "atlantis_cosmetics:hat/cardboard_box/robot",
+    "name": "Шляпа «Cardboard box (robot)»",
+    "description": "Косметическая шляпа: Шляпа «Cardboard box (robot)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "cardboard_box/scribble",
+    "cmd": 52,
+    "model": "atlantis_cosmetics:hat/cardboard_box/scribble",
+    "name": "Шляпа «Cardboard box (scribble)»",
+    "description": "Косметическая шляпа: Шляпа «Cardboard box (scribble)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "cardboard_box/undercover",
+    "cmd": 53,
+    "model": "atlantis_cosmetics:hat/cardboard_box/undercover",
+    "name": "Шляпа «Cardboard box (undercover)»",
+    "description": "Косметическая шляпа: Шляпа «Cardboard box (undercover)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "cat_ears/default",
+    "cmd": 54,
+    "model": "atlantis_cosmetics:hat/cat_ears/default",
+    "name": "Шляпа «Cat уши»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "cheese_hat/default",
+    "cmd": 55,
+    "model": "atlantis_cosmetics:hat/cheese_hat/default",
+    "name": "Сырная шляпа",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "chefs_hat/default",
+    "cmd": 56,
+    "model": "atlantis_cosmetics:hat/chefs_hat/default",
+    "name": "Повара шляпа",
+    "description": "Косметическая шляпа: Повара шляпа.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "chefs_hat/lil_chef",
+    "cmd": 57,
+    "model": "atlantis_cosmetics:hat/chefs_hat/lil_chef",
+    "name": "Повара шляпа (lil повара)",
+    "description": "Косметическая шляпа: Повара шляпа (lil повара).",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "chefs_hat/tall",
+    "cmd": 58,
+    "model": "atlantis_cosmetics:hat/chefs_hat/tall",
+    "name": "Повара шляпа (tall)",
+    "description": "Косметическая шляпа: Повара шляпа (tall).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "chicken_copter/default",
+    "cmd": 59,
+    "model": "atlantis_cosmetics:hat/chicken_copter/default",
+    "name": "Шляпа «Chicken copter»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "chicken_copter/mcsquawk",
+    "cmd": 60,
+    "model": "atlantis_cosmetics:hat/chicken_copter/mcsquawk",
+    "name": "Шляпа «Chicken copter (mcsquawk)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "chicken_head/default",
+    "cmd": 61,
+    "model": "atlantis_cosmetics:hat/chicken_head/default",
+    "name": "Шляпа «Chicken голова»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "chicken_head/cyborg",
+    "cmd": 62,
+    "model": "atlantis_cosmetics:hat/chicken_head/cyborg",
+    "name": "Шляпа «Chicken голова (cyborg)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "chicken_head/familiar",
+    "cmd": 63,
+    "model": "atlantis_cosmetics:hat/chicken_head/familiar",
+    "name": "Шляпа «Chicken голова (фамильяр)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "chicken_head/golden",
+    "cmd": 64,
+    "model": "atlantis_cosmetics:hat/chicken_head/golden",
+    "name": "Шляпа «Chicken голова (золотой)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "chicken_head/illustrated",
+    "cmd": 65,
+    "model": "atlantis_cosmetics:hat/chicken_head/illustrated",
+    "name": "Шляпа «Chicken голова (illustrated)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "chicken_head/zombie",
+    "cmd": 66,
+    "model": "atlantis_cosmetics:hat/chicken_head/zombie",
+    "name": "Шляпа «Chicken голова (zombie)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "choccy/default",
+    "cmd": 67,
+    "model": "atlantis_cosmetics:hat/choccy/default",
+    "name": "Шляпа «Choccy»",
+    "description": "Косметическая шляпа: Шляпа «Choccy».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "choco_chancellor/default",
+    "cmd": 68,
+    "model": "atlantis_cosmetics:hat/choco_chancellor/default",
+    "name": "Шляпа «Choco chancellor»",
+    "description": "Косметическая шляпа: Шляпа «Choco chancellor».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "climbers_hood/default",
+    "cmd": 69,
+    "model": "atlantis_cosmetics:hat/climbers_hood/default",
+    "name": "Climbers капюшон",
+    "description": "Косметическая шляпа: Climbers капюшон.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "clown_mask/default",
+    "cmd": 70,
+    "model": "atlantis_cosmetics:hat/clown_mask/default",
+    "name": "Clown маска",
+    "description": "Чтобы праздник всегда был с тобой.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "clown_mask/evil",
+    "cmd": 71,
+    "model": "atlantis_cosmetics:hat/clown_mask/evil",
+    "name": "Clown маска (evil)",
+    "description": "Чтобы праздник всегда был с тобой.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "clown_mask/twisted",
+    "cmd": 72,
+    "model": "atlantis_cosmetics:hat/clown_mask/twisted",
+    "name": "Clown маска (twisted)",
+    "description": "Чтобы праздник всегда был с тобой.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "comet_head/default",
+    "cmd": 73,
+    "model": "atlantis_cosmetics:hat/comet_head/default",
+    "name": "Шляпа «Comet голова»",
+    "description": "Косметическая шляпа: Шляпа «Comet голова».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "competitors_helmet/default",
+    "cmd": 74,
+    "model": "atlantis_cosmetics:hat/competitors_helmet/default",
+    "name": "Competitors шлем",
+    "description": "Косметическая шляпа: Competitors шлем.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "competitors_helmet/slimed",
+    "cmd": 75,
+    "model": "atlantis_cosmetics:hat/competitors_helmet/slimed",
+    "name": "Competitors шлем (слизевой)",
+    "description": "Косметическая шляпа: Competitors шлем (слизевой).",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "computer_head/default",
+    "cmd": 76,
+    "model": "atlantis_cosmetics:hat/computer_head/default",
+    "name": "Шляпа «Computer голова»",
+    "description": "Косметическая шляпа: Шляпа «Computer голова».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "computer_head/bunbot",
+    "cmd": 77,
+    "model": "atlantis_cosmetics:hat/computer_head/bunbot",
+    "name": "Шляпа «Computer голова (bunbot)»",
+    "description": "Косметическая шляпа: Шляпа «Computer голова (bunbot)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "computer_head/code",
+    "cmd": 78,
+    "model": "atlantis_cosmetics:hat/computer_head/code",
+    "name": "Шляпа «Computer голова (code)»",
+    "description": "Косметическая шляпа: Шляпа «Computer голова (code)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "computer_head/game_guy",
+    "cmd": 79,
+    "model": "atlantis_cosmetics:hat/computer_head/game_guy",
+    "name": "Шляпа «Computer голова (game guy)»",
+    "description": "Косметическая шляпа: Шляпа «Computer голова (game guy)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "computer_head/outline",
+    "cmd": 80,
+    "model": "atlantis_cosmetics:hat/computer_head/outline",
+    "name": "Шляпа «Computer голова (контурный)»",
+    "description": "Косметическая шляпа: Шляпа «Computer голова (контурный)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "coral_crown/default",
+    "cmd": 81,
+    "model": "atlantis_cosmetics:hat/coral_crown/default",
+    "name": "Coral корона",
+    "description": "Косметическая шляпа: Coral корона.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "cosmic_visor/default",
+    "cmd": 82,
+    "model": "atlantis_cosmetics:hat/cosmic_visor/default",
+    "name": "Cosmic визор",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "cosmic_visor/solar_navigator",
+    "cmd": 83,
+    "model": "atlantis_cosmetics:hat/cosmic_visor/solar_navigator",
+    "name": "Cosmic визор (solar navigator)",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "cowboy_hat/default",
+    "cmd": 84,
+    "model": "atlantis_cosmetics:hat/cowboy_hat/default",
+    "name": "Ковбоя шляпа",
+    "description": "Для тех, кто привык к широким горизонтам.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "cowboy_hat/cactus_ranger",
+    "cmd": 85,
+    "model": "atlantis_cosmetics:hat/cowboy_hat/cactus_ranger",
+    "name": "Ковбоя шляпа (cactus ranger)",
+    "description": "Для тех, кто привык к широким горизонтам.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "cowboy_hat/outlaw",
+    "cmd": 86,
+    "model": "atlantis_cosmetics:hat/cowboy_hat/outlaw",
+    "name": "Ковбоя шляпа (разбойника)",
+    "description": "Для тех, кто привык к широким горизонтам.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "cowboy_hat/sheriff",
+    "cmd": 87,
+    "model": "atlantis_cosmetics:hat/cowboy_hat/sheriff",
+    "name": "Ковбоя шляпа (шерифа)",
+    "description": "Для тех, кто привык к широким горизонтам.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "crab_head/default",
+    "cmd": 88,
+    "model": "atlantis_cosmetics:hat/crab_head/default",
+    "name": "Шляпа «Crab голова»",
+    "description": "Косметическая шляпа: Шляпа «Crab голова».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "crusader/default",
+    "cmd": 89,
+    "model": "atlantis_cosmetics:hat/crusader/default",
+    "name": "Шляпа «Crusader»",
+    "description": "Косметическая шляпа: Шляпа «Crusader».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "crusader/black_knight",
+    "cmd": 90,
+    "model": "atlantis_cosmetics:hat/crusader/black_knight",
+    "name": "Шляпа «Crusader (black рыцаря)»",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "crusader/celestial",
+    "cmd": 91,
+    "model": "atlantis_cosmetics:hat/crusader/celestial",
+    "name": "Шляпа «Crusader (celestial)»",
+    "description": "Косметическая шляпа: Шляпа «Crusader (celestial)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "crusader/sunlord",
+    "cmd": 92,
+    "model": "atlantis_cosmetics:hat/crusader/sunlord",
+    "name": "Шляпа «Crusader (sunlord)»",
+    "description": "Косметическая шляпа: Шляпа «Crusader (sunlord)».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "cupcake/default",
+    "cmd": 93,
+    "model": "atlantis_cosmetics:hat/cupcake/default",
+    "name": "Шляпа «Cupcake»",
+    "description": "Косметическая шляпа: Шляпа «Cupcake».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "cupcake/choco",
+    "cmd": 94,
+    "model": "atlantis_cosmetics:hat/cupcake/choco",
+    "name": "Шляпа «Cupcake (choco)»",
+    "description": "Косметическая шляпа: Шляпа «Cupcake (choco)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "cupcake/knight",
+    "cmd": 95,
+    "model": "atlantis_cosmetics:hat/cupcake/knight",
+    "name": "Шляпа «Cupcake (рыцаря)»",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "detective/default",
+    "cmd": 96,
+    "model": "atlantis_cosmetics:hat/detective/default",
+    "name": "Шляпа «Detective»",
+    "description": "Косметическая шляпа: Шляпа «Detective».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "disguise/default",
+    "cmd": 97,
+    "model": "atlantis_cosmetics:hat/disguise/default",
+    "name": "Шляпа «Disguise»",
+    "description": "Косметическая шляпа: Шляпа «Disguise».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "diving_helmet/default",
+    "cmd": 98,
+    "model": "atlantis_cosmetics:hat/diving_helmet/default",
+    "name": "Водолазный шлем",
+    "description": "Будто только что вышел из пучины.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "diving_helmet/raptured",
+    "cmd": 99,
+    "model": "atlantis_cosmetics:hat/diving_helmet/raptured",
+    "name": "Водолазный шлем (разорванный)",
+    "description": "Будто только что вышел из пучины.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "diving_helmet/sunken",
+    "cmd": 100,
+    "model": "atlantis_cosmetics:hat/diving_helmet/sunken",
+    "name": "Водолазный шлем (затонувший)",
+    "description": "Будто только что вышел из пучины.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "drinking_helmet/default",
+    "cmd": 101,
+    "model": "atlantis_cosmetics:hat/drinking_helmet/default",
+    "name": "Drinking шлем",
+    "description": "Косметическая шляпа: Drinking шлем.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "egg_yolk/default",
+    "cmd": 102,
+    "model": "atlantis_cosmetics:hat/egg_yolk/default",
+    "name": "Шляпа «Egg yolk»",
+    "description": "Косметическая шляпа: Шляпа «Egg yolk».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "egg_yolk/fried",
+    "cmd": 103,
+    "model": "atlantis_cosmetics:hat/egg_yolk/fried",
+    "name": "Шляпа «Egg yolk (fried)»",
+    "description": "Косметическая шляпа: Шляпа «Egg yolk (fried)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "elfs_hat/default",
+    "cmd": 104,
+    "model": "atlantis_cosmetics:hat/elfs_hat/default",
+    "name": "Эльфа шляпа",
+    "description": "Косметическая шляпа: Эльфа шляпа.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "emoji_head/default",
+    "cmd": 105,
+    "model": "atlantis_cosmetics:hat/emoji_head/default",
+    "name": "Шляпа «Emoji голова»",
+    "description": "Косметическая шляпа: Шляпа «Emoji голова».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "emoji_head/joy",
+    "cmd": 106,
+    "model": "atlantis_cosmetics:hat/emoji_head/joy",
+    "name": "Шляпа «Emoji голова (joy)»",
+    "description": "Косметическая шляпа: Шляпа «Emoji голова (joy)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "emoji_head/nerd",
+    "cmd": 107,
+    "model": "atlantis_cosmetics:hat/emoji_head/nerd",
+    "name": "Шляпа «Emoji голова (nerd)»",
+    "description": "Косметическая шляпа: Шляпа «Emoji голова (nerd)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "emoji_head/sunglasses",
+    "cmd": 108,
+    "model": "atlantis_cosmetics:hat/emoji_head/sunglasses",
+    "name": "Шляпа «Emoji голова (sunglasses)»",
+    "description": "Косметическая шляпа: Шляпа «Emoji голова (sunglasses)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "exo_helmet/default",
+    "cmd": 109,
+    "model": "atlantis_cosmetics:hat/exo_helmet/default",
+    "name": "Exo шлем",
+    "description": "Косметическая шляпа: Exo шлем.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "eyeball/default",
+    "cmd": 110,
+    "model": "atlantis_cosmetics:hat/eyeball/default",
+    "name": "Шляпа «Eyeball»",
+    "description": "Косметическая шляпа: Шляпа «Eyeball».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "fenrir/default",
+    "cmd": 111,
+    "model": "atlantis_cosmetics:hat/fenrir/default",
+    "name": "Шляпа «Fenrir»",
+    "description": "Косметическая шляпа: Шляпа «Fenrir».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "fenrir/fire",
+    "cmd": 112,
+    "model": "atlantis_cosmetics:hat/fenrir/fire",
+    "name": "Шляпа «Fenrir (fire)»",
+    "description": "Косметическая шляпа: Шляпа «Fenrir (fire)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "fenrir/steelwolf",
+    "cmd": 113,
+    "model": "atlantis_cosmetics:hat/fenrir/steelwolf",
+    "name": "Шляпа «Fenrir (steelwolf)»",
+    "description": "Косметическая шляпа: Шляпа «Fenrir (steelwolf)».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "fez/default",
+    "cmd": 114,
+    "model": "atlantis_cosmetics:hat/fez/default",
+    "name": "Шляпа «Fez»",
+    "description": "Косметическая шляпа: Шляпа «Fez».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "firefighter_helmet/default",
+    "cmd": 115,
+    "model": "atlantis_cosmetics:hat/firefighter_helmet/default",
+    "name": "Пожарного шлем",
+    "description": "Косметическая шляпа: Пожарного шлем.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "fishbowl/default",
+    "cmd": 116,
+    "model": "atlantis_cosmetics:hat/fishbowl/default",
+    "name": "Шляпа «Fishbowl»",
+    "description": "Косметическая шляпа: Шляпа «Fishbowl».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "fishing_hat/default",
+    "cmd": 117,
+    "model": "atlantis_cosmetics:hat/fishing_hat/default",
+    "name": "Рыбацкая шляпа",
+    "description": "Косметическая шляпа: Рыбацкая шляпа.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "flight_helmet/default",
+    "cmd": 118,
+    "model": "atlantis_cosmetics:hat/flight_helmet/default",
+    "name": "Flight шлем",
+    "description": "Косметическая шляпа: Flight шлем.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "flower_crown/default",
+    "cmd": 119,
+    "model": "atlantis_cosmetics:hat/flower_crown/default",
+    "name": "Flower корона",
+    "description": "Косметическая шляпа: Flower корона.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "flower_crown/tropical",
+    "cmd": 120,
+    "model": "atlantis_cosmetics:hat/flower_crown/tropical",
+    "name": "Flower корона (tropical)",
+    "description": "Косметическая шляпа: Flower корона (tropical).",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "football_helmet/default",
+    "cmd": 121,
+    "model": "atlantis_cosmetics:hat/football_helmet/default",
+    "name": "Футбольный шлем",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "frank_jr/default",
+    "cmd": 122,
+    "model": "atlantis_cosmetics:hat/frank_jr/default",
+    "name": "Шляпа «Frank jr»",
+    "description": "Косметическая шляпа: Шляпа «Frank jr».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "fruit_crown/default",
+    "cmd": 123,
+    "model": "atlantis_cosmetics:hat/fruit_crown/default",
+    "name": "Fruit корона",
+    "description": "Косметическая шляпа: Fruit корона.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "furball/default",
+    "cmd": 124,
+    "model": "atlantis_cosmetics:hat/furball/default",
+    "name": "Шляпа «Furball»",
+    "description": "Косметическая шляпа: Шляпа «Furball».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "gas_mask/default",
+    "cmd": 125,
+    "model": "atlantis_cosmetics:hat/gas_mask/default",
+    "name": "Gas маска",
+    "description": "Косметическая шляпа: Gas маска.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "gas_mask/hazmat",
+    "cmd": 126,
+    "model": "atlantis_cosmetics:hat/gas_mask/hazmat",
+    "name": "Gas маска (hazmat)",
+    "description": "Косметическая шляпа: Gas маска (hazmat).",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "gas_mask/nuclear",
+    "cmd": 127,
+    "model": "atlantis_cosmetics:hat/gas_mask/nuclear",
+    "name": "Gas маска (nuclear)",
+    "description": "Косметическая шляпа: Gas маска (nuclear).",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "gas_mask/toxic",
+    "cmd": 128,
+    "model": "atlantis_cosmetics:hat/gas_mask/toxic",
+    "name": "Gas маска (toxic)",
+    "description": "Косметическая шляпа: Gas маска (toxic).",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "gas_mask/visor",
+    "cmd": 129,
+    "model": "atlantis_cosmetics:hat/gas_mask/visor",
+    "name": "Gas маска (визор)",
+    "description": "Косметическая шляпа: Gas маска (визор).",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "gearhead/default",
+    "cmd": 130,
+    "model": "atlantis_cosmetics:hat/gearhead/default",
+    "name": "Шляпа «Gearhead»",
+    "description": "Косметическая шляпа: Шляпа «Gearhead».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "gnome/default",
+    "cmd": 131,
+    "model": "atlantis_cosmetics:hat/gnome/default",
+    "name": "Шляпа «Gnome»",
+    "description": "Косметическая шляпа: Шляпа «Gnome».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "gnome/botanical",
+    "cmd": 132,
+    "model": "atlantis_cosmetics:hat/gnome/botanical",
+    "name": "Шляпа «Gnome (botanical)»",
+    "description": "Косметическая шляпа: Шляпа «Gnome (botanical)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "goggles/default",
+    "cmd": 133,
+    "model": "atlantis_cosmetics:hat/goggles/default",
+    "name": "Шляпа «Goggles»",
+    "description": "Косметическая шляпа: Шляпа «Goggles».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "goggles/over_eye",
+    "cmd": 134,
+    "model": "atlantis_cosmetics:hat/goggles/over_eye",
+    "name": "Шляпа «Goggles (over eye)»",
+    "description": "Косметическая шляпа: Шляпа «Goggles (over eye)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "goggles/tinted",
+    "cmd": 135,
+    "model": "atlantis_cosmetics:hat/goggles/tinted",
+    "name": "Шляпа «Goggles (tinted)»",
+    "description": "Косметическая шляпа: Шляпа «Goggles (tinted)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "goggles/tinted_over_eye",
+    "cmd": 136,
+    "model": "atlantis_cosmetics:hat/goggles/tinted_over_eye",
+    "name": "Шляпа «Goggles (tinted over eye)»",
+    "description": "Косметическая шляпа: Шляпа «Goggles (tinted over eye)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "graduate/default",
+    "cmd": 137,
+    "model": "atlantis_cosmetics:hat/graduate/default",
+    "name": "Шляпа «Graduate»",
+    "description": "Косметическая шляпа: Шляпа «Graduate».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "gumball_head/default",
+    "cmd": 138,
+    "model": "atlantis_cosmetics:hat/gumball_head/default",
+    "name": "Шляпа «Gumball голова»",
+    "description": "Косметическая шляпа: Шляпа «Gumball голова».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "gummi/default",
+    "cmd": 139,
+    "model": "atlantis_cosmetics:hat/gummi/default",
+    "name": "Шляпа «Gummi»",
+    "description": "Косметическая шляпа: Шляпа «Gummi».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "hairbow/peppermint",
+    "cmd": 140,
+    "model": "atlantis_cosmetics:hat/hairbow/peppermint",
+    "name": "Шляпа «Hairbow (peppermint)»",
+    "description": "Косметическая шляпа: Шляпа «Hairbow (peppermint)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "halo/default",
+    "cmd": 141,
+    "model": "atlantis_cosmetics:hat/halo/default",
+    "name": "Шляпа «Halo»",
+    "description": "Косметическая шляпа: Шляпа «Halo».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "halo/candy",
+    "cmd": 142,
+    "model": "atlantis_cosmetics:hat/halo/candy",
+    "name": "Шляпа «Halo (candy)»",
+    "description": "Косметическая шляпа: Шляпа «Halo (candy)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "hard_hat/default",
+    "cmd": 143,
+    "model": "atlantis_cosmetics:hat/hard_hat/default",
+    "name": "Каска шляпа",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "hard_hat/construction",
+    "cmd": 144,
+    "model": "atlantis_cosmetics:hat/hard_hat/construction",
+    "name": "Каска шляпа (construction)",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "hard_hat/goggles",
+    "cmd": 145,
+    "model": "atlantis_cosmetics:hat/hard_hat/goggles",
+    "name": "Каска шляпа (goggles)",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "hard_hat/headlight",
+    "cmd": 146,
+    "model": "atlantis_cosmetics:hat/hard_hat/headlight",
+    "name": "Каска шляпа (headlight)",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "hard_hat/miner",
+    "cmd": 147,
+    "model": "atlantis_cosmetics:hat/hard_hat/miner",
+    "name": "Каска шляпа (miner)",
+    "description": "Практичный вид для серьёзных дел.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "hayseed/haunted",
+    "cmd": 148,
+    "model": "atlantis_cosmetics:hat/hayseed/haunted",
+    "name": "Шляпа «Hayseed (haunted)»",
+    "description": "Косметическая шляпа: Шляпа «Hayseed (haunted)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "headband/alien_antennae",
+    "cmd": 149,
+    "model": "atlantis_cosmetics:hat/headband/alien_antennae",
+    "name": "Шляпа «Headband (alien antennae)»",
+    "description": "Косметическая шляпа: Шляпа «Headband (alien antennae)».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "headphones/default",
+    "cmd": 150,
+    "model": "atlantis_cosmetics:hat/headphones/default",
+    "name": "Шляпа «Headphones»",
+    "description": "Косметическая шляпа: Шляпа «Headphones».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "headphones/cat_ear",
+    "cmd": 151,
+    "model": "atlantis_cosmetics:hat/headphones/cat_ear",
+    "name": "Шляпа «Headphones (cat ear)»",
+    "description": "Милый и слегка безумный вайб.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "headphones/gaming",
+    "cmd": 152,
+    "model": "atlantis_cosmetics:hat/headphones/gaming",
+    "name": "Шляпа «Headphones (gaming)»",
+    "description": "Косметическая шляпа: Шляпа «Headphones (gaming)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "headphones/squidtek",
+    "cmd": 153,
+    "model": "atlantis_cosmetics:hat/headphones/squidtek",
+    "name": "Шляпа «Headphones (squidtek)»",
+    "description": "Косметическая шляпа: Шляпа «Headphones (squidtek)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "hothead/default",
+    "cmd": 154,
+    "model": "atlantis_cosmetics:hat/hothead/default",
+    "name": "Шляпа «Hothead»",
+    "description": "Косметическая шляпа: Шляпа «Hothead».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "hothead/cheri",
+    "cmd": 155,
+    "model": "atlantis_cosmetics:hat/hothead/cheri",
+    "name": "Шляпа «Hothead (cheri)»",
+    "description": "Косметическая шляпа: Шляпа «Hothead (cheri)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "hothead/explode",
+    "cmd": 156,
+    "model": "atlantis_cosmetics:hat/hothead/explode",
+    "name": "Шляпа «Hothead (explode)»",
+    "description": "Косметическая шляпа: Шляпа «Hothead (explode)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "hothead/skelly",
+    "cmd": 157,
+    "model": "atlantis_cosmetics:hat/hothead/skelly",
+    "name": "Шляпа «Hothead (skelly)»",
+    "description": "Косметическая шляпа: Шляпа «Hothead (skelly)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "jellyfish/default",
+    "cmd": 158,
+    "model": "atlantis_cosmetics:hat/jellyfish/default",
+    "name": "Шляпа «Jellyfish»",
+    "description": "Косметическая шляпа: Шляпа «Jellyfish».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "jester/default",
+    "cmd": 159,
+    "model": "atlantis_cosmetics:hat/jester/default",
+    "name": "Шляпа «Jester»",
+    "description": "Косметическая шляпа: Шляпа «Jester».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "king_whip/default",
+    "cmd": 160,
+    "model": "atlantis_cosmetics:hat/king_whip/default",
+    "name": "Шляпа «Короля whip»",
+    "description": "Косметическая шляпа: Шляпа «Короля whip».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "kitsune_mask/golden_tint",
+    "cmd": 161,
+    "model": "atlantis_cosmetics:hat/kitsune_mask/golden_tint",
+    "name": "Kitsune маска (золотой tint)",
+    "description": "Косметическая шляпа: Kitsune маска (золотой tint).",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "knight_helmet/default",
+    "cmd": 162,
+    "model": "atlantis_cosmetics:hat/knight_helmet/default",
+    "name": "Рыцаря шлем",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "knight_helmet/closed",
+    "cmd": 163,
+    "model": "atlantis_cosmetics:hat/knight_helmet/closed",
+    "name": "Рыцаря шлем (закрытый)",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "oni_mask/default",
+    "cmd": 164,
+    "model": "atlantis_cosmetics:hat/oni_mask/default",
+    "name": "Oni маска",
+    "description": "Косметическая шляпа: Oni маска.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "oni_mask/cursed",
+    "cmd": 165,
+    "model": "atlantis_cosmetics:hat/oni_mask/cursed",
+    "name": "Oni маска (проклятый)",
+    "description": "Косметическая шляпа: Oni маска (проклятый).",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "oni_mask/elder",
+    "cmd": 166,
+    "model": "atlantis_cosmetics:hat/oni_mask/elder",
+    "name": "Oni маска (древний)",
+    "description": "Косметическая шляпа: Oni маска (древний).",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "oni_mask/markings",
+    "cmd": 167,
+    "model": "atlantis_cosmetics:hat/oni_mask/markings",
+    "name": "Oni маска (с узором)",
+    "description": "Косметическая шляпа: Oni маска (с узором).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "oni_mask/outline",
+    "cmd": 168,
+    "model": "atlantis_cosmetics:hat/oni_mask/outline",
+    "name": "Oni маска (контурный)",
+    "description": "Косметическая шляпа: Oni маска (контурный).",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "oni_mask/talltale",
+    "cmd": 169,
+    "model": "atlantis_cosmetics:hat/oni_mask/talltale",
+    "name": "Oni маска (легендарный)",
+    "description": "Косметическая шляпа: Oni маска (легендарный).",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "palette_cap/default",
+    "cmd": 170,
+    "model": "atlantis_cosmetics:hat/palette_cap/default",
+    "name": "Palette кепка",
+    "description": "Косметическая шляпа: Palette кепка.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "parasite/default",
+    "cmd": 171,
+    "model": "atlantis_cosmetics:hat/parasite/default",
+    "name": "Шляпа «Parasite»",
+    "description": "Косметическая шляпа: Шляпа «Parasite».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "parkour_cowl/default",
+    "cmd": 172,
+    "model": "atlantis_cosmetics:hat/parkour_cowl/default",
+    "name": "Шляпа «Parkour cowl»",
+    "description": "Косметическая шляпа: Шляпа «Parkour cowl».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "parkour_cowl/ninja_frog",
+    "cmd": 173,
+    "model": "atlantis_cosmetics:hat/parkour_cowl/ninja_frog",
+    "name": "Шляпа «Parkour cowl (ninja frog)»",
+    "description": "Косметическая шляпа: Шляпа «Parkour cowl (ninja frog)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "party_hat/default",
+    "cmd": 174,
+    "model": "atlantis_cosmetics:hat/party_hat/default",
+    "name": "Праздничная шляпа",
+    "description": "Чтобы праздник всегда был с тобой.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "party_hat/striped",
+    "cmd": 175,
+    "model": "atlantis_cosmetics:hat/party_hat/striped",
+    "name": "Праздничная шляпа (striped)",
+    "description": "Чтобы праздник всегда был с тобой.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "pilot_hat/default",
+    "cmd": 176,
+    "model": "atlantis_cosmetics:hat/pilot_hat/default",
+    "name": "Пилота шляпа",
+    "description": "Косметическая шляпа: Пилота шляпа.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "pirate_hat/default",
+    "cmd": 177,
+    "model": "atlantis_cosmetics:hat/pirate_hat/default",
+    "name": "Пирата шляпа",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "pirate_hat/barnacles",
+    "cmd": 178,
+    "model": "atlantis_cosmetics:hat/pirate_hat/barnacles",
+    "name": "Пирата шляпа (barnacles)",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "pirate_hat/feathered",
+    "cmd": 179,
+    "model": "atlantis_cosmetics:hat/pirate_hat/feathered",
+    "name": "Пирата шляпа (feathered)",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "pirate_hat/phantom",
+    "cmd": 180,
+    "model": "atlantis_cosmetics:hat/pirate_hat/phantom",
+    "name": "Пирата шляпа (phantom)",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "plague_doctor/default",
+    "cmd": 181,
+    "model": "atlantis_cosmetics:hat/plague_doctor/default",
+    "name": "Шляпа «Plague doctor»",
+    "description": "Косметическая шляпа: Шляпа «Plague doctor».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "plague_doctor/pristine",
+    "cmd": 182,
+    "model": "atlantis_cosmetics:hat/plague_doctor/pristine",
+    "name": "Шляпа «Plague doctor (pristine)»",
+    "description": "Косметическая шляпа: Шляпа «Plague doctor (pristine)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "plague_doctor/steampunk",
+    "cmd": 183,
+    "model": "atlantis_cosmetics:hat/plague_doctor/steampunk",
+    "name": "Шляпа «Plague doctor (steampunk)»",
+    "description": "Косметическая шляпа: Шляпа «Plague doctor (steampunk)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "plunderers_bandana/default",
+    "cmd": 184,
+    "model": "atlantis_cosmetics:hat/plunderers_bandana/default",
+    "name": "Шляпа «Plunderers bandana»",
+    "description": "Косметическая шляпа: Шляпа «Plunderers bandana».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "plunderers_bandana/black_stripes",
+    "cmd": 185,
+    "model": "atlantis_cosmetics:hat/plunderers_bandana/black_stripes",
+    "name": "Шляпа «Plunderers bandana (black stripes)»",
+    "description": "Косметическая шляпа: Шляпа «Plunderers bandana (black stripes)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "plunderers_bandana/skull",
+    "cmd": 186,
+    "model": "atlantis_cosmetics:hat/plunderers_bandana/skull",
+    "name": "Шляпа «Plunderers bandana (skull)»",
+    "description": "Косметическая шляпа: Шляпа «Plunderers bandana (skull)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "plunderers_bandana/white_stripes",
+    "cmd": 187,
+    "model": "atlantis_cosmetics:hat/plunderers_bandana/white_stripes",
+    "name": "Шляпа «Plunderers bandana (white stripes)»",
+    "description": "Косметическая шляпа: Шляпа «Plunderers bandana (white stripes)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "police_cap/default",
+    "cmd": 188,
+    "model": "atlantis_cosmetics:hat/police_cap/default",
+    "name": "Police кепка",
+    "description": "Косметическая шляпа: Police кепка.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "police_cap/automaton",
+    "cmd": 189,
+    "model": "atlantis_cosmetics:hat/police_cap/automaton",
+    "name": "Police кепка (automaton)",
+    "description": "Косметическая шляпа: Police кепка (automaton).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "police_cap/beret",
+    "cmd": 190,
+    "model": "atlantis_cosmetics:hat/police_cap/beret",
+    "name": "Police кепка (beret)",
+    "description": "Косметическая шляпа: Police кепка (beret).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "police_cap/constable",
+    "cmd": 191,
+    "model": "atlantis_cosmetics:hat/police_cap/constable",
+    "name": "Police кепка (constable)",
+    "description": "Косметическая шляпа: Police кепка (constable).",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "poseidons_crown/default",
+    "cmd": 192,
+    "model": "atlantis_cosmetics:hat/poseidons_crown/default",
+    "name": "Poseidons корона",
+    "description": "Будто только что вышел из пучины.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "propeller_hat/default",
+    "cmd": 193,
+    "model": "atlantis_cosmetics:hat/propeller_hat/default",
+    "name": "С пропеллером шляпа",
+    "description": "Косметическая шляпа: С пропеллером шляпа.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "rainbowcorn/default",
+    "cmd": 194,
+    "model": "atlantis_cosmetics:hat/rainbowcorn/default",
+    "name": "Шляпа «Rainbowcorn»",
+    "description": "Косметическая шляпа: Шляпа «Rainbowcorn».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "rainbowcorn/mystical",
+    "cmd": 195,
+    "model": "atlantis_cosmetics:hat/rainbowcorn/mystical",
+    "name": "Шляпа «Rainbowcorn (mystical)»",
+    "description": "Косметическая шляпа: Шляпа «Rainbowcorn (mystical)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "ram_horns/default",
+    "cmd": 196,
+    "model": "atlantis_cosmetics:hat/ram_horns/default",
+    "name": "Шляпа «Ram horns»",
+    "description": "Косметическая шляпа: Шляпа «Ram horns».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "rat_head/disguise",
+    "cmd": 197,
+    "model": "atlantis_cosmetics:hat/rat_head/disguise",
+    "name": "Шляпа «Rat голова (disguise)»",
+    "description": "Косметическая шляпа: Шляпа «Rat голова (disguise)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "rat_head/mecha",
+    "cmd": 198,
+    "model": "atlantis_cosmetics:hat/rat_head/mecha",
+    "name": "Шляпа «Rat голова (mecha)»",
+    "description": "Косметическая шляпа: Шляпа «Rat голова (mecha)».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "rat_head/zombie",
+    "cmd": 199,
+    "model": "atlantis_cosmetics:hat/rat_head/zombie",
+    "name": "Шляпа «Rat голова (zombie)»",
+    "description": "Косметическая шляпа: Шляпа «Rat голова (zombie)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "rising_cap/default",
+    "cmd": 200,
+    "model": "atlantis_cosmetics:hat/rising_cap/default",
+    "name": "Rising кепка",
+    "description": "Косметическая шляпа: Rising кепка.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "rocky_rocket/default",
+    "cmd": 201,
+    "model": "atlantis_cosmetics:hat/rocky_rocket/default",
+    "name": "Шляпа «Rocky rocket»",
+    "description": "Косметическая шляпа: Шляпа «Rocky rocket».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "rocky_rocket/radioactive",
+    "cmd": 202,
+    "model": "atlantis_cosmetics:hat/rocky_rocket/radioactive",
+    "name": "Шляпа «Rocky rocket (радиоактивный)»",
+    "description": "Косметическая шляпа: Шляпа «Rocky rocket (радиоактивный)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "rubber_ducky/default",
+    "cmd": 203,
+    "model": "atlantis_cosmetics:hat/rubber_ducky/default",
+    "name": "Шляпа «Rubber ducky»",
+    "description": "Косметическая шляпа: Шляпа «Rubber ducky».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "rubber_ducky/heart_glasses",
+    "cmd": 204,
+    "model": "atlantis_cosmetics:hat/rubber_ducky/heart_glasses",
+    "name": "Rubber ducky (heart очки)",
+    "description": "Косметическая шляпа: Rubber ducky (heart очки).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "safari_hat/default",
+    "cmd": 205,
+    "model": "atlantis_cosmetics:hat/safari_hat/default",
+    "name": "Сафари шляпа",
+    "description": "Для тех, кто привык к широким горизонтам.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "sailor_hat/default",
+    "cmd": 206,
+    "model": "atlantis_cosmetics:hat/sailor_hat/default",
+    "name": "Моряка шляпа",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "sailor_hat/striped",
+    "cmd": 207,
+    "model": "atlantis_cosmetics:hat/sailor_hat/striped",
+    "name": "Моряка шляпа (striped)",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "samurai_helmet/default",
+    "cmd": 208,
+    "model": "atlantis_cosmetics:hat/samurai_helmet/default",
+    "name": "Самурая шлем",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "sandcastle_crown/default",
+    "cmd": 209,
+    "model": "atlantis_cosmetics:hat/sandcastle_crown/default",
+    "name": "Sandcastle корона",
+    "description": "Косметическая шляпа: Sandcastle корона.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "scavenger_kings_crown/default",
+    "cmd": 210,
+    "model": "atlantis_cosmetics:hat/scavenger_kings_crown/default",
+    "name": "Scavenger kings корона",
+    "description": "Косметическая шляпа: Scavenger kings корона.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "scrap_crown/default",
+    "cmd": 211,
+    "model": "atlantis_cosmetics:hat/scrap_crown/default",
+    "name": "Scrap корона",
+    "description": "Косметическая шляпа: Scrap корона.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "scuba_mask/default",
+    "cmd": 212,
+    "model": "atlantis_cosmetics:hat/scuba_mask/default",
+    "name": "Scuba маска",
+    "description": "Будто только что вышел из пучины.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "sea_shell/default",
+    "cmd": 213,
+    "model": "atlantis_cosmetics:hat/sea_shell/default",
+    "name": "Шляпа «Sea shell»",
+    "description": "Косметическая шляпа: Шляпа «Sea shell».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "sea_shell/hermit_bot",
+    "cmd": 214,
+    "model": "atlantis_cosmetics:hat/sea_shell/hermit_bot",
+    "name": "Шляпа «Sea shell (hermit bot)»",
+    "description": "Косметическая шляпа: Шляпа «Sea shell (hermit bot)».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "sensei/default",
+    "cmd": 215,
+    "model": "atlantis_cosmetics:hat/sensei/default",
+    "name": "Шляпа «Sensei»",
+    "description": "Косметическая шляпа: Шляпа «Sensei».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "sensei/stripe",
+    "cmd": 216,
+    "model": "atlantis_cosmetics:hat/sensei/stripe",
+    "name": "Шляпа «Sensei (stripe)»",
+    "description": "Косметическая шляпа: Шляпа «Sensei (stripe)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "shades/default",
+    "cmd": 217,
+    "model": "atlantis_cosmetics:hat/shades/default",
+    "name": "Шляпа «Shades»",
+    "description": "Косметическая шляпа: Шляпа «Shades».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "shades/anime",
+    "cmd": 218,
+    "model": "atlantis_cosmetics:hat/shades/anime",
+    "name": "Шляпа «Shades (anime)»",
+    "description": "Косметическая шляпа: Шляпа «Shades (anime)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "shades/cool",
+    "cmd": 219,
+    "model": "atlantis_cosmetics:hat/shades/cool",
+    "name": "Шляпа «Shades (cool)»",
+    "description": "Косметическая шляпа: Шляпа «Shades (cool)».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "shades/popstar",
+    "cmd": 220,
+    "model": "atlantis_cosmetics:hat/shades/popstar",
+    "name": "Шляпа «Shades (popstar)»",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "shades/sunset",
+    "cmd": 221,
+    "model": "atlantis_cosmetics:hat/shades/sunset",
+    "name": "Шляпа «Shades (sunset)»",
+    "description": "Косметическая шляпа: Шляпа «Shades (sunset)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "shark/default",
+    "cmd": 222,
+    "model": "atlantis_cosmetics:hat/shark/default",
+    "name": "Шляпа «Shark»",
+    "description": "Косметическая шляпа: Шляпа «Shark».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "shroud/default",
+    "cmd": 223,
+    "model": "atlantis_cosmetics:hat/shroud/default",
+    "name": "Шляпа «Shroud»",
+    "description": "Косметическая шляпа: Шляпа «Shroud».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "shroud/infernal",
+    "cmd": 224,
+    "model": "atlantis_cosmetics:hat/shroud/infernal",
+    "name": "Шляпа «Shroud (infernal)»",
+    "description": "Косметическая шляпа: Шляпа «Shroud (infernal)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "shroud/looter",
+    "cmd": 225,
+    "model": "atlantis_cosmetics:hat/shroud/looter",
+    "name": "Шляпа «Shroud (looter)»",
+    "description": "Косметическая шляпа: Шляпа «Shroud (looter)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "shroud/optic",
+    "cmd": 226,
+    "model": "atlantis_cosmetics:hat/shroud/optic",
+    "name": "Шляпа «Shroud (optic)»",
+    "description": "Косметическая шляпа: Шляпа «Shroud (optic)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "shroud/piercing_eyes",
+    "cmd": 227,
+    "model": "atlantis_cosmetics:hat/shroud/piercing_eyes",
+    "name": "Шляпа «Shroud (piercing eyes)»",
+    "description": "Косметическая шляпа: Шляпа «Shroud (piercing eyes)».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "shroud/voyager",
+    "cmd": 228,
+    "model": "atlantis_cosmetics:hat/shroud/voyager",
+    "name": "Шляпа «Shroud (voyager)»",
+    "description": "Косметическая шляпа: Шляпа «Shroud (voyager)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "ski_goggles/default",
+    "cmd": 229,
+    "model": "atlantis_cosmetics:hat/ski_goggles/default",
+    "name": "Шляпа «Ski goggles»",
+    "description": "Косметическая шляпа: Шляпа «Ski goggles».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "ski_goggles/headwear",
+    "cmd": 230,
+    "model": "atlantis_cosmetics:hat/ski_goggles/headwear",
+    "name": "Шляпа «Ski goggles (headwear)»",
+    "description": "Косметическая шляпа: Шляпа «Ski goggles (headwear)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "skull/default",
+    "cmd": 231,
+    "model": "atlantis_cosmetics:hat/skull/default",
+    "name": "Шляпа «Skull»",
+    "description": "Косметическая шляпа: Шляпа «Skull».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "skull/flaming",
+    "cmd": 232,
+    "model": "atlantis_cosmetics:hat/skull/flaming",
+    "name": "Шляпа «Skull (огненный)»",
+    "description": "Косметическая шляпа: Шляпа «Skull (огненный)».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "skull/laughing",
+    "cmd": 233,
+    "model": "atlantis_cosmetics:hat/skull/laughing",
+    "name": "Шляпа «Skull (смеющийся)»",
+    "description": "Косметическая шляпа: Шляпа «Skull (смеющийся)».",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "skull/scallywag",
+    "cmd": 234,
+    "model": "atlantis_cosmetics:hat/skull/scallywag",
+    "name": "Шляпа «Skull (scallywag)»",
+    "description": "Косметическая шляпа: Шляпа «Skull (scallywag)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "slime_wall/default",
+    "cmd": 235,
+    "model": "atlantis_cosmetics:hat/slime_wall/default",
+    "name": "Шляпа «Slime wall»",
+    "description": "Косметическая шляпа: Шляпа «Slime wall».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "slime_wall/toxic",
+    "cmd": 236,
+    "model": "atlantis_cosmetics:hat/slime_wall/toxic",
+    "name": "Шляпа «Slime wall (toxic)»",
+    "description": "Косметическая шляпа: Шляпа «Slime wall (toxic)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "slimeling/default",
+    "cmd": 237,
+    "model": "atlantis_cosmetics:hat/slimeling/default",
+    "name": "Шляпа «Slimeling»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "slimeling/familiar",
+    "cmd": 238,
+    "model": "atlantis_cosmetics:hat/slimeling/familiar",
+    "name": "Шляпа «Slimeling (фамильяр)»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling (фамильяр)».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "slimeling/kawaii",
+    "cmd": 239,
+    "model": "atlantis_cosmetics:hat/slimeling/kawaii",
+    "name": "Шляпа «Slimeling (кавайный)»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling (кавайный)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "slimeling/king",
+    "cmd": 240,
+    "model": "atlantis_cosmetics:hat/slimeling/king",
+    "name": "Шляпа «Slimeling (короля)»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling (короля)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "slimeling/loot",
+    "cmd": 241,
+    "model": "atlantis_cosmetics:hat/slimeling/loot",
+    "name": "Шляпа «Slimeling (loot)»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling (loot)».",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "slimeling/magma",
+    "cmd": 242,
+    "model": "atlantis_cosmetics:hat/slimeling/magma",
+    "name": "Шляпа «Slimeling (magma)»",
+    "description": "Косметическая шляпа: Шляпа «Slimeling (magma)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "snapback/default",
+    "cmd": 243,
+    "model": "atlantis_cosmetics:hat/snapback/default",
+    "name": "Шляпа «Snapback»",
+    "description": "Косметическая шляпа: Шляпа «Snapback».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "snapback/frontsnap",
+    "cmd": 244,
+    "model": "atlantis_cosmetics:hat/snapback/frontsnap",
+    "name": "Шляпа «Snapback (frontsnap)»",
+    "description": "Косметическая шляпа: Шляпа «Snapback (frontsnap)».",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "snapback/sidesnap",
+    "cmd": 245,
+    "model": "atlantis_cosmetics:hat/snapback/sidesnap",
+    "name": "Шляпа «Snapback (sidesnap)»",
+    "description": "Косметическая шляпа: Шляпа «Snapback (sidesnap)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "snorkel/default",
+    "cmd": 246,
+    "model": "atlantis_cosmetics:hat/snorkel/default",
+    "name": "Шляпа «Snorkel»",
+    "description": "Косметическая шляпа: Шляпа «Snorkel».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "snorkel/bubbles",
+    "cmd": 247,
+    "model": "atlantis_cosmetics:hat/snorkel/bubbles",
+    "name": "Шляпа «Snorkel (bubbles)»",
+    "description": "Косметическая шляпа: Шляпа «Snorkel (bubbles)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "sombrero/default",
+    "cmd": 248,
+    "model": "atlantis_cosmetics:hat/sombrero/default",
+    "name": "Шляпа «Sombrero»",
+    "description": "Косметическая шляпа: Шляпа «Sombrero».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "space_slug/default",
+    "cmd": 249,
+    "model": "atlantis_cosmetics:hat/space_slug/default",
+    "name": "Шляпа «Space slug»",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "spartan/default",
+    "cmd": 250,
+    "model": "atlantis_cosmetics:hat/spartan/default",
+    "name": "Шляпа «Spartan»",
+    "description": "Косметическая шляпа: Шляпа «Spartan».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "sprouted/default",
+    "cmd": 251,
+    "model": "atlantis_cosmetics:hat/sprouted/default",
+    "name": "Шляпа «Sprouted»",
+    "description": "Косметическая шляпа: Шляпа «Sprouted».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "sprouted/bloomed",
+    "cmd": 252,
+    "model": "atlantis_cosmetics:hat/sprouted/bloomed",
+    "name": "Шляпа «Sprouted (bloomed)»",
+    "description": "Косметическая шляпа: Шляпа «Sprouted (bloomed)».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "squidtek_agent/default",
+    "cmd": 253,
+    "model": "atlantis_cosmetics:hat/squidtek_agent/default",
+    "name": "Шляпа «Squidtek agent»",
+    "description": "Косметическая шляпа: Шляпа «Squidtek agent».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "squidtek_visor/default",
+    "cmd": 254,
+    "model": "atlantis_cosmetics:hat/squidtek_visor/default",
+    "name": "Squidtek визор",
+    "description": "Косметическая шляпа: Squidtek визор.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "star_sailor/default",
+    "cmd": 255,
+    "model": "atlantis_cosmetics:hat/star_sailor/default",
+    "name": "Шляпа «Star моряка»",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "star_sailors_tiara/default",
+    "cmd": 256,
+    "model": "atlantis_cosmetics:hat/star_sailors_tiara/default",
+    "name": "Шляпа «Star sailors tiara»",
+    "description": "Пахнет морем и приключениями.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "star_scouter/default",
+    "cmd": 257,
+    "model": "atlantis_cosmetics:hat/star_scouter/default",
+    "name": "Шляпа «Star scouter»",
+    "description": "Стиль, достойный орбиты.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "straw_hat/default",
+    "cmd": 258,
+    "model": "atlantis_cosmetics:hat/straw_hat/default",
+    "name": "Соломенная шляпа",
+    "description": "Косметическая шляпа: Соломенная шляпа.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "strawberry_hat/default",
+    "cmd": 259,
+    "model": "atlantis_cosmetics:hat/strawberry_hat/default",
+    "name": "Клубничная шляпа",
+    "description": "Косметическая шляпа: Клубничная шляпа.",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "sultan/default",
+    "cmd": 260,
+    "model": "atlantis_cosmetics:hat/sultan/default",
+    "name": "Шляпа «Sultan»",
+    "description": "Косметическая шляпа: Шляпа «Sultan».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "sun_hat/default",
+    "cmd": 261,
+    "model": "atlantis_cosmetics:hat/sun_hat/default",
+    "name": "Солнечная шляпа",
+    "description": "Косметическая шляпа: Солнечная шляпа.",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "sun_hat/bow",
+    "cmd": 262,
+    "model": "atlantis_cosmetics:hat/sun_hat/bow",
+    "name": "Солнечная шляпа (bow)",
+    "description": "Косметическая шляпа: Солнечная шляпа (bow).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "sun_hat/coastal",
+    "cmd": 263,
+    "model": "atlantis_cosmetics:hat/sun_hat/coastal",
+    "name": "Солнечная шляпа (coastal)",
+    "description": "Косметическая шляпа: Солнечная шляпа (coastal).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "sun_hat/gothic",
+    "cmd": 264,
+    "model": "atlantis_cosmetics:hat/sun_hat/gothic",
+    "name": "Солнечная шляпа (gothic)",
+    "description": "Косметическая шляпа: Солнечная шляпа (gothic).",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "sun_hat/outline",
+    "cmd": 265,
+    "model": "atlantis_cosmetics:hat/sun_hat/outline",
+    "name": "Солнечная шляпа (контурный)",
+    "description": "Косметическая шляпа: Солнечная шляпа (контурный).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "sun_hat/summer_shades",
+    "cmd": 266,
+    "model": "atlantis_cosmetics:hat/sun_hat/summer_shades",
+    "name": "Солнечная шляпа (summer shades)",
+    "description": "Косметическая шляпа: Солнечная шляпа (summer shades).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "sun_visor/default",
+    "cmd": 267,
+    "model": "atlantis_cosmetics:hat/sun_visor/default",
+    "name": "Солнечная визор",
+    "description": "Косметическая шляпа: Солнечная визор.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "sun_visor/black",
+    "cmd": 268,
+    "model": "atlantis_cosmetics:hat/sun_visor/black",
+    "name": "Солнечная визор (black)",
+    "description": "Косметическая шляпа: Солнечная визор (black).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "sun_visor/lifeguard",
+    "cmd": 269,
+    "model": "atlantis_cosmetics:hat/sun_visor/lifeguard",
+    "name": "Солнечная визор (lifeguard)",
+    "description": "Косметическая шляпа: Солнечная визор (lifeguard).",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "sun_visor/white",
+    "cmd": 270,
+    "model": "atlantis_cosmetics:hat/sun_visor/white",
+    "name": "Солнечная визор (white)",
+    "description": "Косметическая шляпа: Солнечная визор (white).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "sunny/default",
+    "cmd": 271,
+    "model": "atlantis_cosmetics:hat/sunny/default",
+    "name": "Шляпа «Sunny»",
+    "description": "Косметическая шляпа: Шляпа «Sunny».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "surgical_mask/default",
+    "cmd": 272,
+    "model": "atlantis_cosmetics:hat/surgical_mask/default",
+    "name": "Surgical маска",
+    "description": "Косметическая шляпа: Surgical маска.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "surgical_mask/reflector",
+    "cmd": 273,
+    "model": "atlantis_cosmetics:hat/surgical_mask/reflector",
+    "name": "Surgical маска (reflector)",
+    "description": "Косметическая шляпа: Surgical маска (reflector).",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "tester_cap/default",
+    "cmd": 274,
+    "model": "atlantis_cosmetics:hat/tester_cap/default",
+    "name": "Tester кепка",
+    "description": "Косметическая шляпа: Tester кепка.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "toadstool/default",
+    "cmd": 275,
+    "model": "atlantis_cosmetics:hat/toadstool/default",
+    "name": "Шляпа «Toadstool»",
+    "description": "Косметическая шляпа: Шляпа «Toadstool».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "toadstool/fungi",
+    "cmd": 276,
+    "model": "atlantis_cosmetics:hat/toadstool/fungi",
+    "name": "Шляпа «Toadstool (fungi)»",
+    "description": "Косметическая шляпа: Шляпа «Toadstool (fungi)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "top_hat/default",
+    "cmd": 277,
+    "model": "atlantis_cosmetics:hat/top_hat/default",
+    "name": "Цилиндр шляпа",
+    "description": "Косметическая шляпа: Цилиндр шляпа.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "toybot/retro",
+    "cmd": 278,
+    "model": "atlantis_cosmetics:hat/toybot/retro",
+    "name": "Шляпа «Toybot (ретро)»",
+    "description": "Косметическая шляпа: Шляпа «Toybot (ретро)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "traffic_cone/default",
+    "cmd": 279,
+    "model": "atlantis_cosmetics:hat/traffic_cone/default",
+    "name": "Шляпа «Traffic cone»",
+    "description": "Косметическая шляпа: Шляпа «Traffic cone».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "traffic_cone/roadworks",
+    "cmd": 280,
+    "model": "atlantis_cosmetics:hat/traffic_cone/roadworks",
+    "name": "Шляпа «Traffic cone (roadworks)»",
+    "description": "Косметическая шляпа: Шляпа «Traffic cone (roadworks)».",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "tribal_mask/default",
+    "cmd": 281,
+    "model": "atlantis_cosmetics:hat/tribal_mask/default",
+    "name": "Tribal маска",
+    "description": "Косметическая шляпа: Tribal маска.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "trucker_hat/default",
+    "cmd": 282,
+    "model": "atlantis_cosmetics:hat/trucker_hat/default",
+    "name": "Дальнобойщика шляпа",
+    "description": "Косметическая шляпа: Дальнобойщика шляпа.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "trucker_hat/crown",
+    "cmd": 283,
+    "model": "atlantis_cosmetics:hat/trucker_hat/crown",
+    "name": "Дальнобойщика шляпа (корона)",
+    "description": "Косметическая шляпа: Дальнобойщика шляпа (корона).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "tv_head/default",
+    "cmd": 284,
+    "model": "atlantis_cosmetics:hat/tv_head/default",
+    "name": "Шляпа «Tv голова»",
+    "description": "Косметическая шляпа: Шляпа «Tv голова».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "tv_head/lashes",
+    "cmd": 285,
+    "model": "atlantis_cosmetics:hat/tv_head/lashes",
+    "name": "Шляпа «Tv голова (lashes)»",
+    "description": "Косметическая шляпа: Шляпа «Tv голова (lashes)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "tv_head/maniacal",
+    "cmd": 286,
+    "model": "atlantis_cosmetics:hat/tv_head/maniacal",
+    "name": "Шляпа «Tv голова (maniacal)»",
+    "description": "Косметическая шляпа: Шляпа «Tv голова (maniacal)».",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "ufo/default",
+    "cmd": 287,
+    "model": "atlantis_cosmetics:hat/ufo/default",
+    "name": "Шляпа «Ufo»",
+    "description": "Косметическая шляпа: Шляпа «Ufo».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "uncle_sam/default",
+    "cmd": 288,
+    "model": "atlantis_cosmetics:hat/uncle_sam/default",
+    "name": "Шляпа «Uncle sam»",
+    "description": "Косметическая шляпа: Шляпа «Uncle sam».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "ushanka/default",
+    "cmd": 289,
+    "model": "atlantis_cosmetics:hat/ushanka/default",
+    "name": "Шляпа «Ushanka»",
+    "description": "Косметическая шляпа: Шляпа «Ushanka».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "viking_helmet/default",
+    "cmd": 290,
+    "model": "atlantis_cosmetics:hat/viking_helmet/default",
+    "name": "Викинга шлем",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "viking_helmet/horned",
+    "cmd": 291,
+    "model": "atlantis_cosmetics:hat/viking_helmet/horned",
+    "name": "Викинга шлем (рогатый)",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "viking_helmet/prestiged",
+    "cmd": 292,
+    "model": "atlantis_cosmetics:hat/viking_helmet/prestiged",
+    "name": "Викинга шлем (престижный)",
+    "description": "Выглядит грозно даже в лобби.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "void_head/default",
+    "cmd": 293,
+    "model": "atlantis_cosmetics:hat/void_head/default",
+    "name": "Шляпа «Void голова»",
+    "description": "Косметическая шляпа: Шляпа «Void голова».",
+    "color": "#FFE082"
+  },
+  {
+    "id": "waffle_stack/default",
+    "cmd": 294,
+    "model": "atlantis_cosmetics:hat/waffle_stack/default",
+    "name": "Шляпа «Waffle stack»",
+    "description": "Косметическая шляпа: Шляпа «Waffle stack».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "welding_mask/default",
+    "cmd": 295,
+    "model": "atlantis_cosmetics:hat/welding_mask/default",
+    "name": "Welding маска",
+    "description": "Косметическая шляпа: Welding маска.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "welding_mask/at_work",
+    "cmd": 296,
+    "model": "atlantis_cosmetics:hat/welding_mask/at_work",
+    "name": "Welding маска (at work)",
+    "description": "Косметическая шляпа: Welding маска (at work).",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "wick/default",
+    "cmd": 297,
+    "model": "atlantis_cosmetics:hat/wick/default",
+    "name": "Шляпа «Wick»",
+    "description": "Косметическая шляпа: Шляпа «Wick».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "wicked_horns/default",
+    "cmd": 298,
+    "model": "atlantis_cosmetics:hat/wicked_horns/default",
+    "name": "Шляпа «Wicked horns»",
+    "description": "Косметическая шляпа: Шляпа «Wicked horns».",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "wicked_horns/curved",
+    "cmd": 299,
+    "model": "atlantis_cosmetics:hat/wicked_horns/curved",
+    "name": "Шляпа «Wicked horns (curved)»",
+    "description": "Косметическая шляпа: Шляпа «Wicked horns (curved)».",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "winged_helmet/default",
+    "cmd": 300,
+    "model": "atlantis_cosmetics:hat/winged_helmet/default",
+    "name": "Winged шлем",
+    "description": "Косметическая шляпа: Winged шлем.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "winged_helmet/golden_trim",
+    "cmd": 301,
+    "model": "atlantis_cosmetics:hat/winged_helmet/golden_trim",
+    "name": "Winged шлем (золотой с отделкой)",
+    "description": "Косметическая шляпа: Winged шлем (золотой с отделкой).",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "winged_helmet/thunder",
+    "cmd": 302,
+    "model": "atlantis_cosmetics:hat/winged_helmet/thunder",
+    "name": "Winged шлем (громовой)",
+    "description": "Косметическая шляпа: Winged шлем (громовой).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "winged_helmet/trim",
+    "cmd": 303,
+    "model": "atlantis_cosmetics:hat/winged_helmet/trim",
+    "name": "Winged шлем (с отделкой)",
+    "description": "Косметическая шляпа: Winged шлем (с отделкой).",
+    "color": "#FFE082"
+  },
+  {
+    "id": "witch_hat/default",
+    "cmd": 304,
+    "model": "atlantis_cosmetics:hat/witch_hat/default",
+    "name": "Ведьмы шляпа",
+    "description": "Магический аксессуар для истинных чародеев.",
+    "color": "#FFE082"
+  },
+  {
+    "id": "witch_hat/striped",
+    "cmd": 305,
+    "model": "atlantis_cosmetics:hat/witch_hat/striped",
+    "name": "Ведьмы шляпа (striped)",
+    "description": "Магический аксессуар для истинных чародеев.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "witch_hat/wicked",
+    "cmd": 306,
+    "model": "atlantis_cosmetics:hat/witch_hat/wicked",
+    "name": "Ведьмы шляпа (wicked)",
+    "description": "Магический аксессуар для истинных чародеев.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "wizard_hat/default",
+    "cmd": 307,
+    "model": "atlantis_cosmetics:hat/wizard_hat/default",
+    "name": "Волшебника шляпа",
+    "description": "Магический аксессуар для истинных чародеев.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "zeus/default",
+    "cmd": 308,
+    "model": "atlantis_cosmetics:hat/zeus/default",
+    "name": "Шляпа «Zeus»",
+    "description": "Косметическая шляпа: Шляпа «Zeus».",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "zeus/athens",
+    "cmd": 309,
+    "model": "atlantis_cosmetics:hat/zeus/athens",
+    "name": "Шляпа «Zeus (athens)»",
+    "description": "Косметическая шляпа: Шляпа «Zeus (athens)».",
+    "color": "#F48FB1"
+  },
+  {
+    "id": "zeus/golden",
+    "cmd": 310,
+    "model": "atlantis_cosmetics:hat/zeus/golden",
+    "name": "Шляпа «Zeus (золотой)»",
+    "description": "Косметическая шляпа: Шляпа «Zeus (золотой)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "zeus/lightning",
+    "cmd": 311,
+    "model": "atlantis_cosmetics:hat/zeus/lightning",
+    "name": "Шляпа «Zeus (lightning)»",
+    "description": "Косметическая шляпа: Шляпа «Zeus (lightning)».",
+    "color": "#7FDBFF"
+  },
+  {
+    "id": "zeus/marble",
+    "cmd": 312,
+    "model": "atlantis_cosmetics:hat/zeus/marble",
+    "name": "Шляпа «Zeus (marble)»",
+    "description": "Косметическая шляпа: Шляпа «Zeus (marble)».",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "zeus/stormy",
+    "cmd": 313,
+    "model": "atlantis_cosmetics:hat/zeus/stormy",
+    "name": "Шляпа «Zeus (штормовой)»",
+    "description": "Косметическая шляпа: Шляпа «Zeus (штормовой)».",
+    "color": "#CE93D8"
+  }
+]

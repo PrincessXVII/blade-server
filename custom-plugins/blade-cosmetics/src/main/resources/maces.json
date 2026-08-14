@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "50breeze",
+    "cmd": 100,
+    "model": "blade:item/mace_skin/50breeze",
+    "name": "Ветерок",
+    "description": "Лёгкий свист в замахе.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "8ball",
+    "cmd": 101,
+    "model": "blade:item/mace_skin/8ball",
+    "name": "Восьмёрка",
+    "description": "Удар наугад, как шар.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "abyssal",
+    "cmd": 102,
+    "model": "blade:item/mace_skin/abyssal",
+    "name": "Бездна",
+    "description": "Тяжёлый удар из глубины.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "aerial",
+    "cmd": 103,
+    "model": "blade:item/mace_skin/aerial",
+    "name": "Небесная",
+    "description": "Легко режет воздух.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "aged",
+    "cmd": 104,
+    "model": "blade:item/mace_skin/aged",
+    "name": "Старина",
+    "description": "Потёртый металл веков.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "amethyst",
+    "cmd": 105,
+    "model": "blade:item/mace_skin/amethyst",
+    "name": "Аметист",
+    "description": "Кристалл в каждом ударе.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "anchor",
+    "cmd": 106,
+    "model": "blade:item/mace_skin/anchor",
+    "name": "Якорь",
+    "description": "Тянет цель к земле.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "apple",
+    "cmd": 107,
+    "model": "blade:item/mace_skin/apple",
+    "name": "Яблоко",
+    "description": "Сладкий и тяжёлый замах.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "apricot",
+    "cmd": 108,
+    "model": "blade:item/mace_skin/apricot",
+    "name": "Абрикос",
+    "description": "Тёплый оттенок стали.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "argentina",
+    "cmd": 109,
+    "model": "blade:item/mace_skin/argentina",
+    "name": "Аргентина",
+    "description": "Голубая лента на древке.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "ashen",
+    "cmd": 110,
+    "model": "blade:item/mace_skin/ashen",
+    "name": "Пепел",
+    "description": "Серый след после удара.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "aurora",
+    "cmd": 111,
+    "model": "blade:item/mace_skin/aurora",
+    "name": "Сияние",
+    "description": "Северное свечение на металле.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "backrooms",
+    "cmd": 112,
+    "model": "blade:item/mace_skin/backrooms",
+    "name": "Закулисье",
+    "description": "Жёлтые стены, глухой звон.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "bamboo",
+    "cmd": 113,
+    "model": "blade:item/mace_skin/bamboo",
+    "name": "Бамбук",
+    "description": "Гибкий, но бьёт крепко.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "beacon",
+    "cmd": 114,
+    "model": "blade:item/mace_skin/beacon",
+    "name": "Маяк",
+    "description": "Свет в конце замаха.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "beast",
+    "cmd": 115,
+    "model": "blade:item/mace_skin/beast",
+    "name": "Зверь",
+    "description": "Грубая сила без изящества.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "bee",
+    "cmd": 116,
+    "model": "blade:item/mace_skin/bee",
+    "name": "Шмель",
+    "description": "Жужжит перед ударом.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "bird",
+    "cmd": 117,
+    "model": "blade:item/mace_skin/bird",
+    "name": "Птица",
+    "description": "Быстрый взмах крыла.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "blackstone",
+    "cmd": 118,
+    "model": "blade:item/mace_skin/blackstone",
+    "name": "Чернокамень",
+    "description": "Базальтовая тяжесть.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "blaze",
+    "cmd": 119,
+    "model": "blade:item/mace_skin/blaze",
+    "name": "Ифрит",
+    "description": "Жар в каждом ударе.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "blueberry",
+    "cmd": 120,
+    "model": "blade:item/mace_skin/blueberry",
+    "name": "Черника",
+    "description": "Тёмно-синий налёт.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "bogged",
+    "cmd": 121,
+    "model": "blade:item/mace_skin/bogged",
+    "name": "Топь",
+    "description": "Мокрый мох на стали.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "broom",
+    "cmd": 122,
+    "model": "blade:item/mace_skin/broom",
+    "name": "Метла",
+    "description": "Сметает противников.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "bubblegum",
+    "cmd": 123,
+    "model": "blade:item/mace_skin/bubblegum",
+    "name": "Жвачка",
+    "description": "Липкий розовый удар.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "burger",
+    "cmd": 124,
+    "model": "blade:item/mace_skin/burger",
+    "name": "Бургер",
+    "description": "Сытный замах.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "cactus",
+    "cmd": 125,
+    "model": "blade:item/mace_skin/cactus",
+    "name": "Кактус",
+    "description": "Колючий сюрприз.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "cake",
+    "cmd": 126,
+    "model": "blade:item/mace_skin/cake",
+    "name": "Торт",
+    "description": "Сладкий финал боя.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "cardboard",
+    "cmd": 127,
+    "model": "blade:item/mace_skin/cardboard",
+    "name": "Картон",
+    "description": "Выглядит хрупко — бьёт нет.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "carrot",
+    "cmd": 128,
+    "model": "blade:item/mace_skin/carrot",
+    "name": "Морковь",
+    "description": "Хрустит при ударе.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "cat",
+    "cmd": 129,
+    "model": "blade:item/mace_skin/cat",
+    "name": "Кошка",
+    "description": "Тихий, но точный замах.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "ceaseless",
+    "cmd": 130,
+    "model": "blade:item/mace_skin/ceaseless",
+    "name": "Бесконечная",
+    "description": "Не знает паузы.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "charged",
+    "cmd": 131,
+    "model": "blade:item/mace_skin/charged",
+    "name": "Заряд",
+    "description": "Искры по рукояти.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "cherry",
+    "cmd": 132,
+    "model": "blade:item/mace_skin/cherry",
+    "name": "Сакура",
+    "description": "Лепестки на стали.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "chimney",
+    "cmd": 133,
+    "model": "blade:item/mace_skin/chimney",
+    "name": "Дымоход",
+    "description": "Сажа и жар.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "coal",
+    "cmd": 134,
+    "model": "blade:item/mace_skin/coal",
+    "name": "Уголь",
+    "description": "Чёрный блеск угля.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "command_block_staff",
+    "cmd": 135,
+    "model": "blade:item/mace_skin/command_block_staff",
+    "name": "Команда",
+    "description": "Послушный миру удар.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "copper",
+    "cmd": 136,
+    "model": "blade:item/mace_skin/copper",
+    "name": "Медь",
+    "description": "Рыжая патина веков.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "coral",
+    "cmd": 137,
+    "model": "blade:item/mace_skin/coral",
+    "name": "Коралл",
+    "description": "Осколок рифа.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "crab",
+    "cmd": 138,
+    "model": "blade:item/mace_skin/crab",
+    "name": "Краб",
+    "description": "Клешня вместо навершия.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "diamond",
+    "cmd": 139,
+    "model": "blade:item/mace_skin/diamond",
+    "name": "Алмаз",
+    "description": "Холодный блеск грани.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "digital",
+    "cmd": 140,
+    "model": "blade:item/mace_skin/digital",
+    "name": "Цифра",
+    "description": "Пиксели вместо стали.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "diver",
+    "cmd": 141,
+    "model": "blade:item/mace_skin/diver",
+    "name": "Водолаз",
+    "description": "Давление глубин.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "drip",
+    "cmd": 142,
+    "model": "blade:item/mace_skin/drip",
+    "name": "Капля",
+    "description": "Стекает после удара.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "earth",
+    "cmd": 143,
+    "model": "blade:item/mace_skin/earth",
+    "name": "Земля",
+    "description": "Тяжёлый грунт в ударе.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "electrode",
+    "cmd": 144,
+    "model": "blade:item/mace_skin/electrode",
+    "name": "Электрод",
+    "description": "Разряд по цели.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "emerald",
+    "cmd": 145,
+    "model": "blade:item/mace_skin/emerald",
+    "name": "Изумруд",
+    "description": "Зелёный скол грани.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "equality",
+    "cmd": 146,
+    "model": "blade:item/mace_skin/equality",
+    "name": "Равенство",
+    "description": "Один удар для всех.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "eternity",
+    "cmd": 147,
+    "model": "blade:item/mace_skin/eternity",
+    "name": "Вечность",
+    "description": "Не тускнеет никогда.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "firework",
+    "cmd": 148,
+    "model": "blade:item/mace_skin/firework",
+    "name": "Салют",
+    "description": "Вспышка в конце замаха.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "fishbowl",
+    "cmd": 149,
+    "model": "blade:item/mace_skin/fishbowl",
+    "name": "Аквариум",
+    "description": "Булькает при взмахе.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "flaming",
+    "cmd": 150,
+    "model": "blade:item/mace_skin/flaming",
+    "name": "Пламя",
+    "description": "Оставляет искру.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "formal",
+    "cmd": 151,
+    "model": "blade:item/mace_skin/formal",
+    "name": "Смокинг",
+    "description": "Удар в галстуке.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "fortress",
+    "cmd": 152,
+    "model": "blade:item/mace_skin/fortress",
+    "name": "Крепость",
+    "description": "Как удар стены.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "frosty",
+    "cmd": 153,
+    "model": "blade:item/mace_skin/frosty",
+    "name": "Иней",
+    "description": "Холод по рукояти.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "gift1",
+    "cmd": 154,
+    "model": "blade:item/mace_skin/gift1",
+    "name": "Бантик",
+    "description": "Алый бант на рукояти.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "gift10",
+    "cmd": 155,
+    "model": "blade:item/mace_skin/gift10",
+    "name": "Коробка",
+    "description": "Квадратный праздничный удар.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "gift15",
+    "cmd": 156,
+    "model": "blade:item/mace_skin/gift15",
+    "name": "Сюрприз",
+    "description": "Неизвестно, что внутри.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "gift20",
+    "cmd": 157,
+    "model": "blade:item/mace_skin/gift20",
+    "name": "Обёртка",
+    "description": "Шуршит при замахе.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "gift5",
+    "cmd": 158,
+    "model": "blade:item/mace_skin/gift5",
+    "name": "Ленточка",
+    "description": "Тонкая шёлковая петля.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "gift50",
+    "cmd": 159,
+    "model": "blade:item/mace_skin/gift50",
+    "name": "Бандероль",
+    "description": "Тяжёлая посылка.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "gift50_10",
+    "cmd": 160,
+    "model": "blade:item/mace_skin/gift50_10",
+    "name": "Свеча",
+    "description": "Тёплый воск на стали.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "gift50_11",
+    "cmd": 161,
+    "model": "blade:item/mace_skin/gift50_11",
+    "name": "Венок",
+    "description": "Хвоя вокруг навершия.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "gift50_12",
+    "cmd": 162,
+    "model": "blade:item/mace_skin/gift50_12",
+    "name": "Шишка",
+    "description": "Лесная тяжесть.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "gift50_13",
+    "cmd": 163,
+    "model": "blade:item/mace_skin/gift50_13",
+    "name": "Имбирь",
+    "description": "Пряный удар.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "gift50_14",
+    "cmd": 164,
+    "model": "blade:item/mace_skin/gift50_14",
+    "name": "Карамель",
+    "description": "Липкая сладость.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "gift50_15",
+    "cmd": 165,
+    "model": "blade:item/mace_skin/gift50_15",
+    "name": "Марципан",
+    "description": "Мягкий миндальный край.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "gift50_16",
+    "cmd": 166,
+    "model": "blade:item/mace_skin/gift50_16",
+    "name": "Пудра",
+    "description": "Сахарная пыль в воздухе.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "gift50_17",
+    "cmd": 167,
+    "model": "blade:item/mace_skin/gift50_17",
+    "name": "Хлопушка",
+    "description": "Хлопок вместо звона.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "gift50_18",
+    "cmd": 168,
+    "model": "blade:item/mace_skin/gift50_18",
+    "name": "Фейерверк",
+    "description": "Искры праздника.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "gift50_19",
+    "cmd": 169,
+    "model": "blade:item/mace_skin/gift50_19",
+    "name": "Куранты",
+    "description": "Бой полночи.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "gift50_2",
+    "cmd": 170,
+    "model": "blade:item/mace_skin/gift50_2",
+    "name": "Конфетти",
+    "description": "Бумажный дождь после удара.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "gift50_20",
+    "cmd": 171,
+    "model": "blade:item/mace_skin/gift50_20",
+    "name": "Варежка",
+    "description": "Тёплый удар.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "gift50_21",
+    "cmd": 172,
+    "model": "blade:item/mace_skin/gift50_21",
+    "name": "Шарф",
+    "description": "Обматывает рукоять.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "gift50_22",
+    "cmd": 173,
+    "model": "blade:item/mace_skin/gift50_22",
+    "name": "Каток",
+    "description": "Скользит по цели.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "gift50_23",
+    "cmd": 174,
+    "model": "blade:item/mace_skin/gift50_23",
+    "name": "Санки",
+    "description": "Разгон с горки.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "gift50_24",
+    "cmd": 175,
+    "model": "blade:item/mace_skin/gift50_24",
+    "name": "Сосулька",
+    "description": "Холодный острый край.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "gift50_25",
+    "cmd": 176,
+    "model": "blade:item/mace_skin/gift50_25",
+    "name": "Мандарин",
+    "description": "Цитрусовый замах.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "gift50_26",
+    "cmd": 177,
+    "model": "blade:item/mace_skin/gift50_26",
+    "name": "Огонёк",
+    "description": "Маленькое пламя праздника.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "gift50_27",
+    "cmd": 178,
+    "model": "blade:item/mace_skin/gift50_27",
+    "name": "Звёздочка",
+    "description": "На макушке ёлки.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "gift50_28",
+    "cmd": 179,
+    "model": "blade:item/mace_skin/gift50_28",
+    "name": "Бубенчик",
+    "description": "Звонкий финал.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "gift50_29",
+    "cmd": 180,
+    "model": "blade:item/mace_skin/gift50_29",
+    "name": "Пряник",
+    "description": "Сладкая броня.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "gift50_3",
+    "cmd": 181,
+    "model": "blade:item/mace_skin/gift50_3",
+    "name": "Гирлянда",
+    "description": "Огоньки по древку.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "gift50_30",
+    "cmd": 182,
+    "model": "blade:item/mace_skin/gift50_30",
+    "name": "Какао",
+    "description": "Горячий удар.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "gift50_31",
+    "cmd": 183,
+    "model": "blade:item/mace_skin/gift50_31",
+    "name": "Глинтвейн",
+    "description": "Пряный вечерний замах.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "gift50_32",
+    "cmd": 184,
+    "model": "blade:item/mace_skin/gift50_32",
+    "name": "Полночь",
+    "description": "Последний удар года.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "gift50_4",
+    "cmd": 185,
+    "model": "blade:item/mace_skin/gift50_4",
+    "name": "Мишура",
+    "description": "Блестит на каждом взмахе.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "gift50_5",
+    "cmd": 186,
+    "model": "blade:item/mace_skin/gift50_5",
+    "name": "Ёлочный шар",
+    "description": "Хрупкий вид, крепкий край.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "gift50_6",
+    "cmd": 187,
+    "model": "blade:item/mace_skin/gift50_6",
+    "name": "Снежинка",
+    "description": "Тает на броне.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "gift50_7",
+    "cmd": 188,
+    "model": "blade:item/mace_skin/gift50_7",
+    "name": "Носок",
+    "description": "Тёплый и неожиданный.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "gift50_8",
+    "cmd": 189,
+    "model": "blade:item/mace_skin/gift50_8",
+    "name": "Календарь",
+    "description": "Отсчёт до удара.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "gift50_9",
+    "cmd": 190,
+    "model": "blade:item/mace_skin/gift50_9",
+    "name": "Открытка",
+    "description": "Короткое послание.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "gilded",
+    "cmd": 191,
+    "model": "blade:item/mace_skin/gilded",
+    "name": "Позолота",
+    "description": "Тонкий слой роскоши.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "glitched",
+    "cmd": 192,
+    "model": "blade:item/mace_skin/glitched",
+    "name": "Сбой",
+    "description": "Кадр выпадает из мира.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "golden_cod",
+    "cmd": 193,
+    "model": "blade:item/mace_skin/golden_cod",
+    "name": "Золотая треска",
+    "description": "Улов чемпиона.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "guitar",
+    "cmd": 194,
+    "model": "blade:item/mace_skin/guitar",
+    "name": "Гитара",
+    "description": "Аккорд вместо замаха.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "haunted",
+    "cmd": 195,
+    "model": "blade:item/mace_skin/haunted",
+    "name": "Призрак",
+    "description": "Холод чужой тени.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "hay",
+    "cmd": 196,
+    "model": "blade:item/mace_skin/hay",
+    "name": "Сено",
+    "description": "Пахнет полем.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "house",
+    "cmd": 197,
+    "model": "blade:item/mace_skin/house",
+    "name": "Дом",
+    "description": "Крыша на навершии.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "icepick",
+    "cmd": 198,
+    "model": "blade:item/mace_skin/icepick",
+    "name": "Ледоруб",
+    "description": "Колет лёд и броню.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "imposter",
+    "cmd": 199,
+    "model": "blade:item/mace_skin/imposter",
+    "name": "Самозванец",
+    "description": "Выдаёт себя ударом.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "infected",
+    "cmd": 200,
+    "model": "blade:item/mace_skin/infected",
+    "name": "Зараза",
+    "description": "Зелёная ржавчина.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "iron",
+    "cmd": 201,
+    "model": "blade:item/mace_skin/iron",
+    "name": "Железо",
+    "description": "Честный металл.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "judge",
+    "cmd": 202,
+    "model": "blade:item/mace_skin/judge",
+    "name": "Судья",
+    "description": "Приговор одним взмахом.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "lantern",
+    "cmd": 203,
+    "model": "blade:item/mace_skin/lantern",
+    "name": "Фонарь",
+    "description": "Свет в кромешной.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "lapis",
+    "cmd": 204,
+    "model": "blade:item/mace_skin/lapis",
+    "name": "Лазурит",
+    "description": "Синяя пыль на стали.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "leafy",
+    "cmd": 205,
+    "model": "blade:item/mace_skin/leafy",
+    "name": "Листва",
+    "description": "Шелест вместо звона.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "leek",
+    "cmd": 206,
+    "model": "blade:item/mace_skin/leek",
+    "name": "Порей",
+    "description": "Пахнет победой.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "lemon",
+    "cmd": 207,
+    "model": "blade:item/mace_skin/lemon",
+    "name": "Лимон",
+    "description": "Кислинка в замахе.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "maple",
+    "cmd": 208,
+    "model": "blade:item/mace_skin/maple",
+    "name": "Клён",
+    "description": "Осенний лист на древке.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "marshmellow",
+    "cmd": 209,
+    "model": "blade:item/mace_skin/marshmellow",
+    "name": "Зефир",
+    "description": "Мягкий вид, жёсткий удар.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "microphone",
+    "cmd": 210,
+    "model": "blade:item/mace_skin/microphone",
+    "name": "Микрофон",
+    "description": "Голос грома.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "motor",
+    "cmd": 211,
+    "model": "blade:item/mace_skin/motor",
+    "name": "Мотор",
+    "description": "Рёв перед ударом.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "mushroom",
+    "cmd": 212,
+    "model": "blade:item/mace_skin/mushroom",
+    "name": "Гриб",
+    "description": "Споры после взмаха.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "neptune",
+    "cmd": 213,
+    "model": "blade:item/mace_skin/neptune",
+    "name": "Нептун",
+    "description": "Соль и волна.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "netherite",
+    "cmd": 214,
+    "model": "blade:item/mace_skin/netherite",
+    "name": "Незерит",
+    "description": "Тяжёлый адский сплав.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "noteblock",
+    "cmd": 215,
+    "model": "blade:item/mace_skin/noteblock",
+    "name": "Нота",
+    "description": "Звон вместо удара.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "pear",
+    "cmd": 216,
+    "model": "blade:item/mace_skin/pear",
+    "name": "Груша",
+    "description": "Сладкая форма, твёрдый край.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "penguin",
+    "cmd": 217,
+    "model": "blade:item/mace_skin/penguin",
+    "name": "Пингвин",
+    "description": "Холодный клюв.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "pharaoh",
+    "cmd": 218,
+    "model": "blade:item/mace_skin/pharaoh",
+    "name": "Фараон",
+    "description": "Песок веков.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "picnic",
+    "cmd": 219,
+    "model": "blade:item/mace_skin/picnic",
+    "name": "Пикник",
+    "description": "Корзинка вместо булавы.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "piston",
+    "cmd": 220,
+    "model": "blade:item/mace_skin/piston",
+    "name": "Поршень",
+    "description": "Толкает цель прочь.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "polychrome",
+    "cmd": 221,
+    "model": "blade:item/mace_skin/polychrome",
+    "name": "Радуга",
+    "description": "Все цвета сразу.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "portal_frame",
+    "cmd": 222,
+    "model": "blade:item/mace_skin/portal_frame",
+    "name": "Рамка",
+    "description": "Глаз края мира.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "poseidon",
+    "cmd": 223,
+    "model": "blade:item/mace_skin/poseidon",
+    "name": "Посейдон",
+    "description": "Трезубец в миниатюре.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "prismarine",
+    "cmd": 224,
+    "model": "blade:item/mace_skin/prismarine",
+    "name": "Призмарин",
+    "description": "Осколок океана.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "pufferfish",
+    "cmd": 225,
+    "model": "blade:item/mace_skin/pufferfish",
+    "name": "Фугу",
+    "description": "Колючий шар.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "pulse",
+    "cmd": 226,
+    "model": "blade:item/mace_skin/pulse",
+    "name": "Пульс",
+    "description": "Бьётся в такт.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "pumpkin",
+    "cmd": 227,
+    "model": "blade:item/mace_skin/pumpkin",
+    "name": "Тыква",
+    "description": "Октябрьский удар.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "purple",
+    "cmd": 228,
+    "model": "blade:item/mace_skin/purple",
+    "name": "Пурпур",
+    "description": "Царский оттенок.",
+    "color": "#B39DDB"
+  },
+  {
+    "id": "rat",
+    "cmd": 229,
+    "model": "blade:item/mace_skin/rat",
+    "name": "Крыса",
+    "description": "Шустрый и злой.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "redstone",
+    "cmd": 230,
+    "model": "blade:item/mace_skin/redstone",
+    "name": "Редстоун",
+    "description": "Красная искра.",
+    "color": "#90CAF9"
+  },
+  {
+    "id": "resin",
+    "cmd": 231,
+    "model": "blade:item/mace_skin/resin",
+    "name": "Смола",
+    "description": "Липкий янтарь.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "rogue",
+    "cmd": 232,
+    "model": "blade:item/mace_skin/rogue",
+    "name": "Изгой",
+    "description": "Удар из тени.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "runic",
+    "cmd": 233,
+    "model": "blade:item/mace_skin/runic",
+    "name": "Руны",
+    "description": "Древние знаки на стали.",
+    "color": "#A5D6A7"
+  },
+  {
+    "id": "sanguine",
+    "cmd": 234,
+    "model": "blade:item/mace_skin/sanguine",
+    "name": "Багрянец",
+    "description": "Цвет заката.",
+    "color": "#FFAB91"
+  },
+  {
+    "id": "saucer",
+    "cmd": 235,
+    "model": "blade:item/mace_skin/saucer",
+    "name": "Блюдце",
+    "description": "НЛО на рукояти.",
+    "color": "#EA80FC"
+  },
+  {
+    "id": "scarecrow",
+    "cmd": 236,
+    "model": "blade:item/mace_skin/scarecrow",
+    "name": "Пугало",
+    "description": "Солома и страх.",
+    "color": "#FFE57F"
+  },
+  {
+    "id": "sculk",
+    "cmd": 237,
+    "model": "blade:item/mace_skin/sculk",
+    "name": "Скалк",
+    "description": "Шёпот глубин.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "scythe",
+    "cmd": 238,
+    "model": "blade:item/mace_skin/scythe",
+    "name": "Коса",
+    "description": "Жатва одним взмахом.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "seal",
+    "cmd": 239,
+    "model": "blade:item/mace_skin/seal",
+    "name": "Тюлень",
+    "description": "Мокрый и упрямый.",
+    "color": "#82B1FF"
+  },
+  {
+    "id": "shamrock",
+    "cmd": 240,
+    "model": "blade:item/mace_skin/shamrock",
+    "name": "Клевер",
+    "description": "Удача в ударе.",
+    "color": "#81D4FA"
+  },
+  {
+    "id": "snowman",
+    "cmd": 241,
+    "model": "blade:item/mace_skin/snowman",
+    "name": "Снеговик",
+    "description": "Холодный шар.",
+    "color": "#80D8FF"
+  },
+  {
+    "id": "spain",
+    "cmd": 242,
+    "model": "blade:item/mace_skin/spain",
+    "name": "Испания",
+    "description": "Красное и золото.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "speaker",
+    "cmd": 243,
+    "model": "blade:item/mace_skin/speaker",
+    "name": "Колонка",
+    "description": "Громкий финал.",
+    "color": "#8C9EFF"
+  },
+  {
+    "id": "stalagmace",
+    "cmd": 244,
+    "model": "blade:item/mace_skin/stalagmace",
+    "name": "Сталагмит",
+    "description": "Камень пещеры.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "star",
+    "cmd": 245,
+    "model": "blade:item/mace_skin/star",
+    "name": "Звезда",
+    "description": "Яркая вспышка.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "stardust",
+    "cmd": 246,
+    "model": "blade:item/mace_skin/stardust",
+    "name": "Звёздная пыль",
+    "description": "Искры космоса.",
+    "color": "#FF8A80"
+  },
+  {
+    "id": "statue",
+    "cmd": 247,
+    "model": "blade:item/mace_skin/statue",
+    "name": "Статуя",
+    "description": "Каменное спокойствие.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "stone",
+    "cmd": 248,
+    "model": "blade:item/mace_skin/stone",
+    "name": "Камень",
+    "description": "Проще не бывает.",
+    "color": "#F8BBD0"
+  },
+  {
+    "id": "sundae",
+    "cmd": 249,
+    "model": "blade:item/mace_skin/sundae",
+    "name": "Пломбир",
+    "description": "Тает после победы.",
+    "color": "#80CBC4"
+  },
+  {
+    "id": "sweet",
+    "cmd": 250,
+    "model": "blade:item/mace_skin/sweet",
+    "name": "Сладость",
+    "description": "Сахарная кромка.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "sword",
+    "cmd": 251,
+    "model": "blade:item/mace_skin/sword",
+    "name": "Клинок",
+    "description": "Булава притворяется мечом.",
+    "color": "#B2EBF2"
+  },
+  {
+    "id": "thunder",
+    "cmd": 252,
+    "model": "blade:item/mace_skin/thunder",
+    "name": "Гром",
+    "description": "Раскат после удара.",
+    "color": "#B9F6CA"
+  },
+  {
+    "id": "tidal",
+    "cmd": 253,
+    "model": "blade:item/mace_skin/tidal",
+    "name": "Прилив",
+    "description": "Волна накрывает.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "traffic",
+    "cmd": 254,
+    "model": "blade:item/mace_skin/traffic",
+    "name": "Светофор",
+    "description": "Красный — стоп.",
+    "color": "#CE93D8"
+  },
+  {
+    "id": "tuff",
+    "cmd": 255,
+    "model": "blade:item/mace_skin/tuff",
+    "name": "Туф",
+    "description": "Серый вулканический край.",
+    "color": "#C5E1A5"
+  },
+  {
+    "id": "tv",
+    "cmd": 256,
+    "model": "blade:item/mace_skin/tv",
+    "name": "Экран",
+    "description": "Статика вместо звона.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "umbrella",
+    "cmd": 257,
+    "model": "blade:item/mace_skin/umbrella",
+    "name": "Зонт",
+    "description": "Закрывает и бьёт.",
+    "color": "#CCFF90"
+  },
+  {
+    "id": "valentine",
+    "cmd": 258,
+    "model": "blade:item/mace_skin/valentine",
+    "name": "Валентин",
+    "description": "Сердце на навершии.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "void",
+    "cmd": 259,
+    "model": "blade:item/mace_skin/void",
+    "name": "Пустота",
+    "description": "Чёрная дыра в ударе.",
+    "color": "#FFCC80"
+  },
+  {
+    "id": "watermelon",
+    "cmd": 260,
+    "model": "blade:item/mace_skin/watermelon",
+    "name": "Арбуз",
+    "description": "Сочный удар.",
+    "color": "#B388FF"
+  },
+  {
+    "id": "wood",
+    "cmd": 261,
+    "model": "blade:item/mace_skin/wood",
+    "name": "Дерево",
+    "description": "Честный дуб.",
+    "color": "#82B1FF"
+  }
+]

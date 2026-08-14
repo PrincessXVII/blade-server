@@ -1,0 +1,79 @@
+[
+  {
+    "id": "cage_prismarine",
+    "name": "Призмариновая клетка",
+    "display": "<!italic><gradient:#2AA9C9:#5FE2C5>Призмариновая клетка</gradient>",
+    "description": "Холодный блеск океана перед стартом.",
+    "material": "PRISMARINE",
+    "schematic": "cage_prismarine.schem",
+    "min_rank": "trial",
+    "min_weight": 10,
+    "rank_label": "Trial+"
+  },
+  {
+    "id": "cage_quartz",
+    "name": "Кварцевая клетка",
+    "display": "<!italic><gradient:#FFFFFF:#E8E0FF>Кварцевая клетка</gradient>",
+    "description": "Чистый белый камень и острые грани.",
+    "material": "QUARTZ_BLOCK",
+    "schematic": "cage_quartz.schem",
+    "min_rank": "trial",
+    "min_weight": 10,
+    "rank_label": "Trial+"
+  },
+  {
+    "id": "cage_copper",
+    "name": "Медная клетка",
+    "display": "<!italic><gradient:#E0774A:#F2B07A>Медная клетка</gradient>",
+    "description": "Тёплый металл с лёгкой патиной.",
+    "material": "COPPER_BLOCK",
+    "schematic": "cage_copper.schem",
+    "min_rank": "chamber",
+    "min_weight": 30,
+    "rank_label": "Chamber+"
+  },
+  {
+    "id": "cage_sculk",
+    "name": "Скалковая клетка",
+    "display": "<!italic><gradient:#0A3D3D:#1DE0C0>Скалковая клетка</gradient>",
+    "description": "Тёмная тишина перед боем.",
+    "material": "SCULK",
+    "schematic": "cage_sculk.schem",
+    "min_rank": "chamber",
+    "min_weight": 30,
+    "rank_label": "Chamber+"
+  },
+  {
+    "id": "cage_ender",
+    "name": "Эндерняковая клетка",
+    "display": "<!italic><gradient:#2E1A4A:#C77DFF>Эндерняковая клетка</gradient>",
+    "description": "Фиолетовый гул края.",
+    "material": "END_STONE",
+    "schematic": "cage_ender.schem",
+    "min_rank": "chamber",
+    "min_weight": 30,
+    "rank_label": "Chamber+"
+  },
+  {
+    "id": "cage_honey",
+    "name": "Медовая клетка",
+    "display": "<!italic><gradient:#F5C518:#FF8C00>Медовая клетка</gradient>",
+    "description": "Золотистый блеск и тягучесть.",
+    "material": "HONEY_BLOCK",
+    "schematic": "cage_honey.schem",
+    "min_rank": "sponsor",
+    "min_weight": 60,
+    "rank_label": "Sponsor+"
+  },
+  {
+    "id": "cage_moss",
+    "name": "Моховая клетка",
+    "display": "<!italic><gradient:#3D8B4F:#9BE15D>Моховая клетка</gradient>",
+    "description": "Живой зелёный ковёр на камне.",
+    "material": "MOSS_BLOCK",
+    "schematic": "cage_moss.schem",
+    "min_rank": "sponsor",
+    "min_weight": 60,
+    "rank_label": "Sponsor+"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "hvoynyy_pozhar",
+    "name": "Хвойный пожар",
+    "description": "От спокойной хвои к алому пламени.",
+    "material": "LIME_DYE",
+    "colors": ["9FCB9C", "7BAC7B", "568D5A", "326E39", "C85454", "D45252", "E04F4F", "EC4D4D", "EC4D4D"]
+  },
+  {
+    "id": "neonovyy_gorizont",
+    "name": "Неоновый горизонт",
+    "description": "Фиолетовый закат перетекает в золото.",
+    "material": "MAGENTA_DYE",
+    "colors": ["B24AEC", "CC55C1", "E56096", "FF6B6B", "FF8A5C", "FFA94D", "FFBB55", "FFCE5E", "FFE066"]
+  },
+  {
+    "id": "serebryanyy_priliv",
+    "name": "Серебряный прилив",
+    "description": "Волна серебра и морской бирюзы.",
+    "material": "LIGHT_BLUE_DYE",
+    "colors": ["C8CCCE", "96C1C1", "64B7B5", "32ACA8", "00A19B", "32ACA8", "64B7B5", "96C1C1", "C8CCCE"]
+  },
+  {
+    "id": "teplyy_bereg",
+    "name": "Тёплый берег",
+    "description": "Песок, закат и холодный край моря.",
+    "material": "ORANGE_DYE",
+    "colors": ["FE938C", "F2A694", "E6B89C", "E8C5A4", "EAD2AC", "C3C1B2", "9CAFB7", "6F98AE", "4281A4"]
+  },
+  {
+    "id": "rozovyy_pepel",
+    "name": "Розовый пепел",
+    "description": "Нежная пыль на тёплом камне.",
+    "material": "PINK_DYE",
+    "colors": ["FFE4D5", "FFD3BA", "FFCEB4", "FFB5A3", "DFAA9E", "FFB4A2", "DF9FA2", "C38587", "A1686A"]
+  },
+  {
+    "id": "yadovityy_sad",
+    "name": "Ядовитый сад",
+    "description": "Тёмная зелень вспыхивает ядом.",
+    "material": "GREEN_DYE",
+    "colors": ["004500", "307230", "609E60", "75C075", "89E189", "4CB14C", "0F800F", "0E9B0E", "0DB50D"]
+  },
+  {
+    "id": "sakharnyy_sneg",
+    "name": "Сахарный снег",
+    "description": "Розовая вата тает в белизне.",
+    "material": "PINK_DYE",
+    "colors": ["F97E9C", "F98DA8", "F99DB3", "F9ACBF", "F9BCCB", "F9CBD6", "F9DAE2", "F9EAED", "F9F9F9"]
+  },
+  {
+    "id": "korallovyy_zhar",
+    "name": "Коралловый жар",
+    "description": "Жар коралла на раскалённом песке.",
+    "material": "ORANGE_DYE",
+    "colors": ["FF7272", "FF7D73", "FF8873", "FF9374", "FF9E74", "FFA875", "FFB375", "FFBE76", "FFC976"]
+  },
+  {
+    "id": "glubinnaya_laguna",
+    "name": "Глубинная лагуна",
+    "description": "Темнеет к бездне и снова к штилю.",
+    "material": "CYAN_DYE",
+    "colors": ["005155", "115E5A", "226A5E", "337763", "448367", "337868", "226D69", "11616A", "00566B"]
+  }
+]

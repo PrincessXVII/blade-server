@@ -1,0 +1,65 @@
+[
+  {
+    "id": "tg_k7qx2m",
+    "name": "Королевский",
+    "display": "<font:minecraft:mine><gradient:#00FFCC:#26FFB2:#4DFF99:#73FF80:#99FF66:#BFFF4D>королевский</gradient></font>",
+    "description": "Корона из неона. Ты входишь — и зала стихает.",
+    "material": "GOLDEN_HELMET",
+    "color": "#00FFCC",
+    "price": 1000
+  },
+  {
+    "id": "tg_p9w4ln",
+    "name": "Художник",
+    "display": "<font:minecraft:mine><gradient:#FFE385:#FF4993:#70FAF5>художник</gradient></font>",
+    "description": "Палитра на плече, хаос в сердце. Рисуешь победу на ходу.",
+    "material": "PINK_DYE",
+    "color": "#FF4993",
+    "price": 1000
+  },
+  {
+    "id": "tg_r3v8hc",
+    "name": "Не шути со мной",
+    "display": "<font:minecraft:mine><gradient:#78C2DE:#A18CD1>не шути </gradient><gradient:#A18CD1:#FBC2EB>со мной</gradient></font>",
+    "description": "Мягкий тон — жёсткий ответ. Шутки оставляй в лобби.",
+    "material": "ENDER_EYE",
+    "color": "#A18CD1",
+    "price": 1000
+  },
+  {
+    "id": "tg_b2n6yd",
+    "name": "Какой расклад?",
+    "display": "<font:minecraft:mine><gradient:#68F589:#AC6FFF>какой расклад?</gradient></font>",
+    "description": "Карты на стол. Удача любит тех, кто спрашивает первым.",
+    "material": "AMETHYST_SHARD",
+    "color": "#AC6FFF",
+    "price": 1000
+  },
+  {
+    "id": "tg_f5j1zs",
+    "name": "Эль матадор",
+    "display": "<font:minecraft:mine><gradient:#DB7A56:#F84E49>эль матадор</gradient></font>",
+    "description": "Арена — твоя плаща. Один выпад — и занавес падает.",
+    "material": "RED_DYE",
+    "color": "#F84E49",
+    "price": 1000
+  },
+  {
+    "id": "tg_m8c0tq",
+    "name": "Асхаб Тамаев",
+    "display": "<font:minecraft:mine><gradient:#FFCE00:#FFCE00>ас</gradient><gradient:#FFCE00:#FFFFFF>хаб т</gradient><gradient:#FFFFFF:#FFCE00>амае</gradient><gradient:#FFCE00:#FFCE00>в</gradient></font>",
+    "description": "Золотой хайп над головой. Камера уже на тебе.",
+    "material": "GOLD_NUGGET",
+    "color": "#FFCE00",
+    "price": 1000
+  },
+  {
+    "id": "tg_h4a9we",
+    "name": "Ураган хокаге",
+    "display": "<font:minecraft:mine><gradient:#03FF00:#FFF800>ураган хокаге</gradient></font>",
+    "description": "Лист в глазу, шторм в кулаке. Деревня знает твоё имя.",
+    "material": "LIME_DYE",
+    "color": "#03FF00",
+    "price": 1000
+  }
+]

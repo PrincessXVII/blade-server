@@ -1,0 +1,90 @@
+[
+  {
+    "id": "angelic_bless",
+    "name": "Ангельское благословение",
+    "description": "Крылья и свет уносят жертву к небесам.",
+    "material": "FEATHER",
+    "sound": "minecraft:kill_fx.angelic_bless",
+    "parts": [425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435]
+  },
+  {
+    "id": "arcade_gameover",
+    "name": "Game Over",
+    "description": "Аркадный финал: тебя съел пакман.",
+    "material": "MAP",
+    "sound": "minecraft:kill_fx.arcade_gameover",
+    "parts": [486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498]
+  },
+  {
+    "id": "hellfire_burn",
+    "name": "Адское пламя",
+    "description": "Жертва вспыхивает в адском огне.",
+    "material": "BLAZE_POWDER",
+    "sound": "minecraft:kill_fx.hellfire_burn",
+    "parts": [499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518]
+  },
+  {
+    "id": "imposter_instinct",
+    "name": "Инстинкт предателя",
+    "description": "Быстрый удар — и среди нас на одного меньше.",
+    "material": "IRON_SWORD",
+    "sound": "minecraft:kill_fx.imposter_instinct",
+    "parts": [447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461]
+  },
+  {
+    "id": "kfx_divine_execution",
+    "name": "Божественная кара",
+    "description": "Архангел вершит приговор одним ударом.",
+    "material": "NETHER_STAR",
+    "sound": "minecraft:kill_fx.divine_execution",
+    "parts": [299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316]
+  },
+  {
+    "id": "knockout_ko",
+    "name": "Нокаут",
+    "description": "Громкое KO — бой окончен.",
+    "material": "ANVIL",
+    "sound": "minecraft:kill_fx.knockout_ko",
+    "parts": [462, 463, 464, 465, 466, 467, 468, 469]
+  },
+  {
+    "id": "plantfood_feasting",
+    "name": "Пир растения",
+    "description": "Хищный цветок устраивает обед.",
+    "material": "VINE",
+    "sound": "minecraft:kill_fx.plantfood_feasting",
+    "parts": [585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597]
+  },
+  {
+    "id": "quicksand",
+    "name": "Зыбучие пески",
+    "description": "Земля затягивает проигравшего вниз.",
+    "material": "SAND",
+    "sound": "minecraft:kill_fx.quicksand",
+    "parts": [519, 520, 521, 522, 523, 524, 525]
+  },
+  {
+    "id": "shark_attack",
+    "name": "Атака акулы",
+    "description": "Из глубины вырывается акула.",
+    "material": "PRISMARINE_SHARD",
+    "sound": "minecraft:kill_fx.shark_attack",
+    "parts": [546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560]
+  },
+  {
+    "id": "tentacle_grasp",
+    "name": "Хватка щупалец",
+    "description": "Щупальца утаскивают жертву в бездну.",
+    "material": "INK_SAC",
+    "sound": "minecraft:kill_fx.tentacle_grasp",
+    "parts": [526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536]
+  },
+  {
+    "id": "tertis_smash",
+    "name": "Тетрис-удар",
+    "description": "Блоки складываются в идеальный финал.",
+    "material": "SLIME_BLOCK",
+    "sound": "minecraft:kill_fx.tertis_smash",
+    "parts": [537, 538, 539, 540, 541, 542, 543, 544, 545]
+  }
+]

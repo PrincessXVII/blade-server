@@ -57,6 +57,14 @@ fi
 echo "Unpacking Hoplite RP base: $HOPLITE_ZIP"
 unzip -q -o "$HOPLITE_ZIP" -d "$PACK_DIR"
 
+# Hoplite ships a fully transparent minecart.png — restore vanilla cart body.
+MINECART_TEX="${MINECART_TEX:-$ROOT/resourcepack/assets/minecraft/textures/entity/minecart.png}"
+if [[ -f "$MINECART_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/entity"
+  cp "$MINECART_TEX" "$PACK_DIR/assets/minecraft/textures/entity/minecart.png"
+  echo "Restored vanilla minecart.png"
+fi
+
 # Blade pack icon (MOTD logo). Strip ICC/Display P3 — Minecraft can hang on exotic PNG profiles.
 PACK_ICON="${PACK_ICON:-$ROOT/plugins/BetterMOTD/icons/logoblademinecarft.png}"
 if [[ -f "$PACK_ICON" ]]; then
@@ -429,7 +437,9 @@ PY
 MEETUPS_SOUNDS="${MEETUPS_SOUNDS_DIR:-$ROOT/resourcepack/assets/meetups-sounds}"
 if [[ -d "$MEETUPS_SOUNDS" ]]; then
   mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/meetups"
-  cp -f "$MEETUPS_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/meetups/" 2>/dev/null || true
+  for sound in countdown go; do
+    [[ -f "$MEETUPS_SOUNDS/$sound.ogg" ]] && cp -f "$MEETUPS_SOUNDS/$sound.ogg" "$PACK_DIR/assets/minecraft/sounds/custom/meetups/"
+  done
   export PACK_DIR
   python3 - <<'PY'
 import json
@@ -440,10 +450,9 @@ sounds_path = pack_dir / "assets/minecraft/sounds.json"
 data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
 data["custom.meetups.countdown"] = {"sounds": ["custom/meetups/countdown"]}
 data["custom.meetups.go"] = {"sounds": ["custom/meetups/go"]}
-data["custom.meetups.victory"] = {"sounds": ["custom/meetups/victory"]}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-print("meetups sounds: countdown/go/victory", flush=True)
+print("meetups sounds: countdown/go", flush=True)
 PY
 fi
 
@@ -491,7 +500,9 @@ fi
 BR_SOUNDS="${BR_SOUNDS_DIR:-$ROOT/resourcepack/assets/br-sounds}"
 if [[ -d "$BR_SOUNDS" ]]; then
   mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom/br"
-  cp -f "$BR_SOUNDS"/*.ogg "$PACK_DIR/assets/minecraft/sounds/custom/br/" 2>/dev/null || true
+  for sound in countdown go phase craft craft_available; do
+    [[ -f "$BR_SOUNDS/$sound.ogg" ]] && cp -f "$BR_SOUNDS/$sound.ogg" "$PACK_DIR/assets/minecraft/sounds/custom/br/"
+  done
   export PACK_DIR
   python3 - <<'PY'
 import json
@@ -508,6 +519,30 @@ data["custom.br.craft_available"] = {"sounds": ["custom/br/craft_available"]}
 sounds_path.parent.mkdir(parents=True, exist_ok=True)
 sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
 print("br sounds: countdown/go/phase/craft/craft_available", flush=True)
+PY
+fi
+
+VICTORY_SOUND="${VICTORY_SOUND_FILE:-$ROOT/resourcepack/assets/br-sounds/victory.ogg}"
+if [[ ! -f "$VICTORY_SOUND" ]]; then
+  VICTORY_SOUND="$MEETUPS_SOUNDS/victory.ogg"
+fi
+if [[ -f "$VICTORY_SOUND" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/sounds/custom"
+  cp -f "$VICTORY_SOUND" "$PACK_DIR/assets/minecraft/sounds/custom/victory.ogg"
+  export PACK_DIR
+  python3 - <<'PY'
+import json
+import os
+from pathlib import Path
+pack_dir = Path(os.environ["PACK_DIR"])
+sounds_path = pack_dir / "assets/minecraft/sounds.json"
+data = json.loads(sounds_path.read_text()) if sounds_path.exists() else {}
+data.pop("custom.br.victory", None)
+data.pop("custom.meetups.victory", None)
+data["custom.victory"] = {"sounds": ["custom/victory"]}
+sounds_path.parent.mkdir(parents=True, exist_ok=True)
+sounds_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+print("shared victory sound", flush=True)
 PY
 fi
 
@@ -709,28 +744,49 @@ if [[ -f "$BLOOD_MACE_TEX" ]]; then
   }
 }
 EOF
-  cat > "$PACK_DIR/assets/minecraft/items/mace.json" <<'EOF'
-{
-  "model": {
-    "type": "range_dispatch",
-    "property": "custom_model_data",
-    "fallback": {
-      "type": "model",
-      "model": "minecraft:item/mace"
-    },
-    "entries": [
-      {
-        "threshold": 1,
-        "model": {
-          "type": "model",
-          "model": "minecraft:item/blood_mace"
-        }
-      }
-    ]
-  }
-}
-EOF
-  echo "blood mace: texture + CMD 1"
+  MACE_SKINS_DIR="${MACE_SKINS_DIR:-$ROOT/resourcepack/assets/mace-skins}"
+  export PACK_DIR MACE_SKINS_DIR
+  python3 - <<'PY'
+import json, os, shutil
+from pathlib import Path
+
+pack = Path(os.environ["PACK_DIR"])
+src = Path(os.environ["MACE_SKINS_DIR"])
+tex_dir = pack / "assets/blade/textures/item/mace_skin"
+model_dir = pack / "assets/blade/models/item/mace_skin"
+item_path = pack / "assets/minecraft/items/mace.json"
+tex_dir.mkdir(parents=True, exist_ok=True)
+model_dir.mkdir(parents=True, exist_ok=True)
+item_path.parent.mkdir(parents=True, exist_ok=True)
+
+entries = [{
+    "threshold": 1,
+    "model": {"type": "model", "model": "minecraft:item/blood_mace"},
+}]
+ids = sorted(p.stem for p in src.glob("*.png")) if src.is_dir() else []
+for i, sid in enumerate(ids):
+    shutil.copy2(src / f"{sid}.png", tex_dir / f"{sid}.png")
+    (model_dir / f"{sid}.json").write_text(json.dumps({
+        "parent": "minecraft:item/handheld_mace",
+        "textures": {"layer0": f"blade:item/mace_skin/{sid}"},
+    }, indent=2) + "\n", encoding="utf-8")
+    entries.append({
+        "threshold": 100 + i,
+        "model": {"type": "model", "model": f"blade:item/mace_skin/{sid}"},
+    })
+
+item_path.write_text(json.dumps({
+    "model": {
+        "type": "range_dispatch",
+        "property": "custom_model_data",
+        "fallback": {"type": "model", "model": "minecraft:item/mace"},
+        "entries": entries,
+    }
+}, indent=2) + "\n", encoding="utf-8")
+for overlay_item in pack.glob("overlay*/assets/minecraft/items"):
+    shutil.copy2(item_path, overlay_item / "mace.json")
+print(f"blood mace CMD 1 + {len(ids)} cosmetic mace skins CMD 100+", flush=True)
+PY
 fi
 
 # Meetups custom totems (CMD 1/2/3 on totem_of_undying)

@@ -1,0 +1,12 @@
+name: BladeCosmetics
+version: '${project.version}'
+main: dev.systemcrash.blade.cosmetics.BladeCosmeticsPlugin
+api-version: '1.21'
+authors: [SystemCrash]
+depend: [BladeCore, LuckPerms]
+softdepend: [ServerSpawnControl, BladeWeapons]
+commands:
+  cosmetics:
+    description: Open cosmetics menu
+    usage: /cosmetics
+    aliases: [cos, косметика]
