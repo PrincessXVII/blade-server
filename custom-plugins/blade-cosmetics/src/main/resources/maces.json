@@ -1208,14 +1208,6 @@
     "color": "#CCFF90"
   },
   {
-    "id": "sword",
-    "cmd": 251,
-    "model": "blade:item/mace_skin/sword",
-    "name": "Клинок",
-    "description": "Булава притворяется мечом.",
-    "color": "#B2EBF2"
-  },
-  {
     "id": "thunder",
     "cmd": 252,
     "model": "blade:item/mace_skin/thunder",

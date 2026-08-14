@@ -745,13 +745,16 @@ if [[ -f "$BLOOD_MACE_TEX" ]]; then
 }
 EOF
   MACE_SKINS_DIR="${MACE_SKINS_DIR:-$ROOT/resourcepack/assets/mace-skins}"
-  export PACK_DIR MACE_SKINS_DIR
+  MACES_JSON="${MACES_JSON:-$ROOT/custom-plugins/blade-cosmetics/src/main/resources/maces.json}"
+  export PACK_DIR MACE_SKINS_DIR MACES_JSON
   python3 - <<'PY'
 import json, os, shutil
 from pathlib import Path
+from PIL import Image
 
 pack = Path(os.environ["PACK_DIR"])
 src = Path(os.environ["MACE_SKINS_DIR"])
+catalog_path = Path(os.environ["MACES_JSON"])
 tex_dir = pack / "assets/blade/textures/item/mace_skin"
 model_dir = pack / "assets/blade/models/item/mace_skin"
 item_path = pack / "assets/minecraft/items/mace.json"
@@ -759,22 +762,59 @@ tex_dir.mkdir(parents=True, exist_ok=True)
 model_dir.mkdir(parents=True, exist_ok=True)
 item_path.parent.mkdir(parents=True, exist_ok=True)
 
+skip = {"sword", "maceicon"}
+catalog = []
+if catalog_path.is_file():
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+
 entries = [{
     "threshold": 1,
     "model": {"type": "model", "model": "minecraft:item/blood_mace"},
 }]
-ids = sorted(p.stem for p in src.glob("*.png")) if src.is_dir() else []
-for i, sid in enumerate(ids):
-    shutil.copy2(src / f"{sid}.png", tex_dir / f"{sid}.png")
-    (model_dir / f"{sid}.json").write_text(json.dumps({
-        "parent": "minecraft:item/handheld_mace",
-        "textures": {"layer0": f"blade:item/mace_skin/{sid}"},
-    }, indent=2) + "\n", encoding="utf-8")
+copied = 0
+animated = 0
+custom_models = 0
+for item in catalog:
+    sid = item.get("id")
+    cmd = item.get("cmd")
+    if not sid or sid in skip or cmd is None:
+        continue
+    png = src / f"{sid}.png"
+    if not png.is_file():
+        print(f"skip missing texture {sid}", flush=True)
+        continue
+    im = Image.open(png).convert("RGBA")
+    w, h = im.size
+    dest_png = tex_dir / f"{sid}.png"
+    if w > h and h > 0 and w % h == 0:
+        frame = h
+        n = w // h
+        stacked = Image.new("RGBA", (frame, frame * n))
+        for i in range(n):
+            stacked.paste(im.crop((i * frame, 0, (i + 1) * frame, frame)), (0, i * frame))
+        stacked.save(dest_png)
+    else:
+        shutil.copy2(png, dest_png)
+    meta = src / f"{sid}.png.mcmeta"
+    if meta.is_file():
+        shutil.copy2(meta, tex_dir / f"{sid}.png.mcmeta")
+        animated += 1
+    model_src = src / f"{sid}.json"
+    if model_src.is_file():
+        shutil.copy2(model_src, model_dir / f"{sid}.json")
+        custom_models += 1
+    else:
+        (model_dir / f"{sid}.json").write_text(json.dumps({
+            "parent": "minecraft:item/handheld_mace",
+            "textures": {"layer0": f"blade:item/mace_skin/{sid}"},
+        }, indent=2) + "\n", encoding="utf-8")
     entries.append({
-        "threshold": 100 + i,
+        "threshold": int(cmd),
         "model": {"type": "model", "model": f"blade:item/mace_skin/{sid}"},
     })
+    copied += 1
 
+entries.sort(key=lambda e: e["threshold"])
 item_path.write_text(json.dumps({
     "model": {
         "type": "range_dispatch",
@@ -785,7 +825,11 @@ item_path.write_text(json.dumps({
 }, indent=2) + "\n", encoding="utf-8")
 for overlay_item in pack.glob("overlay*/assets/minecraft/items"):
     shutil.copy2(item_path, overlay_item / "mace.json")
-print(f"blood mace CMD 1 + {len(ids)} cosmetic mace skins CMD 100+", flush=True)
+print(
+    f"blood mace CMD 1 + {copied} cosmetic mace skins "
+    f"(animated={animated}, custom_models={custom_models})",
+    flush=True,
+)
 PY
 fi
 
