@@ -1097,6 +1097,28 @@ if legacy.is_file():
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(legacy, dst)
 
+# Wearable hat item-models. Do NOT reuse minecraft:carved_pumpkin as item_model:
+# 1.21.11 then uses the pumpkin special renderer and the hat is invisible (MC-305284).
+hats_json = root / "custom-plugins/blade-cosmetics/src/main/resources/hats.json"
+hat_item_count = 0
+if hats_json.is_file():
+    hats = json.loads(hats_json.read_text(encoding="utf-8"))
+    targets = [pack, pack / "overlay_1_21_4"]
+    for hat in hats:
+        model = (hat.get("model") or "").strip()
+        if ":" not in model:
+            continue
+        ns, path = model.split(":", 1)
+        payload = json.dumps({
+            "model": {"type": "minecraft:model", "model": model}
+        }, indent=2) + "\n"
+        for base in targets:
+            out = base / "assets" / ns / "items" / f"{path}.json"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(payload)
+        hat_item_count += 1
+    print(f"hat item models: {hat_item_count}", flush=True)
+
 # GUI font glyphs
 font_dir = pack / "assets/blade/textures/font"
 font_dir.mkdir(parents=True, exist_ok=True)
