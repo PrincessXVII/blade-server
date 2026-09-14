@@ -19,9 +19,6 @@ if [[ -n "${DEMORA_RP_ZIP:-}" && ! -f "$HOPLITE_ZIP" ]]; then
 fi
 RANK_CHAR_BASE=0xE100
 
-rm -rf "$PACK_DIR"
-mkdir -p "$(dirname "$OUT_ZIP")"
-
 if [[ ! -f "$HOPLITE_ZIP" ]]; then
   echo "Hoplite resource pack not found: $HOPLITE_ZIP" >&2
   exit 1
@@ -54,6 +51,9 @@ if [[ ! -f "$EVENTS_TITLE" ]]; then
   echo "Events title image not found: $EVENTS_TITLE" >&2
   exit 1
 fi
+
+rm -rf "$PACK_DIR"
+mkdir -p "$(dirname "$OUT_ZIP")"
 echo "Unpacking Hoplite RP base: $HOPLITE_ZIP"
 unzip -q -o "$HOPLITE_ZIP" -d "$PACK_DIR"
 
@@ -687,7 +687,99 @@ for model_path in sorted(models.glob("*.json")):
 print(f"items range_dispatch generated/merged for {converted} item(s)", flush=True)
 
 # Force vanilla item fallbacks everywhere (main + overlays) — parent models render as air.
+# Do NOT flatten stateful trees (crossbow charge_type, bow pull, fishing_rod cast, elytra broken).
+STATEFUL_TYPES = {
+    "condition", "select", "range_dispatch",
+    "minecraft:condition", "minecraft:select", "minecraft:range_dispatch",
+}
+HANDHELD_ITEMS = {
+    "wooden_sword", "stone_sword", "iron_sword", "golden_sword", "diamond_sword", "netherite_sword",
+    "wooden_axe", "stone_axe", "iron_axe", "golden_axe", "diamond_axe", "netherite_axe",
+    "wooden_pickaxe", "stone_pickaxe", "iron_pickaxe", "golden_pickaxe", "diamond_pickaxe", "netherite_pickaxe",
+    "wooden_shovel", "stone_shovel", "iron_shovel", "golden_shovel", "diamond_shovel", "netherite_shovel",
+    "wooden_hoe", "stone_hoe", "iron_hoe", "golden_hoe", "diamond_hoe", "netherite_hoe",
+    "trident", "mace",
+}
+
+
+def vanilla_crossbow_fallback() -> dict:
+    return {
+        "type": "condition",
+        "property": "using_item",
+        "on_true": {
+            "type": "range_dispatch",
+            "property": "crossbow/pull",
+            "fallback": {"type": "model", "model": "minecraft:item/crossbow_pulling_0"},
+            "entries": [
+                {"threshold": 0.58, "model": {"type": "model", "model": "minecraft:item/crossbow_pulling_1"}},
+                {"threshold": 1.0, "model": {"type": "model", "model": "minecraft:item/crossbow_pulling_2"}},
+            ],
+        },
+        "on_false": {
+            "type": "select",
+            "property": "charge_type",
+            "fallback": {"type": "model", "model": "minecraft:item/crossbow"},
+            "cases": [
+                {"when": "arrow", "model": {"type": "model", "model": "minecraft:item/crossbow_arrow"}},
+                {"when": "rocket", "model": {"type": "model", "model": "minecraft:item/crossbow_firework"}},
+            ],
+        },
+    }
+
+
+def vanilla_bow_fallback() -> dict:
+    return {
+        "type": "condition",
+        "property": "using_item",
+        "on_false": {"type": "model", "model": "minecraft:item/bow"},
+        "on_true": {
+            "type": "range_dispatch",
+            "property": "use_duration",
+            "scale": 0.05,
+            "fallback": {"type": "model", "model": "minecraft:item/bow_pulling_0"},
+            "entries": [
+                {"threshold": 0.65, "model": {"type": "model", "model": "minecraft:item/bow_pulling_1"}},
+                {"threshold": 0.9, "model": {"type": "model", "model": "minecraft:item/bow_pulling_2"}},
+            ],
+        },
+    }
+
+
+def vanilla_fishing_rod_fallback() -> dict:
+    return {
+        "type": "condition",
+        "property": "fishing_rod/cast",
+        "on_true": {"type": "model", "model": "minecraft:item/fishing_rod_cast"},
+        "on_false": {"type": "model", "model": "minecraft:item/fishing_rod"},
+    }
+
+
+VANILLA_STATE_FALLBACKS = {
+    "crossbow": vanilla_crossbow_fallback,
+    "bow": vanilla_bow_fallback,
+    "fishing_rod": vanilla_fishing_rod_fallback,
+}
+
+# Hoplite override-only models have no parent/textures — 1.21.4+ fallbacks render as missing texture.
+restored_models = 0
+for model_path in models.glob("*.json"):
+    try:
+        data = json.loads(model_path.read_text(encoding="utf-8"))
+    except Exception:
+        continue
+    if not isinstance(data, dict):
+        continue
+    if data.get("parent") or data.get("textures") or data.get("elements"):
+        continue
+    item_id = model_path.stem
+    data["parent"] = "minecraft:item/handheld" if item_id in HANDHELD_ITEMS else "minecraft:item/generated"
+    data["textures"] = {"layer0": f"minecraft:item/{item_id}"}
+    model_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    restored_models += 1
+print(f"restored parent/textures on {restored_models} override-only model(s)", flush=True)
+
 fixed = 0
+stateful = 0
 for items_json in pack.rglob("items/*.json"):
     if "minecraft/items" not in str(items_json).replace("\\", "/"):
         continue
@@ -696,17 +788,24 @@ for items_json in pack.rglob("items/*.json"):
     except Exception:
         continue
     model = data.get("model")
-    if not isinstance(model, dict) or model.get("type") != "range_dispatch":
+    if not isinstance(model, dict) or model.get("type") not in ("range_dispatch", "minecraft:range_dispatch"):
         continue
     item_id = items_json.stem
-    want = f"minecraft:item/{item_id}"
+    if item_id in VANILLA_STATE_FALLBACKS:
+        model["fallback"] = VANILLA_STATE_FALLBACKS[item_id]()
+        items_json.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        stateful += 1
+        continue
     fb = model.get("fallback") or {}
+    if isinstance(fb, dict) and fb.get("type") in STATEFUL_TYPES:
+        continue
+    want = f"minecraft:item/{item_id}"
     cur = fb.get("model") if isinstance(fb, dict) else None
     if cur in (None, "minecraft:item/generated", "minecraft:item/handheld", "item/generated", "item/handheld", f"item/{item_id}"):
         model["fallback"] = {"type": "model", "model": want}
         items_json.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         fixed += 1
-print(f"forced vanilla item fallbacks: {fixed}", flush=True)
+print(f"forced vanilla item fallbacks: {fixed}; stateful fallbacks: {stateful}", flush=True)
 PY
 
 # Lobby welcome sound (levelup.mp3 → vorbis ogg)
@@ -729,8 +828,12 @@ print("blade:lobby_welcome sound registered", flush=True)
 PY
 fi
 
-# Blood Mace legendary texture (CMD 1 on mace)
+# Blood Mace legendary texture (CMD 2000 — outside cosmetic mace range 100-399)
 BLOOD_MACE_TEX="${BLOOD_MACE_TEXTURE:-$ROOT/resourcepack/assets/blood-mace/blood_mace.png}"
+if [[ ! -f "$BLOOD_MACE_TEX" ]]; then
+  echo "Blood mace texture not found: $BLOOD_MACE_TEX" >&2
+  exit 1
+fi
 if [[ -f "$BLOOD_MACE_TEX" ]]; then
   mkdir -p "$PACK_DIR/assets/minecraft/textures/item" \
            "$PACK_DIR/assets/minecraft/models/item" \
@@ -748,7 +851,7 @@ EOF
   MACES_JSON="${MACES_JSON:-$ROOT/custom-plugins/blade-cosmetics/src/main/resources/maces.json}"
   export PACK_DIR MACE_SKINS_DIR MACES_JSON
   python3 - <<'PY'
-import json, os, shutil
+import json, os, shutil, sys
 from pathlib import Path
 from PIL import Image
 
@@ -766,9 +869,13 @@ skip = {"sword", "maceicon"}
 catalog = []
 if catalog_path.is_file():
     catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+if not isinstance(catalog, list):
+    print(f"ERROR: maces.json must be a list, got {type(catalog)}", flush=True)
+    sys.exit(1)
 
+BLOOD_CMD = 2000
 entries = [{
-    "threshold": 1,
+    "threshold": BLOOD_CMD,
     "model": {"type": "model", "model": "minecraft:item/blood_mace"},
 }]
 copied = 0
@@ -814,19 +921,46 @@ for item in catalog:
     })
     copied += 1
 
+if copied < 50:
+    print(f"ERROR: only {copied} cosmetic mace skins copied — refusing blood-only mace.json", flush=True)
+    sys.exit(1)
+
 entries.sort(key=lambda e: e["threshold"])
-item_path.write_text(json.dumps({
+item_definition = {
     "model": {
         "type": "range_dispatch",
         "property": "custom_model_data",
+        "index": 0,
         "fallback": {"type": "model", "model": "minecraft:item/mace"},
         "entries": entries,
     }
-}, indent=2) + "\n", encoding="utf-8")
+}
+blood_entries = [
+    entry for entry in entries
+    if entry.get("model", {}).get("model") == "minecraft:item/blood_mace"
+]
+cosmetic_entries = [
+    entry for entry in entries
+    if entry.get("model", {}).get("model", "").startswith("blade:item/mace_skin/")
+]
+if (
+    item_definition["model"].get("index") != 0
+    or len(blood_entries) != 1
+    or blood_entries[0].get("threshold") != 2000
+):
+    print("ERROR: blood mace model must use custom_model_data index 0 at threshold 2000", flush=True)
+    sys.exit(1)
+if len(cosmetic_entries) != copied or any(
+    not 100 <= int(entry.get("threshold", -1)) <= 399
+    for entry in cosmetic_entries
+):
+    print("ERROR: cosmetic mace CMD values must remain in range 100-399", flush=True)
+    sys.exit(1)
+item_path.write_text(json.dumps(item_definition, indent=2) + "\n", encoding="utf-8")
 for overlay_item in pack.glob("overlay*/assets/minecraft/items"):
     shutil.copy2(item_path, overlay_item / "mace.json")
 print(
-    f"blood mace CMD 1 + {copied} cosmetic mace skins "
+    f"blood mace CMD {BLOOD_CMD} + {copied} cosmetic mace skins "
     f"(animated={animated}, custom_models={custom_models})",
     flush=True,
 )
@@ -1158,6 +1292,35 @@ add_gui_glyph(br_ui / "crafts_legendary.png", "br_crafts_legendary_gui", 0xE207,
 add_gui_glyph(br_ui / "crafts_basic.png", "br_crafts_basic_gui", 0xE208, height=256, ascent=18)
 add_gui_glyph(br_ui / "crafts_recipe.png", "br_crafts_recipe_gui", 0xE209, height=256, ascent=36)
 add_gui_glyph(br_ui / "kits_menu.png", "br_kits_menu_gui", 0xE20A, height=256, ascent=16)
+
+# Cosmetics rarity badges (8px tall UI strips). limited is packed for later, unused in plugins.
+rarity_src = root / "resourcepack/assets/rarity"
+rarity_dir = pack / "assets/blade/textures/font/rarity"
+rarity_dir.mkdir(parents=True, exist_ok=True)
+for rarity_name, rarity_cp in (
+    ("common", 0xE220),
+    ("rare", 0xE221),
+    ("epic", 0xE222),
+    ("legendary", 0xE223),
+    ("exclusive", 0xE224),
+    ("limited", 0xE225),
+):
+    rarity_file = rarity_src / f"{rarity_name}.png"
+    if not rarity_file.is_file():
+        print("missing rarity", rarity_file, flush=True)
+        continue
+    im = Image.open(rarity_file).convert("RGBA")
+    out = rarity_dir / f"{rarity_name}.png"
+    im.save(out, format="PNG", optimize=True, icc_profile=None)
+    providers.append({
+        "type": "bitmap",
+        "file": f"blade:font/rarity/{rarity_name}.png",
+        "ascent": 7,
+        "height": 8,
+        "chars": [chr(rarity_cp)],
+    })
+    print(f"rarity {rarity_name} glyph U+{rarity_cp:04X}", flush=True)
+
 font_path.write_text(json.dumps(font, indent=4) + "\n")
 
 # Opt-in TTF fonts (NOT merged into default.json — use <font:mine|ten|miniten> explicitly)
