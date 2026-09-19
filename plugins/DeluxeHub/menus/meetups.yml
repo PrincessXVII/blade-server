@@ -1,0 +1,22 @@
+slots: 9
+title: "Митапы"
+
+refresh:
+  enabled: true
+  rate: 40
+
+items:
+  arena_1:
+    material: PAPER
+    custom_model_data: 7001
+    slot: 2
+    display_name: "<font:mine><#FFFFFF>игроков: %blade_online_meetups1%</font>"
+    lore:
+      - "&eЛКМ &7— войти в очередь"
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[CLOSE]"
+      - "[MESSAGE] &aПодключение к &fМитапы-1&a..."
+      - "[PROXY] meetups1"

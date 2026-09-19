@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_DIR="$ROOT/resourcepack-src"
 OUT_ZIP="$ROOT/resourcepack/BladePack.zip"
 DONATES="${DONATES_DIR:-$ROOT/resourcepack/assets/donates}"
+SUFFIXES="${SUFFIXES_DIR:-$ROOT/resourcepack/assets/suffixes}"
 TITLE="${TITLE_IMAGE:-$ROOT/resourcepack/assets/blade_title.png}"
 MEETUPS_TITLE="${MEETUPS_TITLE_IMAGE:-$ROOT/resourcepack/assets/meetups_title.png}"
 BATTLEROYALE_TITLE="${BATTLEROYALE_TITLE_IMAGE:-$ROOT/resourcepack/assets/battleroyale.png}"
@@ -25,6 +26,10 @@ if [[ ! -f "$HOPLITE_ZIP" ]]; then
 fi
 if [[ ! -d "$DONATES" ]]; then
   echo "Donate assets not found: $DONATES" >&2
+  exit 1
+fi
+if [[ ! -d "$SUFFIXES" ]]; then
+  echo "Suffix assets not found: $SUFFIXES" >&2
   exit 1
 fi
 if [[ ! -f "$TITLE" ]]; then
@@ -65,6 +70,14 @@ if [[ -f "$MINECART_TEX" ]]; then
   echo "Restored vanilla minecart.png"
 fi
 
+# Custom world-border texture from the d69238f2 pack.
+FORCEFIELD_TEX="${FORCEFIELD_TEX:-$ROOT/resourcepack/assets/minecraft/textures/misc/forcefield.png}"
+if [[ -f "$FORCEFIELD_TEX" ]]; then
+  mkdir -p "$PACK_DIR/assets/minecraft/textures/misc"
+  cp "$FORCEFIELD_TEX" "$PACK_DIR/assets/minecraft/textures/misc/forcefield.png"
+  echo "Installed custom world-border texture"
+fi
+
 # Blade pack icon (MOTD logo). Strip ICC/Display P3 — Minecraft can hang on exotic PNG profiles.
 PACK_ICON="${PACK_ICON:-$ROOT/plugins/BetterMOTD/icons/logoblademinecarft.png}"
 if [[ -f "$PACK_ICON" ]]; then
@@ -87,7 +100,7 @@ else
   echo "Warning: pack icon not found: $PACK_ICON" >&2
 fi
 
-export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
+export PACK_DIR="$PACK_DIR" ROOT="$ROOT" DONATES="$DONATES" SUFFIXES="$SUFFIXES" TITLE="$TITLE" MEETUPS_TITLE="$MEETUPS_TITLE"
 export BATTLEROYALE_TITLE="$BATTLEROYALE_TITLE" SMP_TITLE="$SMP_TITLE"
 export FFA_TITLE="$FFA_TITLE" EVENTS_TITLE="$EVENTS_TITLE"
 export HUB_ASSETS="$HUB_ASSETS"
@@ -104,6 +117,7 @@ from PIL import Image
 pack_dir = Path(os.environ["PACK_DIR"])
 root = Path(os.environ["ROOT"])
 donates = Path(os.environ["DONATES"])
+suffixes = Path(os.environ["SUFFIXES"])
 title_src = Path(os.environ["TITLE"])
 meetups_src = Path(os.environ["MEETUPS_TITLE"])
 battleroyale_src = Path(os.environ["BATTLEROYALE_TITLE"])
@@ -111,6 +125,7 @@ smp_src = Path(os.environ["SMP_TITLE"])
 ffa_src = Path(os.environ["FFA_TITLE"])
 events_src = Path(os.environ["EVENTS_TITLE"])
 ranks = os.environ["RANKS"].split()
+suffix_names = ["suffix_4", "suffix_5", "suffix_6", "suffix_8"]
 char_code = int(os.environ["RANK_CHAR_BASE"], 0)
 
 meta_path = pack_dir / "pack.mcmeta"
@@ -259,6 +274,24 @@ providers.append({
 print(f"events title glyph: U+{ord(ch):04X}", flush=True)
 char_code += 1
 
+# Nine-pixel suffix glyphs. Fixed codepoints preserve all existing rank/title glyphs.
+for suffix_offset, suffix_name in enumerate(suffix_names):
+    src = suffixes / f"{suffix_name}.png"
+    if not src.is_file():
+        raise SystemExit(f"Missing suffix image: {src}")
+    (rank_dir / f"{suffix_name}.png").write_bytes(src.read_bytes())
+    suffix_code = 0xE117 + suffix_offset
+    suffix_char = chr(suffix_code)
+    char_map[suffix_name] = suffix_char
+    providers.append({
+        "type": "bitmap",
+        "file": f"blade:font/ranks/{suffix_name}.png",
+        "ascent": 8,
+        "height": 9,
+        "chars": [suffix_char],
+    })
+    print(f"{suffix_name} glyph: U+{suffix_code:04X}", flush=True)
+
 # Hub menu custom GUI shown as inventory title glyph (DeluxeMenus menu_title).
 hub_gui_src = root / "resourcepack/assets/hub/menu-templates/hub_menu_gui.png"
 if not hub_gui_src.is_file():
@@ -313,6 +346,8 @@ if "ffa_title" in char_map:
     lines.append(f"ffa_title=\\u{ord(char_map['ffa_title']):04X}")
 if "events_title" in char_map:
     lines.append(f"events_title=\\u{ord(char_map['events_title']):04X}")
+for suffix_name in suffix_names:
+    lines.append(f"{suffix_name}=\\u{ord(char_map[suffix_name]):04X}")
 if "hub_menu_gui" in char_map:
     lines.append(f"hub_menu_gui=\\u{ord(char_map['hub_menu_gui']):04X}")
 map_path.write_text("\n".join(lines) + "\n")

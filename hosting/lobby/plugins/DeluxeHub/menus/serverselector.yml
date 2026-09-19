@@ -1,0 +1,161 @@
+# Главное меню режимов (кастомный GUI из ресурспака).
+# Title: shift -14 + U+E200 (hub_menu_gui).
+slots: 54
+title: "&f"
+
+refresh:
+  enabled: false
+  rate: 40
+
+items:
+  smp:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "0"
+      - "1"
+      - "2"
+      - "9"
+      - "10"
+      - "11"
+    display_name: " "
+    lore:
+      - "  <font:mine><#FF6200>s<#FF7C00>m<#FF9600>p</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[MESSAGE] &7SMP скоро будет доступен."
+
+  event:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "3"
+      - "4"
+      - "5"
+      - "12"
+      - "13"
+      - "14"
+      - "21"
+      - "22"
+      - "23"
+    display_name: " "
+    lore:
+      - "  <font:mine><#EB0000>и<#F00F00>в<#F51F00>е<#FA2F00>н<#FF3F00>т</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[MESSAGE] &7Ивент скоро будет доступен."
+
+  mace:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "6"
+      - "7"
+      - "8"
+      - "15"
+      - "16"
+      - "17"
+    display_name: " "
+    lore:
+      - "  <font:mine><#FFD400>м<#FFD606>е<#FFD90C>й<#FFDB12>с<#FFDE18> <#FFE01E>р<#FFE324>у<#FFE52A>л<#FFE830>е<#FFEA36>т<#FFED3C>к<#FFEF42>а</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[CLOSE]"
+      - "[MESSAGE] &aПодключение к &fМейс-рулетке&a..."
+      - "[PROXY] mace"
+
+  ffa:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "18"
+      - "19"
+      - "20"
+      - "27"
+      - "28"
+      - "29"
+      - "36"
+      - "37"
+      - "38"
+    display_name: " "
+    lore:
+      - "  <font:mine><#8A00FF>ф<#B900FF>ф<#E800FF>а</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[MENU] ffa"
+
+  cubgame:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "30"
+      - "31"
+      - "32"
+      - "39"
+      - "40"
+      - "41"
+    display_name: " "
+    lore:
+      - "  <font:mine><#1DFF00>к<#19FF17>у<#15FF2D>б<#11FF44>г<#0CFF5B>е<#08FF71>й<#00FF88>м</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[MESSAGE] &7Кубгейм скоро будет доступен."
+
+  meetups:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "24"
+      - "25"
+      - "26"
+      - "33"
+      - "34"
+      - "35"
+      - "42"
+      - "43"
+      - "44"
+    display_name: " "
+    lore:
+      - "  <font:mine><#0073FF>м<#007DFF>и<#0088FF>т<#0092FF>а<#009DFF>п<#00A7FF>ы</font>"
+      - " "
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[MENU] meetups"
+
+  back:
+    material: PAPER
+    custom_model_data: 7006
+    slots:
+      - "45"
+      - "46"
+      - "47"
+      - "48"
+      - "49"
+      - "50"
+      - "51"
+      - "52"
+      - "53"
+    display_name: " "
+    lore: []
+    item_flags:
+      - HIDE_ATTRIBUTES
+      - HIDE_ADDITIONAL_TOOLTIP
+    actions:
+      - "[CLOSE]"
