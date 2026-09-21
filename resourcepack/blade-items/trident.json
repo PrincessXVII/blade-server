@@ -1,0 +1,46 @@
+{
+    "model": {
+        "type": "range_dispatch",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "select",
+            "property": "display_context",
+            "cases": [
+                {
+                    "when": ["gui", "ground", "fixed", "on_shelf"],
+                    "model": {
+                        "type": "model",
+                        "model": "minecraft:item/trident"
+                    }
+                }
+            ],
+            "fallback": {
+                "type": "condition",
+                "property": "using_item",
+                "on_false": {
+                    "type": "special",
+                    "base": "minecraft:item/trident_in_hand",
+                    "model": {
+                        "type": "trident"
+                    }
+                },
+                "on_true": {
+                    "type": "special",
+                    "base": "minecraft:item/trident_throwing",
+                    "model": {
+                        "type": "trident"
+                    }
+                }
+            }
+        },
+        "entries": [
+            {
+                "threshold": 7109,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/infernal_pitchfork/default"
+                }
+            }
+        ]
+    }
+}
