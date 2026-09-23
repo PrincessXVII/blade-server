@@ -12,6 +12,7 @@ stmoder=\uE109
 glmoder=\uE10A
 dizainer=\uE10B
 tehadmin=\uE10C
+smpadmin=\uE11B
 kurator=\uE10D
 zamestitel=\uE10E
 owner=\uE10F
