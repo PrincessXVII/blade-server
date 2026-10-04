@@ -1,0 +1,44 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "item/warped_fungus_on_a_stick"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "custom_model_data": 2
+            },
+            "model": "civilization:item/tools/lich_staff"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 3
+            },
+            "model": "blade:item/legendary/shard_staff"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 4
+            },
+            "model": "civilization:item/tools/void_staff/teleport"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 5
+            },
+            "model": "civilization:item/tools/void_staff/shulker"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 6
+            },
+            "model": "vred/pedestal"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 7
+            },
+            "model": "vred/chest"
+        }
+    ]
+}

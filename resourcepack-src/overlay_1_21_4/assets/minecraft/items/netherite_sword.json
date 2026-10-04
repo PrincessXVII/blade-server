@@ -1,0 +1,62 @@
+{
+  "model": {
+    "entries": [
+      {
+        "model": {
+          "model": "civilization:item/tools/dragon_katana/normal",
+          "type": "model"
+        },
+        "threshold": 1
+      },
+      {
+        "model": {
+          "model": "civilization:item/tools/light_netherite_sword",
+          "type": "model"
+        },
+        "threshold": 2
+      },
+      {
+        "model": {
+          "model": "civilization:item/tools/excalibur_sword/normal",
+          "type": "model"
+        },
+        "threshold": 3
+      },
+      {
+        "model": {
+          "model": "civilization:item/tools/dragon_katana/dragonbreath",
+          "type": "model"
+        },
+        "threshold": 4
+      },
+      {
+        "model": {
+          "model": "civilization:item/tools/excalibur_sword/radiant",
+          "type": "model"
+        },
+        "threshold": 5
+      },
+      {
+        "model": {
+          "model": "item/netherite_sword",
+          "type": "model"
+        },
+        "threshold": 6
+      },
+      {
+        "model": {
+          "model": "blade:item/legendary/chain_cage",
+          "type": "model"
+        },
+        "threshold": 7
+      }
+    ],
+    "fallback": {
+      "type": "model",
+      "model": "minecraft:item/netherite_sword"
+    },
+    "property": "custom_model_data",
+    "type": "range_dispatch"
+  },
+  "oversized_in_gui": true
+}

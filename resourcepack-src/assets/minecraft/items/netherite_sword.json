@@ -1,0 +1,1839 @@
+{
+    "model": {
+        "type": "range_dispatch",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "model",
+            "model": "minecraft:item/netherite_sword"
+        },
+        "entries": [
+            {
+                "threshold": 1,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/dragon_katana/normal"
+                }
+            },
+            {
+                "threshold": 2,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/light_netherite_sword"
+                }
+            },
+            {
+                "threshold": 3,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/excalibur_sword/normal"
+                }
+            },
+            {
+                "threshold": 4,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/dragon_katana/dragonbreath"
+                }
+            },
+            {
+                "threshold": 5,
+                "model": {
+                    "type": "model",
+                    "model": "civilization:item/tools/excalibur_sword/radiant"
+                }
+            },
+            {
+                "threshold": 6,
+                "model": {
+                    "type": "model",
+                    "model": "minecraft:item/netherite_sword"
+                }
+            },
+            {
+                "threshold": 7,
+                "model": {
+                    "type": "model",
+                    "model": "blade:item/legendary/chain_cage"
+                }
+            },
+            {
+                "threshold": 7001,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/adventurers_staff/default"
+                }
+            },
+            {
+                "threshold": 7002,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/anemone/default"
+                }
+            },
+            {
+                "threshold": 7003,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/arm_cannon/buccaneer"
+                }
+            },
+            {
+                "threshold": 7004,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/arm_cannon/bwb"
+                }
+            },
+            {
+                "threshold": 7005,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/arm_cannon/chicken_ballistics"
+                }
+            },
+            {
+                "threshold": 7006,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/arm_cast/default"
+                }
+            },
+            {
+                "threshold": 7007,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/atomic_armor/default"
+                }
+            },
+            {
+                "threshold": 7008,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/banana/default"
+                }
+            },
+            {
+                "threshold": 7009,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/baseball_bat/default"
+                }
+            },
+            {
+                "threshold": 7010,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/baseball_bat/spiked"
+                }
+            },
+            {
+                "threshold": 7011,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/battle_axe/default"
+                }
+            },
+            {
+                "threshold": 7012,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/beam_sword/default"
+                }
+            },
+            {
+                "threshold": 7013,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/beam_sword/dual"
+                }
+            },
+            {
+                "threshold": 7014,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/blockle_tea/default"
+                }
+            },
+            {
+                "threshold": 7015,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/blowtorch/default"
+                }
+            },
+            {
+                "threshold": 7016,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/bone/default"
+                }
+            },
+            {
+                "threshold": 7017,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/book/default"
+                }
+            },
+            {
+                "threshold": 7018,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/book/spellbook"
+                }
+            },
+            {
+                "threshold": 7019,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/boombox/default"
+                }
+            },
+            {
+                "threshold": 7020,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/bouquet/default"
+                }
+            },
+            {
+                "threshold": 7021,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/box_o_explosives/default"
+                }
+            },
+            {
+                "threshold": 7022,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/box_o_explosives/nuclear_meltdown"
+                }
+            },
+            {
+                "threshold": 7023,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/boxing_glove/default"
+                }
+            },
+            {
+                "threshold": 7024,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/briefcase/default"
+                }
+            },
+            {
+                "threshold": 7025,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/briefcase/looter"
+                }
+            },
+            {
+                "threshold": 7026,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/bubble_fist/default"
+                }
+            },
+            {
+                "threshold": 7027,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/burger/default"
+                }
+            },
+            {
+                "threshold": 7028,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/burger_staff/default"
+                }
+            },
+            {
+                "threshold": 7029,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cacti_cane/default"
+                }
+            },
+            {
+                "threshold": 7030,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/camera/default"
+                }
+            },
+            {
+                "threshold": 7031,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/candy_cane/default"
+                }
+            },
+            {
+                "threshold": 7032,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/candy_flow/default"
+                }
+            },
+            {
+                "threshold": 7033,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/chainsaw_hand/default"
+                }
+            },
+            {
+                "threshold": 7034,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/chamberstick/default"
+                }
+            },
+            {
+                "threshold": 7035,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cheese_skewer/default"
+                }
+            },
+            {
+                "threshold": 7036,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/chicken_wing/default"
+                }
+            },
+            {
+                "threshold": 7037,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/chicken_wing/hot"
+                }
+            },
+            {
+                "threshold": 7038,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/choco_shield/default"
+                }
+            },
+            {
+                "threshold": 7039,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/claim_flag/default"
+                }
+            },
+            {
+                "threshold": 7040,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/claim_flag/feathers"
+                }
+            },
+            {
+                "threshold": 7041,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/climbers_pick/default"
+                }
+            },
+            {
+                "threshold": 7042,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cloud_fist/default"
+                }
+            },
+            {
+                "threshold": 7043,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cloud_fist/heavens"
+                }
+            },
+            {
+                "threshold": 7044,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cloud_fist/lightning"
+                }
+            },
+            {
+                "threshold": 7045,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cloud_fist/stormy"
+                }
+            },
+            {
+                "threshold": 7046,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/clown_mallet/default"
+                }
+            },
+            {
+                "threshold": 7047,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/clown_mallet/spiral"
+                }
+            },
+            {
+                "threshold": 7048,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/coffee_mug/default"
+                }
+            },
+            {
+                "threshold": 7049,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/comet_fist/default"
+                }
+            },
+            {
+                "threshold": 7050,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/comically_large_spoon/default"
+                }
+            },
+            {
+                "threshold": 7051,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/comically_large_spoon/wooden"
+                }
+            },
+            {
+                "threshold": 7052,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/competitors_safety_pad/default"
+                }
+            },
+            {
+                "threshold": 7053,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/competitors_safety_pad/slimed"
+                }
+            },
+            {
+                "threshold": 7054,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/constellation_cartographer/default"
+                }
+            },
+            {
+                "threshold": 7055,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/coral_fist/default"
+                }
+            },
+            {
+                "threshold": 7056,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cosmic_sword/default"
+                }
+            },
+            {
+                "threshold": 7057,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cotton_candy/default"
+                }
+            },
+            {
+                "threshold": 7058,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/crab_claw/default"
+                }
+            },
+            {
+                "threshold": 7059,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/crowbar/default"
+                }
+            },
+            {
+                "threshold": 7060,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/crows_perch/default"
+                }
+            },
+            {
+                "threshold": 7061,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cupcake_staff/default"
+                }
+            },
+            {
+                "threshold": 7062,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cupcake_staff/spearhead"
+                }
+            },
+            {
+                "threshold": 7063,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/cutlass/default"
+                }
+            },
+            {
+                "threshold": 7064,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/donut/default"
+                }
+            },
+            {
+                "threshold": 7065,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/donut/sprinkled"
+                }
+            },
+            {
+                "threshold": 7066,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/drill_arm/default"
+                }
+            },
+            {
+                "threshold": 7067,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/dynamite_stick/default"
+                }
+            },
+            {
+                "threshold": 7068,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/dynamite_stick/bundle"
+                }
+            },
+            {
+                "threshold": 7069,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/dynamite_stick/isotope"
+                }
+            },
+            {
+                "threshold": 7070,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/dynamite_stick/nuclear"
+                }
+            },
+            {
+                "threshold": 7071,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/exo_arm/default"
+                }
+            },
+            {
+                "threshold": 7072,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_axe/default"
+                }
+            },
+            {
+                "threshold": 7073,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_extinguisher/default"
+                }
+            },
+            {
+                "threshold": 7074,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_fist/default"
+                }
+            },
+            {
+                "threshold": 7075,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_fist/energy"
+                }
+            },
+            {
+                "threshold": 7076,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_fist/soul"
+                }
+            },
+            {
+                "threshold": 7077,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/fire_fist/violet"
+                }
+            },
+            {
+                "threshold": 7078,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/first_aid_kit/default"
+                }
+            },
+            {
+                "threshold": 7079,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/flower_umbrella/default"
+                }
+            },
+            {
+                "threshold": 7080,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/foam_finger/default"
+                }
+            },
+            {
+                "threshold": 7081,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/frankenfist/default"
+                }
+            },
+            {
+                "threshold": 7082,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/frying_pan/default"
+                }
+            },
+            {
+                "threshold": 7083,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/frying_pan/fried_egg"
+                }
+            },
+            {
+                "threshold": 7084,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/gauntlet/default"
+                }
+            },
+            {
+                "threshold": 7085,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/gauntlet/elemental"
+                }
+            },
+            {
+                "threshold": 7086,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/gauntlet/gamer"
+                }
+            },
+            {
+                "threshold": 7087,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/gauntlet/starforged"
+                }
+            },
+            {
+                "threshold": 7088,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/guild_banner/knight"
+                }
+            },
+            {
+                "threshold": 7089,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/guild_banner/viking"
+                }
+            },
+            {
+                "threshold": 7090,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/gummi_paw/default"
+                }
+            },
+            {
+                "threshold": 7091,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hair_dryer/default"
+                }
+            },
+            {
+                "threshold": 7092,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hammer/welding"
+                }
+            },
+            {
+                "threshold": 7093,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/handbag/default"
+                }
+            },
+            {
+                "threshold": 7094,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/handbag/shoulder"
+                }
+            },
+            {
+                "threshold": 7095,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/harpoon/default"
+                }
+            },
+            {
+                "threshold": 7096,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/harpoon/sharkbait"
+                }
+            },
+            {
+                "threshold": 7097,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/harpoon/sunken"
+                }
+            },
+            {
+                "threshold": 7098,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/holosword/default"
+                }
+            },
+            {
+                "threshold": 7099,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/holosword/evolved"
+                }
+            },
+            {
+                "threshold": 7100,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/holosword/serrated"
+                }
+            },
+            {
+                "threshold": 7101,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/holosword/slayer"
+                }
+            },
+            {
+                "threshold": 7102,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hot_chocolate/default"
+                }
+            },
+            {
+                "threshold": 7103,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hot_dog/default"
+                }
+            },
+            {
+                "threshold": 7104,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hydroblaster/default"
+                }
+            },
+            {
+                "threshold": 7105,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/hydroblaster/squidtek"
+                }
+            },
+            {
+                "threshold": 7106,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/ice_cream/default"
+                }
+            },
+            {
+                "threshold": 7107,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/ice_cream/cherry_chocolate_whip"
+                }
+            },
+            {
+                "threshold": 7108,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/ice_cream/triple_scoop"
+                }
+            },
+            {
+                "threshold": 7109,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/infernal_pitchfork/default"
+                }
+            },
+            {
+                "threshold": 7110,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/jackhammer/default"
+                }
+            },
+            {
+                "threshold": 7111,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/jellyfist/default"
+                }
+            },
+            {
+                "threshold": 7112,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/jester_cane/default"
+                }
+            },
+            {
+                "threshold": 7113,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/kanabo/default"
+                }
+            },
+            {
+                "threshold": 7114,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/kanabo/cursed"
+                }
+            },
+            {
+                "threshold": 7115,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/kanabo/gilded"
+                }
+            },
+            {
+                "threshold": 7116,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/katana/default"
+                }
+            },
+            {
+                "threshold": 7117,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/katana/cherry_blossom"
+                }
+            },
+            {
+                "threshold": 7118,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/knight_shield/emblem"
+                }
+            },
+            {
+                "threshold": 7119,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/knight_shield/goldshire"
+                }
+            },
+            {
+                "threshold": 7120,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/knight_shield/ornamental"
+                }
+            },
+            {
+                "threshold": 7121,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/knight_shield/wooden"
+                }
+            },
+            {
+                "threshold": 7122,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lantern/default"
+                }
+            },
+            {
+                "threshold": 7123,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lasso/default"
+                }
+            },
+            {
+                "threshold": 7124,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lollipop_staff/default"
+                }
+            },
+            {
+                "threshold": 7125,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lollipop_staff/chancellor"
+                }
+            },
+            {
+                "threshold": 7126,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lollipop_staff/minty"
+                }
+            },
+            {
+                "threshold": 7127,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lollipop_staff/sticky"
+                }
+            },
+            {
+                "threshold": 7128,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/lunar_claw/default"
+                }
+            },
+            {
+                "threshold": 7129,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mace/default"
+                }
+            },
+            {
+                "threshold": 7130,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/magicians_wand/default"
+                }
+            },
+            {
+                "threshold": 7131,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/magnifying_glass/default"
+                }
+            },
+            {
+                "threshold": 7132,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/microphone/default"
+                }
+            },
+            {
+                "threshold": 7133,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/milkshake/summer_lemon"
+                }
+            },
+            {
+                "threshold": 7134,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mixing_claw/default"
+                }
+            },
+            {
+                "threshold": 7135,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mjolnir/default"
+                }
+            },
+            {
+                "threshold": 7136,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mjolnir/charged"
+                }
+            },
+            {
+                "threshold": 7137,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mjolnir/nordic"
+                }
+            },
+            {
+                "threshold": 7138,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/mjolnir/thunder"
+                }
+            },
+            {
+                "threshold": 7139,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/money_bag/default"
+                }
+            },
+            {
+                "threshold": 7140,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/money_bag/overflowing"
+                }
+            },
+            {
+                "threshold": 7141,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/oar/default"
+                }
+            },
+            {
+                "threshold": 7142,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/oar/shipwrecked"
+                }
+            },
+            {
+                "threshold": 7143,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paint_palette/default"
+                }
+            },
+            {
+                "threshold": 7144,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paintbrush/default"
+                }
+            },
+            {
+                "threshold": 7145,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paintbrush/mega"
+                }
+            },
+            {
+                "threshold": 7146,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paper_umbrella/default"
+                }
+            },
+            {
+                "threshold": 7147,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paper_umbrella/blossoms"
+                }
+            },
+            {
+                "threshold": 7148,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paper_umbrella/cherry_tree"
+                }
+            },
+            {
+                "threshold": 7149,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/paper_umbrella/sakura"
+                }
+            },
+            {
+                "threshold": 7150,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/parkour_staff/default"
+                }
+            },
+            {
+                "threshold": 7151,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/parkour_staff/bamboo"
+                }
+            },
+            {
+                "threshold": 7152,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pirate_hook/default"
+                }
+            },
+            {
+                "threshold": 7153,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pirate_hook/gold_trim"
+                }
+            },
+            {
+                "threshold": 7154,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pirate_hook/phantom"
+                }
+            },
+            {
+                "threshold": 7155,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pixel_pusher/default"
+                }
+            },
+            {
+                "threshold": 7156,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pizza_slice/default"
+                }
+            },
+            {
+                "threshold": 7157,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/plague_doctor_staff/default"
+                }
+            },
+            {
+                "threshold": 7158,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/plague_doctor_staff/steampunk"
+                }
+            },
+            {
+                "threshold": 7159,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/planetary_projector/default"
+                }
+            },
+            {
+                "threshold": 7160,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/playing_cards/default"
+                }
+            },
+            {
+                "threshold": 7161,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popcorn/default"
+                }
+            },
+            {
+                "threshold": 7162,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/default"
+                }
+            },
+            {
+                "threshold": 7163,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/friend_shaped"
+                }
+            },
+            {
+                "threshold": 7164,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/frozen"
+                }
+            },
+            {
+                "threshold": 7165,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/giga"
+                }
+            },
+            {
+                "threshold": 7166,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/mascot"
+                }
+            },
+            {
+                "threshold": 7167,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/popsicle/triple_blast"
+                }
+            },
+            {
+                "threshold": 7168,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/poseidons_trident/default"
+                }
+            },
+            {
+                "threshold": 7169,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/prismatic_blade/default"
+                }
+            },
+            {
+                "threshold": 7170,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/pumpkin_bucket/default"
+                }
+            },
+            {
+                "threshold": 7171,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/quackshot/default"
+                }
+            },
+            {
+                "threshold": 7172,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/rat_claw/disguise"
+                }
+            },
+            {
+                "threshold": 7173,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/rat_claw/mecha"
+                }
+            },
+            {
+                "threshold": 7174,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/rat_claw/zombie"
+                }
+            },
+            {
+                "threshold": 7175,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/ray_blaster/alien"
+                }
+            },
+            {
+                "threshold": 7176,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/rescue_paddle/default"
+                }
+            },
+            {
+                "threshold": 7177,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/default"
+                }
+            },
+            {
+                "threshold": 7178,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/autobahn"
+                }
+            },
+            {
+                "threshold": 7179,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/go"
+                }
+            },
+            {
+                "threshold": 7180,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/route_66"
+                }
+            },
+            {
+                "threshold": 7181,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/turn"
+                }
+            },
+            {
+                "threshold": 7182,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/road_sign/warning"
+                }
+            },
+            {
+                "threshold": 7183,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/rose/default"
+                }
+            },
+            {
+                "threshold": 7184,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/sai/default"
+                }
+            },
+            {
+                "threshold": 7185,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/sai/ignited"
+                }
+            },
+            {
+                "threshold": 7186,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/scavenger_kings_staff/default"
+                }
+            },
+            {
+                "threshold": 7187,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/scavengers_fork/default"
+                }
+            },
+            {
+                "threshold": 7188,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/scepter_of_singularity/default"
+                }
+            },
+            {
+                "threshold": 7189,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/scuba_watch/default"
+                }
+            },
+            {
+                "threshold": 7190,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/scythe/default"
+                }
+            },
+            {
+                "threshold": 7191,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/selfie_stick/default"
+                }
+            },
+            {
+                "threshold": 7192,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/shuriken/default"
+                }
+            },
+            {
+                "threshold": 7193,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/shuriken/throw"
+                }
+            },
+            {
+                "threshold": 7194,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/sign/believer"
+                }
+            },
+            {
+                "threshold": 7195,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/skateboard/default"
+                }
+            },
+            {
+                "threshold": 7196,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/slime_fist/default"
+                }
+            },
+            {
+                "threshold": 7197,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/slime_fist/toxic"
+                }
+            },
+            {
+                "threshold": 7198,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/slushy/default"
+                }
+            },
+            {
+                "threshold": 7199,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/smore/default"
+                }
+            },
+            {
+                "threshold": 7200,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/smore_staff/default"
+                }
+            },
+            {
+                "threshold": 7201,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/smore_staff/charred"
+                }
+            },
+            {
+                "threshold": 7202,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/smore_staff/royalty"
+                }
+            },
+            {
+                "threshold": 7203,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/solar_staff/default"
+                }
+            },
+            {
+                "threshold": 7204,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/space_slime/default"
+                }
+            },
+            {
+                "threshold": 7205,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/sparkler/default"
+                }
+            },
+            {
+                "threshold": 7206,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/spatula/default"
+                }
+            },
+            {
+                "threshold": 7207,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/spatula/giga"
+                }
+            },
+            {
+                "threshold": 7208,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/spell_shield/default"
+                }
+            },
+            {
+                "threshold": 7209,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/spell_shield/solar"
+                }
+            },
+            {
+                "threshold": 7210,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/spyglass/default"
+                }
+            },
+            {
+                "threshold": 7211,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/star_sailors_staff/default"
+                }
+            },
+            {
+                "threshold": 7212,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/star_sailors_staff/crescent"
+                }
+            },
+            {
+                "threshold": 7213,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/star_shield/default"
+                }
+            },
+            {
+                "threshold": 7214,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/starbeam_laser/default"
+                }
+            },
+            {
+                "threshold": 7215,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/starfish_staff/default"
+                }
+            },
+            {
+                "threshold": 7216,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/default"
+                }
+            },
+            {
+                "threshold": 7217,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/crown"
+                }
+            },
+            {
+                "threshold": 7218,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/floral"
+                }
+            },
+            {
+                "threshold": 7219,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/palm"
+                }
+            },
+            {
+                "threshold": 7220,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/squidtek"
+                }
+            },
+            {
+                "threshold": 7221,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/surfboard/suns_out"
+                }
+            },
+            {
+                "threshold": 7222,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/toolbox/default"
+                }
+            },
+            {
+                "threshold": 7223,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/toy_horse/default"
+                }
+            },
+            {
+                "threshold": 7224,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/toy_horse/rainbowcorn"
+                }
+            },
+            {
+                "threshold": 7225,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/toybot_claw/retro"
+                }
+            },
+            {
+                "threshold": 7226,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/traffic_light/default"
+                }
+            },
+            {
+                "threshold": 7227,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/traffic_light/junction"
+                }
+            },
+            {
+                "threshold": 7228,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/treat_tracker/default"
+                }
+            },
+            {
+                "threshold": 7229,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/tribal_staff/default"
+                }
+            },
+            {
+                "threshold": 7230,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/trowel/default"
+                }
+            },
+            {
+                "threshold": 7231,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/umbrella/default"
+                }
+            },
+            {
+                "threshold": 7232,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/umbrella/beach"
+                }
+            },
+            {
+                "threshold": 7233,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/umbrella/gothic"
+                }
+            },
+            {
+                "threshold": 7234,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/umbrella/two_tone"
+                }
+            },
+            {
+                "threshold": 7235,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/uranium_slicer/default"
+                }
+            },
+            {
+                "threshold": 7236,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/default"
+                }
+            },
+            {
+                "threshold": 7237,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/battleworn"
+                }
+            },
+            {
+                "threshold": 7238,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/black"
+                }
+            },
+            {
+                "threshold": 7239,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/dragon"
+                }
+            },
+            {
+                "threshold": 7240,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/knotwork"
+                }
+            },
+            {
+                "threshold": 7241,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/viking_shield/white"
+                }
+            },
+            {
+                "threshold": 7242,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/void_fist/default"
+                }
+            },
+            {
+                "threshold": 7243,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/waffle_shield/default"
+                }
+            },
+            {
+                "threshold": 7244,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/watering_can/default"
+                }
+            },
+            {
+                "threshold": 7245,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/witch_broom/default"
+                }
+            },
+            {
+                "threshold": 7246,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/witch_broom/wicked"
+                }
+            },
+            {
+                "threshold": 7247,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/wizard_staff/default"
+                }
+            },
+            {
+                "threshold": 7248,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/wrench/default"
+                }
+            },
+            {
+                "threshold": 7249,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/wrench/giga"
+                }
+            },
+            {
+                "threshold": 7250,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/wrench/pipe"
+                }
+            },
+            {
+                "threshold": 7251,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/zeus_bolt/default"
+                }
+            },
+            {
+                "threshold": 7252,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/zeus_bolt/blue_bolt"
+                }
+            },
+            {
+                "threshold": 7253,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/zeus_bolt/catch"
+                }
+            },
+            {
+                "threshold": 7254,
+                "model": {
+                    "type": "model",
+                    "model": "atlantis_cosmetics:item/zeus_bolt/lightning"
+                }
+            }
+        ]
+    }
+}
