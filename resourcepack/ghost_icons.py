@@ -4,7 +4,9 @@
 The cosmetics menu shows case items the player does not own yet with custom model data
 raised by GHOST_OFFSET. For every hat (carved_pumpkin), sword skin (diamond/netherite sword
 from 7001) and mace skin this adds an entry at that offset whose model is a copy of the
-original with every texture at GHOST_ALPHA opacity.
+original with every other texel cut out (checkerboard) and the rest at GHOST_ALPHA opacity.
+The checkerboard keeps the icon see-through even where the client draws items without
+blending, which alpha alone does not.
 
 Ghost textures live under blade_ghost:item/ghost/..., which the vanilla "item" directory
 source already puts on the atlas.
@@ -19,7 +21,7 @@ import zipfile
 from PIL import Image
 
 GHOST_OFFSET = 100000
-GHOST_ALPHA = 0.4
+GHOST_ALPHA = 0.55
 GHOST_NS = "blade_ghost"
 OVERLAY = "overlay_1_21_4/"
 TARGETS = {
@@ -64,8 +66,12 @@ def main(path):
             ghost_textures[ref] = None
             return None
         image = Image.open(io.BytesIO(png)).convert("RGBA")
-        alpha = image.getchannel("A").point(lambda a: int(a * GHOST_ALPHA))
-        image.putalpha(alpha)
+        pixels = image.load()
+        width, height = image.size
+        for y in range(height):
+            for x in range(width):
+                r, g, b, a = pixels[x, y]
+                pixels[x, y] = (r, g, b, 0 if (x + y) % 2 else int(a * GHOST_ALPHA))
         out = io.BytesIO()
         image.save(out, "PNG")
         target = f"item/ghost/{ns}/{rel}"
