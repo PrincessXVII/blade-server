@@ -8,7 +8,7 @@
 * Removes the old home-made villager staff blast parts (the staff uses the ready
   villager_wand_beam model, tipped arrow 1973-1979, now).
 * Body-shaped shells with crack stages: Excalibur's gold, Frost Grip's ice (body_shells.py).
-* Frost creeping in from the screen corners while frozen (the powder snow overlay).
+* 3D arrows of the legendary bows (legend_arrows.py).
 * Infinity gauntlet stones: six copies of the gauntlet (and its blocking pose) with 0 to 5 of the
   knuckle stones lit; the thumb stone lights with the fifth. The shield item picks them by custom
   model data 1.0, 1.1 ... 1.5, which the plugin sets from the number of stored totems.
@@ -25,6 +25,7 @@ from pathlib import Path
 from PIL import Image
 
 from body_shells import add_body_shells
+from legend_arrows import add_legend_arrows
 
 ROOT = Path(__file__).resolve().parent
 OVERLAY = "overlay_1_21_4/"
@@ -143,70 +144,9 @@ def hide_reconfigure_screen(files):
     files["pack.mcmeta"] = json.dumps(meta, indent=2).encode()
 
 
-def frost_overlay(files):
-    """The powder snow overlay doubles as the frozen screen (Frost Grip, freezing chakram): a frosty
-    haze along the edges with ice crystals branching in from them, thickest in the corners. The
-    plugin raises the freeze over a few ticks, so the frost creeps in."""
-    import math
-    import random
-    from PIL import ImageDraw
-
-    w, h = 640, 360
-    image = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    px = image.load()
-    for y in range(h):
-        for x in range(w):
-            dx = (x - w / 2) / (w / 2)
-            dy = (y - h / 2) / (h / 2)
-            d = math.sqrt(dx * dx * 0.8 + dy * dy * 1.1)
-            k = max(0.0, min(1.0, (d - 0.62) / 0.55))
-            if k > 0.0:
-                px[x, y] = (214, 238, 255, int(150 * k * k))
-    draw = ImageDraw.Draw(image)
-    rng = random.Random(2026)
-
-    def branch(x, y, angle, length, width, depth):
-        steps = max(2, int(length / 6))
-        for i in range(steps):
-            angle += rng.uniform(-0.18, 0.18)
-            nx = x + math.cos(angle) * length / steps
-            ny = y + math.sin(angle) * length / steps
-            draw.line([(x, y), (nx, ny)], fill=(246, 252, 255, 235), width=width)
-            if depth > 0 and rng.random() < 0.45:
-                side = angle + rng.choice((-1, 1)) * math.pi / 3
-                branch(nx, ny, side, length * rng.uniform(0.25, 0.45), max(1, width - 1), depth - 1)
-            x, y = nx, ny
-
-    # Crystals grow inward from the frame, more of them and longer near the corners.
-    for _ in range(170):
-        side = rng.randrange(4)
-        t = rng.random()
-        corner = 1 - min(t, 1 - t) * 2
-        if rng.random() > 0.35 + corner * 0.65:
-            continue
-        if side == 0:
-            x, y = t * w, 0
-        elif side == 1:
-            x, y = t * w, h - 1
-        elif side == 2:
-            x, y = 0, t * h
-        else:
-            x, y = w - 1, t * h
-        angle = math.atan2(h / 2 - y, w / 2 - x) + rng.uniform(-0.5, 0.5)
-        branch(x, y, angle, rng.uniform(18, 50 + 80 * corner), 2 if corner > 0.6 else 1, 3)
-    # Small six-armed sparkles near the frame.
-    for _ in range(90):
-        x, y = rng.uniform(0, w), rng.uniform(0, h)
-        dx, dy = (x - w / 2) / (w / 2), (y - h / 2) / (h / 2)
-        if dx * dx + dy * dy < 0.75:
-            continue
-        r = rng.uniform(2, 4)
-        for a in range(6):
-            angle = a * math.pi / 3
-            draw.line([(x, y), (x + math.cos(angle) * r, y + math.sin(angle) * r)], fill=(255, 255, 255, 220))
-    out = io.BytesIO()
-    image.save(out, "PNG", optimize=True)
-    files["assets/minecraft/textures/misc/powder_snow_outline.png"] = out.getvalue()
+def vanilla_frost(files):
+    """The frozen screen is the vanilla powder snow frost: drop the drawn one an earlier build added."""
+    files.pop("assets/minecraft/textures/misc/powder_snow_outline.png", None)
 
 
 def face_texels(face, scale):
@@ -287,11 +227,12 @@ def main(path):
     hide_reconfigure_screen(files)
     add_gauntlet_stones(files)
     add_body_shells(files)
-    frost_overlay(files)
+    add_legend_arrows(files)
+    vanilla_frost(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])
-    print("legendary fx: gauntlet stones x6, body shells, frost overlay, covered switch screens, vanilla menu backgrounds", flush=True)
+    print("legendary fx: gauntlet stones x6, body shells, legend arrows, vanilla frost, covered switch screens, vanilla menu backgrounds", flush=True)
 
 
 if __name__ == "__main__":
