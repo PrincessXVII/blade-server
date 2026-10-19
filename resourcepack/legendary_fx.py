@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Adds legendary effect assets to a built BladePack.zip.
 
-* Black panorama and menu background, so the reconfiguring screen of a server switch stays dark
-  between the BladeOnline fades.
-* Reconfiguring screen without its title and greyed out disconnect button (empty translation,
-  marker glyphs for the button label hidden by the 1.21.11 text shader, black disabled button).
+* The reconfiguring and terrain loading screens of a server switch stay black between the
+  BladeOnline fades: their titles are one screen-sized black glyph. The greyed out disconnect
+  button is hidden too (marker glyphs for its label skipped by the 1.21.11 text shader, black
+  disabled button). The panorama and menu background stay vanilla for every other screen.
 * Removes the old home-made villager staff blast parts (the staff uses the ready
   villager_wand_beam model, tipped arrow 1973-1979, now).
+* Excalibur shield shell with six crack stages (excalibur_shell.py).
 * Infinity gauntlet stones: six copies of the gauntlet (and its blocking pose) with 0 to 5 of the
   knuckle stones lit; the thumb stone lights with the fifth. The shield item picks them by custom
   model data 1.0, 1.1 ... 1.5, which the plugin sets from the number of stored totems.
@@ -21,6 +22,8 @@ import zipfile
 from pathlib import Path
 
 from PIL import Image
+
+from excalibur_shell import add_excalibur_shell
 
 ROOT = Path(__file__).resolve().parent
 OVERLAY = "overlay_1_21_4/"
@@ -41,16 +44,17 @@ def remove_old_blast(files):
             del files[name]
 
 
-def black_transition_screens(files):
-    """While on the server, the reconfiguring and terrain loading screens of a server switch show the
-    title panorama and menu background. Black versions keep the screen dark between the fades."""
-    black = io.BytesIO()
-    Image.new("RGBA", (16, 16), (0, 0, 0, 255)).save(black, "PNG")
+def vanilla_backgrounds(files):
+    """An earlier build blacked out the panorama and menu background, which every screen without a
+    world draws (settings from the title screen too). The switch screens are covered by a glyph now."""
     for i in range(6):
-        files[f"assets/minecraft/textures/gui/title/background/panorama_{i}.png"] = black.getvalue()
-    files["assets/minecraft/textures/gui/menu_background.png"] = black.getvalue()
+        files.pop(f"assets/minecraft/textures/gui/title/background/panorama_{i}.png", None)
+    files.pop("assets/minecraft/textures/gui/menu_background.png", None)
 
 
+SCREEN_COVER = ""
+# Titles of the switch screens. Only these screens use them.
+COVERED_TITLES = ("connect.reconfiguring", "connect.reconfiging", "multiplayer.downloadingTerrain")
 RECONFIGURE_LABEL = ROOT / "assets/reconfigure/disconnect_label.png"
 # Rows of disconnect_label.png: the vanilla glyphs of the label, recoloured to blue 254.
 DISCONNECT_WORDS = {"en_us": ("Disconnect", 0xE700), "ru_ru": ("Отключиться", 0xE710)}
@@ -89,15 +93,16 @@ void main() {
 
 
 def hide_reconfigure_screen(files):
-    """The reconfiguring screen of a server switch shows its title and a greyed out disconnect
-    button over the black background. The title gets an empty translation; the button label
-    shares its key with the pause menu, so it is drawn with marker glyphs that the text shader
-    skips while greyed out, and the greyed out button sprite is plain black."""
+    """The reconfiguring and terrain loading screens of a server switch draw the title panorama.
+    Their title becomes a black glyph 4096 GUI pixels tall around the text line, which covers the
+    whole screen at any GUI scale. The disconnect button of the reconfiguring screen is drawn
+    after the title: its label shares its key with the pause menu, so it is drawn with marker
+    glyphs that the text shader skips while greyed out, and the greyed out button sprite is black."""
     for lang in ("en_us", "ru_ru", "uk_ua", "be_by", "kk_kz"):
         name = f"assets/minecraft/lang/{lang}.json"
         data = json.loads(files[name]) if name in files else {}
-        data["connect.reconfiguring"] = ""
-        data["connect.reconfiging"] = ""
+        for key in COVERED_TITLES:
+            data[key] = SCREEN_COVER
         if lang in DISCONNECT_WORDS:
             word, start = DISCONNECT_WORDS[lang]
             data["menu.disconnect"] = "".join(chr(start + i) for i in range(len(word)))
@@ -110,8 +115,14 @@ def hide_reconfigure_screen(files):
         rows.append("".join(chr(start + i) for i in range(len(word))).ljust(width, "\0"))
     font_name = "assets/minecraft/font/default.json"
     font = json.loads(files[font_name])
-    font["providers"] = [p for p in font["providers"] if p.get("file") != "blade:font/disconnect_label.png"]
+    cover = io.BytesIO()
+    Image.new("RGBA", (16, 16), (0, 0, 0, 255)).save(cover, "PNG")
+    files["assets/blade/textures/font/screen_cover.png"] = cover.getvalue()
+    ours = ("blade:font/disconnect_label.png", "blade:font/screen_cover.png")
+    font["providers"] = [p for p in font["providers"] if p.get("file") not in ours]
     font["providers"].append({"type": "bitmap", "file": "blade:font/disconnect_label.png", "ascent": 7, "chars": rows})
+    font["providers"].append({"type": "bitmap", "file": "blade:font/screen_cover.png", "height": 4096, "ascent": 2048,
+                              "chars": [SCREEN_COVER]})
     files[font_name] = json.dumps(font, ensure_ascii=False, indent=2).encode()
 
     black = io.BytesIO()
@@ -205,13 +216,14 @@ def main(path):
     with zipfile.ZipFile(path) as z:
         files = {info.filename: z.read(info.filename) for info in z.infolist() if not info.is_dir()}
     remove_old_blast(files)
-    black_transition_screens(files)
+    vanilla_backgrounds(files)
     hide_reconfigure_screen(files)
     add_gauntlet_stones(files)
+    add_excalibur_shell(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])
-    print("legendary fx: gauntlet stones x6, black transition screens, hidden reconfigure screen", flush=True)
+    print("legendary fx: gauntlet stones x6, excalibur shell x6, covered switch screens, vanilla menu backgrounds", flush=True)
 
 
 if __name__ == "__main__":
