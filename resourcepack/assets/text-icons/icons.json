@@ -462,5 +462,25 @@
       11,
       12
     ]
+  },
+  {
+    "name": "screen_black",
+    "char": "E6F0",
+    "size": [
+      64,
+      16
+    ],
+    "height": 256,
+    "ascent": 125
+  },
+  {
+    "name": "screen_green",
+    "char": "E6F1",
+    "size": [
+      64,
+      16
+    ],
+    "height": 256,
+    "ascent": 125
   }
 ]

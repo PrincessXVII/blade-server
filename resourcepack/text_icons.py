@@ -6,7 +6,8 @@ private-use codepoint (U+E600 and up), so chat, scoreboards and menus can show i
 character. Bitmap glyphs take the text colour, so put icons inside <white> to keep their colours.
 
 Icons taller than ICON_HEIGHT are scaled down to it; smaller ones keep their pixel size and are
-centred on the same line.
+centred on the same line. An entry may set its own height and ascent (screen_black, U+E6F0, is a
+black block big enough to cover the screen as a title, used to fade between servers).
 
 Usage: text_icons.py path/to/BladePack.zip   (rewrites the zip in place)
 """
@@ -42,12 +43,12 @@ def main(path):
         png = (ICON_DIR / f"{icon['name']}.png").read_bytes()
         files[f"assets/{TEXTURE_NS}/textures/{TEXTURE_DIR}/{icon['name']}.png"] = png
         native = Image.open(ICON_DIR / f"{icon['name']}.png").size[1]
-        height = min(ICON_HEIGHT, native)
+        height = icon.get("height", min(ICON_HEIGHT, native))
         providers.append({
             "type": "bitmap",
             "file": f"{prefix}{icon['name']}.png",
             "height": height,
-            "ascent": ICON_ASCENT - (ICON_HEIGHT - height) // 2,
+            "ascent": icon.get("ascent", ICON_ASCENT - (ICON_HEIGHT - height) // 2),
             "chars": [char],
         })
     font["providers"] = providers
