@@ -3,6 +3,8 @@
 
 * Black panorama and menu background, so the reconfiguring screen of a server switch stays dark
   between the BladeOnline fades.
+* Reconfiguring screen without its title and greyed out disconnect button (empty translation,
+  marker glyphs for the button label hidden by the 1.21.11 text shader, black disabled button).
 * Removes the old home-made villager staff blast parts (the staff uses the ready
   villager_wand_beam model, tipped arrow 1973-1979, now).
 * Infinity gauntlet stones: six copies of the gauntlet (and its blocking pose) with 0 to 5 of the
@@ -47,6 +49,86 @@ def black_transition_screens(files):
     for i in range(6):
         files[f"assets/minecraft/textures/gui/title/background/panorama_{i}.png"] = black.getvalue()
     files["assets/minecraft/textures/gui/menu_background.png"] = black.getvalue()
+
+
+RECONFIGURE_LABEL = ROOT / "assets/reconfigure/disconnect_label.png"
+# Rows of disconnect_label.png: the vanilla glyphs of the label, recoloured to blue 254.
+DISCONNECT_WORDS = {"en_us": ("Disconnect", 0xE700), "ru_ru": ("Отключиться", 0xE710)}
+TEXT_OVERLAY = "overlay_text_75"
+TEXT_SHADER = """#version 330
+
+#moj_import <minecraft:fog.glsl>
+#moj_import <minecraft:dynamictransforms.glsl>
+
+uniform sampler2D Sampler0;
+
+in float sphericalVertexDistance;
+in float cylindricalVertexDistance;
+in vec4 vertexColor;
+in vec2 texCoord0;
+
+out vec4 fragColor;
+
+void main() {
+    vec4 texel = texture(Sampler0, texCoord0);
+    // Blade: the disconnect label is drawn with marker glyphs (blue 254). Greyed out, as on the
+    // reconfiguring screen, it is not drawn; white, as in the pause menu, it stays.
+    if (texel.a > 0.0 && texel.r > 0.996 && abs(texel.b - 254.0 / 255.0) < 0.002) {
+        float grey = vertexColor.r;
+        if ((grey > 0.45 && grey < 0.8) || (grey > 0.1 && grey < 0.2)) {
+            discard;
+        }
+    }
+    vec4 color = texel * vertexColor * ColorModulator;
+    if (color.a < 0.1) {
+        discard;
+    }
+    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+}
+"""
+
+
+def hide_reconfigure_screen(files):
+    """The reconfiguring screen of a server switch shows its title and a greyed out disconnect
+    button over the black background. The title gets an empty translation; the button label
+    shares its key with the pause menu, so it is drawn with marker glyphs that the text shader
+    skips while greyed out, and the greyed out button sprite is plain black."""
+    for lang in ("en_us", "ru_ru", "uk_ua", "be_by", "kk_kz"):
+        name = f"assets/minecraft/lang/{lang}.json"
+        data = json.loads(files[name]) if name in files else {}
+        data["connect.reconfiguring"] = ""
+        data["connect.reconfiging"] = ""
+        if lang in DISCONNECT_WORDS:
+            word, start = DISCONNECT_WORDS[lang]
+            data["menu.disconnect"] = "".join(chr(start + i) for i in range(len(word)))
+        files[name] = json.dumps(data, ensure_ascii=False, indent=2).encode()
+
+    files["assets/blade/textures/font/disconnect_label.png"] = RECONFIGURE_LABEL.read_bytes()
+    width = max(len(word) for word, _ in DISCONNECT_WORDS.values())
+    rows = []
+    for word, start in DISCONNECT_WORDS.values():
+        rows.append("".join(chr(start + i) for i in range(len(word))).ljust(width, "\0"))
+    font_name = "assets/minecraft/font/default.json"
+    font = json.loads(files[font_name])
+    font["providers"] = [p for p in font["providers"] if p.get("file") != "blade:font/disconnect_label.png"]
+    font["providers"].append({"type": "bitmap", "file": "blade:font/disconnect_label.png", "ascent": 7, "chars": rows})
+    files[font_name] = json.dumps(font, ensure_ascii=False, indent=2).encode()
+
+    black = io.BytesIO()
+    Image.new("RGBA", (200, 20), (0, 0, 0, 255)).save(black, "PNG")
+    sprite = "assets/minecraft/textures/gui/sprites/widget/button_disabled.png"
+    files[sprite] = black.getvalue()
+    files[sprite + ".mcmeta"] = json.dumps(
+        {"gui": {"scaling": {"type": "nine_slice", "width": 200, "height": 20, "border": 1}}}, indent=2).encode()
+
+    # Core shaders change between versions, so the shader only goes to 1.21.11 (pack format 75).
+    files[f"{TEXT_OVERLAY}/assets/minecraft/shaders/core/rendertype_text.fsh"] = TEXT_SHADER.encode()
+    meta = json.loads(files["pack.mcmeta"])
+    entries = [e for e in meta["overlays"]["entries"] if e["directory"] != TEXT_OVERLAY]
+    entries.append({"formats": {"min_inclusive": 75, "max_inclusive": 75}, "directory": TEXT_OVERLAY,
+                    "min_format": 75, "max_format": 75})
+    meta["overlays"]["entries"] = entries
+    files["pack.mcmeta"] = json.dumps(meta, indent=2).encode()
 
 
 def face_texels(face, scale):
@@ -124,11 +206,12 @@ def main(path):
         files = {info.filename: z.read(info.filename) for info in z.infolist() if not info.is_dir()}
     remove_old_blast(files)
     black_transition_screens(files)
+    hide_reconfigure_screen(files)
     add_gauntlet_stones(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])
-    print("legendary fx: gauntlet stones x6, black transition screens", flush=True)
+    print("legendary fx: gauntlet stones x6, black transition screens, hidden reconfigure screen", flush=True)
 
 
 if __name__ == "__main__":
