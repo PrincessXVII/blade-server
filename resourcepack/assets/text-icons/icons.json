@@ -1,0 +1,466 @@
+[
+  {
+    "name": "user",
+    "char": "E600",
+    "size": [
+      10,
+      9
+    ]
+  },
+  {
+    "name": "rank",
+    "char": "E601",
+    "size": [
+      9,
+      10
+    ]
+  },
+  {
+    "name": "online",
+    "char": "E602",
+    "size": [
+      15,
+      14
+    ]
+  },
+  {
+    "name": "orbs",
+    "char": "E603",
+    "size": [
+      10,
+      10
+    ]
+  },
+  {
+    "name": "ping",
+    "char": "E604",
+    "size": [
+      14,
+      14
+    ]
+  },
+  {
+    "name": "star",
+    "char": "E605",
+    "size": [
+      15,
+      14
+    ]
+  },
+  {
+    "name": "discord",
+    "char": "E606",
+    "size": [
+      17,
+      14
+    ]
+  },
+  {
+    "name": "telegram",
+    "char": "E607",
+    "size": [
+      16,
+      16
+    ]
+  },
+  {
+    "name": "vk",
+    "char": "E608",
+    "size": [
+      16,
+      16
+    ]
+  },
+  {
+    "name": "heart",
+    "char": "E609",
+    "size": [
+      10,
+      9
+    ]
+  },
+  {
+    "name": "home",
+    "char": "E60A",
+    "size": [
+      16,
+      13
+    ]
+  },
+  {
+    "name": "hourglass",
+    "char": "E60B",
+    "size": [
+      12,
+      16
+    ]
+  },
+  {
+    "name": "clock",
+    "char": "E60C",
+    "size": [
+      15,
+      16
+    ]
+  },
+  {
+    "name": "chest",
+    "char": "E60D",
+    "size": [
+      12,
+      11
+    ]
+  },
+  {
+    "name": "key",
+    "char": "E60E",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "lock",
+    "char": "E60F",
+    "size": [
+      10,
+      12
+    ]
+  },
+  {
+    "name": "crown",
+    "char": "E610",
+    "size": [
+      12,
+      10
+    ]
+  },
+  {
+    "name": "fire",
+    "char": "E611",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "sword",
+    "char": "E612",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "swords",
+    "char": "E613",
+    "size": [
+      14,
+      14
+    ]
+  },
+  {
+    "name": "shield",
+    "char": "E614",
+    "size": [
+      10,
+      12
+    ]
+  },
+  {
+    "name": "skull",
+    "char": "E615",
+    "size": [
+      11,
+      12
+    ]
+  },
+  {
+    "name": "medal_gold",
+    "char": "E616",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "medal_silver",
+    "char": "E617",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "medal_bronze",
+    "char": "E618",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "flag",
+    "char": "E619",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "arrow",
+    "char": "E61A",
+    "size": [
+      14,
+      13
+    ]
+  },
+  {
+    "name": "yes",
+    "char": "E61B",
+    "size": [
+      12,
+      10
+    ]
+  },
+  {
+    "name": "no",
+    "char": "E61C",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "warning",
+    "char": "E61D",
+    "size": [
+      5,
+      14
+    ]
+  },
+  {
+    "name": "info",
+    "char": "E61E",
+    "size": [
+      16,
+      16
+    ]
+  },
+  {
+    "name": "bell",
+    "char": "E61F",
+    "size": [
+      12,
+      14
+    ]
+  },
+  {
+    "name": "calendar",
+    "char": "E620",
+    "size": [
+      14,
+      14
+    ]
+  },
+  {
+    "name": "cart",
+    "char": "E621",
+    "size": [
+      14,
+      12
+    ]
+  },
+  {
+    "name": "shop",
+    "char": "E622",
+    "size": [
+      16,
+      12
+    ]
+  },
+  {
+    "name": "mail",
+    "char": "E623",
+    "size": [
+      11,
+      8
+    ]
+  },
+  {
+    "name": "sparkle",
+    "char": "E624",
+    "size": [
+      16,
+      16
+    ]
+  },
+  {
+    "name": "potion",
+    "char": "E625",
+    "size": [
+      9,
+      12
+    ]
+  },
+  {
+    "name": "xp",
+    "char": "E626",
+    "size": [
+      10,
+      10
+    ]
+  },
+  {
+    "name": "level_up",
+    "char": "E627",
+    "size": [
+      12,
+      11
+    ]
+  },
+  {
+    "name": "bomb",
+    "char": "E628",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "anvil",
+    "char": "E629",
+    "size": [
+      10,
+      9
+    ]
+  },
+  {
+    "name": "hammer",
+    "char": "E62A",
+    "size": [
+      14,
+      13
+    ]
+  },
+  {
+    "name": "scroll",
+    "char": "E62B",
+    "size": [
+      10,
+      12
+    ]
+  },
+  {
+    "name": "compass",
+    "char": "E62C",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "party",
+    "char": "E62D",
+    "size": [
+      15,
+      15
+    ]
+  },
+  {
+    "name": "friends",
+    "char": "E62E",
+    "size": [
+      16,
+      15
+    ]
+  },
+  {
+    "name": "gavel",
+    "char": "E62F",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "question",
+    "char": "E630",
+    "size": [
+      14,
+      14
+    ]
+  },
+  {
+    "name": "music",
+    "char": "E631",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "diamond",
+    "char": "E632",
+    "size": [
+      11,
+      14
+    ]
+  },
+  {
+    "name": "emerald",
+    "char": "E633",
+    "size": [
+      8,
+      11
+    ]
+  },
+  {
+    "name": "coins",
+    "char": "E634",
+    "size": [
+      10,
+      11
+    ]
+  },
+  {
+    "name": "crystals",
+    "char": "E635",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "bulb",
+    "char": "E636",
+    "size": [
+      10,
+      12
+    ]
+  },
+  {
+    "name": "sun",
+    "char": "E637",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "search",
+    "char": "E638",
+    "size": [
+      12,
+      12
+    ]
+  },
+  {
+    "name": "book",
+    "char": "E639",
+    "size": [
+      11,
+      12
+    ]
+  }
+]
