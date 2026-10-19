@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Adds legendary effect assets to a built BladePack.zip.
 
-* Villager staff blast: item models blade:fx/rune_circle (golden circle on the ground) and
-  blade:fx/villager_beam (pillar of light tinted through custom model data colours), from
-  assets/villager-blast/.
+* Black panorama and menu background, so the reconfiguring screen of a server switch stays dark
+  between the BladeOnline fades.
+* Removes the old home-made villager staff blast parts (the staff uses the ready
+  villager_wand_beam model, tipped arrow 1973-1979, now).
 * Infinity gauntlet stones: six copies of the gauntlet (and its blocking pose) with 0 to 5 of the
   knuckle stones lit; the thumb stone lights with the fifth. The shield item picks them by custom
   model data 1.0, 1.1 ... 1.5, which the plugin sets from the number of stored totems.
@@ -20,7 +21,6 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-BLAST = ROOT / "assets/villager-blast"
 OVERLAY = "overlay_1_21_4/"
 
 GAUNTLET_MODEL = "assets/legendary/models/item/tools/infinity_gauntlet{}.json"
@@ -32,17 +32,21 @@ STONE_LEVELS = 6
 SHARED_WITH_STONES = {13}
 
 
-def add_blast(files):
-    files["assets/blade/textures/item/fx/rune_circle.png"] = (BLAST / "rune_circle.png").read_bytes()
-    files["assets/blade/textures/item/fx/beam_white.png"] = (BLAST / "beam_white.png").read_bytes()
-    files["assets/blade/models/item/fx/rune_circle.json"] = (BLAST / "rune_circle.json").read_bytes()
-    files["assets/blade/models/item/fx/villager_beam.json"] = (BLAST / "villager_beam.json").read_bytes()
-    circle = {"model": {"type": "minecraft:model", "model": "blade:item/fx/rune_circle"}}
-    beam = {"model": {"type": "minecraft:model", "model": "blade:item/fx/villager_beam",
-                      "tints": [{"type": "minecraft:custom_model_data", "index": 0, "default": 16777215}]}}
-    for prefix in ("", OVERLAY):
-        files[f"{prefix}assets/blade/items/fx/rune_circle.json"] = json.dumps(circle).encode()
-        files[f"{prefix}assets/blade/items/fx/villager_beam.json"] = json.dumps(beam).encode()
+def remove_old_blast(files):
+    """The villager staff now uses the ready villager_wand_beam model; drop the earlier home-made parts."""
+    for name in list(files):
+        if "/blade/items/fx/" in name or "/blade/models/item/fx/" in name or "/blade/textures/item/fx/" in name:
+            del files[name]
+
+
+def black_transition_screens(files):
+    """While on the server, the reconfiguring and terrain loading screens of a server switch show the
+    title panorama and menu background. Black versions keep the screen dark between the fades."""
+    black = io.BytesIO()
+    Image.new("RGBA", (16, 16), (0, 0, 0, 255)).save(black, "PNG")
+    for i in range(6):
+        files[f"assets/minecraft/textures/gui/title/background/panorama_{i}.png"] = black.getvalue()
+    files["assets/minecraft/textures/gui/menu_background.png"] = black.getvalue()
 
 
 def face_texels(face, scale):
@@ -118,12 +122,13 @@ def add_gauntlet_stones(files):
 def main(path):
     with zipfile.ZipFile(path) as z:
         files = {info.filename: z.read(info.filename) for info in z.infolist() if not info.is_dir()}
-    add_blast(files)
+    remove_old_blast(files)
+    black_transition_screens(files)
     add_gauntlet_stones(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])
-    print("legendary fx: villager blast models, gauntlet stones x6", flush=True)
+    print("legendary fx: gauntlet stones x6, black transition screens", flush=True)
 
 
 if __name__ == "__main__":
