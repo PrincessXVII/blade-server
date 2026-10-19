@@ -464,6 +464,14 @@
     ]
   },
   {
+    "name": "voice",
+    "char": "E63A",
+    "size": [
+      10,
+      9
+    ]
+  },
+  {
     "name": "screen_black",
     "char": "E6F0",
     "size": [
