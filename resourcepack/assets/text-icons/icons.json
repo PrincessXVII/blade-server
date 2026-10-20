@@ -467,9 +467,21 @@
     "name": "voice",
     "char": "E63A",
     "size": [
-      10,
-      9
-    ]
+      16,
+      16
+    ],
+    "height": 10,
+    "ascent": 8
+  },
+  {
+    "name": "voice_gap",
+    "char": "E63B",
+    "advance": 2
+  },
+  {
+    "name": "voice_balance",
+    "char": "E63C",
+    "advance": 12
   },
   {
     "name": "screen_black",
