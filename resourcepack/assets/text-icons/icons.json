@@ -471,7 +471,8 @@
       16
     ],
     "height": 10,
-    "ascent": 8
+    "ascent": 8,
+    "external": "voicechat:icons/speaker.png"
   },
   {
     "name": "voice_gap",
@@ -491,7 +492,8 @@
       16
     ],
     "height": 10,
-    "ascent": 8
+    "ascent": 8,
+    "external": "voicechat:icons/speaker_whisper.png"
   },
   {
     "name": "voice_off",
@@ -501,7 +503,8 @@
       16
     ],
     "height": 10,
-    "ascent": 8
+    "ascent": 8,
+    "external": "voicechat:icons/speaker_off.png"
   },
   {
     "name": "voice_none",
@@ -511,7 +514,8 @@
       16
     ],
     "height": 10,
-    "ascent": 8
+    "ascent": 8,
+    "external": "voicechat:icons/disconnected.png"
   },
   {
     "name": "screen_black",

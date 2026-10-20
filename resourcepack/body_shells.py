@@ -247,3 +247,63 @@ def add_shell(files, name, look):
 def add_body_shells(files):
     for name, look in LOOKS.items():
         add_shell(files, name, look)
+    add_armor_shell(files)
+
+
+# Excalibur's shield worn as armour: the client draws it on the player model itself, so it moves
+# with every limb and never lags. Armour cannot be half transparent, so the gold is a net of
+# diamonds with a sparkle in each cell and the body shows through, and every stage cracks it more
+# and knocks pieces out. BladeWeapons sends it as fake equipment (blade:excalibur_shell_<stage>).
+ARMOR_STAGES = 6
+
+
+def armor_shell_texture(stage):
+    rng = random.Random(4049)
+    image = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
+    px = image.load()
+    for y in range(32):
+        for x in range(64):
+            # A net of gold diamonds with a sparkle in each cell: the body shows through.
+            if (x + y) % 8 == 0 or (x - y) % 8 == 0:
+                shade = 0.86 + 0.14 * ((y % 16) / 15.0)
+                px[x, y] = (255, int(214 * shade), int(96 * shade), 255)
+            elif (x + y) % 8 == 4 and (x - y) % 8 == 4:
+                px[x, y] = (255, 244, 196, 255)
+    draw = ImageDraw.Draw(image)
+    cracks = []
+    for _ in range(ARMOR_STAGES * 3):
+        x, y = rng.uniform(2, 62), rng.uniform(2, 30)
+        points = [(x, y)]
+        angle = rng.uniform(0, 2 * math.pi)
+        for _ in range(rng.randint(3, 5)):
+            angle += rng.uniform(-0.8, 0.8)
+            x += math.cos(angle) * rng.uniform(2, 4)
+            y += math.sin(angle) * rng.uniform(2, 4)
+            points.append((x, y))
+        cracks.append(points)
+    shown = cracks[:stage * 3]
+    # Later stages lose chunks of glass around the oldest cracks.
+    for points in shown[:max(0, stage - 2) * 3]:
+        cx, cy = points[len(points) // 2]
+        r = rng.uniform(1.6, 2.8)
+        for y in range(int(cy - r) - 1, int(cy + r) + 2):
+            for x in range(int(cx - r) - 1, int(cx + r) + 2):
+                if 0 <= x < 64 and 0 <= y < 32 and math.hypot(x - cx, y - cy) <= r:
+                    px[x, y] = (0, 0, 0, 0)
+    for points in shown:
+        draw.line(points, fill=(150, 88, 10, 255), width=2)
+        draw.line(points, fill=(255, 252, 226, 255), width=1)
+    return image
+
+
+def add_armor_shell(files):
+    for stage in range(ARMOR_STAGES):
+        out = io.BytesIO()
+        armor_shell_texture(stage).save(out, "PNG", optimize=True)
+        name = f"excalibur_shell_{stage}"
+        for layer in ("humanoid", "humanoid_leggings"):
+            files[f"assets/blade/textures/entity/equipment/{layer}/{name}.png"] = out.getvalue()
+        files[f"assets/blade/equipment/{name}.json"] = json.dumps({"layers": {
+            "humanoid": [{"texture": f"blade:{name}"}],
+            "humanoid_leggings": [{"texture": f"blade:{name}"}],
+        }}).encode()

@@ -9,7 +9,9 @@ Icons taller than ICON_HEIGHT are scaled down to it; smaller ones keep their pix
 centred on the same line. An entry may set its own height and ascent (screen_black, U+E6F0, is a
 black block big enough to cover the screen as a title, used to fade between servers). An entry
 with "advance" instead of a PNG is an invisible gap of that width (the voice chat icon uses two
-to sit beside a nametag the way the mod draws it).
+to sit beside a nametag the way the mod draws it). An entry with "external" first tries that
+texture from another namespace, for example the voice chat mod's own icons, which only exist on
+clients with the mod; elsewhere that provider fails to load and the bundled PNG takes over.
 
 Usage: text_icons.py path/to/BladePack.zip   (rewrites the zip in place)
 """
@@ -36,7 +38,9 @@ def main(path):
     font = json.loads(files[FONT]) if FONT in files else {"providers": []}
     manifest = json.loads((ICON_DIR / "icons.json").read_text())
     gaps = {chr(int(icon["char"], 16)): icon["advance"] for icon in manifest if "advance" in icon}
+    externals = {icon["external"] for icon in manifest if "external" in icon}
     providers = [p for p in font.get("providers", []) if not str(p.get("file", "")).startswith(prefix)
+                 and p.get("file") not in externals
                  and not (p.get("type") == "space" and set(p.get("advances", {})) <= set(gaps))]
     taken = {c for p in providers for row in p.get("chars", []) for c in row}
     taken |= {c for p in providers for c in p.get("advances", {})}
@@ -51,11 +55,16 @@ def main(path):
         files[f"assets/{TEXTURE_NS}/textures/{TEXTURE_DIR}/{icon['name']}.png"] = png
         native = Image.open(ICON_DIR / f"{icon['name']}.png").size[1]
         height = icon.get("height", min(ICON_HEIGHT, native))
+        ascent = icon.get("ascent", ICON_ASCENT - (ICON_HEIGHT - height) // 2)
+        if "external" in icon:
+            # Listed first, so it wins wherever its texture exists.
+            providers.append({"type": "bitmap", "file": icon["external"], "height": height, "ascent": ascent,
+                              "chars": [char]})
         providers.append({
             "type": "bitmap",
             "file": f"{prefix}{icon['name']}.png",
             "height": height,
-            "ascent": icon.get("ascent", ICON_ASCENT - (ICON_HEIGHT - height) // 2),
+            "ascent": ascent,
             "chars": [char],
         })
     if gaps:
