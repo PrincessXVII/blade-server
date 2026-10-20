@@ -4,8 +4,12 @@
   on every blocked hit.
 * ice_statue_0 .. _3: Frost Grip's ice around a frozen player, cracking as the freeze runs out.
 
-Each stage is an item model (blade:<name>_<stage>) over one shared box model; BladeWeapons shows
-it on an item display. Every texture is animated: a bright band sweeps over it.
+Each stage is an item model (blade:<name>_<stage>) over one shared box model. BladeWeapons shows
+the shell in parts, one item display each (blade:<name>_<part>_<stage>), so the head can turn
+with the player's head, the right arm can swing and the body can crouch. A part model has its
+pivot (neck, shoulder, hip) at the model centre and is turned half a circle, because an item
+display draws its model turned by 180 degrees. Every texture is animated: a bright band sweeps
+over it.
 """
 import io
 import json
@@ -26,6 +30,15 @@ BOXES = [
     ("left_arm", (4, 12, -2), (8, 24, 2), 1.2),
     ("legs", (-4, 0, -2), (4, 12, 2), 1.1),
 ]
+
+# Where each part turns, in the same pixels as BOXES (the player model's joints).
+PIVOTS = {
+    "head": (0, 24, 0),
+    "body": (0, 24, 0),
+    "right_arm": (-5, 22, 0),
+    "left_arm": (5, 22, 0),
+    "legs": (0, 12, 0),
+}
 
 LOOKS = {
     "excalibur_shell": {
@@ -81,6 +94,26 @@ def model(rects, name):
                          "faces": faces})
     return {"textures": {"shell": f"blade:item/shell/{name}_0", "particle": f"blade:item/shell/{name}_0"},
             "elements": elements}
+
+
+def part_model(rects, name, part):
+    """One part around its pivot, mirrored in x and z for the display's half turn."""
+    box = next(b for b in BOXES if b[0] == part)
+    _, lo, hi, grow = box
+    px, py, pz = PIVOTS[part]
+    lo = [lo[0] - grow - px, lo[1] - grow - py, lo[2] - grow - pz]
+    hi = [hi[0] + grow - px, hi[1] + grow - py, hi[2] + grow - pz]
+    start = [8 - hi[0], 8 + lo[1], 8 - hi[2]]
+    end = [8 - lo[0], 8 + hi[1], 8 - lo[2]]
+    faces = {}
+    scale = 16 / SIZE
+    for face in ("north", "south", "east", "west", "up", "down"):
+        x, y, w, h = rects[(part, face)]
+        faces[face] = {"uv": [round(x * scale, 4), round(y * scale, 4), round((x + w) * scale, 4),
+                              round((y + h) * scale, 4)], "texture": "#shell"}
+    return {"textures": {"shell": f"blade:item/shell/{name}_0", "particle": f"blade:item/shell/{name}_0"},
+            "elements": [{"name": part, "from": [round(v, 3) for v in start], "to": [round(v, 3) for v in end],
+                          "faces": faces}]}
 
 
 def crack_plan(rects, look):
@@ -184,6 +217,8 @@ def add_shell(files, name, look):
     rng = random.Random(look["seed"] + 1)
     bubbles = {(rng.randrange(SIZE), rng.randrange(SIZE)) for _ in range(look["bubbles"] * 10)}
     files[f"assets/blade/models/item/shell/{name}.json"] = json.dumps(model(rects, name)).encode()
+    for part in PIVOTS:
+        files[f"assets/blade/models/item/shell/{name}_{part}.json"] = json.dumps(part_model(rects, name, part)).encode()
     for stage in range(look["stages"]):
         strip = Image.new("RGBA", (SIZE, SIZE * FRAMES))
         for index in range(FRAMES):
@@ -200,6 +235,13 @@ def add_shell(files, name, look):
         }).encode()
         files[f"assets/blade/items/{name}_{stage}.json"] = json.dumps(
             {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{stage}"}}).encode()
+        for part in PIVOTS:
+            files[f"assets/blade/models/item/shell/{name}_{part}_{stage}.json"] = json.dumps({
+                "parent": f"blade:item/shell/{name}_{part}",
+                "textures": {"shell": f"blade:item/shell/{name}_{stage}", "particle": f"blade:item/shell/{name}_{stage}"},
+            }).encode()
+            files[f"assets/blade/items/{name}_{part}_{stage}.json"] = json.dumps(
+                {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{part}_{stage}"}}).encode()
 
 
 def add_body_shells(files):

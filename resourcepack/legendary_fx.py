@@ -26,6 +26,7 @@ from PIL import Image
 
 from body_shells import add_body_shells
 from legend_arrows import add_legend_arrows
+from light_fx import add_light_fx
 
 ROOT = Path(__file__).resolve().parent
 OVERLAY = "overlay_1_21_4/"
@@ -77,11 +78,14 @@ out vec4 fragColor;
 
 void main() {
     vec4 texel = texture(Sampler0, texCoord0);
-    // Blade: the disconnect label is drawn with marker glyphs (blue 254). Greyed out, as on the
-    // reconfiguring screen, it is not drawn; white, as in the pause menu, it stays.
-    if (texel.a > 0.0 && texel.r > 0.996 && abs(texel.b - 254.0 / 255.0) < 0.002) {
+    // Blade: the disconnect label is drawn with marker glyphs (blue 254, alpha 4) that are
+    // invisible by themselves. Only white text (the pause menu button) and its shadow bring them
+    // back; the greyed out label of the reconfiguring screen stays hidden whatever its shade.
+    if (texel.a > 0.0 && texel.a < 0.05 && texel.r > 0.996 && abs(texel.b - 254.0 / 255.0) < 0.002) {
         float grey = vertexColor.r;
-        if ((grey > 0.45 && grey < 0.8) || (grey > 0.1 && grey < 0.2)) {
+        if (grey > 0.9 || (grey > 0.22 && grey < 0.28)) {
+            texel = vec4(1.0, 1.0, 1.0, 1.0);
+        } else {
             discard;
         }
     }
@@ -98,8 +102,9 @@ def hide_reconfigure_screen(files):
     """The reconfiguring and terrain loading screens of a server switch draw the title panorama.
     Their title becomes a black glyph 4096 GUI pixels tall around the text line, which covers the
     whole screen at any GUI scale. The disconnect button of the reconfiguring screen is drawn
-    after the title: its label shares its key with the pause menu, so it is drawn with marker
-    glyphs that the text shader skips while greyed out, and the greyed out button sprite is black."""
+    after the title: its label shares its key with the pause menu, so it is drawn with nearly
+    transparent marker glyphs that the text shader shows only in white (the pause menu), and the
+    greyed out button sprite is black."""
     for lang in ("en_us", "ru_ru", "uk_ua", "be_by", "kk_kz"):
         name = f"assets/minecraft/lang/{lang}.json"
         data = json.loads(files[name]) if name in files else {}
@@ -110,7 +115,12 @@ def hide_reconfigure_screen(files):
             data["menu.disconnect"] = "".join(chr(start + i) for i in range(len(word)))
         files[name] = json.dumps(data, ensure_ascii=False, indent=2).encode()
 
-    files["assets/blade/textures/font/disconnect_label.png"] = RECONFIGURE_LABEL.read_bytes()
+    # Nearly transparent marker glyphs: hidden even where the shader does not run.
+    label = Image.open(RECONFIGURE_LABEL).convert("RGBA")
+    label.putdata([(255, 255, 254, 4) if a else (0, 0, 0, 0) for (r, g, b, a) in label.getdata()])
+    out = io.BytesIO()
+    label.save(out, "PNG")
+    files["assets/blade/textures/font/disconnect_label.png"] = out.getvalue()
     width = max(len(word) for word, _ in DISCONNECT_WORDS.values())
     rows = []
     for word, start in DISCONNECT_WORDS.values():
@@ -228,11 +238,12 @@ def main(path):
     add_gauntlet_stones(files)
     add_body_shells(files)
     add_legend_arrows(files)
+    add_light_fx(files)
     vanilla_frost(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])
-    print("legendary fx: gauntlet stones x6, body shells, legend arrows, vanilla frost, covered switch screens, vanilla menu backgrounds", flush=True)
+    print("legendary fx: gauntlet stones x6, body shells, legend arrows, light fx, vanilla frost, covered switch screens, vanilla menu backgrounds", flush=True)
 
 
 if __name__ == "__main__":

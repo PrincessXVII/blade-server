@@ -476,12 +476,42 @@
   {
     "name": "voice_gap",
     "char": "E63B",
-    "advance": 2
+    "advance": 4
   },
   {
     "name": "voice_balance",
     "char": "E63C",
-    "advance": 12
+    "advance": 14
+  },
+  {
+    "name": "voice_whisper",
+    "char": "E63D",
+    "size": [
+      16,
+      16
+    ],
+    "height": 10,
+    "ascent": 8
+  },
+  {
+    "name": "voice_off",
+    "char": "E63E",
+    "size": [
+      16,
+      16
+    ],
+    "height": 10,
+    "ascent": 8
+  },
+  {
+    "name": "voice_none",
+    "char": "E63F",
+    "size": [
+      16,
+      16
+    ],
+    "height": 10,
+    "ascent": 8
   },
   {
     "name": "screen_black",
