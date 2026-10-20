@@ -248,6 +248,7 @@ def add_body_shells(files):
     for name, look in LOOKS.items():
         add_shell(files, name, look)
     add_armor_shell(files)
+    add_aura_shells(files)
 
 
 # Excalibur's shield worn as armour: the client draws it on the player model itself, so it moves
@@ -307,3 +308,160 @@ def add_armor_shell(files):
             "humanoid": [{"texture": f"blade:{name}"}],
             "humanoid_leggings": [{"texture": f"blade:{name}"}],
         }}).encode()
+
+
+# Shapes that never depend on how a client turns the player's body: Excalibur's golden bubble
+# (a disc that always faces the viewer, so it reads as a sphere) and Frost Grip's ice block,
+# square to the world. blade:shield_bubble_<stage>, blade:ice_block_<stage>.
+BUBBLE_STAGES = 6
+ICE_BLOCK_STAGES = 4
+
+
+def smooth(a, b, x):
+    t = min(1.0, max(0.0, (x - a) / (b - a)))
+    return t * t * (3 - 2 * t)
+
+
+def crack_lines(rng, count, cx_range, cy_range, reach):
+    lines = []
+    for _ in range(count):
+        cx, cy = rng.uniform(*cx_range), rng.uniform(*cy_range)
+        for b in range(rng.randint(4, 6)):
+            angle = b * 2 * math.pi / 5 + rng.uniform(-0.4, 0.4)
+            px, py = cx, cy
+            for _ in range(rng.randint(2, 4)):
+                angle += rng.uniform(-0.5, 0.5)
+                step = reach * rng.uniform(0.2, 0.35)
+                nx, ny = px + math.cos(angle) * step, py + math.sin(angle) * step
+                lines.append(((px, py), (nx, ny)))
+                px, py = nx, ny
+    return lines
+
+
+def bubble_frame(stage, index, plan):
+    size = 128
+    image = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    px = image.load()
+    band = index / FRAMES
+    for y in range(size):
+        for x in range(size):
+            u = (x + 0.5) / size * 2 - 1
+            v = (y + 0.5) / size * 2 - 1
+            r = math.hypot(u, v)
+            if r > 0.99:
+                continue
+            edge = 1.0 - smooth(0.955, 0.99, r)
+            rim = smooth(0.62, 0.96, r)
+            # A faint honeycomb inside, like a force field.
+            hx = u * 9.0
+            hy = v * 9.0 / 0.866
+            cell = abs(((hx + (math.floor(hy) % 2) * 0.5) % 1.0) - 0.5) + abs((hy % 1.0) - 0.5)
+            comb = 1.0 if cell > 0.62 else 0.0
+            d = (((u + v) / 4 + 0.5) - band) % 1.0
+            d = min(d, 1 - d)
+            shine = max(0.0, 1.0 - d / 0.08)
+            a = (22 + 175 * rim + 28 * comb + 70 * shine * (0.3 + rim)) * edge
+            light = 0.35 * rim + 0.4 * shine
+            red = 255
+            green = int(196 + (244 - 196) * light)
+            blue = int(80 + (190 - 80) * light)
+            px[x, y] = (red, min(255, green), min(255, blue), int(min(255, a)))
+    draw = ImageDraw.Draw(image)
+    for s, (a, b) in plan:
+        if s <= stage:
+            pa = ((a[0] + 1) / 2 * size, (a[1] + 1) / 2 * size)
+            pb = ((b[0] + 1) / 2 * size, (b[1] + 1) / 2 * size)
+            draw.line([pa, pb], fill=(150, 90, 10, 230), width=3)
+            draw.line([pa, pb], fill=(255, 252, 226, 250), width=1)
+    # Nothing outside the disc, cracks included.
+    for y in range(size):
+        for x in range(size):
+            u = (x + 0.5) / size * 2 - 1
+            v = (y + 0.5) / size * 2 - 1
+            if math.hypot(u, v) > 0.985:
+                px[x, y] = (0, 0, 0, 0)
+    return image
+
+
+def ice_frame(stage, index, plan, bubbles):
+    image = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    px = image.load()
+    band = index / FRAMES
+    # Sides take the left 32x64, top and bottom the right 32x32.
+    regions = [(0, 0, 32, 64), (32, 0, 32, 32), (32, 32, 32, 32)]
+    for x0, y0, w, h in regions:
+        for y in range(y0, y0 + h):
+            for x in range(x0, x0 + w):
+                u = (x - x0 + 0.5) / w
+                v = (y - y0 + 0.5) / h
+                edge = min(u, v, 1 - u, 1 - v) * min(w, h)
+                frost = max(0.0, 1.0 - edge / 3.5)
+                d = ((u * 0.6 + v * 0.4) - band) % 1.0
+                d = min(d, 1 - d)
+                shine = max(0.0, 1.0 - d / 0.1)
+                streak = 0.5 + 0.5 * math.sin(u * 19.0 + v * 3.0)
+                a = 105 + 110 * frost + 25 * streak + 55 * shine
+                r = int(176 + 70 * frost + 40 * shine)
+                g = int(218 + 30 * frost + 25 * shine)
+                b = 252
+                if (x, y) in bubbles:
+                    r, g, a = 236, 248, a + 70
+                px[x, y] = (min(255, r), min(255, g), b, int(min(240, a)))
+    draw = ImageDraw.Draw(image)
+    for s, (a, b) in plan:
+        if s <= stage:
+            draw.line([a, b], fill=(70, 120, 175, 220), width=2)
+            draw.line([a, b], fill=(255, 255, 255, 250), width=1)
+    return image
+
+
+def add_aura_shells(files):
+    rng = random.Random(77)
+    plan = []
+    for stage in range(1, BUBBLE_STAGES):
+        for line in crack_lines(rng, 1, (-0.6, 0.6), (-0.6, 0.6), 0.9):
+            plan.append((stage, line))
+    elements = [{"from": [0, 0, 8], "to": [16, 16, 8], "shade": False,
+                 "faces": {f: {"uv": [0, 0, 16, 16], "texture": "#bubble"} for f in ("north", "south")}}]
+    files["assets/blade/models/item/shell/shield_bubble.json"] = json.dumps(
+        {"textures": {"bubble": "blade:item/shell/shield_bubble_0", "particle": "blade:item/shell/shield_bubble_0"},
+         "elements": elements}).encode()
+    for stage in range(BUBBLE_STAGES):
+        strip = Image.new("RGBA", (128, 128 * FRAMES))
+        for index in range(FRAMES):
+            strip.paste(bubble_frame(stage, index, plan), (0, 128 * index))
+        add_stage(files, "shield_bubble", stage, strip, "bubble")
+
+    rng = random.Random(23)
+    plan = []
+    for stage in range(1, ICE_BLOCK_STAGES):
+        for line in crack_lines(rng, 2, (4, 28), (6, 58), 16):
+            plan.append((stage, line))
+    bubbles = {(rng.randrange(64), rng.randrange(64)) for _ in range(120)}
+    sides = {"uv": [0, 0, 8, 16], "texture": "#ice"}
+    ends = {"uv": [8, 0, 16, 8], "texture": "#ice"}
+    faces = {f: dict(sides) for f in ("north", "south", "east", "west")}
+    faces["up"] = dict(ends)
+    faces["down"] = {"uv": [8, 8, 16, 16], "texture": "#ice"}
+    files["assets/blade/models/item/shell/ice_block.json"] = json.dumps(
+        {"textures": {"ice": "blade:item/shell/ice_block_0", "particle": "blade:item/shell/ice_block_0"},
+         "elements": [{"from": [0, -8.5, 0], "to": [16, 24.5, 16], "faces": faces}]}).encode()
+    for stage in range(ICE_BLOCK_STAGES):
+        strip = Image.new("RGBA", (64, 64 * FRAMES))
+        for index in range(FRAMES):
+            strip.paste(ice_frame(stage, index, plan, bubbles), (0, 64 * index))
+        add_stage(files, "ice_block", stage, strip, "ice")
+
+
+def add_stage(files, name, stage, strip, key):
+    out = io.BytesIO()
+    strip.save(out, "PNG", optimize=True)
+    texture = f"assets/blade/textures/item/shell/{name}_{stage}.png"
+    files[texture] = out.getvalue()
+    files[texture + ".mcmeta"] = json.dumps({"animation": {"frametime": 2, "interpolate": True}}).encode()
+    files[f"assets/blade/models/item/shell/{name}_{stage}.json"] = json.dumps({
+        "parent": f"blade:item/shell/{name}",
+        "textures": {key: f"blade:item/shell/{name}_{stage}", "particle": f"blade:item/shell/{name}_{stage}"},
+    }).encode()
+    files[f"assets/blade/items/{name}_{stage}.json"] = json.dumps(
+        {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{stage}"}}).encode()
