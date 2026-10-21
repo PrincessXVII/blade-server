@@ -1,15 +1,14 @@
-"""Shells shaped like the player's body, with crack stages. Called from legendary_fx.py.
+"""Shells around a player, called from legendary_fx.py.
 
-* excalibur_shell_0 .. _5: the Excalibur shield, translucent gold. BladeWeapons swaps the stage
-  on every blocked hit.
-* ice_statue_0 .. _3: Frost Grip's ice around a frozen player, cracking as the freeze runs out.
-
-Each stage is an item model (blade:<name>_<stage>) over one shared box model. BladeWeapons shows
-the shell in parts, one item display each (blade:<name>_<part>_<stage>), so the head can turn
-with the player's head, the right arm can swing and the body can crouch. A part model has its
-pivot (neck, shoulder, hip) at the model centre and is turned half a circle, because an item
-display draws its model turned by 180 degrees. Every texture is animated: a bright band sweeps
-over it.
+* Excalibur's golden shell is worn as armour, so the client draws it on the player model itself:
+  it moves with every limb and never lags. BladeWeapons (fx/GlassArmor) sends the other players a
+  copy of the real helmet, chestplate and boots whose equipment asset is blade:excalibur_<base>_<stage>:
+  the vanilla layers of that armour with a layer of golden glass on top, so the armour still shows
+  under the gold. Armour cannot blend, so the glass texels carry alpha 0.25..0.75, which vanilla
+  armour never uses, and the entity shader draws them as a fine screen door and makes them glow.
+  A cosmetic hat stays on: the head glass then comes as the item blade:excalibur_head, which draws
+  the hat (custom model data string 0) inside a glass cube (string 1 is the crack stage).
+* Frost Grip's ice block, square to the world (blade:ice_block_<stage>).
 """
 import io
 import json
@@ -19,307 +18,290 @@ import random
 from PIL import Image, ImageDraw
 
 FRAMES = 8
-SIZE = 128
-TEX_PER_PX = 2  # texture pixels per model pixel
-
-# Boxes in player model pixels: feet at y 0, x to the right, z forward; then the inflation.
-BOXES = [
-    ("head", (-4, 24, -4), (4, 32, 4), 1.3),
-    ("body", (-4, 12, -2), (4, 24, 2), 1.3),
-    ("right_arm", (-8, 12, -2), (-4, 24, 2), 1.2),
-    ("left_arm", (4, 12, -2), (8, 24, 2), 1.2),
-    ("legs", (-4, 0, -2), (4, 12, 2), 1.1),
-]
-
-# Where each part turns, in the same pixels as BOXES (the player model's joints).
-PIVOTS = {
-    "head": (0, 24, 0),
-    "body": (0, 24, 0),
-    "right_arm": (-5, 22, 0),
-    "left_arm": (5, 22, 0),
-    "legs": (0, 12, 0),
-}
-
-LOOKS = {
-    "excalibur_shell": {
-        "stages": 6, "base": (255, 198, 70), "edge": (255, 238, 160), "alpha": 88, "rim": 34,
-        "edge_alpha": 165, "shine": 1.0, "warm": 0.06, "bubbles": 0, "seed": 1987, "frametime": 2,
-        "crack": (255, 252, 226, 245), "crack_edge": (150, 90, 10, 210),
-    },
-    "ice_statue": {
-        "stages": 4, "base": (168, 214, 250), "edge": (236, 249, 255), "alpha": 125, "rim": 40,
-        "edge_alpha": 210, "shine": 0.55, "warm": 0.0, "bubbles": 70, "seed": 7, "frametime": 3,
-        "crack": (255, 255, 255, 250), "crack_edge": (80, 130, 185, 200),
-    },
-}
-
-
-def face_sizes(lo, hi):
-    w, h, d = (hi[i] - lo[i] for i in range(3))
-    return {"north": (w, h), "south": (w, h), "east": (d, h), "west": (d, h), "up": (w, d), "down": (w, d)}
-
-
-def layout():
-    """Shelf-packs every face into the texture. Returns {(box, face): (x, y, w, h)} in texture px."""
-    faces = []
-    for name, lo, hi, grow in BOXES:
-        lo = [c - grow for c in lo]
-        hi = [c + grow for c in hi]
-        for face, (fw, fh) in face_sizes(lo, hi).items():
-            faces.append(((name, face), math.ceil(fw * TEX_PER_PX), math.ceil(fh * TEX_PER_PX)))
-    faces.sort(key=lambda f: -f[2])
-    rects, x, y, row = {}, 0, 0, 0
-    for key, w, h in faces:
-        if x + w > SIZE:
-            x, y, row = 0, y + row, 0
-        rects[key] = (x, y, w, h)
-        x += w
-        row = max(row, h)
-    assert y + row <= SIZE, "shell faces do not fit the texture"
-    return rects
-
-
-def model(rects, name):
-    elements = []
-    for box, lo, hi, grow in BOXES:
-        start = [8 + lo[0] - grow, lo[1] - 8 - grow, 8 + lo[2] - grow]
-        end = [8 + hi[0] + grow, hi[1] - 8 + grow, 8 + hi[2] + grow]
-        faces = {}
-        for face in ("north", "south", "east", "west", "up", "down"):
-            x, y, w, h = rects[(box, face)]
-            scale = 16 / SIZE
-            faces[face] = {"uv": [round(x * scale, 4), round(y * scale, 4), round((x + w) * scale, 4),
-                                  round((y + h) * scale, 4)], "texture": "#shell"}
-        elements.append({"name": box, "from": [round(v, 3) for v in start], "to": [round(v, 3) for v in end],
-                         "faces": faces})
-    return {"textures": {"shell": f"blade:item/shell/{name}_0", "particle": f"blade:item/shell/{name}_0"},
-            "elements": elements}
-
-
-def part_model(rects, name, part):
-    """One part around its pivot, mirrored in x and z for the display's half turn."""
-    box = next(b for b in BOXES if b[0] == part)
-    _, lo, hi, grow = box
-    px, py, pz = PIVOTS[part]
-    lo = [lo[0] - grow - px, lo[1] - grow - py, lo[2] - grow - pz]
-    hi = [hi[0] + grow - px, hi[1] + grow - py, hi[2] + grow - pz]
-    start = [8 - hi[0], 8 + lo[1], 8 - hi[2]]
-    end = [8 - lo[0], 8 + hi[1], 8 - lo[2]]
-    faces = {}
-    scale = 16 / SIZE
-    for face in ("north", "south", "east", "west", "up", "down"):
-        x, y, w, h = rects[(part, face)]
-        faces[face] = {"uv": [round(x * scale, 4), round(y * scale, 4), round((x + w) * scale, 4),
-                              round((y + h) * scale, 4)], "texture": "#shell"}
-    return {"textures": {"shell": f"blade:item/shell/{name}_0", "particle": f"blade:item/shell/{name}_0"},
-            "elements": [{"name": part, "from": [round(v, 3) for v in start], "to": [round(v, 3) for v in end],
-                          "faces": faces}]}
-
-
-def crack_plan(rects, look):
-    """Impacts per stage, cumulative: every stage adds one on the front, one on the back and one
-    somewhere else, so the damage shows from any side."""
-    rng = random.Random(look["seed"])
-    others = [k for k in rects if k[1] in ("east", "west", "north", "south") and k[0] != "body"]
-    plan = []
-    for stage in range(1, look["stages"]):
-        hits = [("body", "north"), ("body", "south"), rng.choice(others)]
-        if stage >= 3:
-            hits.append(rng.choice(others))
-        for key in hits:
-            x, y, w, h = rects[key]
-            cx = x + rng.uniform(0.25, 0.75) * w
-            cy = y + rng.uniform(0.2, 0.8) * h
-            plan.append((stage, key, cx, cy, rng.random()))
-    return plan
-
-
-def draw_crack(draw, rect, cx, cy, seed, stage, look):
-    rng = random.Random(seed * 1000 + stage)
-    x0, y0, w, h = rect
-    reach = max(w, h) * rng.uniform(0.45, 0.75)
-    branches = rng.randint(5, 7)
-    lines = []
-    for b in range(branches):
-        angle = (b + rng.uniform(-0.3, 0.3)) * 2 * math.pi / branches
-        px, py = cx, cy
-        length = reach * rng.uniform(0.55, 1.0)
-        steps = rng.randint(3, 5)
-        for s in range(steps):
-            angle += rng.uniform(-0.5, 0.5)
-            nx = px + math.cos(angle) * length / steps
-            ny = py + math.sin(angle) * length / steps
-            lines.append(((px, py), (nx, ny)))
-            if s == 1 and rng.random() < 0.6:
-                side = angle + rng.choice((-1, 1)) * rng.uniform(0.6, 1.1)
-                lines.append(((nx, ny), (nx + math.cos(side) * length * 0.3, ny + math.sin(side) * length * 0.3)))
-            px, py = nx, ny
-    # A broken ring around the impact.
-    ring = reach * 0.28
-    for i in range(10):
-        if rng.random() < 0.35:
-            continue
-        a1, a2 = i * 2 * math.pi / 10, (i + 1) * 2 * math.pi / 10
-        lines.append(((cx + math.cos(a1) * ring, cy + math.sin(a1) * ring),
-                      (cx + math.cos(a2) * ring, cy + math.sin(a2) * ring)))
-    box = (x0, y0, x0 + w - 1, y0 + h - 1)
-
-    def clip(p):
-        return (min(max(p[0], box[0]), box[2]), min(max(p[1], box[1]), box[3]))
-
-    for a, b in lines:
-        draw.line([clip(a), clip(b)], fill=look["crack_edge"], width=3)
-    for a, b in lines:
-        draw.line([clip(a), clip(b)], fill=look["crack"], width=1)
-
-
-def frame(rects, stage, index, plan, look, bubbles):
-    image = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
-    px = image.load()
-    dim = 1.0 - look["warm"] * stage
-    band = index / FRAMES
-    for (name, face), (x0, y0, w, h) in rects.items():
-        for y in range(y0, y0 + h):
-            for x in range(x0, x0 + w):
-                u = (x - x0 + 0.5) / w
-                v = (y - y0 + 0.5) / h
-                edge = min(u, v, 1 - u, 1 - v) * min(w, h)
-                if edge < 1.5:
-                    r, g, b = look["edge"]
-                    a = look["edge_alpha"]
-                else:
-                    r, g, b = look["base"]
-                    a = look["alpha"] + int(look["rim"] * (1 - min(1.0, edge / 8)))
-                if (x, y) in bubbles:
-                    r, g, b = look["edge"]
-                    a = min(255, a + 60)
-                # The sweeping shine: a diagonal band across every face.
-                d = ((u + v) / 2 - band) % 1.0
-                d = min(d, 1 - d)
-                if d < 0.12:
-                    k = (1 - d / 0.12) * look["shine"]
-                    r = min(255, int(r + 40 * k))
-                    g = min(255, int(g + 50 * k))
-                    b = min(255, int(b + 80 * k))
-                    a = min(255, int(a + 70 * k))
-                # Later stages of the gold lean towards orange.
-                px[x, y] = (r, int(g * dim), int(b * dim), a)
-    draw = ImageDraw.Draw(image)
-    for s, key, cx, cy, seed in plan:
-        if s <= stage:
-            draw_crack(draw, rects[key], cx, cy, seed, s, look)
-    return image
-
-
-def add_shell(files, name, look):
-    rects = layout()
-    plan = crack_plan(rects, look)
-    rng = random.Random(look["seed"] + 1)
-    bubbles = {(rng.randrange(SIZE), rng.randrange(SIZE)) for _ in range(look["bubbles"] * 10)}
-    files[f"assets/blade/models/item/shell/{name}.json"] = json.dumps(model(rects, name)).encode()
-    for part in PIVOTS:
-        files[f"assets/blade/models/item/shell/{name}_{part}.json"] = json.dumps(part_model(rects, name, part)).encode()
-    for stage in range(look["stages"]):
-        strip = Image.new("RGBA", (SIZE, SIZE * FRAMES))
-        for index in range(FRAMES):
-            strip.paste(frame(rects, stage, index, plan, look, bubbles), (0, SIZE * index))
-        out = io.BytesIO()
-        strip.save(out, "PNG", optimize=True)
-        texture = f"assets/blade/textures/item/shell/{name}_{stage}.png"
-        files[texture] = out.getvalue()
-        files[texture + ".mcmeta"] = json.dumps(
-            {"animation": {"frametime": look["frametime"], "interpolate": True}}).encode()
-        files[f"assets/blade/models/item/shell/{name}_{stage}.json"] = json.dumps({
-            "parent": f"blade:item/shell/{name}",
-            "textures": {"shell": f"blade:item/shell/{name}_{stage}", "particle": f"blade:item/shell/{name}_{stage}"},
-        }).encode()
-        files[f"assets/blade/items/{name}_{stage}.json"] = json.dumps(
-            {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{stage}"}}).encode()
-        for part in PIVOTS:
-            files[f"assets/blade/models/item/shell/{name}_{part}_{stage}.json"] = json.dumps({
-                "parent": f"blade:item/shell/{name}_{part}",
-                "textures": {"shell": f"blade:item/shell/{name}_{stage}", "particle": f"blade:item/shell/{name}_{stage}"},
-            }).encode()
-            files[f"assets/blade/items/{name}_{part}_{stage}.json"] = json.dumps(
-                {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{part}_{stage}"}}).encode()
-
-
-def add_body_shells(files):
-    for name, look in LOOKS.items():
-        add_shell(files, name, look)
-    add_armor_shell(files)
-    add_aura_shells(files)
-
-
-# Excalibur's shield worn as armour: the client draws it on the player model itself, so it moves
-# with every limb and never lags. Armour cannot be half transparent, so the gold is a net of
-# diamonds with a sparkle in each cell and the body shows through, and every stage cracks it more
-# and knocks pieces out. BladeWeapons sends it as fake equipment (blade:excalibur_shell_<stage>).
-ARMOR_STAGES = 6
-
-
-def armor_shell_texture(stage):
-    rng = random.Random(4049)
-    image = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
-    px = image.load()
-    for y in range(32):
-        for x in range(64):
-            # A net of gold diamonds with a sparkle in each cell: the body shows through.
-            if (x + y) % 8 == 0 or (x - y) % 8 == 0:
-                shade = 0.86 + 0.14 * ((y % 16) / 15.0)
-                px[x, y] = (255, int(214 * shade), int(96 * shade), 255)
-            elif (x + y) % 8 == 4 and (x - y) % 8 == 4:
-                px[x, y] = (255, 244, 196, 255)
-    draw = ImageDraw.Draw(image)
-    cracks = []
-    for _ in range(ARMOR_STAGES * 3):
-        x, y = rng.uniform(2, 62), rng.uniform(2, 30)
-        points = [(x, y)]
-        angle = rng.uniform(0, 2 * math.pi)
-        for _ in range(rng.randint(3, 5)):
-            angle += rng.uniform(-0.8, 0.8)
-            x += math.cos(angle) * rng.uniform(2, 4)
-            y += math.sin(angle) * rng.uniform(2, 4)
-            points.append((x, y))
-        cracks.append(points)
-    shown = cracks[:stage * 3]
-    # Later stages lose chunks of glass around the oldest cracks.
-    for points in shown[:max(0, stage - 2) * 3]:
-        cx, cy = points[len(points) // 2]
-        r = rng.uniform(1.6, 2.8)
-        for y in range(int(cy - r) - 1, int(cy + r) + 2):
-            for x in range(int(cx - r) - 1, int(cx + r) + 2):
-                if 0 <= x < 64 and 0 <= y < 32 and math.hypot(x - cx, y - cy) <= r:
-                    px[x, y] = (0, 0, 0, 0)
-    for points in shown:
-        draw.line(points, fill=(150, 88, 10, 255), width=2)
-        draw.line(points, fill=(255, 252, 226, 255), width=1)
-    return image
-
-
-def add_armor_shell(files):
-    for stage in range(ARMOR_STAGES):
-        out = io.BytesIO()
-        armor_shell_texture(stage).save(out, "PNG", optimize=True)
-        name = f"excalibur_shell_{stage}"
-        for layer in ("humanoid", "humanoid_leggings"):
-            files[f"assets/blade/textures/entity/equipment/{layer}/{name}.png"] = out.getvalue()
-        files[f"assets/blade/equipment/{name}.json"] = json.dumps({"layers": {
-            "humanoid": [{"texture": f"blade:{name}"}],
-            "humanoid_leggings": [{"texture": f"blade:{name}"}],
-        }}).encode()
-
-
-# Shapes that never depend on how a client turns the player's body: Excalibur's golden bubble
-# (a disc that always faces the viewer, so it reads as a sphere) and Frost Grip's ice block,
-# square to the world. blade:shield_bubble_<stage>, blade:ice_block_<stage>.
-BUBBLE_STAGES = 6
+GLASS_STAGES = 6
 ICE_BLOCK_STAGES = 4
+TEXT_OVERLAY = "overlay_text_75"
+
+# Outputs of earlier builds: body-shaped display shells, the gold net armour and the bubble.
+STALE = (
+    "assets/blade/models/item/shell/",
+    "assets/blade/textures/item/shell/",
+    "assets/blade/items/excalibur_shell",
+    "assets/blade/items/ice_statue",
+    "assets/blade/items/shield_bubble",
+    "assets/blade/equipment/excalibur",
+    "assets/blade/textures/entity/equipment/humanoid/excalibur",
+    "assets/blade/textures/entity/equipment/humanoid_leggings/excalibur",
+)
+
+# Vanilla 1.21.11 equipment layers (assets/minecraft/equipment) the glass goes over.
+LEATHER = [{"texture": "minecraft:leather", "dyeable": {"color_when_undyed": -6265536}},
+           {"texture": "minecraft:leather_overlay"}]
+BASES = {
+    "none": {},
+    "leather": {"humanoid": LEATHER, "humanoid_leggings": LEATHER},
+    "turtle_scute": {"humanoid": [{"texture": "minecraft:turtle_scute"}]},
+    "elytra": {"wings": [{"texture": "minecraft:elytra", "use_player_texture": True}]},
+}
+for _metal in ("chainmail", "iron", "gold", "diamond", "netherite", "copper"):
+    BASES[_metal] = {"humanoid": [{"texture": f"minecraft:{_metal}"}],
+                     "humanoid_leggings": [{"texture": f"minecraft:{_metal}"}]}
+
+# Glass alpha in the shader band: coverage = (alpha - 0.25) * 2.
+def band(coverage):
+    return int(round((0.25 + coverage / 2.0) * 255))
+
+
+GLASS = band(0.42)
+RIM = band(0.78)
+SPARK = band(0.9)
+CRACK = band(0.97)
+CRACK_EDGE = band(0.85)
+
+TEX = 2  # texture pixels per model pixel; the layer is 64x32 model pixels
+# Boxes of the armour model in its 64x32 texture: (u, v, width, height, depth). The hat is left
+# empty so the head is not glazed twice.
+BOXES = {
+    "head": (0, 0, 8, 8, 8),
+    "body": (16, 16, 8, 12, 4),
+    "arm": (40, 16, 4, 12, 4),
+    "leg": (0, 16, 4, 12, 4),
+}
+ENTITY_SHADER = """#version 330
+
+#moj_import <minecraft:fog.glsl>
+#moj_import <minecraft:dynamictransforms.glsl>
+
+uniform sampler2D Sampler0;
+
+in float sphericalVertexDistance;
+in float cylindricalVertexDistance;
+#ifdef PER_FACE_LIGHTING
+in vec4 vertexPerFaceColorBack;
+in vec4 vertexPerFaceColorFront;
+#else
+in vec4 vertexColor;
+#endif
+in vec4 lightMapColor;
+in vec4 overlayColor;
+in vec2 texCoord0;
+
+out vec4 fragColor;
+
+// Blade: Excalibur's golden glass is armour whose texels have alpha 0.25..0.75, which vanilla
+// armour never uses. Armour cannot blend, so those texels keep a share of the screen pixels in a
+// fixed 4x4 pattern (more alpha, more pixels kept), which reads as see-through glass, and glow.
+const float BLADE_BAYER[16] = float[16](0.0, 8.0, 2.0, 10.0, 12.0, 4.0, 14.0, 6.0,
+                                        3.0, 11.0, 1.0, 9.0, 15.0, 7.0, 13.0, 5.0);
+
+void main() {
+    vec4 color = texture(Sampler0, texCoord0);
+#ifdef ALPHA_CUTOUT
+    if (color.a < ALPHA_CUTOUT) {
+        discard;
+    }
+#endif
+    bool bladeGlass = false;
+#if defined(ALPHA_CUTOUT) && defined(NO_OVERLAY) && defined(PER_FACE_LIGHTING)
+    if (color.a > 0.25 && color.a < 0.75) {
+        int cell = int(mod(gl_FragCoord.x, 4.0)) + int(mod(gl_FragCoord.y, 4.0)) * 4;
+        if ((color.a - 0.25) * 2.0 <= (BLADE_BAYER[cell] + 0.5) / 16.0) {
+            discard;
+        }
+        bladeGlass = true;
+        color.a = 1.0;
+    }
+#endif
+#ifdef PER_FACE_LIGHTING
+    color *= (gl_FrontFacing ? vertexPerFaceColorFront : vertexPerFaceColorBack) * ColorModulator;
+#else
+    color *= vertexColor * ColorModulator;
+#endif
+#ifndef NO_OVERLAY
+    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
+#endif
+#ifndef EMISSIVE
+    if (!bladeGlass) {
+        color *= lightMapColor;
+    }
+#endif
+    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+}
+"""
 
 
 def smooth(a, b, x):
     t = min(1.0, max(0.0, (x - a) / (b - a)))
     return t * t * (3 - 2 * t)
+
+
+def box_faces(u, v, w, h, d):
+    """Face rectangles of a box in the standard box unwrap, in model pixels."""
+    return [(u + d, v, w, d), (u + d + w, v, w, d), (u, v + d, d, h), (u + d, v + d, w, h),
+            (u + d + w, v + d, d, h), (u + d + w + d, v + d, w, h)]
+
+
+def glass_faces():
+    faces = []
+    for name, (u, v, w, h, d) in BOXES.items():
+        for x, y, fw, fh in box_faces(u, v, w, h, d):
+            faces.append((name, (x * TEX, y * TEX, fw * TEX, fh * TEX)))
+    return faces
+
+
+def crack_plan():
+    """Cumulative impacts: each stage adds one on the chest, one on the back and one elsewhere."""
+    rng = random.Random(1987)
+    faces = glass_faces()
+    chest = [f for f in faces if f[0] == "body" and f[1][2] == 8 * TEX and f[1][3] == 12 * TEX]
+    others = [f for f in faces if f[1][3] > 4 * TEX]
+    plan = []
+    for stage in range(1, GLASS_STAGES):
+        for _, rect in (chest[0], chest[1], rng.choice(others)):
+            x, y, w, h = rect
+            plan.append((stage, rect, x + rng.uniform(0.25, 0.75) * w, y + rng.uniform(0.2, 0.8) * h,
+                         rng.random()))
+    return plan
+
+
+def crack_lines_at(rect, cx, cy, seed):
+    rng = random.Random(int(seed * 1e6))
+    w, h = rect[2], rect[3]
+    reach = max(w, h) * rng.uniform(0.4, 0.65)
+    lines = []
+    for b in range(rng.randint(4, 6)):
+        angle = (b + rng.uniform(-0.3, 0.3)) * 2 * math.pi / 5
+        px, py = cx, cy
+        for _ in range(rng.randint(2, 4)):
+            angle += rng.uniform(-0.5, 0.5)
+            nx, ny = px + math.cos(angle) * reach / 3, py + math.sin(angle) * reach / 3
+            lines.append(((px, py), (nx, ny)))
+            px, py = nx, ny
+    return lines
+
+
+def glass_texture(stage, plan):
+    """The golden glass of one crack stage over the whole humanoid layer, 128x64."""
+    image = Image.new("RGBA", (64 * TEX, 32 * TEX), (0, 0, 0, 0))
+    px = image.load()
+    rng = random.Random(4049)
+    for _, (x0, y0, w, h) in glass_faces():
+        for y in range(y0, y0 + h):
+            for x in range(x0, x0 + w):
+                fy = (y - y0 + 0.5) / h
+                edge = min(x - x0, y - y0, x0 + w - 1 - x, y0 + h - 1 - y)
+                light = 0.55 - 0.45 * fy
+                color = (255, int(186 + 50 * light), int(52 + 100 * light), GLASS)
+                if edge == 0:
+                    color = (255, 236, 168, RIM)
+                elif rng.random() < 0.035:
+                    color = (255, 248, 214, SPARK)
+                px[x, y] = color
+    draw = ImageDraw.Draw(image)
+    for s, rect, cx, cy, seed in plan:
+        if s > stage:
+            continue
+        x0, y0, w, h = rect
+        # Late stages lose a chip of glass at their oldest impacts.
+        if stage - s >= 2:
+            r = 1.6 + (stage - s) * 0.4
+            for y in range(int(cy - r), int(cy + r) + 1):
+                for x in range(int(cx - r), int(cx + r) + 1):
+                    if x0 <= x < x0 + w and y0 <= y < y0 + h and math.hypot(x - cx, y - cy) <= r:
+                        px[x, y] = (0, 0, 0, 0)
+        box = (x0, y0, x0 + w - 1, y0 + h - 1)
+        for a, b in crack_lines_at(rect, cx, cy, seed):
+            a = (min(max(a[0], box[0]), box[2]), min(max(a[1], box[1]), box[3]))
+            b = (min(max(b[0], box[0]), box[2]), min(max(b[1], box[1]), box[3]))
+            draw.line([a, b], fill=(196, 120, 16, CRACK_EDGE), width=2)
+            draw.line([a, b], fill=(255, 252, 230, CRACK), width=1)
+    return image
+
+
+def head_texture(stage, plan_seed):
+    """The glass cube around a hat, 32x32, truly translucent (items blend)."""
+    image = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
+    px = image.load()
+    rng = random.Random(77)
+    for y in range(32):
+        for x in range(32):
+            edge = min(x, y, 31 - x, 31 - y)
+            light = 0.55 - 0.45 * (y + 0.5) / 32
+            color = (255, int(186 + 50 * light), int(52 + 100 * light), 104)
+            if edge == 0:
+                color = (255, 236, 168, 190)
+            elif rng.random() < 0.03:
+                color = (255, 248, 214, 210)
+            px[x, y] = color
+    draw = ImageDraw.Draw(image)
+    crack = random.Random(plan_seed)
+    for s in range(1, stage + 1):
+        cx, cy = crack.uniform(8, 24), crack.uniform(8, 24)
+        for a, b in crack_lines_at((0, 0, 32, 32), cx, cy, crack.random()):
+            a = (min(max(a[0], 0), 31), min(max(a[1], 0), 31))
+            b = (min(max(b[0], 0), 31), min(max(b[1], 0), 31))
+            draw.line([a, b], fill=(196, 120, 16, 220), width=2)
+            draw.line([a, b], fill=(255, 252, 230, 245), width=1)
+    return image
+
+
+def png(image):
+    out = io.BytesIO()
+    image.save(out, "PNG", optimize=True)
+    return out.getvalue()
+
+
+def hat_models(files):
+    """Every hat item model of the pack ({ns}:hat/...), as the overlay for 1.21.4+ has it."""
+    hats = {}
+    for name in sorted(files):
+        for prefix in ("assets/", "overlay_1_21_4/assets/"):
+            if not name.startswith(prefix) or "/items/hat/" not in name or not name.endswith(".json"):
+                continue
+            ns, _, path = name[len(prefix):].partition("/items/")
+            try:
+                model = json.loads(files[name])["model"]
+            except (ValueError, KeyError):
+                continue
+            key = f"{ns}:{path[:-5]}"
+            if prefix.startswith("overlay") or key not in hats:
+                hats[key] = model
+    return hats
+
+
+def add_glass_armor(files):
+    plan = crack_plan()
+    for stage in range(GLASS_STAGES):
+        files[f"assets/blade/textures/entity/equipment/humanoid/excalibur_glass_{stage}.png"] = png(
+            glass_texture(stage, plan))
+        glass = {"texture": f"blade:excalibur_glass_{stage}"}
+        for base, layers in BASES.items():
+            asset = {key: [dict(layer) for layer in value] for key, value in layers.items()}
+            asset["humanoid"] = asset.get("humanoid", []) + [glass]
+            files[f"assets/blade/equipment/excalibur_{base}_{stage}.json"] = json.dumps({"layers": asset}).encode()
+
+        files[f"assets/blade/textures/item/shell/excalibur_head_{stage}.png"] = png(head_texture(stage, 31))
+        faces = {f: {"uv": [0, 0, 16, 16], "texture": "#glass"} for f in ("north", "south", "east", "west", "up", "down")}
+        files[f"assets/blade/models/item/shell/excalibur_head_{stage}.json"] = json.dumps({
+            "textures": {"glass": f"blade:item/shell/excalibur_head_{stage}",
+                         "particle": f"blade:item/shell/excalibur_head_{stage}"},
+            "elements": [{"from": [0, 0, 0], "to": [16, 16, 16], "shade": False, "light_emission": 15,
+                          "faces": faces}],
+        }).encode()
+
+    hats = [{"when": key, "model": model} for key, model in hat_models(files).items()]
+    stages = [{"when": str(stage), "model": {"type": "minecraft:model", "model": f"blade:item/shell/excalibur_head_{stage}"}}
+              for stage in range(GLASS_STAGES)]
+    files["assets/blade/items/excalibur_head.json"] = json.dumps({"model": {
+        "type": "minecraft:composite",
+        "models": [
+            {"type": "minecraft:select", "property": "minecraft:custom_model_data", "index": 0,
+             "cases": hats, "fallback": {"type": "minecraft:empty"}},
+            {"type": "minecraft:select", "property": "minecraft:custom_model_data", "index": 1,
+             "cases": stages, "fallback": stages[0]["model"]},
+        ],
+    }}).encode()
+    files[f"{TEXT_OVERLAY}/assets/minecraft/shaders/core/entity.fsh"] = ENTITY_SHADER.encode()
 
 
 def crack_lines(rng, count, cx_range, cy_range, reach):
@@ -338,55 +320,10 @@ def crack_lines(rng, count, cx_range, cy_range, reach):
     return lines
 
 
-def bubble_frame(stage, index, plan):
-    size = 128
-    image = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    px = image.load()
-    band = index / FRAMES
-    for y in range(size):
-        for x in range(size):
-            u = (x + 0.5) / size * 2 - 1
-            v = (y + 0.5) / size * 2 - 1
-            r = math.hypot(u, v)
-            if r > 0.99:
-                continue
-            edge = 1.0 - smooth(0.955, 0.99, r)
-            rim = smooth(0.62, 0.96, r)
-            # A faint honeycomb inside, like a force field.
-            hx = u * 9.0
-            hy = v * 9.0 / 0.866
-            cell = abs(((hx + (math.floor(hy) % 2) * 0.5) % 1.0) - 0.5) + abs((hy % 1.0) - 0.5)
-            comb = 1.0 if cell > 0.62 else 0.0
-            d = (((u + v) / 4 + 0.5) - band) % 1.0
-            d = min(d, 1 - d)
-            shine = max(0.0, 1.0 - d / 0.08)
-            a = (22 + 175 * rim + 28 * comb + 70 * shine * (0.3 + rim)) * edge
-            light = 0.35 * rim + 0.4 * shine
-            red = 255
-            green = int(196 + (244 - 196) * light)
-            blue = int(80 + (190 - 80) * light)
-            px[x, y] = (red, min(255, green), min(255, blue), int(min(255, a)))
-    draw = ImageDraw.Draw(image)
-    for s, (a, b) in plan:
-        if s <= stage:
-            pa = ((a[0] + 1) / 2 * size, (a[1] + 1) / 2 * size)
-            pb = ((b[0] + 1) / 2 * size, (b[1] + 1) / 2 * size)
-            draw.line([pa, pb], fill=(150, 90, 10, 230), width=3)
-            draw.line([pa, pb], fill=(255, 252, 226, 250), width=1)
-    # Nothing outside the disc, cracks included.
-    for y in range(size):
-        for x in range(size):
-            u = (x + 0.5) / size * 2 - 1
-            v = (y + 0.5) / size * 2 - 1
-            if math.hypot(u, v) > 0.985:
-                px[x, y] = (0, 0, 0, 0)
-    return image
-
-
 def ice_frame(stage, index, plan, bubbles):
     image = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
     px = image.load()
-    band = index / FRAMES
+    band_at = index / FRAMES
     # Sides take the left 32x64, top and bottom the right 32x32.
     regions = [(0, 0, 32, 64), (32, 0, 32, 32), (32, 32, 32, 32)]
     for x0, y0, w, h in regions:
@@ -396,7 +333,7 @@ def ice_frame(stage, index, plan, bubbles):
                 v = (y - y0 + 0.5) / h
                 edge = min(u, v, 1 - u, 1 - v) * min(w, h)
                 frost = max(0.0, 1.0 - edge / 3.5)
-                d = ((u * 0.6 + v * 0.4) - band) % 1.0
+                d = ((u * 0.6 + v * 0.4) - band_at) % 1.0
                 d = min(d, 1 - d)
                 shine = max(0.0, 1.0 - d / 0.1)
                 streak = 0.5 + 0.5 * math.sin(u * 19.0 + v * 3.0)
@@ -415,23 +352,7 @@ def ice_frame(stage, index, plan, bubbles):
     return image
 
 
-def add_aura_shells(files):
-    rng = random.Random(77)
-    plan = []
-    for stage in range(1, BUBBLE_STAGES):
-        for line in crack_lines(rng, 1, (-0.6, 0.6), (-0.6, 0.6), 0.9):
-            plan.append((stage, line))
-    elements = [{"from": [0, 0, 8], "to": [16, 16, 8], "shade": False,
-                 "faces": {f: {"uv": [0, 0, 16, 16], "texture": "#bubble"} for f in ("north", "south")}}]
-    files["assets/blade/models/item/shell/shield_bubble.json"] = json.dumps(
-        {"textures": {"bubble": "blade:item/shell/shield_bubble_0", "particle": "blade:item/shell/shield_bubble_0"},
-         "elements": elements}).encode()
-    for stage in range(BUBBLE_STAGES):
-        strip = Image.new("RGBA", (128, 128 * FRAMES))
-        for index in range(FRAMES):
-            strip.paste(bubble_frame(stage, index, plan), (0, 128 * index))
-        add_stage(files, "shield_bubble", stage, strip, "bubble")
-
+def add_ice_block(files):
     rng = random.Random(23)
     plan = []
     for stage in range(1, ICE_BLOCK_STAGES):
@@ -454,10 +375,8 @@ def add_aura_shells(files):
 
 
 def add_stage(files, name, stage, strip, key):
-    out = io.BytesIO()
-    strip.save(out, "PNG", optimize=True)
     texture = f"assets/blade/textures/item/shell/{name}_{stage}.png"
-    files[texture] = out.getvalue()
+    files[texture] = png(strip)
     files[texture + ".mcmeta"] = json.dumps({"animation": {"frametime": 2, "interpolate": True}}).encode()
     files[f"assets/blade/models/item/shell/{name}_{stage}.json"] = json.dumps({
         "parent": f"blade:item/shell/{name}",
@@ -465,3 +384,10 @@ def add_stage(files, name, stage, strip, key):
     }).encode()
     files[f"assets/blade/items/{name}_{stage}.json"] = json.dumps(
         {"model": {"type": "minecraft:model", "model": f"blade:item/shell/{name}_{stage}"}}).encode()
+
+
+def add_body_shells(files):
+    for name in [n for n in files if n.startswith(STALE)]:
+        del files[name]
+    add_glass_armor(files)
+    add_ice_block(files)

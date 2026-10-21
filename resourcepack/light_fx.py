@@ -14,6 +14,9 @@ beam going from yellow to red.
 * blade:fx_glow       flat round glow (tint 0).
 * blade:fx_sigil      flat circle of judgement for Sky Verdict: rings, ticks and runes (tint 0).
 * blade:fx_puff       small soft cube of smoke (tint 0).
+* blade:fx_box        flat-coloured see-through cube without any texture detail (tint 0): the
+                      square beam of the villager staff.
+* blade:fx_dash       flat-coloured plate lying on the ground (tint 0): one dash of its rings.
 """
 import io
 import json
@@ -208,3 +211,9 @@ def add_light_fx(files):
     faces = {f: {"uv": [0, 0, 16, 16], "texture": "#puff", "tintindex": 0}
              for f in ("north", "south", "east", "west", "up", "down")}
     add_model(files, "puff", {"puff": puff}, [{"from": [4, 4, 4], "to": [12, 12, 12], "faces": faces}], 1)
+    box = texture(files, "box", Image.new("RGBA", (16, 16), (255, 255, 255, 178)))
+    faces = {f: {"uv": [0, 0, 16, 16], "texture": "#box", "tintindex": 0}
+             for f in ("north", "south", "east", "west", "up", "down")}
+    add_model(files, "box", {"box": box}, [{"from": [0, 0, 0], "to": [16, 16, 16], "shade": False, "faces": faces}], 1)
+    dash = texture(files, "dash", Image.new("RGBA", (16, 16), (255, 255, 255, 232)))
+    add_model(files, "dash", {"dash": dash}, [plane("#dash", False)], 1)
