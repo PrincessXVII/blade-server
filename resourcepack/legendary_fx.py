@@ -229,6 +229,60 @@ def add_gauntlet_stones(files):
         files[name] = json.dumps(data, indent=2).encode()
 
 
+# The swords added in blade:item/legendary are shorter models than the older legendaries, so with
+# the same first-person scale they looked small in hand. They are scaled to this many model units
+# of length on screen (the Dragon Katana shows about 24.7, Excalibur about 20.2).
+FIRST_PERSON_LENGTH = 23.0
+NEW_SWORDS = ("sky_verdict", "chrono_blade", "frost_grip", "chain_cage")
+
+
+def fit_new_swords(files):
+    for sword in NEW_SWORDS:
+        name = f"assets/blade/models/item/legendary/{sword}.json"
+        if name not in files:
+            continue
+        model = json.loads(files[name])
+        elements = model.get("elements", [])
+        if not elements:
+            continue
+        span = max(max(e["to"][i] for e in elements) - min(e["from"][i] for e in elements) for i in range(3))
+        scale = round(FIRST_PERSON_LENGTH / span, 3)
+        display = model.setdefault("display", {})
+        for hand in ("firstperson_righthand", "firstperson_lefthand"):
+            entry = display.setdefault(hand, dict(display.get("firstperson_righthand", {})))
+            entry["scale"] = [scale, scale, scale]
+        files[name] = json.dumps(model, indent=2).encode()
+
+
+def merge_overlay_dispatch(files):
+    """The 1.21.4+ overlay replaces whole item definitions, and some of its custom model data lists
+    (diamond and netherite swords, arrows) were written with only the legendaries in them. Clients
+    that take the overlay then lost every sword skin and every see-through locked icon. Each such
+    list gets the base entries it lacks; the overlay's own entry wins where both have a threshold."""
+    for name in list(files):
+        if not (name.startswith(OVERLAY + "assets/minecraft/items/") and name.endswith(".json")):
+            continue
+        base_name = name[len(OVERLAY):]
+        if base_name not in files:
+            continue
+        try:
+            over = json.loads(files[name])
+            base = json.loads(files[base_name])
+        except ValueError:
+            continue
+        o, b = over.get("model", {}), base.get("model", {})
+        if "range_dispatch" not in str(o.get("type")) or "range_dispatch" not in str(b.get("type")):
+            continue
+        if o.get("property") != b.get("property"):
+            continue
+        entries = {e["threshold"]: e for e in b.get("entries", [])}
+        entries.update({e["threshold"]: e for e in o.get("entries", [])})
+        if len(entries) == len(o.get("entries", [])):
+            continue
+        o["entries"] = [entries[t] for t in sorted(entries)]
+        files[name] = json.dumps(over, indent=2).encode()
+
+
 def main(path):
     with zipfile.ZipFile(path) as z:
         files = {info.filename: z.read(info.filename) for info in z.infolist() if not info.is_dir()}
@@ -240,6 +294,8 @@ def main(path):
     add_legend_arrows(files)
     add_light_fx(files)
     vanilla_frost(files)
+    merge_overlay_dispatch(files)
+    fit_new_swords(files)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         for name in sorted(files):
             z.writestr(name, files[name])

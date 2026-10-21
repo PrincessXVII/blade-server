@@ -217,3 +217,5 @@ def add_light_fx(files):
     add_model(files, "box", {"box": box}, [{"from": [0, 0, 0], "to": [16, 16, 16], "shade": False, "faces": faces}], 1)
     dash = texture(files, "dash", Image.new("RGBA", (16, 16), (255, 255, 255, 232)))
     add_model(files, "dash", {"dash": dash}, [plane("#dash", False)], 1)
+    # Nothing at all: the snowball the armadillo rides on.
+    files["assets/blade/items/empty.json"] = json.dumps({"model": {"type": "minecraft:empty"}}).encode()
