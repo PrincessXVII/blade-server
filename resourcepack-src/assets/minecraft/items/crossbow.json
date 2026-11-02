@@ -1,0 +1,495 @@
+{
+  "model": {
+    "entries": [
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/sonic_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/sonic_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/sonic_crossbow/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/sonic_crossbow/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/sonic_crossbow/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/sonic_crossbow/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/sonic_crossbow/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 1
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/flaming_crossbow/arrow",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/flaming_crossbow/arrow",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/flaming_crossbow/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/flaming_crossbow/pulling/0",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/flaming_crossbow/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/flaming_crossbow/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/flaming_crossbow/pulling/0",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 3
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/corrupted_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/corrupted_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/corrupted_crossbow/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/corrupted_crossbow/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/corrupted_crossbow/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/corrupted_crossbow/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/corrupted_crossbow/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 4
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/4",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/4",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "legendary:item/tools/armadillo_detonator/infernal/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "legendary:item/tools/armadillo_detonator/infernal/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 5
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/frog_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/frog_crossbow/pulling/4",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/frog_crossbow/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/frog_crossbow/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/frog_crossbow/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/frog_crossbow/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/frog_crossbow/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 6
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/normal/charged",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/normal/charged",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/harpoon_launcher/normal/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/normal/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/normal/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/normal/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/harpoon_launcher/normal/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 7
+      },
+      {
+        "model": {
+          "on_false": {
+            "cases": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/horn/charged",
+                  "type": "model"
+                },
+                "when": "arrow"
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/horn/charged",
+                  "type": "model"
+                },
+                "when": "rocket"
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/harpoon_launcher/horn/default",
+              "type": "model"
+            },
+            "property": "charge_type",
+            "type": "select"
+          },
+          "on_true": {
+            "entries": [
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/horn/pulling/1",
+                  "type": "model"
+                },
+                "threshold": 0
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/horn/pulling/2",
+                  "type": "model"
+                },
+                "threshold": 0.58
+              },
+              {
+                "model": {
+                  "model": "civilization:item/tools/harpoon_launcher/horn/pulling/3",
+                  "type": "model"
+                },
+                "threshold": 1.0
+              }
+            ],
+            "fallback": {
+              "model": "civilization:item/tools/harpoon_launcher/horn/pulling/1",
+              "type": "model"
+            },
+            "property": "crossbow/pull",
+            "type": "range_dispatch"
+          },
+          "property": "using_item",
+          "type": "condition"
+        },
+        "threshold": 20
+      }
+    ],
+    "fallback": {
+      "type": "condition",
+      "property": "using_item",
+      "on_true": {
+        "type": "range_dispatch",
+        "property": "crossbow/pull",
+        "fallback": {
+          "type": "model",
+          "model": "minecraft:item/crossbow_pulling_0"
+        },
+        "entries": [
+          {
+            "threshold": 0.58,
+            "model": {
+              "type": "model",
+              "model": "minecraft:item/crossbow_pulling_1"
+            }
+          },
+          {
+            "threshold": 1.0,
+            "model": {
+              "type": "model",
+              "model": "minecraft:item/crossbow_pulling_2"
+            }
+          }
+        ]
+      },
+      "on_false": {
+        "type": "select",
+        "property": "charge_type",
+        "fallback": {
+          "type": "model",
+          "model": "minecraft:item/crossbow"
+        },
+        "cases": [
+          {
+            "when": "arrow",
+            "model": {
+              "type": "model",
+              "model": "minecraft:item/crossbow_arrow"
+            }
+          },
+          {
+            "when": "rocket",
+            "model": {
+              "type": "model",
+              "model": "minecraft:item/crossbow_firework"
+            }
+          }
+        ]
+      }
+    },
+    "property": "custom_model_data",
+    "type": "range_dispatch"
+  },
+  "oversized_in_gui": true
+}

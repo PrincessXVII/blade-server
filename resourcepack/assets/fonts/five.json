@@ -1,0 +1,14 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "minecraft:five.ttf",
+      "shift": [
+        0,
+        0
+      ],
+      "size": 7.0,
+      "oversample": 4.0
+    }
+  ]
+}
