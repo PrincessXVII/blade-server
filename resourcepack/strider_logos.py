@@ -29,8 +29,10 @@ SRC_TEX = HERE.parent / "resourcepack-src" / TEX
 
 # Old Blade logo: tab 2 x 256x192 shown 90 high (240 wide), bottom 34 below the baseline;
 # scoreboard 256x96 shown 49 high (~131 wide), bottom 14 below the baseline.
-TAB_WIDTH, TAB_BOTTOM, TAB_TEX_WIDTH = 240, 34, 1024
-BOARD_WIDTH, BOARD_BOTTOM, BOARD_TEX_WIDTH = 131, 14, 512
+# A font glyph wider or taller than 256 pixels does not fit the client's font atlas and shows as a
+# missing-glyph box, so each half of the tab logo and the scoreboard logo stay at 256 wide.
+TAB_WIDTH, TAB_BOTTOM, TAB_TEX_WIDTH = 240, 34, 512
+BOARD_WIDTH, BOARD_BOTTOM, BOARD_TEX_WIDTH = 131, 14, 256
 
 LOGOS = {
     "lobby": ("logo_tab_left", "logo_tab_right", "logo_scoreboard", 0xE110, 0xE117, 0xE118),
