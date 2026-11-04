@@ -6,6 +6,7 @@ tab header and the scoreboard keep their width; the bottom edge stays where it w
 just less tall. The tab logo is two glyphs side by side with U+E119 (advance -1) between them.
 
     lobby     U+E110 + U+E117 tab (also every server without its own), U+E118 scoreboard
+    ffa       U+E121 + U+E122 tab, U+E123 scoreboard (the "strider network" logo)
     br        U+E11A + U+E11B tab, U+E11C scoreboard
     meetups   U+E11D + U+E11E tab, U+E11F scoreboard
 
@@ -38,6 +39,7 @@ LOGOS = {
     "lobby": ("logo_tab_left", "logo_tab_right", "logo_scoreboard", 0xE110, 0xE117, 0xE118),
     "br": ("logo_br_tab_left", "logo_br_tab_right", "logo_br_scoreboard", 0xE11A, 0xE11B, 0xE11C),
     "meetups": ("logo_meetups_tab_left", "logo_meetups_tab_right", "logo_meetups_scoreboard", 0xE11D, 0xE11E, 0xE11F),
+    "ffa": ("logo_ffa_tab_left", "logo_ffa_tab_right", "logo_ffa_scoreboard", 0xE121, 0xE122, 0xE123),
 }
 
 
