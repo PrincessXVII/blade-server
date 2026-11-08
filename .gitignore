@@ -1,0 +1,7 @@
+# в репо (оно публичное) уходит только ресурспак.
+# плагины, конфиги, хостинг и скрипты живут только локально, в git их нет.
+/*
+!/.gitignore
+!/resourcepack/
+/resourcepack/*
+!/resourcepack/BladePack.zip
